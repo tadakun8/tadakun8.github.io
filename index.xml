@@ -33,8 +33,8 @@
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;swaggeryamlを修正&#34;&gt;swagger.yamlを修正&lt;/h4&gt;
-&lt;p&gt;ローカルでAPIを叩けるようにするために、&lt;code&gt;api/swagger.yaml&lt;/code&gt;を変更する必要があります
-具体的にはappフォルダにある&lt;code&gt;swagger.yaml&lt;/code&gt;の&lt;code&gt;host&lt;/code&gt;と&lt;code&gt;schemas&lt;/code&gt;の値を変更します&lt;/p&gt;
+&lt;p&gt;ローカルでAPIを叩けるようにするために、&lt;code&gt;api/swagger.yaml&lt;/code&gt;を変更する必要があります。
+具体的にはappフォルダにある&lt;code&gt;swagger.yaml&lt;/code&gt;の&lt;code&gt;host&lt;/code&gt;と&lt;code&gt;schemas&lt;/code&gt;の値を変更します。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span class=&#34;gd&#34;&gt;- host: &amp;#34;petstore.swagger.io&amp;#34;
 &lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;+ host: &amp;#34;localhost:8080&amp;#34;
 &lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;&lt;/span&gt;
