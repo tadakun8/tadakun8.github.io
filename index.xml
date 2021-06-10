@@ -12,8 +12,8 @@
         <pubDate>Thu, 10 Jun 2021 21:15:14 +0900</pubDate>
         
         <guid>https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/</guid>
-        <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
-&lt;p&gt;ここでは、Swaggerで定義したAPIからモックサーバを立てる方法を書いていきます。Swaggerのイメージを利用して、Dockerでモックサーバを構築する方法もありますが、ここではSwagger Editorを使用する方法について書きます。&lt;/p&gt;
+        <description>&lt;img src="https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/swagger.jpg" alt="Featured image of post Swaggerでモックサーバを立てる" /&gt;&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;ここでは、Swaggerで定義したAPIからモックサーバを立てる方法を書いていきます。SwaggerのDockerイメージを利用してモックサーバを構築する方法もありますが、ここではSwagger Editorを使用する方法について書きます。&lt;/p&gt;
 &lt;h3 id=&#34;手順&#34;&gt;手順&lt;/h3&gt;
 &lt;h4 id=&#34;モックサーバファイルをダウンロード&#34;&gt;モックサーバファイルをダウンロード&lt;/h4&gt;
 &lt;p&gt;モックサーバをローカルで立ち上げるために必要なファイルをダウンロードします&lt;/p&gt;
