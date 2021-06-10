@@ -2,11 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://tadakun8.github.io/post/what-is-jsconfig-json/</loc>
+    <lastmod>2021-06-10T19:59:50+09:00</lastmod>
+  </url><url>
     <loc>https://tadakun8.github.io/post/</loc>
-    <lastmod>2021-06-08T23:41:15+09:00</lastmod>
+    <lastmod>2021-06-10T19:59:50+09:00</lastmod>
   </url><url>
     <loc>https://tadakun8.github.io/</loc>
-    <lastmod>2021-06-08T23:41:15+09:00</lastmod>
+    <lastmod>2021-06-10T19:59:50+09:00</lastmod>
   </url><url>
     <loc>https://tadakun8.github.io/post/start-blog/</loc>
     <lastmod>2021-06-08T23:41:15+09:00</lastmod>
