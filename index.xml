@@ -6,7 +6,62 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Thu, 10 Jun 2021 19:59:50 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 10 Jun 2021 21:15:14 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Swaggerでモックサーバを立てる</title>
+        <link>https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/</link>
+        <pubDate>Thu, 10 Jun 2021 21:15:14 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/</guid>
+        <description>&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;ここでは、Swaggerで定義したAPIからモックサーバを立てる方法を書いていきます。Swaggerのイメージを利用して、Dockerでモックサーバを構築する方法もありますが、ここではSwagger Editorを使用する方法について書きます。&lt;/p&gt;
+&lt;h3 id=&#34;手順&#34;&gt;手順&lt;/h3&gt;
+&lt;h4 id=&#34;モックサーバファイルをダウンロード&#34;&gt;モックサーバファイルをダウンロード&lt;/h4&gt;
+&lt;p&gt;モックサーバをローカルで立ち上げるために必要なファイルをダウンロードします&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;まずは&lt;a class=&#34;link&#34; href=&#34;https://editor.swagger.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;swagger editor&lt;/a&gt;にアクセスしてください&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上部の&lt;strong&gt;Generate Server&lt;/strong&gt;をクリックしてどの言語でモックサーバを立てるかを選んでください&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;この記事では&lt;code&gt;nodejs-server&lt;/code&gt;を選択した想定で進みます&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;選択するとzipファイルがダウンロードされるので、任意のフォルダで展開してください&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;swaggeryamlを修正&#34;&gt;swagger.yamlを修正&lt;/h4&gt;
+&lt;p&gt;ローカルでAPIを叩けるようにするために、&lt;code&gt;api/swagger.yaml&lt;/code&gt;を変更する必要があります
+具体的にはappフォルダにある&lt;code&gt;swagger.yaml&lt;/code&gt;の&lt;code&gt;host&lt;/code&gt;と&lt;code&gt;schemas&lt;/code&gt;の値を変更します&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span class=&#34;gd&#34;&gt;- host: &amp;#34;petstore.swagger.io&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;+ host: &amp;#34;localhost:8080&amp;#34;
+&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;&lt;/span&gt;
+schemes:
+&lt;span class=&#34;gd&#34;&gt;- &amp;#34;https&amp;#34; ← これを消す
+&lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;- &amp;#34;http&amp;#34;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;必要なモジュールのインストール&#34;&gt;必要なモジュールのインストール&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ npm install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;展開したディレクトリの&lt;code&gt;package.json&lt;/code&gt;があるディレクトリ内でこのコマンドを叩いてください&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;モックサーバを立ち上げる&#34;&gt;モックサーバを立ち上げる&lt;/h4&gt;
+&lt;p&gt;同じディレクトリで以下のコマンドを叩いてサーバを立ち上げます&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ npm run start
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;http://localhost:8080/docs/&lt;/code&gt;にアクセスすると、Swagger UIが立ち上がるはずです。Swagger UIで試してみても良いですし、ブラウザの検索窓から&lt;code&gt;http://localhost:8080/v2/pet/3&lt;/code&gt;と叩けばjsonのレスポンスが返ってくることを確認できるはずです&lt;/p&gt;
+&lt;h3 id=&#34;このあとは&#34;&gt;このあとは・・・？&lt;/h3&gt;
+&lt;p&gt;この手順で使用したAPIはSwagger Editor用意したサンプルのAPIになります。&lt;code&gt;swagger.yaml&lt;/code&gt;を修正し、プロジェクトに必要なAPIを定義していけばよいでしょう。&lt;/p&gt;
+&lt;p&gt;また、フロントエンドの確認をしたい場合はリクエスト先を&lt;code&gt;http://localhost:8080/v2/pet/3&lt;/code&gt;のようにしてあげれば、バックエンドが実装されていなくても、フロントエンドの確認をすることができますね！&lt;/p&gt;
+&lt;p&gt;Swagger本来の用途であるAPI仕様書としても使用できるので、このフォルダをgit管理してプロジェクトで共有するということをおすすめします。&lt;/p&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://mather.hatenablog.jp/entry/swagger-mock&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;外部連携APIのモックサーバをSwaggerを利用して作る&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>jsconfig.jsonとは？</title>
         <link>https://tadakun8.github.io/post/what-is-jsconfig-json/</link>
         <pubDate>Thu, 10 Jun 2021 19:59:50 +0900</pubDate>

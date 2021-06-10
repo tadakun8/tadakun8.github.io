@@ -6,7 +6,27 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 10 Jun 2021 19:59:50 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 10 Jun 2021 21:15:14 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Swaggerでモックサーバを立てる</title>
+      <link>https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/</link>
+      <pubDate>Thu, 10 Jun 2021 21:15:14 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/</guid>
+      <description>はじめに ここでは、Swaggerで定義したAPIからモックサーバを立てる方法を書いていきます。Swaggerのイメージを利用して、Dockerでモックサーバを構築する方法もありますが、ここではSwagger Editorを使用する方法について書きます。
+手順 モックサーバファイルをダウンロード モックサーバをローカルで立ち上げるために必要なファイルをダウンロードします
+  まずはswagger editorにアクセスしてください
+  上部のGenerate Serverをクリックしてどの言語でモックサーバを立てるかを選んでください
+ この記事ではnodejs-serverを選択した想定で進みます    選択するとzipファイルがダウンロードされるので、任意のフォルダで展開してください
+  swagger.yamlを修正 ローカルでAPIを叩けるようにするために、api/swagger.yamlを変更する必要があります 具体的にはappフォルダにあるswagger.yamlのhostとschemasの値を変更します
+- host: &amp;#34;petstore.swagger.io&amp;#34; + host: &amp;#34;localhost:8080&amp;#34;  schemes: - &amp;#34;https&amp;#34; ← これを消す - &amp;#34;http&amp;#34; 必要なモジュールのインストール $ npm install  展開したディレクトリのpackage.jsonがあるディレクトリ内でこのコマンドを叩いてください  モックサーバを立ち上げる 同じディレクトリで以下のコマンドを叩いてサーバを立ち上げます
+$ npm run start http://localhost:8080/docs/にアクセスすると、Swagger UIが立ち上がるはずです。Swagger UIで試してみても良いですし、ブラウザの検索窓からhttp://localhost:8080/v2/pet/3と叩けばjsonのレスポンスが返ってくることを確認できるはずです
+このあとは・・・？ この手順で使用したAPIはSwagger Editor用意したサンプルのAPIになります。swagger.yamlを修正し、プロジェクトに必要なAPIを定義していけばよいでしょう。
+また、フロントエンドの確認をしたい場合はリクエスト先をhttp://localhost:8080/v2/pet/3のようにしてあげれば、バックエンドが実装されていなくても、フロントエンドの確認をすることができますね！
+Swagger本来の用途であるAPI仕様書としても使用できるので、このフォルダをgit管理してプロジェクトで共有するということをおすすめします。
+参考  外部連携APIのモックサーバをSwaggerを利用して作る  </description>
+    </item>
+    
     <item>
       <title>jsconfig.jsonとは？</title>
       <link>https://tadakun8.github.io/post/what-is-jsconfig-json/</link>
