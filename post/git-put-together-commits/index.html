@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに コミットのまとめ方を毎回調べているのでメモ
+直前のコミットをまとめる場合 現在のコミットが以下だと仮定します
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate 7a0470f commit 5 ce15d24 commit 4 346c3f2 commit 3 894afa7 commit 2 31bea46 commit 1  --oneline : 各コミットを1行で表示する --no-decorate : 余計な装飾を消す 1  以下の状態になるようにコミットをまとめてみましょう
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate d8feda4 commit 5、4、3をまとめました 894afa7 commit 2 31bea46 commit 1 手順 $ git rebase -i HEAD~3 # 直前の3つコミットをrebase 何も設定していなければvimが起動し、以下が表示されます
+[~/workspace/sample] ❯❯❯ git rebase -i HEAD~3 [master] hint: Waiting for your editor to close the file.'><title>commitをまとめる</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/git-put-together-commits/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='commitをまとめる'>
+<meta property='og:description' content='はじめに コミットのまとめ方を毎回調べているのでメモ
+直前のコミットをまとめる場合 現在のコミットが以下だと仮定します
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate 7a0470f commit 5 ce15d24 commit 4 346c3f2 commit 3 894afa7 commit 2 31bea46 commit 1  --oneline : 各コミットを1行で表示する --no-decorate : 余計な装飾を消す 1  以下の状態になるようにコミットをまとめてみましょう
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate d8feda4 commit 5、4、3をまとめました 894afa7 commit 2 31bea46 commit 1 手順 $ git rebase -i HEAD~3 # 直前の3つコミットをrebase 何も設定していなければvimが起動し、以下が表示されます
+[~/workspace/sample] ❯❯❯ git rebase -i HEAD~3 [master] hint: Waiting for your editor to close the file.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/git-put-together-commits/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-12T20:58:32&#43;09:00'/><meta property='article:modified_time' content='2021-06-12T20:58:32&#43;09:00'/><meta property='og:image' content='https://tadakun8.github.io/post/git-put-together-commits/git.png' />
+<meta name="twitter:title" content="commitをまとめる">
+<meta name="twitter:description" content="はじめに コミットのまとめ方を毎回調べているのでメモ
+直前のコミットをまとめる場合 現在のコミットが以下だと仮定します
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate 7a0470f commit 5 ce15d24 commit 4 346c3f2 commit 3 894afa7 commit 2 31bea46 commit 1  --oneline : 各コミットを1行で表示する --no-decorate : 余計な装飾を消す 1  以下の状態になるようにコミットをまとめてみましょう
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate d8feda4 commit 5、4、3をまとめました 894afa7 commit 2 31bea46 commit 1 手順 $ git rebase -i HEAD~3 # 直前の3つコミットをrebase 何も設定していなければvimが起動し、以下が表示されます
+[~/workspace/sample] ❯❯❯ git rebase -i HEAD~3 [master] hint: Waiting for your editor to close the file."><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://tadakun8.github.io/post/git-put-together-commits/git.png' />
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/post/git-put-together-commits/">
+                <img src="/post/git-put-together-commits/git_hu10f4824aa557e0c7b4f2ec1dc4ef34d0_28593_800x0_resize_box_2.png"
+                        srcset="/post/git-put-together-commits/git_hu10f4824aa557e0c7b4f2ec1dc4ef34d0_28593_800x0_resize_box_2.png 800w, /post/git-put-together-commits/git_hu10f4824aa557e0c7b4f2ec1dc4ef34d0_28593_1600x0_resize_box_2.png 1600w"
+                        width="800" 
+                        height="319" 
+                        loading="lazy"
+                        alt="Featured image of post commitをまとめる" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/git/" >
+                git
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/git-put-together-commits/">commitをまとめる</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-12</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h3 id="はじめに">はじめに</h3>
+<p>コミットのまとめ方を毎回調べているのでメモ</p>
+<h3 id="直前のコミットをまとめる場合">直前のコミットをまとめる場合</h3>
+<p>現在のコミットが以下だと仮定します</p>
+<pre><code>[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+7a0470f commit 5
+ce15d24 commit 4
+346c3f2 commit 3
+894afa7 commit 2
+31bea46 commit 1
+</code></pre><ul>
+<li>--oneline : 各コミットを1行で表示する</li>
+<li>--no-decorate : 余計な装飾を消す <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></li>
+</ul>
+<p>以下の状態になるようにコミットをまとめてみましょう</p>
+<pre><code>[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+d8feda4 commit 5、4、3をまとめました
+894afa7 commit 2
+31bea46 commit 1
+</code></pre><h4 id="手順">手順</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git rebase -i HEAD~3 <span class="c1"># 直前の3つコミットをrebase</span>
+</code></pre></div><p>何も設定していなければvimが起動し、以下が表示されます</p>
+<pre><code>[~/workspace/sample] 
+❯❯❯ git rebase -i HEAD~3         [master]
+hint: Waiting for your editor to close the file... 
+pick 346c3f2 commit 3
+pick ce15d24 commit 4
+pick 7a0470f commit 5
+
+# Rebase 894afa7..7a0470f onto 894afa7 (3 commands)
+#
+# Commands:
+# p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit's log message
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop &lt;commit&gt; = remove commit
+# l, label &lt;label&gt; = label current HEAD with a name
+# t, reset &lt;label&gt; = reset HEAD to a label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c &lt;commit&gt; to reword the commit message.
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+</code></pre><p>次に、まとめたいコミットを pick から <strong>s(またはsquash)</strong> に変更します。イメージ的にはcommit 4とcommit 5をcommit 3にまとめるようなイメージです</p>
+<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">pick 346c3f2 commit 3
+<span class="gd">- pick ce15d24 commit 4
+</span><span class="gd">- pick 7a0470f commit 5
+</span><span class="gd"></span>
+pick 346c3f2 commit 3
+<span class="gi">+ s ce15d24 commit 4
+</span><span class="gi">+ s 7a0470f commit 5
+</span></code></pre></div><p>保存すると、まとめたコミットのコミットメッセージを入力する画面が表示されます</p>
+<pre><code class="language-bash:表示される画面" data-lang="bash:表示される画面"># This is a combination of 3 commits.
+# This is the 1st commit message:
+
+commit 3
+
+# This is the commit message #2:
+
+commit 4
+
+# This is the commit message #3:
+
+commit 5
+</code></pre><p><code>#</code>が<strong>ついていないもの</strong>がコミットメッセージとして適用されます。なので今回はこれらを消して以下のメッセージに修正します</p>
+<pre><code>commit 5、4、3をまとめました
+</code></pre><p>これで保存すると想定通りコミットがまとまりました</p>
+<pre><code>[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate                                                                         
+d8feda4 commit 5、4、3をまとめました
+894afa7 commit 2
+31bea46 commit 1
+</code></pre><h3 id="離れたコミットをまとめる場合">離れたコミットをまとめる場合</h3>
+<p>現在のコミットが以下だと仮定します</p>
+<pre><code>[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+7a0470f commit 5
+ce15d24 commit 4
+346c3f2 commit 3
+894afa7 commit 2
+31bea46 commit 1
+</code></pre><p>以下の状態になるようにコミットをまとめてみましょう</p>
+<pre><code>[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+7a0470f commit 5
+ce15d24 commit 4
+bc9ff20 commit 2, 3をまとめました
+894afa7 commit 1
+</code></pre><h4 id="手順-1">手順</h4>
+<p>手順としては先ほどと同様です。イメージとしてはcommit3をコミット2にまとめるようなイメージを持ってください。なので、commit3のpickをs(squash)に変更してあげましょう。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git rebase -i 894afa7 <span class="c1"># 引数にコミットIDを指定するとその次のコミット(ここではcommit2)までがrebaseの範囲になる</span>
+</code></pre></div><p>表示されるvim画面は以下になります</p>
+<pre><code>pick 894afa7 commit 2
+pick 346c3f2 commit 3
+pick ce15d24 commit 4
+pick 7a0470f commit 5
+
+# Rebase 31bea46..7a0470f onto 7a0470f (4 commands)
+#
+# Commands:
+# p, pick &lt;commit&gt; = use commit
+# r, reword &lt;commit&gt; = use commit, but edit the commit message
+# e, edit &lt;commit&gt; = use commit, but stop for amending
+# s, squash &lt;commit&gt; = use commit, but meld into previous commit
+# f, fixup &lt;commit&gt; = like &quot;squash&quot;, but discard this commit's log message
+# x, exec &lt;command&gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop &lt;commit&gt; = remove commit
+# l, label &lt;label&gt; = label current HEAD with a name
+# t, reset &lt;label&gt; = reset HEAD to a label
+# m, merge [-C &lt;commit&gt; | -c &lt;commit&gt;] &lt;label&gt; [# &lt;oneline&gt;]
+# .       create a merge commit using the original merge commit's
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c &lt;commit&gt; to reword the commit message.
+#
+
+</code></pre><p>いつものようにまとめたいコミットのpickを**s(またはsquash)**に変更しましょう</p>
+<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">pick 894afa7 commit 2
+<span class="gd">- pick 346c3f2 commit 3
+</span><span class="gd"></span>pick ce15d24 commit 4
+pick 7a0470f commit 5
+
+pick 894afa7 commit 2
+<span class="gi">+ s 346c3f2 commit 3
+</span><span class="gi"></span>pick ce15d24 commit 4
+pick 7a0470f commit 5
+</code></pre></div><p>保存して、コミットメッセージを<code>commit 2, 3をまとめました</code>と書けば想定した結果になるはずです</p>
+<pre><code>[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate                                                                        
+f5cade0 commit 5
+04ac645 commit 4
+bc9ff20 commit 2, 3をまとめました
+31bea46 commit 1
+</code></pre><h3 id="このあとは">このあとは・・・？</h3>
+<p>変更が終わったら、リモートリポジトリにpushしましょう。</p>
+<p>ただ、rebaseした後にリモートリポジトリにpushしようとするとエラーがでます。ローカルとリモートの履歴が異なるので当たり前ですね。その場合は<code>git push -f origin ブランチ名</code>でpushできます。</p>
+<ul>
+<li>ただし、<code>git push -f</code> はリモートリポジトリに現在のブランチの状態を強制的にpushします。<strong>リモートリポジトリの状態を強制的に変更するコマンド</strong>なので、必ず今の変更があっているかを確かめてから使うようにしてください。</li>
+</ul>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a class="link" href="https://qiita.com/takke/items/3400b55becfd72769214"  target="_blank" rel="noopener"
+    >rebase -i でコミットをまとめる</a></li>
+</ul>
+<ul>
+<li><a class="link" href="https://qiita.com/tatetate55/items/7a822a3246df79d693b8"  target="_blank" rel="noopener"
+    >git rebase -iでgitのコミットをまとめる</a></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>このオプションをつけないと最新のcommitが<code>7a0470f (HEAD -&gt; master) commit 5</code>と表示されます。ここでは表示をわかりやすくするために、このオプションをつけました&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

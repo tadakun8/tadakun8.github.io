@@ -6,7 +6,184 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Thu, 10 Jun 2021 21:15:14 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 12 Jun 2021 20:58:32 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>commitをまとめる</title>
+        <link>https://tadakun8.github.io/post/git-put-together-commits/</link>
+        <pubDate>Sat, 12 Jun 2021 20:58:32 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/git-put-together-commits/</guid>
+        <description>&lt;img src="https://tadakun8.github.io/post/git-put-together-commits/git.png" alt="Featured image of post commitをまとめる" /&gt;&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;コミットのまとめ方を毎回調べているのでメモ&lt;/p&gt;
+&lt;h3 id=&#34;直前のコミットをまとめる場合&#34;&gt;直前のコミットをまとめる場合&lt;/h3&gt;
+&lt;p&gt;現在のコミットが以下だと仮定します&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+7a0470f commit 5
+ce15d24 commit 4
+346c3f2 commit 3
+894afa7 commit 2
+31bea46 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;--oneline : 各コミットを1行で表示する&lt;/li&gt;
+&lt;li&gt;--no-decorate : 余計な装飾を消す &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;以下の状態になるようにコミットをまとめてみましょう&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+d8feda4 commit 5、4、3をまとめました
+894afa7 commit 2
+31bea46 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;手順&#34;&gt;手順&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git rebase -i HEAD~3 &lt;span class=&#34;c1&#34;&gt;# 直前の3つコミットをrebase&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;何も設定していなければvimが起動し、以下が表示されます&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git rebase -i HEAD~3         [master]
+hint: Waiting for your editor to close the file... 
+pick 346c3f2 commit 3
+pick ce15d24 commit 4
+pick 7a0470f commit 5
+
+# Rebase 894afa7..7a0470f onto 894afa7 (3 commands)
+#
+# Commands:
+# p, pick &amp;lt;commit&amp;gt; = use commit
+# r, reword &amp;lt;commit&amp;gt; = use commit, but edit the commit message
+# e, edit &amp;lt;commit&amp;gt; = use commit, but stop for amending
+# s, squash &amp;lt;commit&amp;gt; = use commit, but meld into previous commit
+# f, fixup &amp;lt;commit&amp;gt; = like &amp;quot;squash&amp;quot;, but discard this commit&#39;s log message
+# x, exec &amp;lt;command&amp;gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with &#39;git rebase --continue&#39;)
+# d, drop &amp;lt;commit&amp;gt; = remove commit
+# l, label &amp;lt;label&amp;gt; = label current HEAD with a name
+# t, reset &amp;lt;label&amp;gt; = reset HEAD to a label
+# m, merge [-C &amp;lt;commit&amp;gt; | -c &amp;lt;commit&amp;gt;] &amp;lt;label&amp;gt; [# &amp;lt;oneline&amp;gt;]
+# .       create a merge commit using the original merge commit&#39;s
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c &amp;lt;commit&amp;gt; to reword the commit message.
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;次に、まとめたいコミットを pick から &lt;strong&gt;s(またはsquash)&lt;/strong&gt; に変更します。イメージ的にはcommit 4とcommit 5をcommit 3にまとめるようなイメージです&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;pick 346c3f2 commit 3
+&lt;span class=&#34;gd&#34;&gt;- pick ce15d24 commit 4
+&lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;- pick 7a0470f commit 5
+&lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;
+pick 346c3f2 commit 3
+&lt;span class=&#34;gi&#34;&gt;+ s ce15d24 commit 4
+&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;+ s 7a0470f commit 5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;保存すると、まとめたコミットのコミットメッセージを入力する画面が表示されます&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash:表示される画面&#34; data-lang=&#34;bash:表示される画面&#34;&gt;# This is a combination of 3 commits.
+# This is the 1st commit message:
+
+commit 3
+
+# This is the commit message #2:
+
+commit 4
+
+# This is the commit message #3:
+
+commit 5
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;#&lt;/code&gt;が&lt;strong&gt;ついていないもの&lt;/strong&gt;がコミットメッセージとして適用されます。なので今回はこれらを消して以下のメッセージに修正します&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;commit 5、4、3をまとめました
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これで保存すると想定通りコミットがまとまりました&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate                                                                         
+d8feda4 commit 5、4、3をまとめました
+894afa7 commit 2
+31bea46 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;離れたコミットをまとめる場合&#34;&gt;離れたコミットをまとめる場合&lt;/h3&gt;
+&lt;p&gt;現在のコミットが以下だと仮定します&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+7a0470f commit 5
+ce15d24 commit 4
+346c3f2 commit 3
+894afa7 commit 2
+31bea46 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以下の状態になるようにコミットをまとめてみましょう&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+7a0470f commit 5
+ce15d24 commit 4
+bc9ff20 commit 2, 3をまとめました
+894afa7 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;手順-1&#34;&gt;手順&lt;/h4&gt;
+&lt;p&gt;手順としては先ほどと同様です。イメージとしてはcommit3をコミット2にまとめるようなイメージを持ってください。なので、commit3のpickをs(squash)に変更してあげましょう。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git rebase -i 894afa7 &lt;span class=&#34;c1&#34;&gt;# 引数にコミットIDを指定するとその次のコミット(ここではcommit2)までがrebaseの範囲になる&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;表示されるvim画面は以下になります&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;pick 894afa7 commit 2
+pick 346c3f2 commit 3
+pick ce15d24 commit 4
+pick 7a0470f commit 5
+
+# Rebase 31bea46..7a0470f onto 7a0470f (4 commands)
+#
+# Commands:
+# p, pick &amp;lt;commit&amp;gt; = use commit
+# r, reword &amp;lt;commit&amp;gt; = use commit, but edit the commit message
+# e, edit &amp;lt;commit&amp;gt; = use commit, but stop for amending
+# s, squash &amp;lt;commit&amp;gt; = use commit, but meld into previous commit
+# f, fixup &amp;lt;commit&amp;gt; = like &amp;quot;squash&amp;quot;, but discard this commit&#39;s log message
+# x, exec &amp;lt;command&amp;gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with &#39;git rebase --continue&#39;)
+# d, drop &amp;lt;commit&amp;gt; = remove commit
+# l, label &amp;lt;label&amp;gt; = label current HEAD with a name
+# t, reset &amp;lt;label&amp;gt; = reset HEAD to a label
+# m, merge [-C &amp;lt;commit&amp;gt; | -c &amp;lt;commit&amp;gt;] &amp;lt;label&amp;gt; [# &amp;lt;oneline&amp;gt;]
+# .       create a merge commit using the original merge commit&#39;s
+# .       message (or the oneline, if no original merge commit was
+# .       specified). Use -c &amp;lt;commit&amp;gt; to reword the commit message.
+#
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;いつものようにまとめたいコミットのpickを**s(またはsquash)**に変更しましょう&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;pick 894afa7 commit 2
+&lt;span class=&#34;gd&#34;&gt;- pick 346c3f2 commit 3
+&lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;pick ce15d24 commit 4
+pick 7a0470f commit 5
+
+pick 894afa7 commit 2
+&lt;span class=&#34;gi&#34;&gt;+ s 346c3f2 commit 3
+&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;&lt;/span&gt;pick ce15d24 commit 4
+pick 7a0470f commit 5
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;保存して、コミットメッセージを&lt;code&gt;commit 2, 3をまとめました&lt;/code&gt;と書けば想定した結果になるはずです&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate                                                                        
+f5cade0 commit 5
+04ac645 commit 4
+bc9ff20 commit 2, 3をまとめました
+31bea46 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;このあとは&#34;&gt;このあとは・・・？&lt;/h3&gt;
+&lt;p&gt;変更が終わったら、リモートリポジトリにpushしましょう。&lt;/p&gt;
+&lt;p&gt;ただ、rebaseした後にリモートリポジトリにpushしようとするとエラーがでます。ローカルとリモートの履歴が異なるので当たり前ですね。その場合は&lt;code&gt;git push -f origin ブランチ名&lt;/code&gt;でpushできます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ただし、&lt;code&gt;git push -f&lt;/code&gt; はリモートリポジトリに現在のブランチの状態を強制的にpushします。&lt;strong&gt;リモートリポジトリの状態を強制的に変更するコマンド&lt;/strong&gt;なので、必ず今の変更があっているかを確かめてから使うようにしてください。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;参考&#34;&gt;参考&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/takke/items/3400b55becfd72769214&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;rebase -i でコミットをまとめる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/tatetate55/items/7a822a3246df79d693b8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;git rebase -iでgitのコミットをまとめる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;このオプションをつけないと最新のcommitが&lt;code&gt;7a0470f (HEAD -&amp;gt; master) commit 5&lt;/code&gt;と表示されます。ここでは表示をわかりやすくするために、このオプションをつけました&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+        </item>
+        <item>
         <title>Swaggerでモックサーバを立てる</title>
         <link>https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/</link>
         <pubDate>Thu, 10 Jun 2021 21:15:14 +0900</pubDate>

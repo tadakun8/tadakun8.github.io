@@ -6,7 +6,20 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 10 Jun 2021 21:15:14 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 12 Jun 2021 20:58:32 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>commitをまとめる</title>
+      <link>https://tadakun8.github.io/post/git-put-together-commits/</link>
+      <pubDate>Sat, 12 Jun 2021 20:58:32 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/git-put-together-commits/</guid>
+      <description>はじめに コミットのまとめ方を毎回調べているのでメモ
+直前のコミットをまとめる場合 現在のコミットが以下だと仮定します
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate 7a0470f commit 5 ce15d24 commit 4 346c3f2 commit 3 894afa7 commit 2 31bea46 commit 1  --oneline : 各コミットを1行で表示する --no-decorate : 余計な装飾を消す 1  以下の状態になるようにコミットをまとめてみましょう
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate d8feda4 commit 5、4、3をまとめました 894afa7 commit 2 31bea46 commit 1 手順 $ git rebase -i HEAD~3 # 直前の3つコミットをrebase 何も設定していなければvimが起動し、以下が表示されます
+[~/workspace/sample] ❯❯❯ git rebase -i HEAD~3 [master] hint: Waiting for your editor to close the file.</description>
+    </item>
+    
     <item>
       <title>Swaggerでモックサーバを立てる</title>
       <link>https://tadakun8.github.io/post/creating-a-mock-server-with-swagger/</link>
