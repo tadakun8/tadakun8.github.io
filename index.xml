@@ -6,7 +6,81 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sat, 12 Jun 2021 20:58:32 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Jun 2021 09:16:53 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>コミットメッセージを変更する</title>
+        <link>https://tadakun8.github.io/post/git-change-commit-message/</link>
+        <pubDate>Sun, 13 Jun 2021 09:16:53 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/git-change-commit-message/</guid>
+        <description>&lt;img src="https://tadakun8.github.io/post/git-change-commit-message/git.png" alt="Featured image of post コミットメッセージを変更する" /&gt;&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;開発が進んでいくと、コミットメッセージを変更したいなぁということがあると思います。また、「このコミットメッセージわかりにくい」と言われることもあるでしょう。特に、2つ以上前のコミットメッセージを変える方法はいつも調べているので、記事にしました。&lt;/p&gt;
+&lt;h2 id=&#34;直近のコミットメッセージを変更する場合&#34;&gt;直近のコミットメッセージを変更する場合&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;git commit --amend&lt;/code&gt;で修正できます&lt;/p&gt;
+&lt;h3 id=&#34;想定するケース&#34;&gt;想定するケース&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+c7c87bd commit 4 ← 番号がずれてしまった
+8b72c5c commit 2
+13ba7d2 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;直近のコミットメッセージの番号がずれていますので、commit 4 を commit 3に修正しましょう&lt;/p&gt;
+&lt;h3 id=&#34;修正&#34;&gt;修正&lt;/h3&gt;
+&lt;p&gt;直近のコミットメッセージを変更する場合は以下のコマンドですぐ変更できます&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git commit --amend
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;そうするとvimが起動するので、commit 4 を commit 3に変更しましょう。&lt;/p&gt;
+&lt;p&gt;変更後に確認すると、意図した結果になってます&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+af9e74a commit 3
+8b72c5c commit 2
+13ba7d2 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;2つ以上前のコミットメッセージを変更する場合&#34;&gt;2つ以上前のコミットメッセージを変更する場合&lt;/h2&gt;
+&lt;p&gt;いよいよ本題です。こちらは&lt;code&gt;git rebase&lt;/code&gt;を使って修正します。&lt;/p&gt;
+&lt;h3 id=&#34;想定するケース-1&#34;&gt;想定するケース&lt;/h3&gt;
+&lt;p&gt;コミットの履歴を以下だとしましょう&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+0638aca commit 5
+cb1a280 commit 4
+2572e35 commit 3
+b1ce602 commit 22
+13ba7d2 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;commit 2 のつもりが commit 22 となっています&lt;/p&gt;
+&lt;h3 id=&#34;修正-1&#34;&gt;修正&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# commit 1のコミットIDを引数にし、commit 22までをrebaseの範囲とする&lt;/span&gt;
+$ git reabase -i 13ba7d2 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;vimが立ち上がるので、commit 22の pick を &lt;strong&gt;r(またはreword)&lt;/strong&gt; に変更します&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span class=&#34;gd&#34;&gt;- pick b1ce602 commit 22
+&lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;+ r b1ce602 commit 22
+&lt;/span&gt;&lt;span class=&#34;gi&#34;&gt;&lt;/span&gt;pick 2572e35 commit 3
+pick cb1a280 commit 4
+pick 0638aca commit 5
+
+# Rebase 13ba7d2..0638aca onto 0638aca (4 commands)
+#
+# Commands:
+# p, pick &amp;lt;commit&amp;gt; = use commit
+# r, reword &amp;lt;commit&amp;gt; = use commit, but edit the commit message
+# e, edit &amp;lt;commit&amp;gt; = use commit, but stop for amending
+# s, squash &amp;lt;commit&amp;gt; = use commit, but meld into previous commit
+# f, fixup &amp;lt;commit&amp;gt; = like &amp;#34;squash&amp;#34;, but discard this commit&amp;#39;s log message
+# x, exec &amp;lt;command&amp;gt; = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with &amp;#39;git rebase --continue&amp;#39;)
+# d, drop &amp;lt;commit&amp;gt; = remove commit
+# l, label &amp;lt;label&amp;gt; = label current HEAD with a name
+# t, reset &amp;lt;label&amp;gt; = reset HEAD to a label
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;確認すると意図した結果になっていますね&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[~/workspace/sample] 
+❯❯❯ git log --oneline --no-decorate
+9f6ecb5 commit 5
+bbf2396 commit 4
+4d7d435 commit 3
+f5312fb commit 2
+13ba7d2 commit 1
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;このあとは&#34;&gt;このあとは・・・？&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;push&lt;/code&gt;してリモートリポジトリを随時更新してください。コミットの履歴を変えたので、&lt;code&gt;git push -f&lt;/code&gt;でないとpushできないので、お気をつけて。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>commitをまとめる</title>
         <link>https://tadakun8.github.io/post/git-put-together-commits/</link>
         <pubDate>Sat, 12 Jun 2021 20:58:32 +0900</pubDate>

@@ -6,7 +6,24 @@
     <description>Recent content in git on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 12 Jun 2021 20:58:32 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Jun 2021 09:16:53 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>コミットメッセージを変更する</title>
+      <link>https://tadakun8.github.io/post/git-change-commit-message/</link>
+      <pubDate>Sun, 13 Jun 2021 09:16:53 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/git-change-commit-message/</guid>
+      <description>はじめに 開発が進んでいくと、コミットメッセージを変更したいなぁということがあると思います。また、「このコミットメッセージわかりにくい」と言われることもあるでしょう。特に、2つ以上前のコミットメッセージを変える方法はいつも調べているので、記事にしました。
+直近のコミットメッセージを変更する場合 git commit --amendで修正できます
+想定するケース [~/workspace/sample] ❯❯❯ git log --oneline --no-decorate c7c87bd commit 4 ← 番号がずれてしまった 8b72c5c commit 2 13ba7d2 commit 1 直近のコミットメッセージの番号がずれていますので、commit 4 を commit 3に修正しましょう
+修正 直近のコミットメッセージを変更する場合は以下のコマンドですぐ変更できます
+$ git commit --amend そうするとvimが起動するので、commit 4 を commit 3に変更しましょう。
+変更後に確認すると、意図した結果になってます
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate af9e74a commit 3 8b72c5c commit 2 13ba7d2 commit 1 2つ以上前のコミットメッセージを変更する場合 いよいよ本題です。こちらはgit rebaseを使って修正します。
+想定するケース コミットの履歴を以下だとしましょう
+[~/workspace/sample] ❯❯❯ git log --oneline --no-decorate 0638aca commit 5 cb1a280 commit 4 2572e35 commit 3 b1ce602 commit 22 13ba7d2 commit 1 commit 2 のつもりが commit 22 となっています</description>
+    </item>
+    
     <item>
       <title>commitをまとめる</title>
       <link>https://tadakun8.github.io/post/git-put-together-commits/</link>
