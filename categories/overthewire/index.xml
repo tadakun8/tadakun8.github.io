@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>OverTheWire on ただくんぶろぐ</title>
+    <link>https://tadakun8.github.io/categories/overthewire/</link>
+    <description>Recent content in OverTheWire on ただくんぶろぐ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 13 Jun 2021 21:52:17 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWrite奮闘記】Bandit: Leve0〜3</title>
+      <link>https://tadakun8.github.io/post/over-the-write-bandit-level0-3/</link>
+      <pubDate>Sun, 13 Jun 2021 21:52:17 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-write-bandit-level0-3/</guid>
+      <description>はじめに 僕もエンジニアの端くれではあるので、たまにQiitaで面白い記事を読んでます。いつも通りQiitaを見ているとこんな記事がありました
+ イスラエル8200部隊出身のガチプロハッカーに、一流のハッカーになる方法について聞いてみた。  こういう記事を見るとなんだかワクワクします。
+この記事の中で以下が気になり、
+ ハッキングチャレンジはその名の通り、ハッキングを試してみることです。有名なのは『OverTheWire』でしょうか。
+ 少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。
+ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこのOverTheWriteで練習してみることにしました。
+私の今の状態  セキュリティの知識はカッスカス 大学時代にセキュリティの講義受けたなぁ(遠い目)  Level 0 初心者はまずBandit(意味は盗賊)からスタートです
+Goal  The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.</description>
+    </item>
+    
+  </channel>
+</rss>

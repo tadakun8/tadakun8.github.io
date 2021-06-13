@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに 僕もエンジニアの端くれではあるので、たまにQiitaで面白い記事を読んでます。いつも通りQiitaを見ているとこんな記事がありました
+ イスラエル8200部隊出身のガチプロハッカーに、一流のハッカーになる方法について聞いてみた。  こういう記事を見るとなんだかワクワクします。
+この記事の中で以下が気になり、
+ ハッキングチャレンジはその名の通り、ハッキングを試してみることです。有名なのは『OverTheWire』でしょうか。
+ 少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。
+ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこのOverTheWriteで練習してみることにしました。
+私の今の状態  セキュリティの知識はカッスカス 大学時代にセキュリティの講義受けたなぁ(遠い目)  Level 0 初心者はまずBandit(意味は盗賊)からスタートです
+Goal  The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.'><title>【OverTheWrite奮闘記】Bandit: Leve0〜3</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-write-bandit-level0-3/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWrite奮闘記】Bandit: Leve0〜3'>
+<meta property='og:description' content='はじめに 僕もエンジニアの端くれではあるので、たまにQiitaで面白い記事を読んでます。いつも通りQiitaを見ているとこんな記事がありました
+ イスラエル8200部隊出身のガチプロハッカーに、一流のハッカーになる方法について聞いてみた。  こういう記事を見るとなんだかワクワクします。
+この記事の中で以下が気になり、
+ ハッキングチャレンジはその名の通り、ハッキングを試してみることです。有名なのは『OverTheWire』でしょうか。
+ 少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。
+ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこのOverTheWriteで練習してみることにしました。
+私の今の状態  セキュリティの知識はカッスカス 大学時代にセキュリティの講義受けたなぁ(遠い目)  Level 0 初心者はまずBandit(意味は盗賊)からスタートです
+Goal  The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-write-bandit-level0-3/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-13T21:52:17&#43;09:00'/><meta property='article:modified_time' content='2021-06-13T21:52:17&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWrite奮闘記】Bandit: Leve0〜3">
+<meta name="twitter:description" content="はじめに 僕もエンジニアの端くれではあるので、たまにQiitaで面白い記事を読んでます。いつも通りQiitaを見ているとこんな記事がありました
+ イスラエル8200部隊出身のガチプロハッカーに、一流のハッカーになる方法について聞いてみた。  こういう記事を見るとなんだかワクワクします。
+この記事の中で以下が気になり、
+ ハッキングチャレンジはその名の通り、ハッキングを試してみることです。有名なのは『OverTheWire』でしょうか。
+ 少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。
+ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこのOverTheWriteで練習してみることにしました。
+私の今の状態  セキュリティの知識はカッスカス 大学時代にセキュリティの講義受けたなぁ(遠い目)  Level 0 初心者はまずBandit(意味は盗賊)からスタートです
+Goal  The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-write-bandit-level0-3/">【OverTheWrite奮闘記】Bandit: Leve0〜3</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-13</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="はじめに">はじめに</h2>
+<p>僕もエンジニアの端くれではあるので、たまにQiitaで面白い記事を読んでます。いつも通りQiitaを見ているとこんな記事がありました</p>
+<ul>
+<li><a class="link" href="https://qiita.com/tmgauss/items/da5e89496e951629517f"  target="_blank" rel="noopener"
+    >イスラエル8200部隊出身のガチプロハッカーに、一流のハッカーになる方法について聞いてみた。</a></li>
+</ul>
+<p>こういう記事を見るとなんだかワクワクします。</p>
+<p>この記事の中で以下が気になり、</p>
+<blockquote>
+<p>ハッキングチャレンジはその名の通り、ハッキングを試してみることです。有名なのは『OverTheWire』でしょうか。</p>
+</blockquote>
+<p>少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。</p>
+<p>ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこの<a class="link" href="https://overthewire.org/wargames/"  target="_blank" rel="noopener"
+    >OverTheWrite</a>で練習してみることにしました。</p>
+<h2 id="私の今の状態">私の今の状態</h2>
+<ul>
+<li>セキュリティの知識はカッスカス</li>
+<li>大学時代にセキュリティの講義受けたなぁ(遠い目)</li>
+</ul>
+<h2 id="level-0">Level 0</h2>
+<p>初心者はまずBandit(意味は盗賊)からスタートです</p>
+<h3 id="goal">Goal</h3>
+<blockquote>
+<p>The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.</p>
+</blockquote>
+<p>level0のゴールを整理すると</p>
+<ul>
+<li>sshで指定ホストにログインすること
+<ul>
+<li>ホストは<code>bandit.labs.overthewire.org</code></li>
+<li>ポートは2220</li>
+<li>ユーザーネームは<code>bandit0</code></li>
+<li>パスワードも<code>bandit0</code></li>
+</ul>
+</li>
+</ul>
+<p>sshコマンド使うんだなとアタリがつきました</p>
+<h3 id="resolve">resolve</h3>
+<pre><code>$ ssh -l bandit0 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit0@bandit.labs.overthewire.org's password: bandit0
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>sshコマンドか、それならやったことある！と思って以下のコマンドでエラー</p>
+<pre><code>$ ssh bandit0@bandit.labs.overthewire.org:2220
+</code></pre><p>ちゃんと<code>$ man ssh</code>でしっかりドキュメントをみることが教訓になりました</p>
+<h2 id="level-1">Level 1</h2>
+<h3 id="goal-1">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.</p>
+</blockquote>
+<ul>
+<li>sshでbandit1ユーザとしてログインする</li>
+<li>passwordは<code>home</code>ディレクトリの<code>readme</code>ファイルの中に書いてある</li>
+</ul>
+<h3 id="resolve-1">resolve</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat readme
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+$ <span class="nb">exit</span>
+
+$ ssh -l bandit1 -p <span class="m">2220</span> bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit0@bandit.labs.overthewire.org<span class="err">&#39;</span>s password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+</code></pre></div><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p>基本的なlinuxコマンドだったので特にやったことはありませんでした</p>
+<h2 id="level-2">Level 2</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in a file called - located in the home directory</p>
+</blockquote>
+<ul>
+<li><code>-</code>というファイルの中のパスワードを入手する</li>
+</ul>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>$ cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<p><code>-</code>という名前のフォルダをどうやって<code>cat</code>するのかがわからなかったので詰まりました</p>
+<p>ハイフンをエスケープすればいいのかなと思って<code>$ cat \-</code>を試しましたがうまくいかず。
+<code>$ man cat</code>でオプションを調べてみましたが、ピンとくるものはなかったです。</p>
+<p><code>cat ファイル名 ハイフン</code>で検索してみて以下のサイトにたどり着きました</p>
+<ul>
+<li><a class="link" href="https://www.softel.co.jp/blogs/tech/archives/5459"  target="_blank" rel="noopener"
+    >【linux】ハイフンから始まるファイル名を指定できない（エラーになる）</a></li>
+</ul>
+<p>どうやら、ハイフンで始まるファイル名をそのまま<code>cat</code>するとうまくいかないみたいです。パスで指定してあげればハイフンから始まるファイルでも<code>cat</code>できそうだとわかりました</p>
+<p>ここまで調べて回答がわかったのですが、そもそも問題文の下に</p>
+<blockquote>
+<p>Google Search for “dashed filename”</p>
+</blockquote>
+<p>と書いてました・・・</p>
+<h2 id="level-3">Level 3</h2>
+<h3 id="goal-3">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in a file called spaces in this filename located in the home directory</p>
+</blockquote>
+<ul>
+<li><del>ファイル名がスペース(空白)であるファイルからパスワードを入手する</del></li>
+<li><code>spaces in filename</code>というファイルからパスワードを入手する</li>
+</ul>
+<h3 id="resolve-3">resolve</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat spaces<span class="se">\ </span>in<span class="se">\ </span>this<span class="se">\ </span>filename 
+<span class="c1"># catと打ちtabでもいけた</span>
+</code></pre></div><h3 id="resolveまでにやったこと-3">resolveまでにやったこと</h3>
+<p><code>ls -l</code>しても空白で始まるファイルがないなぁと思ってましたが、どうやら勘違いをしていたようです。</p>
+<p>Level2では</p>
+<blockquote>
+<p>The password for the next level is stored in a file called - located in the home directory</p>
+</blockquote>
+<p>こういうゴールで、パスワードは使わないのかと思ってましたが、<strong>そんな訳ない</strong></p>
+<p>ちゃんと<code>The password for the next level</code>と書いてあるので、Level2で取得したパスワードと次のユーザである<code>bandit2</code>で改めてsshをログインしてからLevel 3に進むみたいです。</p>
+<p>省略せんといて・・・</p>
+<h2 id="今日はおしまい">今日はおしまい</h2>
+<p>いろいろトラブルはあったものの、Level 3までできました。1つ気をつけたいのが、sshしてコマンドを打たない時が一定時間を超えると入力を受け付けなくなります。おそらくsshのタイムアウトでしょうか？その時はもう一度ログインし直せばOKです。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

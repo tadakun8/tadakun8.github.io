@@ -6,7 +6,131 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 13 Jun 2021 15:32:18 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Jun 2021 21:52:17 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWrite奮闘記】Bandit: Leve0〜3</title>
+        <link>https://tadakun8.github.io/post/over-the-write-bandit-level0-3/</link>
+        <pubDate>Sun, 13 Jun 2021 21:52:17 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-write-bandit-level0-3/</guid>
+        <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;僕もエンジニアの端くれではあるので、たまにQiitaで面白い記事を読んでます。いつも通りQiitaを見ているとこんな記事がありました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/tmgauss/items/da5e89496e951629517f&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;イスラエル8200部隊出身のガチプロハッカーに、一流のハッカーになる方法について聞いてみた。&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;こういう記事を見るとなんだかワクワクします。&lt;/p&gt;
+&lt;p&gt;この記事の中で以下が気になり、&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ハッキングチャレンジはその名の通り、ハッキングを試してみることです。有名なのは『OverTheWire』でしょうか。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。&lt;/p&gt;
+&lt;p&gt;ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこの&lt;a class=&#34;link&#34; href=&#34;https://overthewire.org/wargames/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OverTheWrite&lt;/a&gt;で練習してみることにしました。&lt;/p&gt;
+&lt;h2 id=&#34;私の今の状態&#34;&gt;私の今の状態&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;セキュリティの知識はカッスカス&lt;/li&gt;
+&lt;li&gt;大学時代にセキュリティの講義受けたなぁ(遠い目)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;level-0&#34;&gt;Level 0&lt;/h2&gt;
+&lt;p&gt;初心者はまずBandit(意味は盗賊)からスタートです&lt;/p&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;level0のゴールを整理すると&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sshで指定ホストにログインすること
+&lt;ul&gt;
+&lt;li&gt;ホストは&lt;code&gt;bandit.labs.overthewire.org&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;ポートは2220&lt;/li&gt;
+&lt;li&gt;ユーザーネームは&lt;code&gt;bandit0&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;パスワードも&lt;code&gt;bandit0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;sshコマンド使うんだなとアタリがつきました&lt;/p&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh -l bandit0 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit0@bandit.labs.overthewire.org&#39;s password: bandit0
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;sshコマンドか、それならやったことある！と思って以下のコマンドでエラー&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh bandit0@bandit.labs.overthewire.org:2220
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ちゃんと&lt;code&gt;$ man ssh&lt;/code&gt;でしっかりドキュメントをみることが教訓になりました&lt;/p&gt;
+&lt;h2 id=&#34;level-1&#34;&gt;Level 1&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;sshでbandit1ユーザとしてログインする&lt;/li&gt;
+&lt;li&gt;passwordは&lt;code&gt;home&lt;/code&gt;ディレクトリの&lt;code&gt;readme&lt;/code&gt;ファイルの中に書いてある&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat readme
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+$ &lt;span class=&#34;nb&#34;&gt;exit&lt;/span&gt;
+
+$ ssh -l bandit1 -p &lt;span class=&#34;m&#34;&gt;2220&lt;/span&gt; bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit0@bandit.labs.overthewire.org&lt;span class=&#34;err&#34;&gt;&amp;#39;&lt;/span&gt;s password: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;基本的なlinuxコマンドだったので特にやったことはありませんでした&lt;/p&gt;
+&lt;h2 id=&#34;level-2&#34;&gt;Level 2&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file called - located in the home directory&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-&lt;/code&gt;というファイルの中のパスワードを入手する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;-&lt;/code&gt;という名前のフォルダをどうやって&lt;code&gt;cat&lt;/code&gt;するのかがわからなかったので詰まりました&lt;/p&gt;
+&lt;p&gt;ハイフンをエスケープすればいいのかなと思って&lt;code&gt;$ cat \-&lt;/code&gt;を試しましたがうまくいかず。
+&lt;code&gt;$ man cat&lt;/code&gt;でオプションを調べてみましたが、ピンとくるものはなかったです。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cat ファイル名 ハイフン&lt;/code&gt;で検索してみて以下のサイトにたどり着きました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.softel.co.jp/blogs/tech/archives/5459&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【linux】ハイフンから始まるファイル名を指定できない（エラーになる）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;どうやら、ハイフンで始まるファイル名をそのまま&lt;code&gt;cat&lt;/code&gt;するとうまくいかないみたいです。パスで指定してあげればハイフンから始まるファイルでも&lt;code&gt;cat&lt;/code&gt;できそうだとわかりました&lt;/p&gt;
+&lt;p&gt;ここまで調べて回答がわかったのですが、そもそも問題文の下に&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Google Search for “dashed filename”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;と書いてました・・・&lt;/p&gt;
+&lt;h2 id=&#34;level-3&#34;&gt;Level 3&lt;/h2&gt;
+&lt;h3 id=&#34;goal-3&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file called spaces in this filename located in the home directory&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;del&gt;ファイル名がスペース(空白)であるファイルからパスワードを入手する&lt;/del&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;spaces in filename&lt;/code&gt;というファイルからパスワードを入手する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-3&#34;&gt;resolve&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat spaces&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;in&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;this&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;filename 
+&lt;span class=&#34;c1&#34;&gt;# catと打ちtabでもいけた&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;resolveまでにやったこと-3&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ls -l&lt;/code&gt;しても空白で始まるファイルがないなぁと思ってましたが、どうやら勘違いをしていたようです。&lt;/p&gt;
+&lt;p&gt;Level2では&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file called - located in the home directory&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;こういうゴールで、パスワードは使わないのかと思ってましたが、&lt;strong&gt;そんな訳ない&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;ちゃんと&lt;code&gt;The password for the next level&lt;/code&gt;と書いてあるので、Level2で取得したパスワードと次のユーザである&lt;code&gt;bandit2&lt;/code&gt;で改めてsshをログインしてからLevel 3に進むみたいです。&lt;/p&gt;
+&lt;p&gt;省略せんといて・・・&lt;/p&gt;
+&lt;h2 id=&#34;今日はおしまい&#34;&gt;今日はおしまい&lt;/h2&gt;
+&lt;p&gt;いろいろトラブルはあったものの、Level 3までできました。1つ気をつけたいのが、sshしてコマンドを打たない時が一定時間を超えると入力を受け付けなくなります。おそらくsshのタイムアウトでしょうか？その時はもう一度ログインし直せばOKです。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>curlコマンドの使い方</title>
         <link>https://tadakun8.github.io/post/usage-curl/</link>
         <pubDate>Sun, 13 Jun 2021 15:32:18 +0900</pubDate>
