@@ -141,7 +141,7 @@ pick 7a0470f commit 5
 # .       specified). Use -c &amp;lt;commit&amp;gt; to reword the commit message.
 #
 
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;いつものようにまとめたいコミットのpickを**s(またはsquash)**に変更しましょう&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;いつものようにまとめたいコミットの pick を &lt;strong&gt;s(またはsquash)&lt;/strong&gt; に変更しましょう&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;pick 894afa7 commit 2
 &lt;span class=&#34;gd&#34;&gt;- pick 346c3f2 commit 3
 &lt;/span&gt;&lt;span class=&#34;gd&#34;&gt;&lt;/span&gt;pick ce15d24 commit 4
