@@ -45,7 +45,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;共通設定できる値は上記以外にもまだまだあるので、詳しくは&lt;a class=&#34;link&#34; href=&#34;https://github.com/axios/axios#request-config&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;axiosの公式HP&lt;/a&gt;に記載されてます&lt;/p&gt;
 &lt;p&gt;※ 以降はaxiosClientを使う前提です&lt;/p&gt;
-&lt;h4 id=&#34;共通設定で指定している値をこのapiでは適用したくない場合&#34;&gt;共通設定で指定している値をこのAPIでは適用したくない場合&lt;/h4&gt;
+&lt;h3 id=&#34;共通設定で指定している値をこのapiでは適用したくない場合&#34;&gt;共通設定で指定している値をこのAPIでは適用したくない場合&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span class=&#34;err&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;axiosClient&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;sample&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
     &lt;span class=&#34;nx&#34;&gt;timeout&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2000&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
