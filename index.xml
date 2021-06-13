@@ -6,7 +6,62 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 13 Jun 2021 10:04:20 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 13 Jun 2021 15:32:18 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>curlコマンドの使い方</title>
+        <link>https://tadakun8.github.io/post/usage-curl/</link>
+        <pubDate>Sun, 13 Jun 2021 15:32:18 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/usage-curl/</guid>
+        <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;同僚には凄腕のshell職人がいます。案件で、APIのクライアントにPostmanが推奨されているのですが、そのshell職人がcurlを使ってるのを隣で見てました。覚えたら手軽そうだなと思ったのでこれを機にcurlの使い方を覚えたいとのモチベがありました。&lt;/p&gt;
+&lt;h2 id=&#34;使い方&#34;&gt;使い方&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;OPTION&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt; URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;使い方だけ見れば簡単ですが、curlに関わらずlinuxコマンドはオプションをどれだけ頭にインデックスするかだと思います。&lt;/p&gt;
+&lt;h2 id=&#34;ユースケースでオプション紹介&#34;&gt;ユースケースでオプション紹介&lt;/h2&gt;
+&lt;h3 id=&#34;postしたい&#34;&gt;POSTしたい&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -X POST -d &lt;span class=&#34;nv&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;m&#34;&gt;1&lt;/span&gt; -d &lt;span class=&#34;nv&#34;&gt;email&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;sample@example.com URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;-X : HTTPメソッドを指定できる&lt;/li&gt;
+&lt;li&gt;-d : リクエストボディを指定できる
+&lt;ul&gt;
+&lt;li&gt;1つ1つ指定する&lt;/li&gt;
+&lt;li&gt;=(イコール)で定義していく&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ヘッダー情報を追加してリクエストしたい&#34;&gt;ヘッダー情報を追加してリクエストしたい&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -H &lt;span class=&#34;s1&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; URL
+&lt;span class=&#34;c1&#34;&gt;# または&lt;/span&gt;
+$ curl --header &lt;span class=&#34;s1&#34;&gt;&amp;#39;Content-Type: application/json&amp;#39;&lt;/span&gt; URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;レスポンスヘッダだけ表示したい&#34;&gt;レスポンスヘッダ「だけ」表示したい&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -I URL
+&lt;span class=&#34;c1&#34;&gt;# または&lt;/span&gt;
+$ curl --head URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;レスポンスヘッダも表示したい&#34;&gt;レスポンスヘッダ「も」表示したい&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -i URL
+&lt;span class=&#34;c1&#34;&gt;# または&lt;/span&gt;
+$ curl --include URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;詳細な情報も表示したい&#34;&gt;詳細な情報も表示したい&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -v URL
+$ curl --verbose URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;余計な情報は表示したくない&#34;&gt;余計な情報は表示したくない&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -s URL
+$ curl --silent URL
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;curlは以下のような進捗状況を表示してくれますが、-sでこの表示を抑制します&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   112  100   112    0     0    424      0 --:--:-- --:--:-- --:--:--   424
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;このあとは&#34;&gt;このあとは・・・？&lt;/h2&gt;
+&lt;p&gt;使わないと覚えないので、試しにコマンドを叩いてみることをお勧めします。&lt;code&gt;Public API&lt;/code&gt;と検索すれば無料で使えるAPIが表示されるので、そこの中から選んでcurlしてみましょう！QiitaにもPublic APIをまとめている記事があったので、参考に載せておきます。私はこの中の、&lt;a class=&#34;link&#34; href=&#34;https://icanhazdadjoke.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://icanhazdadjoke.com/&lt;/a&gt; (親父ギャグを返してくれるAPI)を使って試しました。&lt;/p&gt;
+&lt;h2 id=&#34;参考&#34;&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/danishi/items/42d8adf6291515e62284&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【随時更新】一風変わったWeb APIをまとめてみた&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>axiosの使い方</title>
         <link>https://tadakun8.github.io/post/usage-axios/</link>
         <pubDate>Sun, 13 Jun 2021 10:04:20 +0900</pubDate>

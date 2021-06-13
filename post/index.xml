@@ -6,7 +6,18 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 13 Jun 2021 10:04:20 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Jun 2021 15:32:18 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>curlコマンドの使い方</title>
+      <link>https://tadakun8.github.io/post/usage-curl/</link>
+      <pubDate>Sun, 13 Jun 2021 15:32:18 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/usage-curl/</guid>
+      <description>はじめに 同僚には凄腕のshell職人がいます。案件で、APIのクライアントにPostmanが推奨されているのですが、そのshell職人がcurlを使ってるのを隣で見てました。覚えたら手軽そうだなと思ったのでこれを機にcurlの使い方を覚えたいとのモチベがありました。
+使い方 $ curl [OPTION] URL 使い方だけ見れば簡単ですが、curlに関わらずlinuxコマンドはオプションをどれだけ頭にインデックスするかだと思います。
+ユースケースでオプション紹介 POSTしたい $ curl -X POST -d id=1 -d email=sample@example.com URL  -X : HTTPメソッドを指定できる -d : リクエストボディを指定できる  1つ1つ指定する =(イコール)で定義していく    ヘッダー情報を追加してリクエストしたい $ curl -H &amp;#39;Content-Type: application/json&amp;#39; URL # または $ curl --header &amp;#39;Content-Type: application/json&amp;#39; URL レスポンスヘッダ「だけ」表示したい $ curl -I URL # または $ curl --head URL レスポンスヘッダ「も」表示したい $ curl -i URL # または $ curl --include URL 詳細な情報も表示したい $ curl -v URL $ curl --verbose URL 余計な情報は表示したくない $ curl -s URL $ curl --silent URL curlは以下のような進捗状況を表示してくれますが、-sでこの表示を抑制します</description>
+    </item>
+    
     <item>
       <title>axiosの使い方</title>
       <link>https://tadakun8.github.io/post/usage-axios/</link>
