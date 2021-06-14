@@ -8,10 +8,10 @@
         <language>ja</language>
         <lastBuildDate>Sun, 13 Jun 2021 21:52:17 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>【OverTheWrite奮闘記】Bandit: Leve0〜3</title>
-        <link>https://tadakun8.github.io/post/over-the-write-bandit-level0-3/</link>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level0-3/</link>
         <pubDate>Sun, 13 Jun 2021 21:52:17 +0900</pubDate>
         
-        <guid>https://tadakun8.github.io/post/over-the-write-bandit-level0-3/</guid>
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level0-3/</guid>
         <description>&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
 &lt;p&gt;僕もエンジニアの端くれではあるので、たまにQiitaで面白い記事を読んでます。いつも通りQiitaを見ているとこんな記事がありました&lt;/p&gt;
 &lt;ul&gt;
@@ -115,9 +115,16 @@ CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 &lt;li&gt;&lt;code&gt;spaces in filename&lt;/code&gt;というファイルからパスワードを入手する&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;resolve-3&#34;&gt;resolve&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat spaces&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;in&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;this&lt;span class=&#34;se&#34;&gt;\ &lt;/span&gt;filename 
-&lt;span class=&#34;c1&#34;&gt;# catと打ちtabでもいけた&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;resolveまでにやったこと-3&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ cat spaces\ in\ this\ filename
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+$ exit
+
+$ ssh -l bandit3 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit3@bandit.labs.overthewire.org&#39;s password: UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-3&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;ls -l&lt;/code&gt;しても空白で始まるファイルがないなぁと思ってましたが、どうやら勘違いをしていたようです。&lt;/p&gt;
 &lt;p&gt;Level2では&lt;/p&gt;
 &lt;blockquote&gt;
@@ -126,6 +133,12 @@ CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 &lt;p&gt;こういうゴールで、パスワードは使わないのかと思ってましたが、&lt;strong&gt;そんな訳ない&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;ちゃんと&lt;code&gt;The password for the next level&lt;/code&gt;と書いてあるので、Level2で取得したパスワードと次のユーザである&lt;code&gt;bandit2&lt;/code&gt;で改めてsshをログインしてからLevel 3に進むみたいです。&lt;/p&gt;
 &lt;p&gt;省略せんといて・・・&lt;/p&gt;
+&lt;p&gt;なので改めて&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh -l bandit2 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit2@bandit.labs.overthewire.org&#39;s password: CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;bandit2でログインし直してからLevel 3に行きました&lt;/p&gt;
 &lt;h2 id=&#34;今日はおしまい&#34;&gt;今日はおしまい&lt;/h2&gt;
 &lt;p&gt;いろいろトラブルはあったものの、Level 3までできました。1つ気をつけたいのが、sshしてコマンドを打たない時が一定時間を超えると入力を受け付けなくなります。おそらくsshのタイムアウトでしょうか？その時はもう一度ログインし直せばOKです。&lt;/p&gt;
 </description>
