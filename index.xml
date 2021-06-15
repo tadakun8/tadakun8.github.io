@@ -7,7 +7,7 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <lastBuildDate>Tue, 15 Jun 2021 19:47:28 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>【OverTheWrite奮闘記】Bandit: Level4〜6</title>
+        <title>【OverTheWire奮闘記】Bandit: Level4〜6</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/</link>
         <pubDate>Tue, 15 Jun 2021 19:47:28 +0900</pubDate>
         
@@ -155,7 +155,7 @@ rm: filename.txt: No such file or directory
 </description>
         </item>
         <item>
-        <title>【OverTheWrite奮闘記】Bandit: Leve0〜3</title>
+        <title>【OverTheWire奮闘記】Bandit: Leve0〜3</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level0-3/</link>
         <pubDate>Sun, 13 Jun 2021 21:52:17 +0900</pubDate>
         
