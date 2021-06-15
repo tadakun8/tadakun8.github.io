@@ -6,7 +6,155 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 13 Jun 2021 21:52:17 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 15 Jun 2021 19:47:28 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWrite奮闘記】Bandit: Level4〜6</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/</link>
+        <pubDate>Tue, 15 Jun 2021 19:47:28 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/</guid>
+        <description>&lt;h2 id=&#34;level-4&#34;&gt;Level 4&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a hidden file in the inhere directory.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;inhereディレクトリの隠しファイルからパスワードを取得する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit3@bandit:~$ cd inhere/
+bandit3@bandit:~/inhere$ ls -a
+.  ..  .hidden
+bandit3@bandit:~/inhere$ cat .hidden 
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+bandit3@bandit:~/inhere$ exit
+
+# ここからローカル
+$ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;特になし&lt;/p&gt;
+&lt;h2 id=&#34;level-5&#34;&gt;Level 5&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;inhereディレクトリにある人間に読むことのできるファイルからパスワードを取得する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit4@bandit:~$ cd inhere/
+bandit4@bandit:~/inhere$ ls
+-file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
+bandit4@bandit:~/inhere$ ls | xargs -I {} awk 1 ./{}
+�/`2ғ�%��rL~5�g��� �����
+��p,k�;��r*��   �.!��C��J       �dx,�
+e�)�#��5��
+          ��p��V�_���ׯ�mm
+������h!TQO�`�4&amp;quot;aל�߂phT��,�A
+?�4�ו$����I&amp;amp;������c���ގ.�
+�r�l$�?h�9(&#39;���!y�e�#�x�O��=��
+ly���~��A�f����-E�{���m�����ܗM
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh # これが目的のパスワード
+�T�?�i��j��îP�F�l�n��J����{��@
+�e�0$�in=��_b�5FA�P7sz��gNT
+bandit4@bandit:~/inhere$ exit
+
+# ここからローカル
+$ ssh -l bandit5 -p 2220 bandit.labs.overthewire.org                                                                ?[master]
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit5@bandit.labs.overthewire.org&#39;s password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;特につまりはしませんでしたが、&lt;code&gt;ls&lt;/code&gt;するとファイルが何個もありました。これを全て&lt;code&gt;cat&lt;/code&gt;してもよかったのですが、せっかくならもう少しうまいやり方でできないか調べてみました。&lt;/p&gt;
+&lt;p&gt;最初は&lt;code&gt;ls | xargs -I {} cat ./{}&lt;/code&gt;でやったのですが・・・&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit4@bandit:~/inhere$ ls | xargs -I {} cat ./{}
+�/`2ғ�%��rL~5�g��� �������p,k�;��r*��   �.!��C��J       �dx,�e�)�#��5��
+                                                                       ��p��V�_���ׯ�mm������h!TQO�`�4&amp;quot;aל�߂phT��,�Ai�4�ו$����I&amp;amp;��?��r�l$�?h�9(&#39;���!y�e�#�x�O��=��ly���~��A�f����-E�{���m�����ܗMkoReBOKuIDDepwhWk7jZC0RTdopnAYKh
+�T�?�i��j��îP�F�l�n��J����{��@�e�0$�in=��_b�5FA�P7sz��gNbandit4@bandit:~/inhere$ 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;読みづらい・・・&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cat&lt;/code&gt;に2つ以上のファイルを引数に取る場合、ファイルに改行が入ってなかったらそのまま表示されるらしいです。ファイルごとに改行して欲しかったので、なにかないかと模索したところ以下のサイトにたどり着きました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/ngyuki/items/b55ce646cd84eb71c900&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;複数のファイルを終端に改行がなければ改行を追加して結合する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;awk 1&lt;/code&gt;でいけるっぽいです。この記事で出てくる&lt;code&gt;awk&lt;/code&gt;のパターンとかアクションとかがわからなかったので、それは以下の記事で補完しました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://bioinfo-dojo.net/2017/09/28/awk-pattern-action/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;awk パターンとアクション
+&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;http://itdoc.hitachi.co.jp/manuals/3020/30203S3530/JPAS0241.HTM&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;awkコマンド（テキストの加工やパターン処理をする）
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;awkについてわかったことは&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;文法は&lt;code&gt;awk &#39;pattern {action} ファイル名&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;actionではファイルの各行に適用させる動作
+&lt;ul&gt;
+&lt;li&gt;actionは省略でき、省略した場合はその行を標準出力するアクションになる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;patternはactionを適用させる行の条件(正規表現とかで指定するみたい)
+&lt;ul&gt;
+&lt;li&gt;ここで&lt;code&gt;1&lt;/code&gt;を指定すると全ての行にactionを適用させるということになる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;level-6&#34;&gt;Level 6&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+human-readable,
+1033 bytes in size,
+not executable&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;パスワードはinhereディレクトリに格納されている&lt;/li&gt;
+&lt;li&gt;そのファイルは以下の特徴を持っている
+&lt;ul&gt;
+&lt;li&gt;人間に読める&lt;/li&gt;
+&lt;li&gt;1033bytes&lt;/li&gt;
+&lt;li&gt;実行できない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit5@bandit:~/inhere$ find -type f -size 1033c -print0 ! -executable |　xargs -0 -I{} cat ./{}
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;まずは&lt;code&gt;find&lt;/code&gt;のオプションを調べました。特に実行権限を持っていないファイルの検索の仕方ですね。調べると検索オプションの前に&lt;code&gt;!&lt;/code&gt;をつけて否定系にすればよかったようです。&lt;/p&gt;
+&lt;p&gt;また、調べているうちに、&lt;code&gt;find&lt;/code&gt;に&lt;code&gt;-print0&lt;/code&gt;とつけて&lt;code&gt;xargs -0 ・・・&lt;/code&gt;としているいるものも散見されました。&lt;/p&gt;
+&lt;h4 id=&#34;xargs--0の正体&#34;&gt;xargs -0の正体&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;xargs&lt;/code&gt;の &lt;code&gt;-0&lt;/code&gt;は区切り文字をヌル文字(\0)にするオプションです。デフォルトは空白や改行コードです。&lt;/p&gt;
+&lt;h4 id=&#34;-0をつけないと何が困るのか&#34;&gt;-0をつけないと何が困るのか&lt;/h4&gt;
+&lt;p&gt;xargsで処理する引数に空白がある場合に困っちゃう&lt;/p&gt;
+&lt;p&gt;例えば以下のケース&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ls
+space in the finename.txt # こいつを消したい
+$ find . -name &#39;*.txt&#39; | xargs rm
+rm: ./space: No such file or directory
+rm: in: No such file or directory
+rm: the: No such file or directory
+rm: filename.txt: No such file or directory
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;何も指定しないと、空白ごとに&lt;code&gt;rm&lt;/code&gt;してしまいます。意図した動作にするために区切り文字を変えるために&lt;code&gt;-0&lt;/code&gt;をつけて対応します。&lt;/p&gt;
+&lt;h4 id=&#34;find--print0の理由&#34;&gt;find -print0の理由&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;xargs -0&lt;/code&gt;としたので、&lt;code&gt;xargs&lt;/code&gt;の処理ではヌル文字が区切り文字になりました。&lt;code&gt;find&lt;/code&gt;で&lt;code&gt;-print0&lt;/code&gt;をつけることで結果のファイル名の末尾にヌル文字が付与されます。これでxargsの処理が意図する動作になります。&lt;/p&gt;
+&lt;h4 id=&#34;参考サイト&#34;&gt;参考サイト&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://taroline.hateblo.jp/entry/2014/10/27/022124&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;findコマンドでの検索時に、否定の条件を指定する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/maskedw/items/2dfdf6fa7eee991ddc45&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;findとxargsコマンドで-print0オプションを使う理由(改)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://techblog.kyamanak.com/entry/2018/02/12/202256&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;0212【Linux】xargs コマンドの使い方がよく分からない&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;今日はおしまい&#34;&gt;今日はおしまい&lt;/h2&gt;
+&lt;p&gt;find便利ですね。&lt;code&gt;find . -name &#39;hogehoge&#39;&lt;/code&gt;という定型で覚えて使ってましたが、オプションや&lt;code&gt;xargs&lt;/code&gt;と組み合わせれば全文検索なんかもできそうですね。副次的に色々なtipsも知ることができるのので、モチベーションを保てています。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWrite奮闘記】Bandit: Leve0〜3</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level0-3/</link>
         <pubDate>Sun, 13 Jun 2021 21:52:17 +0900</pubDate>

@@ -6,7 +6,18 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 13 Jun 2021 21:52:17 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Jun 2021 19:47:28 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWrite奮闘記】Bandit: Level4〜6</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/</link>
+      <pubDate>Tue, 15 Jun 2021 19:47:28 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/</guid>
+      <description>Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
+  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
+Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.</description>
+    </item>
+    
     <item>
       <title>【OverTheWrite奮闘記】Bandit: Leve0〜3</title>
       <link>https://tadakun8.github.io/post/over-the-wire/bandit/level0-3/</link>

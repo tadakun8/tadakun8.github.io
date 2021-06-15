@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
+  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
+Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.'><title>【OverTheWrite奮闘記】Bandit: Level4〜6</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWrite奮闘記】Bandit: Level4〜6'>
+<meta property='og:description' content='Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
+  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
+Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-15T19:47:28&#43;09:00'/><meta property='article:modified_time' content='2021-06-15T19:47:28&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWrite奮闘記】Bandit: Level4〜6">
+<meta name="twitter:description" content="Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
+  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
+Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewrite/" >
+                OverTheWrite
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/bandit/level4-6/">【OverTheWrite奮闘記】Bandit: Level4〜6</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-15</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-4">Level 4</h2>
+<h3 id="goal">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in a hidden file in the inhere directory.</p>
+</blockquote>
+<ul>
+<li>inhereディレクトリの隠しファイルからパスワードを取得する</li>
+</ul>
+<h3 id="resolve">resolve</h3>
+<pre><code>bandit3@bandit:~$ cd inhere/
+bandit3@bandit:~/inhere$ ls -a
+.  ..  .hidden
+bandit3@bandit:~/inhere$ cat .hidden 
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+bandit3@bandit:~/inhere$ exit
+
+# ここからローカル
+$ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit4@bandit.labs.overthewire.org's password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>特になし</p>
+<h2 id="level-5">Level 5</h2>
+<blockquote>
+<p>The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.</p>
+</blockquote>
+<ul>
+<li>inhereディレクトリにある人間に読むことのできるファイルからパスワードを取得する</li>
+</ul>
+<h3 id="goal-1">Goal</h3>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit4@bandit:~$ cd inhere/
+bandit4@bandit:~/inhere$ ls
+-file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
+bandit4@bandit:~/inhere$ ls | xargs -I {} awk 1 ./{}
+�/`2ғ�%��rL~5�g��� �����
+��p,k�;��r*��   �.!��C��J       �dx,�
+e�)�#��5��
+          ��p��V�_���ׯ�mm
+������h!TQO�`�4&quot;aל�߂phT��,�A
+?�4�ו$����I&amp;������c���ގ.�
+�r�l$�?h�9('���!y�e�#�x�O��=��
+ly���~��A�f����-E�{���m�����ܗM
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh # これが目的のパスワード
+�T�?�i��j��îP�F�l�n��J����{��@
+�e�0$�in=��_b�5FA�P7sz��gNT
+bandit4@bandit:~/inhere$ exit
+
+# ここからローカル
+$ ssh -l bandit5 -p 2220 bandit.labs.overthewire.org                                                                ?[master]
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit5@bandit.labs.overthewire.org's password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p>特につまりはしませんでしたが、<code>ls</code>するとファイルが何個もありました。これを全て<code>cat</code>してもよかったのですが、せっかくならもう少しうまいやり方でできないか調べてみました。</p>
+<p>最初は<code>ls | xargs -I {} cat ./{}</code>でやったのですが・・・</p>
+<pre><code>bandit4@bandit:~/inhere$ ls | xargs -I {} cat ./{}
+�/`2ғ�%��rL~5�g��� �������p,k�;��r*��   �.!��C��J       �dx,�e�)�#��5��
+                                                                       ��p��V�_���ׯ�mm������h!TQO�`�4&quot;aל�߂phT��,�Ai�4�ו$����I&amp;��?��r�l$�?h�9('���!y�e�#�x�O��=��ly���~��A�f����-E�{���m�����ܗMkoReBOKuIDDepwhWk7jZC0RTdopnAYKh
+�T�?�i��j��îP�F�l�n��J����{��@�e�0$�in=��_b�5FA�P7sz��gNbandit4@bandit:~/inhere$ 
+</code></pre><p>読みづらい・・・</p>
+<p><code>cat</code>に2つ以上のファイルを引数に取る場合、ファイルに改行が入ってなかったらそのまま表示されるらしいです。ファイルごとに改行して欲しかったので、なにかないかと模索したところ以下のサイトにたどり着きました</p>
+<ul>
+<li><a class="link" href="https://qiita.com/ngyuki/items/b55ce646cd84eb71c900"  target="_blank" rel="noopener"
+    >複数のファイルを終端に改行がなければ改行を追加して結合する</a></li>
+</ul>
+<p><code>awk 1</code>でいけるっぽいです。この記事で出てくる<code>awk</code>のパターンとかアクションとかがわからなかったので、それは以下の記事で補完しました</p>
+<ul>
+<li><a class="link" href="https://bioinfo-dojo.net/2017/09/28/awk-pattern-action/"  target="_blank" rel="noopener"
+    >awk パターンとアクション
+</a></li>
+<li><a class="link" href="http://itdoc.hitachi.co.jp/manuals/3020/30203S3530/JPAS0241.HTM"  target="_blank" rel="noopener"
+    >awkコマンド（テキストの加工やパターン処理をする）
+</a></li>
+</ul>
+<p>awkについてわかったことは</p>
+<ul>
+<li>文法は<code>awk 'pattern {action} ファイル名'</code></li>
+<li>actionではファイルの各行に適用させる動作
+<ul>
+<li>actionは省略でき、省略した場合はその行を標準出力するアクションになる</li>
+</ul>
+</li>
+<li>patternはactionを適用させる行の条件(正規表現とかで指定するみたい)
+<ul>
+<li>ここで<code>1</code>を指定すると全ての行にactionを適用させるということになる</li>
+</ul>
+</li>
+</ul>
+<h2 id="level-6">Level 6</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+human-readable,
+1033 bytes in size,
+not executable</p>
+</blockquote>
+<ul>
+<li>パスワードはinhereディレクトリに格納されている</li>
+<li>そのファイルは以下の特徴を持っている
+<ul>
+<li>人間に読める</li>
+<li>1033bytes</li>
+<li>実行できない</li>
+</ul>
+</li>
+</ul>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>bandit5@bandit:~/inhere$ find -type f -size 1033c -print0 ! -executable |　xargs -0 -I{} cat ./{}
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<p>まずは<code>find</code>のオプションを調べました。特に実行権限を持っていないファイルの検索の仕方ですね。調べると検索オプションの前に<code>!</code>をつけて否定系にすればよかったようです。</p>
+<p>また、調べているうちに、<code>find</code>に<code>-print0</code>とつけて<code>xargs -0 ・・・</code>としているいるものも散見されました。</p>
+<h4 id="xargs--0の正体">xargs -0の正体</h4>
+<p><code>xargs</code>の <code>-0</code>は区切り文字をヌル文字(\0)にするオプションです。デフォルトは空白や改行コードです。</p>
+<h4 id="-0をつけないと何が困るのか">-0をつけないと何が困るのか</h4>
+<p>xargsで処理する引数に空白がある場合に困っちゃう</p>
+<p>例えば以下のケース</p>
+<pre><code>$ ls
+space in the finename.txt # こいつを消したい
+$ find . -name '*.txt' | xargs rm
+rm: ./space: No such file or directory
+rm: in: No such file or directory
+rm: the: No such file or directory
+rm: filename.txt: No such file or directory
+</code></pre><p>何も指定しないと、空白ごとに<code>rm</code>してしまいます。意図した動作にするために区切り文字を変えるために<code>-0</code>をつけて対応します。</p>
+<h4 id="find--print0の理由">find -print0の理由</h4>
+<p><code>xargs -0</code>としたので、<code>xargs</code>の処理ではヌル文字が区切り文字になりました。<code>find</code>で<code>-print0</code>をつけることで結果のファイル名の末尾にヌル文字が付与されます。これでxargsの処理が意図する動作になります。</p>
+<h4 id="参考サイト">参考サイト</h4>
+<ul>
+<li><a class="link" href="https://taroline.hateblo.jp/entry/2014/10/27/022124"  target="_blank" rel="noopener"
+    >findコマンドでの検索時に、否定の条件を指定する</a></li>
+<li><a class="link" href="https://qiita.com/maskedw/items/2dfdf6fa7eee991ddc45"  target="_blank" rel="noopener"
+    >findとxargsコマンドで-print0オプションを使う理由(改)</a></li>
+<li><a class="link" href="https://techblog.kyamanak.com/entry/2018/02/12/202256"  target="_blank" rel="noopener"
+    >0212【Linux】xargs コマンドの使い方がよく分からない</a></li>
+</ul>
+<h2 id="今日はおしまい">今日はおしまい</h2>
+<p>find便利ですね。<code>find . -name 'hogehoge'</code>という定型で覚えて使ってましたが、オプションや<code>xargs</code>と組み合わせれば全文検索なんかもできそうですね。副次的に色々なtipsも知ることができるのので、モチベーションを保てています。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
