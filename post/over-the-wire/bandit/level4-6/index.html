@@ -275,8 +275,8 @@ This is a OverTheWire game server. More information on http://www.overthewire.or
 bandit5@bandit.labs.overthewire.org's password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 </code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
 <p>特につまりはしませんでしたが、<code>ls</code>するとファイルが何個もありました。これを全て<code>cat</code>してもよかったのですが、せっかくならもう少しうまいやり方でできないか調べてみました。</p>
-<p>最初は<code>ls | xargs -I {} cat ./{}</code>でやったのですが・・・</p>
-<pre><code>bandit4@bandit:~/inhere$ ls | xargs -I {} cat ./{}
+<p>最初は<code>ls | xargs -I{} cat ./{}</code>でやったのですが・・・</p>
+<pre><code>bandit4@bandit:~/inhere$ ls | xargs -I{} cat ./{}
 �/`2ғ�%��rL~5�g��� �������p,k�;��r*��   �.!��C��J       �dx,�e�)�#��5��
                                                                        ��p��V�_���ׯ�mm������h!TQO�`�4&quot;aל�߂phT��,�Ai�4�ו$����I&amp;��?��r�l$�?h�9('���!y�e�#�x�O��=��ly���~��A�f����-E�{���m�����ܗMkoReBOKuIDDepwhWk7jZC0RTdopnAYKh
 �T�?�i��j��îP�F�l�n��J����{��@�e�0$�in=��_b�5FA�P7sz��gNbandit4@bandit:~/inhere$ 
@@ -358,7 +358,7 @@ rm: filename.txt: No such file or directory
     >0212【Linux】xargs コマンドの使い方がよく分からない</a></li>
 </ul>
 <h2 id="今日はおしまい">今日はおしまい</h2>
-<p>find便利ですね。<code>find . -name 'hogehoge'</code>という定型で覚えて使ってましたが、オプションや<code>xargs</code>と組み合わせれば全文検索なんかもできそうですね。副次的に色々なtipsも知ることができるのので、モチベーションを保てています。</p>
+<p>find便利ですね。<code>find . -name 'hogehoge'</code>という定型で覚えて使ってましたが、オプションや<code>xargs</code>と組み合わせれば全文検索なんかもできそうです。副次的に色々なtipsも知ることができるので、モチベーションを保てています。</p>
 
 </section>
 

@@ -68,8 +68,8 @@ This is a OverTheWire game server. More information on http://www.overthewire.or
 bandit5@bandit.labs.overthewire.org&#39;s password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
 &lt;p&gt;特につまりはしませんでしたが、&lt;code&gt;ls&lt;/code&gt;するとファイルが何個もありました。これを全て&lt;code&gt;cat&lt;/code&gt;してもよかったのですが、せっかくならもう少しうまいやり方でできないか調べてみました。&lt;/p&gt;
-&lt;p&gt;最初は&lt;code&gt;ls | xargs -I {} cat ./{}&lt;/code&gt;でやったのですが・・・&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;bandit4@bandit:~/inhere$ ls | xargs -I {} cat ./{}
+&lt;p&gt;最初は&lt;code&gt;ls | xargs -I{} cat ./{}&lt;/code&gt;でやったのですが・・・&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit4@bandit:~/inhere$ ls | xargs -I{} cat ./{}
 �/`2ғ�%��rL~5�g��� �������p,k�;��r*��   �.!��C��J       �dx,�e�)�#��5��
                                                                        ��p��V�_���ׯ�mm������h!TQO�`�4&amp;quot;aל�߂phT��,�Ai�4�ו$����I&amp;amp;��?��r�l$�?h�9(&#39;���!y�e�#�x�O��=��ly���~��A�f����-E�{���m�����ܗMkoReBOKuIDDepwhWk7jZC0RTdopnAYKh
 �T�?�i��j��îP�F�l�n��J����{��@�e�0$�in=��_b�5FA�P7sz��gNbandit4@bandit:~/inhere$ 
@@ -151,7 +151,7 @@ rm: filename.txt: No such file or directory
     &gt;0212【Linux】xargs コマンドの使い方がよく分からない&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;今日はおしまい&#34;&gt;今日はおしまい&lt;/h2&gt;
-&lt;p&gt;find便利ですね。&lt;code&gt;find . -name &#39;hogehoge&#39;&lt;/code&gt;という定型で覚えて使ってましたが、オプションや&lt;code&gt;xargs&lt;/code&gt;と組み合わせれば全文検索なんかもできそうですね。副次的に色々なtipsも知ることができるのので、モチベーションを保てています。&lt;/p&gt;
+&lt;p&gt;find便利ですね。&lt;code&gt;find . -name &#39;hogehoge&#39;&lt;/code&gt;という定型で覚えて使ってましたが、オプションや&lt;code&gt;xargs&lt;/code&gt;と組み合わせれば全文検索なんかもできそうです。副次的に色々なtipsも知ることができるので、モチベーションを保てています。&lt;/p&gt;
 </description>
         </item>
         <item>
