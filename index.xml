@@ -6,7 +6,156 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 16 Jun 2021 12:39:36 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 16 Jun 2021 19:30:01 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level10〜12</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/</link>
+        <pubDate>Wed, 16 Jun 2021 19:30:01 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/</guid>
+        <description>&lt;h2 id=&#34;level-10&#34;&gt;Level 10&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;パスワードはdata.txtの中にある&lt;/li&gt;
+&lt;li&gt;人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit9@bandit:~$ strings data.txt | grep &#39;===&#39;
+========== the*2i&amp;quot;4
+========== password
+Z)========== is
+&amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+bandit9@bandit:~$ exit
+
+# 以下はローカル
+$ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;とりあえず&lt;code&gt;cat data.txt&lt;/code&gt;してみて意味のわからん文字列であることはわかりました。前に&#39;=&amp;lsquo;がついているとのことなので、&lt;code&gt;grep &#39;=&#39; data.txt&lt;/code&gt;してみると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit9@bandit:~$ grep &#39;=&#39; data.txt
+Binary file (standard input) matches
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;うーんと思っていると、問題文下の&lt;code&gt;Commands you may need to solve this level&lt;/code&gt;に&lt;code&gt;strings&lt;/code&gt;という文字が目に入ってきました。これどんなコマンドなんだろうと思って試してみると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;andit9@bandit:~$ strings data.txt 
+.
+.
+.
+
+blsN
+~U^y
+x@nQ
+*SF=s
+}1:LF
+]vur
+Emlld
+&amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+_Gmz
+\Uli,
+A5RK
+S&#39;$0
+&amp;lt;4t&amp;quot;,
+4cXO
+cj13c:?
+&amp;amp;Yra
+zEwa
+b2+x
+z`tlR
+o|8M]
+.p4Hv
+)z&amp;lt;p
+S=A.H&amp;amp;^
+#hu#
+&amp;quot;C}Jy
+0R@R_
+~KW?
+b#Nzx$b
+RlG#t]Z}
+e790
+JzV1O
+XEgp
+2Q d
+z#j\
+1Qit
+a&#39;b~
+bxBB\u$
+8Zpc    $FOxF[
+ANYwPCpk
+Xk]E
+bh}s
+P&#39;uP
+\-A:
+sCtY
+Z/1x+
+ej8z
+P&amp;quot;`\XZ
+1KOA
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;なんかぽいのが出てきた！&lt;/p&gt;
+&lt;p&gt;stringsコマンドはバイナリファイルから可読部分を表示できるコマンドのようです。これが問題文の&lt;code&gt;human-readable&lt;/code&gt;につながるわけです。&lt;/p&gt;
+&lt;p&gt;あとはこの結果を&lt;code&gt;=&lt;/code&gt;で&lt;code&gt;grep&lt;/code&gt;すれば出てきました！&lt;/p&gt;
+&lt;h2 id=&#34;level-11&#34;&gt;Level 11&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt, which contains base64 encoded data&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;パスワードはdata.txtにある&lt;/li&gt;
+&lt;li&gt;そのファイルはbase64でエンコードされている&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit10@bandit:~$ base64 -d data.txt 
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+bandit10@bandit:~$ exit
+
+# 以下はローカル
+❯❯❯ ssh -l bandit11 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit11@bandit.labs.overthewire.org&#39;s password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;Commands you may need to solve this level&lt;/code&gt;に&lt;code&gt;base64&lt;/code&gt;コマンドがあるからきっとそれだろうと当たりをつけました。&lt;code&gt;man base64&lt;/code&gt;でデコードするオプションを調べて終わりです。&lt;/p&gt;
+&lt;h2 id=&#34;level-12&#34;&gt;Level 12&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;パスワードはdata.txtにある&lt;/li&gt;
+&lt;li&gt;大文字小文字がそれぞれ13個分ずらされている&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit11@bandit:~$ cat data.txt | tr A-Za-z N-ZA-Mn-za-m
+The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+bandit11@bandit:~$ exit
+
+❯❯❯ ssh -l bandit12 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit12@bandit.labs.overthewire.org&#39;s password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;問題文を読んで、これはきっとシーザー暗号ような形式になっているのかなと。&lt;code&gt;cat data.txt&lt;/code&gt;してみるとQ.E.D&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit11@bandit:~$ cat data.txt 
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;おそらく&lt;code&gt;The password is hogehoge&lt;/code&gt;のような形式になることはお見通し。問題はその形式に直すコマンドを知らないこと。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;シーザー暗号 linuxコマンド&lt;/code&gt;で検索すると&lt;code&gt;tr&lt;/code&gt;コマンドを使ったものがいくつかヒットした。
+そして文字を13文字ずらす方式のことを&lt;code&gt;ROT13&lt;/code&gt;というらしい。&lt;/p&gt;
+&lt;p&gt;最終的には以下に解法が載ってました.。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/ROT13&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ROT13&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;tr&lt;/code&gt;は文字の置換をするコマンドですが、&lt;code&gt;A-Za-z N-ZA-Mn-za-m&lt;/code&gt;の意味がわからなかったのでした。少し見方を変えて、置換前と置換後の文字のマッピングであると捉えれば腑に落ちました。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 以下のコマンドは同じことをしている
+$ tr A-Za-z N-ZA-Mn-za-m
+$ tr ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;AはNにVはIに置換されるということです&lt;/p&gt;
+&lt;h2 id=&#34;今日はおしまい&#34;&gt;今日はおしまい&lt;/h2&gt;
+&lt;p&gt;英語が弱いのでDeepLでがんばりましょう。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level7〜9</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level7-9/</link>
         <pubDate>Wed, 16 Jun 2021 12:39:36 +0900</pubDate>

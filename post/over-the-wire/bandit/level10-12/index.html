@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
-  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
-Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.'><title>【OverTheWire奮闘記】Bandit: Level4〜6</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.'><title>【OverTheWire奮闘記】Bandit: Level10〜12</title>
 
-<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/'>
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level4〜6'>
-<meta property='og:description' content='Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
-  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
-Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.'>
-<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level10〜12'>
+<meta property='og:description' content='Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/'>
 <meta property='og:site_name' content='ただくんぶろぐ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-15T19:47:28&#43;09:00'/><meta property='article:modified_time' content='2021-06-15T19:47:28&#43;09:00'/>
-<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level4〜6">
-<meta name="twitter:description" content="Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
-  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
-Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-16T19:30:01&#43;09:00'/><meta property='article:modified_time' content='2021-06-16T19:30:01&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level10〜12">
+<meta name="twitter:description" content="Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.">
     </head>
     <body class="">
     <script>
@@ -202,7 +199,7 @@ Level 5  The password for the next level is stored in the only human-readable fi
     
 
     <h2 class="article-title">
-        <a href="/post/over-the-wire/bandit/level4-6/">【OverTheWire奮闘記】Bandit: Level4〜6</a>
+        <a href="/post/over-the-wire/bandit/level10-12/">【OverTheWire奮闘記】Bandit: Level10〜12</a>
     </h2>
 
     <footer class="article-time">
@@ -214,159 +211,152 @@ Level 5  The password for the next level is stored in the only human-readable fi
 
 
 
-        <time class="article-time--published">2021-06-15</time>
+        <time class="article-time--published">2021-06-16</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <h2 id="level-4">Level 4</h2>
+    <h2 id="level-10">Level 10</h2>
 <h3 id="goal">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in a hidden file in the inhere directory.</p>
+<p>The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.</p>
 </blockquote>
 <ul>
-<li>inhereディレクトリの隠しファイルからパスワードを取得する</li>
+<li>パスワードはdata.txtの中にある</li>
+<li>人間に読める形式で、いくつかの&quot;=&ldquo;という文字列が前にある</li>
 </ul>
 <h3 id="resolve">resolve</h3>
-<pre><code>bandit3@bandit:~$ cd inhere/
-bandit3@bandit:~/inhere$ ls -a
-.  ..  .hidden
-bandit3@bandit:~/inhere$ cat .hidden 
-pIwrPrtPN36QITSp3EQaw936yaFoFgAB
-bandit3@bandit:~/inhere$ exit
+<pre><code>bandit9@bandit:~$ strings data.txt | grep '==='
+========== the*2i&quot;4
+========== password
+Z)========== is
+&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+bandit9@bandit:~$ exit
 
-# ここからローカル
-$ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org
+# 以下はローカル
+$ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit4@bandit.labs.overthewire.org's password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+bandit10@bandit.labs.overthewire.org's password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
 </code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
-<p>特になし</p>
-<h2 id="level-5">Level 5</h2>
+<p>とりあえず<code>cat data.txt</code>してみて意味のわからん文字列であることはわかりました。前に'=&lsquo;がついているとのことなので、<code>grep '=' data.txt</code>してみると</p>
+<pre><code>bandit9@bandit:~$ grep '=' data.txt
+Binary file (standard input) matches
+</code></pre><p>うーんと思っていると、問題文下の<code>Commands you may need to solve this level</code>に<code>strings</code>という文字が目に入ってきました。これどんなコマンドなんだろうと思って試してみると</p>
+<pre><code>andit9@bandit:~$ strings data.txt 
+.
+.
+.
+
+blsN
+~U^y
+x@nQ
+*SF=s
+}1:LF
+]vur
+Emlld
+&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+_Gmz
+\Uli,
+A5RK
+S'$0
+&lt;4t&quot;,
+4cXO
+cj13c:?
+&amp;Yra
+zEwa
+b2+x
+z`tlR
+o|8M]
+.p4Hv
+)z&lt;p
+S=A.H&amp;^
+#hu#
+&quot;C}Jy
+0R@R_
+~KW?
+b#Nzx$b
+RlG#t]Z}
+e790
+JzV1O
+XEgp
+2Q d
+z#j\
+1Qit
+a'b~
+bxBB\u$
+8Zpc    $FOxF[
+ANYwPCpk
+Xk]E
+bh}s
+P'uP
+\-A:
+sCtY
+Z/1x+
+ej8z
+P&quot;`\XZ
+1KOA
+</code></pre><p>なんかぽいのが出てきた！</p>
+<p>stringsコマンドはバイナリファイルから可読部分を表示できるコマンドのようです。これが問題文の<code>human-readable</code>につながるわけです。</p>
+<p>あとはこの結果を<code>=</code>で<code>grep</code>すれば出てきました！</p>
+<h2 id="level-11">Level 11</h2>
+<h3 id="goal-1">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.</p>
+<p>The password for the next level is stored in the file data.txt, which contains base64 encoded data</p>
 </blockquote>
 <ul>
-<li>inhereディレクトリにある人間に読むことのできるファイルからパスワードを取得する</li>
+<li>パスワードはdata.txtにある</li>
+<li>そのファイルはbase64でエンコードされている</li>
 </ul>
-<h3 id="goal-1">Goal</h3>
 <h3 id="resolve-1">resolve</h3>
-<pre><code>bandit4@bandit:~$ cd inhere/
-bandit4@bandit:~/inhere$ ls
--file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
-bandit4@bandit:~/inhere$ ls | xargs -I {} awk 1 ./{}
-�/`2ғ�%��rL~5�g��� �����
-��p,k�;��r*��   �.!��C��J       �dx,�
-e�)�#��5��
-          ��p��V�_���ׯ�mm
-������h!TQO�`�4&quot;aל�߂phT��,�A
-?�4�ו$����I&amp;������c���ގ.�
-�r�l$�?h�9('���!y�e�#�x�O��=��
-ly���~��A�f����-E�{���m�����ܗM
-koReBOKuIDDepwhWk7jZC0RTdopnAYKh # これが目的のパスワード
-�T�?�i��j��îP�F�l�n��J����{��@
-�e�0$�in=��_b�5FA�P7sz��gNT
-bandit4@bandit:~/inhere$ exit
+<pre><code>bandit10@bandit:~$ base64 -d data.txt 
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+bandit10@bandit:~$ exit
 
-# ここからローカル
-$ ssh -l bandit5 -p 2220 bandit.labs.overthewire.org                                                                ?[master]
+# 以下はローカル
+❯❯❯ ssh -l bandit11 -p 2220 bandit.labs.overthewire.org
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit5@bandit.labs.overthewire.org's password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+bandit11@bandit.labs.overthewire.org's password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 </code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
-<p>特につまりはしませんでしたが、<code>ls</code>するとファイルが何個もありました。これを全て<code>cat</code>してもよかったのですが、せっかくならもう少しうまいやり方でできないか調べてみました。</p>
-<p>最初は<code>ls | xargs -I{} cat ./{}</code>でやったのですが・・・</p>
-<pre><code>bandit4@bandit:~/inhere$ ls | xargs -I{} cat ./{}
-�/`2ғ�%��rL~5�g��� �������p,k�;��r*��   �.!��C��J       �dx,�e�)�#��5��
-                                                                       ��p��V�_���ׯ�mm������h!TQO�`�4&quot;aל�߂phT��,�Ai�4�ו$����I&amp;��?��r�l$�?h�9('���!y�e�#�x�O��=��ly���~��A�f����-E�{���m�����ܗMkoReBOKuIDDepwhWk7jZC0RTdopnAYKh
-�T�?�i��j��îP�F�l�n��J����{��@�e�0$�in=��_b�5FA�P7sz��gNbandit4@bandit:~/inhere$ 
-</code></pre><p>読みづらい・・・</p>
-<p><code>cat</code>に2つ以上のファイルを引数に取る場合、ファイルに改行が入ってなかったらそのまま表示されるらしいです。ファイルごとに改行して欲しかったので、なにかないかと模索したところ以下のサイトにたどり着きました</p>
-<ul>
-<li><a class="link" href="https://qiita.com/ngyuki/items/b55ce646cd84eb71c900"  target="_blank" rel="noopener"
-    >複数のファイルを終端に改行がなければ改行を追加して結合する</a></li>
-</ul>
-<p><code>awk 1</code>でいけるっぽいです。この記事で出てくる<code>awk</code>のパターンとかアクションとかがわからなかったので、それは以下の記事で補完しました</p>
-<ul>
-<li><a class="link" href="https://bioinfo-dojo.net/2017/09/28/awk-pattern-action/"  target="_blank" rel="noopener"
-    >awk パターンとアクション
-</a></li>
-<li><a class="link" href="http://itdoc.hitachi.co.jp/manuals/3020/30203S3530/JPAS0241.HTM"  target="_blank" rel="noopener"
-    >awkコマンド（テキストの加工やパターン処理をする）
-</a></li>
-</ul>
-<p>awkについてわかったことは</p>
-<ul>
-<li>文法は<code>awk 'pattern {action} ファイル名'</code></li>
-<li>actionではファイルの各行に適用させる動作
-<ul>
-<li>actionは省略でき、省略した場合はその行を標準出力するアクションになる</li>
-</ul>
-</li>
-<li>patternはactionを適用させる行の条件(正規表現とかで指定するみたい)
-<ul>
-<li>ここで<code>1</code>を指定すると全ての行にactionを適用させるということになる</li>
-</ul>
-</li>
-</ul>
-<h2 id="level-6">Level 6</h2>
+<p><code>Commands you may need to solve this level</code>に<code>base64</code>コマンドがあるからきっとそれだろうと当たりをつけました。<code>man base64</code>でデコードするオプションを調べて終わりです。</p>
+<h2 id="level-12">Level 12</h2>
 <h3 id="goal-2">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
-human-readable,
-1033 bytes in size,
-not executable</p>
+<p>The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</p>
 </blockquote>
 <ul>
-<li>パスワードはinhereディレクトリに格納されている</li>
-<li>そのファイルは以下の特徴を持っている
-<ul>
-<li>人間に読める</li>
-<li>1033bytes</li>
-<li>実行できない</li>
-</ul>
-</li>
+<li>パスワードはdata.txtにある</li>
+<li>大文字小文字がそれぞれ13個分ずらされている</li>
 </ul>
 <h3 id="resolve-2">resolve</h3>
-<pre><code>bandit5@bandit:~$ cd inhere
-bandit5@bandit:~/inhere$ find -type f -size 1033c -print0 ! -executable |　xargs -0 -I{} cat ./{}
-DXjZPULLxYr17uwoI01bNLQbtFemEgo7
-bandit5@bandit:~/inhere$ exit
+<pre><code>bandit11@bandit:~$ cat data.txt | tr A-Za-z N-ZA-Mn-za-m
+The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+bandit11@bandit:~$ exit
 
-# 以下はローカルで
-❯❯❯ ssh -l bandit6 -p 2220 bandit.labs.overthewire.org                                                                                  ?[master]
+❯❯❯ ssh -l bandit12 -p 2220 bandit.labs.overthewire.org
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit6@bandit.labs.overthewire.org's password: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+bandit12@bandit.labs.overthewire.org's password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 </code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
-<p>まずは<code>find</code>のオプションを調べました。特に実行権限を持っていないファイルの検索の仕方ですね。調べると検索オプションの前に<code>!</code>をつけて否定系にすればよかったようです。</p>
-<p>また、調べているうちに、<code>find</code>に<code>-print0</code>とつけて<code>xargs -0 ・・・</code>としているいるものも散見されました。</p>
-<h4 id="xargs--0の正体">xargs -0の正体</h4>
-<p><code>xargs</code>の <code>-0</code>は区切り文字をヌル文字(\0)にするオプションです。デフォルトは空白や改行コードです。</p>
-<h4 id="-0をつけないと何が困るのか">-0をつけないと何が困るのか</h4>
-<p>xargsで処理する引数に空白がある場合に困っちゃう</p>
-<p>例えば以下のケース</p>
-<pre><code>$ ls
-space in the finename.txt # こいつを消したい
-$ find . -name '*.txt' | xargs rm
-rm: ./space: No such file or directory
-rm: in: No such file or directory
-rm: the: No such file or directory
-rm: filename.txt: No such file or directory
-</code></pre><p>何も指定しないと、空白ごとに<code>rm</code>してしまいます。意図した動作にするために区切り文字を変えるために<code>-0</code>をつけて対応します。</p>
-<h4 id="find--print0の理由">find -print0の理由</h4>
-<p><code>xargs -0</code>としたので、<code>xargs</code>の処理ではヌル文字が区切り文字になりました。<code>find</code>で<code>-print0</code>をつけることで結果のファイル名の末尾にヌル文字が付与されます。これでxargsの処理が意図する動作になります。</p>
-<h4 id="参考サイト">参考サイト</h4>
+<p>問題文を読んで、これはきっとシーザー暗号ような形式になっているのかなと。<code>cat data.txt</code>してみるとQ.E.D</p>
+<pre><code>bandit11@bandit:~$ cat data.txt 
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+</code></pre><p>おそらく<code>The password is hogehoge</code>のような形式になることはお見通し。問題はその形式に直すコマンドを知らないこと。</p>
+<p><code>シーザー暗号 linuxコマンド</code>で検索すると<code>tr</code>コマンドを使ったものがいくつかヒットした。
+そして文字を13文字ずらす方式のことを<code>ROT13</code>というらしい。</p>
+<p>最終的には以下に解法が載ってました.。</p>
 <ul>
-<li><a class="link" href="https://taroline.hateblo.jp/entry/2014/10/27/022124"  target="_blank" rel="noopener"
-    >findコマンドでの検索時に、否定の条件を指定する</a></li>
-<li><a class="link" href="https://qiita.com/maskedw/items/2dfdf6fa7eee991ddc45"  target="_blank" rel="noopener"
-    >findとxargsコマンドで-print0オプションを使う理由(改)</a></li>
-<li><a class="link" href="https://techblog.kyamanak.com/entry/2018/02/12/202256"  target="_blank" rel="noopener"
-    >0212【Linux】xargs コマンドの使い方がよく分からない</a></li>
+<li><a class="link" href="https://en.wikipedia.org/wiki/ROT13"  target="_blank" rel="noopener"
+    >ROT13</a></li>
 </ul>
+<p><code>tr</code>は文字の置換をするコマンドですが、<code>A-Za-z N-ZA-Mn-za-m</code>の意味がわからなかったのでした。少し見方を変えて、置換前と置換後の文字のマッピングであると捉えれば腑に落ちました。</p>
+<pre><code># 以下のコマンドは同じことをしている
+$ tr A-Za-z N-ZA-Mn-za-m
+$ tr ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm
+</code></pre><p>AはNにVはIに置換されるということです</p>
 <h2 id="今日はおしまい">今日はおしまい</h2>
-<p>find便利ですね。<code>find . -name 'hogehoge'</code>という定型で覚えて使ってましたが、オプションや<code>xargs</code>と組み合わせれば全文検索なんかもできそうです。副次的に色々なtipsも知ることができるので、モチベーションを保てています。</p>
+<p>英語が弱いのでDeepLでがんばりましょう。</p>
 
 </section>
 
@@ -388,24 +378,24 @@ rm: filename.txt: No such file or directory
                 
                     
 <article class="">
-    <a href="/post/over-the-wire/bandit/level10-12/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level10〜12</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/over-the-wire/bandit/level7-9/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level7〜9</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level4-6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level4〜6</h2>
         </div>
     </a>
 </article>
