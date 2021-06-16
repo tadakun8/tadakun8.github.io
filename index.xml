@@ -185,16 +185,11 @@ rm: filename.txt: No such file or directory
 &lt;blockquote&gt;
 &lt;p&gt;The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;level0のゴールを整理すると&lt;/p&gt;
+&lt;p&gt;level0のゴールを整理するとsshで&lt;code&gt;bandit.labs.overthewire.org&lt;/code&gt;にログインする&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;sshで指定ホストにログインすること
-&lt;ul&gt;
-&lt;li&gt;ホストは&lt;code&gt;bandit.labs.overthewire.org&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;ポートは2220&lt;/li&gt;
 &lt;li&gt;ユーザーネームは&lt;code&gt;bandit0&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;パスワードも&lt;code&gt;bandit0&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;sshコマンド使うんだなとアタリがつきました&lt;/p&gt;
 &lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
