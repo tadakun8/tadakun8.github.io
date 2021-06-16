@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
-  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
-Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.'><title>【OverTheWire奮闘記】Bandit: Level4〜6</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 7 Goal  The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, 33 bytes in size
+ サーバどこかにある以下の特徴を持ったファイルからパスワードを取得する
+ オーナーがbandit7 グループがbandit6 33バイト  resolve bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c -print0 2&amp;gt; /dev/null | xargs -0 -I{} cat {} cat: {}: No such file or directory HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs bandit6@bandit:~$ exit # 以下はローカルで $ ssh -l bandit7 -p 2220 bandit.'><title>【OverTheWire奮闘記】Bandit: Level7〜9</title>
 
-<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/'>
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level7-9/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level4〜6'>
-<meta property='og:description' content='Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
-  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
-Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.'>
-<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level7〜9'>
+<meta property='og:description' content='Level 7 Goal  The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, 33 bytes in size
+ サーバどこかにある以下の特徴を持ったファイルからパスワードを取得する
+ オーナーがbandit7 グループがbandit6 33バイト  resolve bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c -print0 2&amp;gt; /dev/null | xargs -0 -I{} cat {} cat: {}: No such file or directory HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs bandit6@bandit:~$ exit # 以下はローカルで $ ssh -l bandit7 -p 2220 bandit.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level7-9/'>
 <meta property='og:site_name' content='ただくんぶろぐ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-15T19:47:28&#43;09:00'/><meta property='article:modified_time' content='2021-06-15T19:47:28&#43;09:00'/>
-<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level4〜6">
-<meta name="twitter:description" content="Level 4 Goal  The password for the next level is stored in a hidden file in the inhere directory.
-  inhereディレクトリの隠しファイルからパスワードを取得する  resolve bandit3@bandit:~$ cd inhere/ bandit3@bandit:~/inhere$ ls -a . .. .hidden bandit3@bandit:~/inhere$ cat .hidden pIwrPrtPN36QITSp3EQaw936yaFoFgAB bandit3@bandit:~/inhere$ exit # ここからローカル $ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit4@bandit.labs.overthewire.org&#39;s password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB resolveまでにやったこと 特になし
-Level 5  The password for the next level is stored in the only human-readable file in the inhere directory.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-16T12:39:36&#43;09:00'/><meta property='article:modified_time' content='2021-06-16T12:39:36&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level7〜9">
+<meta name="twitter:description" content="Level 7 Goal  The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, 33 bytes in size
+ サーバどこかにある以下の特徴を持ったファイルからパスワードを取得する
+ オーナーがbandit7 グループがbandit6 33バイト  resolve bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c -print0 2&amp;gt; /dev/null | xargs -0 -I{} cat {} cat: {}: No such file or directory HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs bandit6@bandit:~$ exit # 以下はローカルで $ ssh -l bandit7 -p 2220 bandit.">
     </head>
     <body class="">
     <script>
@@ -202,7 +202,7 @@ Level 5  The password for the next level is stored in the only human-readable fi
     
 
     <h2 class="article-title">
-        <a href="/post/over-the-wire/bandit/level4-6/">【OverTheWire奮闘記】Bandit: Level4〜6</a>
+        <a href="/post/over-the-wire/bandit/level7-9/">【OverTheWire奮闘記】Bandit: Level7〜9</a>
     </h2>
 
     <footer class="article-time">
@@ -214,159 +214,101 @@ Level 5  The password for the next level is stored in the only human-readable fi
 
 
 
-        <time class="article-time--published">2021-06-15</time>
+        <time class="article-time--published">2021-06-16</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <h2 id="level-4">Level 4</h2>
+    <h2 id="level-7">Level 7</h2>
 <h3 id="goal">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in a hidden file in the inhere directory.</p>
+<p>The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, 33 bytes in size</p>
 </blockquote>
+<p>サーバどこかにある以下の特徴を持ったファイルからパスワードを取得する</p>
 <ul>
-<li>inhereディレクトリの隠しファイルからパスワードを取得する</li>
+<li>オーナーが<code>bandit7</code></li>
+<li>グループが<code>bandit6</code></li>
+<li>33バイト</li>
 </ul>
 <h3 id="resolve">resolve</h3>
-<pre><code>bandit3@bandit:~$ cd inhere/
-bandit3@bandit:~/inhere$ ls -a
-.  ..  .hidden
-bandit3@bandit:~/inhere$ cat .hidden 
-pIwrPrtPN36QITSp3EQaw936yaFoFgAB
-bandit3@bandit:~/inhere$ exit
-
-# ここからローカル
-$ ssh -l bandit4 -p 2220 bandit.labs.overthewire.org
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
-
-bandit4@bandit.labs.overthewire.org's password: pIwrPrtPN36QITSp3EQaw936yaFoFgAB
-</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
-<p>特になし</p>
-<h2 id="level-5">Level 5</h2>
-<blockquote>
-<p>The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command.</p>
-</blockquote>
-<ul>
-<li>inhereディレクトリにある人間に読むことのできるファイルからパスワードを取得する</li>
-</ul>
-<h3 id="goal-1">Goal</h3>
-<h3 id="resolve-1">resolve</h3>
-<pre><code>bandit4@bandit:~$ cd inhere/
-bandit4@bandit:~/inhere$ ls
--file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
-bandit4@bandit:~/inhere$ ls | xargs -I {} awk 1 ./{}
-�/`2ғ�%��rL~5�g��� �����
-��p,k�;��r*��   �.!��C��J       �dx,�
-e�)�#��5��
-          ��p��V�_���ׯ�mm
-������h!TQO�`�4&quot;aל�߂phT��,�A
-?�4�ו$����I&amp;������c���ގ.�
-�r�l$�?h�9('���!y�e�#�x�O��=��
-ly���~��A�f����-E�{���m�����ܗM
-koReBOKuIDDepwhWk7jZC0RTdopnAYKh # これが目的のパスワード
-�T�?�i��j��îP�F�l�n��J����{��@
-�e�0$�in=��_b�5FA�P7sz��gNT
-bandit4@bandit:~/inhere$ exit
-
-# ここからローカル
-$ ssh -l bandit5 -p 2220 bandit.labs.overthewire.org                                                                ?[master]
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
-
-bandit5@bandit.labs.overthewire.org's password: koReBOKuIDDepwhWk7jZC0RTdopnAYKh
-</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
-<p>特につまりはしませんでしたが、<code>ls</code>するとファイルが何個もありました。これを全て<code>cat</code>してもよかったのですが、せっかくならもう少しうまいやり方でできないか調べてみました。</p>
-<p>最初は<code>ls | xargs -I{} cat ./{}</code>でやったのですが・・・</p>
-<pre><code>bandit4@bandit:~/inhere$ ls | xargs -I{} cat ./{}
-�/`2ғ�%��rL~5�g��� �������p,k�;��r*��   �.!��C��J       �dx,�e�)�#��5��
-                                                                       ��p��V�_���ׯ�mm������h!TQO�`�4&quot;aל�߂phT��,�Ai�4�ו$����I&amp;��?��r�l$�?h�9('���!y�e�#�x�O��=��ly���~��A�f����-E�{���m�����ܗMkoReBOKuIDDepwhWk7jZC0RTdopnAYKh
-�T�?�i��j��îP�F�l�n��J����{��@�e�0$�in=��_b�5FA�P7sz��gNbandit4@bandit:~/inhere$ 
-</code></pre><p>読みづらい・・・</p>
-<p><code>cat</code>に2つ以上のファイルを引数に取る場合、ファイルに改行が入ってなかったらそのまま表示されるらしいです。ファイルごとに改行して欲しかったので、なにかないかと模索したところ以下のサイトにたどり着きました</p>
-<ul>
-<li><a class="link" href="https://qiita.com/ngyuki/items/b55ce646cd84eb71c900"  target="_blank" rel="noopener"
-    >複数のファイルを終端に改行がなければ改行を追加して結合する</a></li>
-</ul>
-<p><code>awk 1</code>でいけるっぽいです。この記事で出てくる<code>awk</code>のパターンとかアクションとかがわからなかったので、それは以下の記事で補完しました</p>
-<ul>
-<li><a class="link" href="https://bioinfo-dojo.net/2017/09/28/awk-pattern-action/"  target="_blank" rel="noopener"
-    >awk パターンとアクション
-</a></li>
-<li><a class="link" href="http://itdoc.hitachi.co.jp/manuals/3020/30203S3530/JPAS0241.HTM"  target="_blank" rel="noopener"
-    >awkコマンド（テキストの加工やパターン処理をする）
-</a></li>
-</ul>
-<p>awkについてわかったことは</p>
-<ul>
-<li>文法は<code>awk 'pattern {action} ファイル名'</code></li>
-<li>actionではファイルの各行に適用させる動作
-<ul>
-<li>actionは省略でき、省略した場合はその行を標準出力するアクションになる</li>
-</ul>
-</li>
-<li>patternはactionを適用させる行の条件(正規表現とかで指定するみたい)
-<ul>
-<li>ここで<code>1</code>を指定すると全ての行にactionを適用させるということになる</li>
-</ul>
-</li>
-</ul>
-<h2 id="level-6">Level 6</h2>
-<h3 id="goal-2">Goal</h3>
-<blockquote>
-<p>The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
-human-readable,
-1033 bytes in size,
-not executable</p>
-</blockquote>
-<ul>
-<li>パスワードはinhereディレクトリに格納されている</li>
-<li>そのファイルは以下の特徴を持っている
-<ul>
-<li>人間に読める</li>
-<li>1033bytes</li>
-<li>実行できない</li>
-</ul>
-</li>
-</ul>
-<h3 id="resolve-2">resolve</h3>
-<pre><code>bandit5@bandit:~$ cd inhere
-bandit5@bandit:~/inhere$ find -type f -size 1033c -print0 ! -executable |　xargs -0 -I{} cat ./{}
-DXjZPULLxYr17uwoI01bNLQbtFemEgo7
-bandit5@bandit:~/inhere$ exit
+<pre><code>bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c -print0 2&gt; /dev/null | xargs -0 -I{} cat {}
+cat: {}: No such file or directory
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+bandit6@bandit:~$ exit
 
 # 以下はローカルで
-❯❯❯ ssh -l bandit6 -p 2220 bandit.labs.overthewire.org                                                                                  ?[master]
+$ ssh -l bandit7 -p 2220 bandit.labs.overthewire.org                                                                                  ?[master]
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit6@bandit.labs.overthewire.org's password: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
-</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
-<p>まずは<code>find</code>のオプションを調べました。特に実行権限を持っていないファイルの検索の仕方ですね。調べると検索オプションの前に<code>!</code>をつけて否定系にすればよかったようです。</p>
-<p>また、調べているうちに、<code>find</code>に<code>-print0</code>とつけて<code>xargs -0 ・・・</code>としているいるものも散見されました。</p>
-<h4 id="xargs--0の正体">xargs -0の正体</h4>
-<p><code>xargs</code>の <code>-0</code>は区切り文字をヌル文字(\0)にするオプションです。デフォルトは空白や改行コードです。</p>
-<h4 id="-0をつけないと何が困るのか">-0をつけないと何が困るのか</h4>
-<p>xargsで処理する引数に空白がある場合に困っちゃう</p>
-<p>例えば以下のケース</p>
-<pre><code>$ ls
-space in the finename.txt # こいつを消したい
-$ find . -name '*.txt' | xargs rm
-rm: ./space: No such file or directory
-rm: in: No such file or directory
-rm: the: No such file or directory
-rm: filename.txt: No such file or directory
-</code></pre><p>何も指定しないと、空白ごとに<code>rm</code>してしまいます。意図した動作にするために区切り文字を変えるために<code>-0</code>をつけて対応します。</p>
-<h4 id="find--print0の理由">find -print0の理由</h4>
-<p><code>xargs -0</code>としたので、<code>xargs</code>の処理ではヌル文字が区切り文字になりました。<code>find</code>で<code>-print0</code>をつけることで結果のファイル名の末尾にヌル文字が付与されます。これでxargsの処理が意図する動作になります。</p>
-<h4 id="参考サイト">参考サイト</h4>
+bandit7@bandit.labs.overthewire.org's password: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>普通に<code>find</code>を行うと検索結果と一緒にPermission deniedが出てしまう</p>
+<pre><code>bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c
+find: ‘/root’: Permission denied
+find: ‘/home/bandit28-git’: Permission denied
+find: ‘/home/bandit30-git’: Permission denied
+find: ‘/home/bandit5/inhere’: Permission denied
+find: ‘/home/bandit27-git’: Permission denied
+find: ‘/home/bandit29-git’: Permission denied
+find: ‘/home/bandit31-git’: Permission denied
+</code></pre><p>これは標準エラー出力です。 <code>2&gt; /dev/null</code>とつけて表示されないようにしてあげました。</p>
+<pre><code>bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c 2&gt; /dev/null
+/var/lib/dpkg/info/bandit7.password
+</code></pre><p>あとはこれをパイプして<code>cat</code>すれば終わりです</p>
+<h2 id="level-8">Level 8</h2>
+<h3 id="goal-1">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in the file data.txt next to the word millionth</p>
+</blockquote>
 <ul>
-<li><a class="link" href="https://taroline.hateblo.jp/entry/2014/10/27/022124"  target="_blank" rel="noopener"
-    >findコマンドでの検索時に、否定の条件を指定する</a></li>
-<li><a class="link" href="https://qiita.com/maskedw/items/2dfdf6fa7eee991ddc45"  target="_blank" rel="noopener"
-    >findとxargsコマンドで-print0オプションを使う理由(改)</a></li>
-<li><a class="link" href="https://techblog.kyamanak.com/entry/2018/02/12/202256"  target="_blank" rel="noopener"
-    >0212【Linux】xargs コマンドの使い方がよく分からない</a></li>
+<li>パスワードはdata.txtにある</li>
+<li>その中のmillionthという単語の次にパスワードが書いてある</li>
 </ul>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit7@bandit:~$ cat data.txt | grep millionth
+millionth       cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+bandit7@bandit:~$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit8 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit8@bandit.labs.overthewire.org's password: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p>特になし。data.txtを<code>cat</code>したら「あっ、grepやこれ」となりました。</p>
+<h2 id="level-9">Level 9</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in the file data.txt and is the only line of text that occurs only once</p>
+</blockquote>
+<ul>
+<li>パスワードはdata.txtにある</li>
+<li>data.txtの中で、1度しか出てこない行がパスワードである</li>
+</ul>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>bandit8@bandit:~$ cat data.txt | sort | uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+bandit8@bandit:~$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit9 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit9@bandit.labs.overthewire.org's password: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<p><code>cat</code>したときに<code>uniq</code>だと思ったので、<code>cat data.txt | uniq</code>でやったのだが、一意に絞れなかった。</p>
+<h4 id="uniqなものだけ表示したい">uniqなものだけ表示したい</h4>
+<p>ユニークなもの、つまり重複していないもののみ表示するためには、<code>uniq</code>に-<code>u</code>をつけてあげる必要があります。</p>
+<h4 id="uniq前にsortが必要">uniq前にsortが必要！！！</h4>
+<p><a class="link" href="https://www.atmarkit.co.jp/ait/articles/1611/14/news021.html"  target="_blank" rel="noopener"
+    >【 uniq 】コマンド――重複している行を削除する</a>
+上記サイトに以下の文言があった</p>
+<blockquote>
+<p>uniqコマンドは、元のテキストが“並べ替え済み”であることが前提になるので、必要に応じて先に「sort」コマンドで並べ替えを実行しておきます。</p>
+</blockquote>
+<p><code>sort | uniq</code>をセットで記載している記事が何個かあったけど、これで納得しました。</p>
 <h2 id="今日はおしまい">今日はおしまい</h2>
-<p>find便利ですね。<code>find . -name 'hogehoge'</code>という定型で覚えて使ってましたが、オプションや<code>xargs</code>と組み合わせれば全文検索なんかもできそうです。副次的に色々なtipsも知ることができるので、モチベーションを保てています。</p>
+<p>OverTheWireはセキュリティに関する知識を学ぶためという目的でしたが、未だセキュリティについては出てこないですね。Banditは初心者レベルなので、「とりあえずLinuxコマンドが覚えろ、さすれば扉は開かん」というお告げだと思っておきます。それにしたってモチベーションが落ちない不思議。</p>
 
 </section>
 
@@ -388,12 +330,12 @@ rm: filename.txt: No such file or directory
                 
                     
 <article class="">
-    <a href="/post/over-the-wire/bandit/level7-9/">
+    <a href="/post/over-the-wire/bandit/level4-6/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level7〜9</h2>
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level4〜6</h2>
         </div>
     </a>
 </article>

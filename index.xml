@@ -6,7 +6,105 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Tue, 15 Jun 2021 19:47:28 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 16 Jun 2021 12:39:36 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level7〜9</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level7-9/</link>
+        <pubDate>Wed, 16 Jun 2021 12:39:36 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level7-9/</guid>
+        <description>&lt;h2 id=&#34;level-7&#34;&gt;Level 7&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, 33 bytes in size&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;サーバどこかにある以下の特徴を持ったファイルからパスワードを取得する&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;オーナーが&lt;code&gt;bandit7&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;グループが&lt;code&gt;bandit6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;33バイト&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c -print0 2&amp;gt; /dev/null | xargs -0 -I{} cat {}
+cat: {}: No such file or directory
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+bandit6@bandit:~$ exit
+
+# 以下はローカルで
+$ ssh -l bandit7 -p 2220 bandit.labs.overthewire.org                                                                                  ?[master]
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit7@bandit.labs.overthewire.org&#39;s password: HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;普通に&lt;code&gt;find&lt;/code&gt;を行うと検索結果と一緒にPermission deniedが出てしまう&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c
+find: ‘/root’: Permission denied
+find: ‘/home/bandit28-git’: Permission denied
+find: ‘/home/bandit30-git’: Permission denied
+find: ‘/home/bandit5/inhere’: Permission denied
+find: ‘/home/bandit27-git’: Permission denied
+find: ‘/home/bandit29-git’: Permission denied
+find: ‘/home/bandit31-git’: Permission denied
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これは標準エラー出力です。 &lt;code&gt;2&amp;gt; /dev/null&lt;/code&gt;とつけて表示されないようにしてあげました。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c 2&amp;gt; /dev/null
+/var/lib/dpkg/info/bandit7.password
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;あとはこれをパイプして&lt;code&gt;cat&lt;/code&gt;すれば終わりです&lt;/p&gt;
+&lt;h2 id=&#34;level-8&#34;&gt;Level 8&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt next to the word millionth&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;パスワードはdata.txtにある&lt;/li&gt;
+&lt;li&gt;その中のmillionthという単語の次にパスワードが書いてある&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit7@bandit:~$ cat data.txt | grep millionth
+millionth       cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+bandit7@bandit:~$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit8 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit8@bandit.labs.overthewire.org&#39;s password: cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;特になし。data.txtを&lt;code&gt;cat&lt;/code&gt;したら「あっ、grepやこれ」となりました。&lt;/p&gt;
+&lt;h2 id=&#34;level-9&#34;&gt;Level 9&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in the file data.txt and is the only line of text that occurs only once&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;パスワードはdata.txtにある&lt;/li&gt;
+&lt;li&gt;data.txtの中で、1度しか出てこない行がパスワードである&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit8@bandit:~$ cat data.txt | sort | uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+bandit8@bandit:~$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit9 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit9@bandit.labs.overthewire.org&#39;s password: UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;cat&lt;/code&gt;したときに&lt;code&gt;uniq&lt;/code&gt;だと思ったので、&lt;code&gt;cat data.txt | uniq&lt;/code&gt;でやったのだが、一意に絞れなかった。&lt;/p&gt;
+&lt;h4 id=&#34;uniqなものだけ表示したい&#34;&gt;uniqなものだけ表示したい&lt;/h4&gt;
+&lt;p&gt;ユニークなもの、つまり重複していないもののみ表示するためには、&lt;code&gt;uniq&lt;/code&gt;に-&lt;code&gt;u&lt;/code&gt;をつけてあげる必要があります。&lt;/p&gt;
+&lt;h4 id=&#34;uniq前にsortが必要&#34;&gt;uniq前にsortが必要！！！&lt;/h4&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.atmarkit.co.jp/ait/articles/1611/14/news021.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;【 uniq 】コマンド――重複している行を削除する&lt;/a&gt;
+上記サイトに以下の文言があった&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;uniqコマンドは、元のテキストが“並べ替え済み”であることが前提になるので、必要に応じて先に「sort」コマンドで並べ替えを実行しておきます。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;sort | uniq&lt;/code&gt;をセットで記載している記事が何個かあったけど、これで納得しました。&lt;/p&gt;
+&lt;h2 id=&#34;今日はおしまい&#34;&gt;今日はおしまい&lt;/h2&gt;
+&lt;p&gt;OverTheWireはセキュリティに関する知識を学ぶためという目的でしたが、未だセキュリティについては出てこないですね。Banditは初心者レベルなので、「とりあえずLinuxコマンドが覚えろ、さすれば扉は開かん」というお告げだと思っておきます。それにしたってモチベーションが落ちない不思議。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level4〜6</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/</link>
         <pubDate>Tue, 15 Jun 2021 19:47:28 +0900</pubDate>
@@ -121,8 +219,16 @@ not executable&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;bandit5@bandit:~/inhere$ find -type f -size 1033c -print0 ! -executable |　xargs -0 -I{} cat ./{}
+&lt;pre&gt;&lt;code&gt;bandit5@bandit:~$ cd inhere
+bandit5@bandit:~/inhere$ find -type f -size 1033c -print0 ! -executable |　xargs -0 -I{} cat ./{}
 DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+bandit5@bandit:~/inhere$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit6 -p 2220 bandit.labs.overthewire.org                                                                                  ?[master]
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit6@bandit.labs.overthewire.org&#39;s password: DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
 &lt;p&gt;まずは&lt;code&gt;find&lt;/code&gt;のオプションを調べました。特に実行権限を持っていないファイルの検索の仕方ですね。調べると検索オプションの前に&lt;code&gt;!&lt;/code&gt;をつけて否定系にすればよかったようです。&lt;/p&gt;
 &lt;p&gt;また、調べているうちに、&lt;code&gt;find&lt;/code&gt;に&lt;code&gt;-print0&lt;/code&gt;とつけて&lt;code&gt;xargs -0 ・・・&lt;/code&gt;としているいるものも散見されました。&lt;/p&gt;
@@ -173,7 +279,7 @@ rm: filename.txt: No such file or directory
 &lt;/blockquote&gt;
 &lt;p&gt;少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。&lt;/p&gt;
 &lt;p&gt;ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこの&lt;a class=&#34;link&#34; href=&#34;https://overthewire.org/wargames/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;OverTheWrite&lt;/a&gt;で練習してみることにしました。&lt;/p&gt;
+    &gt;OverTheWire&lt;/a&gt;で練習してみることにしました。&lt;/p&gt;
 &lt;h2 id=&#34;私の今の状態&#34;&gt;私の今の状態&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;セキュリティの知識はカッスカス&lt;/li&gt;

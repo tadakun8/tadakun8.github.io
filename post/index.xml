@@ -6,7 +6,18 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 15 Jun 2021 19:47:28 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 16 Jun 2021 12:39:36 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Bandit: Level7〜9</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/bandit/level7-9/</link>
+      <pubDate>Wed, 16 Jun 2021 12:39:36 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level7-9/</guid>
+      <description>Level 7 Goal  The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, 33 bytes in size
+ サーバどこかにある以下の特徴を持ったファイルからパスワードを取得する
+ オーナーがbandit7 グループがbandit6 33バイト  resolve bandit6@bandit:~$ find / -type f -user bandit7 -group bandit6 -size 33c -print0 2&amp;gt; /dev/null | xargs -0 -I{} cat {} cat: {}: No such file or directory HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs bandit6@bandit:~$ exit # 以下はローカルで $ ssh -l bandit7 -p 2220 bandit.</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Bandit: Level4〜6</title>
       <link>https://tadakun8.github.io/post/over-the-wire/bandit/level4-6/</link>
@@ -29,7 +40,7 @@ Level 5  The password for the next level is stored in the only human-readable fi
 この記事の中で以下が気になり、
  ハッキングチャレンジはその名の通り、ハッキングを試してみることです。有名なのは『OverTheWire』でしょうか。
  少し調べてみると・・・ふむふむ、ゲーム形式でハッキングを練習し、セキュリティの知識を身につけることができるサイトのようだとわかりました。
-ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこのOverTheWriteで練習してみることにしました。
+ガチプロハッカーになるつもりはありませんが、こういった知識も身につけたいなと思ってはいたので、これを機会にこのOverTheWireで練習してみることにしました。
 私の今の状態  セキュリティの知識はカッスカス 大学時代にセキュリティの講義受けたなぁ(遠い目)  Level 0 初心者はまずBandit(意味は盗賊)からスタートです
 Goal  The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.</description>
     </item>
