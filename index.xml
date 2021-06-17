@@ -134,7 +134,6 @@ data.decompress.txt: bzip2 compressed data, block size = 900k
 &lt;/ul&gt;
 &lt;h2 id=&#34;今日はおしまい&#34;&gt;今日はおしまい&lt;/h2&gt;
 &lt;p&gt;Level13、かなりの難敵でした。&lt;code&gt;cat&lt;/code&gt;しても「&amp;hellip;で？」っていう状態からのスタートだったのはきつかったです。特に、&lt;code&gt;1f8b&lt;/code&gt;がgzip形式のファイルだと気づくのに時間がかかりました。ダンプされたファイルの初めは意味がわからなくても検索した方がいいと教訓を得ました。&lt;/p&gt;
-&lt;p&gt;この問題で結構鍛えられてたと思っていて、展開の仕方とかファイル形式の見極め方を知ることができたので非常に密度の濃い時間でした。&lt;/p&gt;
 </description>
         </item>
         <item>
