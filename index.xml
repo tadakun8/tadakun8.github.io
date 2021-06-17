@@ -128,7 +128,7 @@ data.decompress.txt: bzip2 compressed data, block size = 900k
 &lt;li&gt;gzip
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;-d&lt;/code&gt; : 展開する&lt;/li&gt;
-&lt;li&gt;パイプらからの標準入力も受け付けることができる&lt;/li&gt;
+&lt;li&gt;パイプからの標準入力も受け付けることができる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
