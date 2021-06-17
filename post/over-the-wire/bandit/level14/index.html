@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.'><title>【OverTheWire奮闘記】Bandit: Level10〜12</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level14 Goal  The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+  パスワードは/etc/bandit_pass/bandit14にある bandit14ユーザでしかみることはできない このレベルではbandit14ユーザでSSHできるプライベートkeyを手に入れることができる  resolve bandit13@bandit:~$ cat sshkey.'><title>【OverTheWire奮闘記】Bandit: Level14</title>
 
-<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/'>
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level14/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level10〜12'>
-<meta property='og:description' content='Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.'>
-<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level14'>
+<meta property='og:description' content='Level14 Goal  The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+  パスワードは/etc/bandit_pass/bandit14にある bandit14ユーザでしかみることはできない このレベルではbandit14ユーザでSSHできるプライベートkeyを手に入れることができる  resolve bandit13@bandit:~$ cat sshkey.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level14/'>
 <meta property='og:site_name' content='ただくんぶろぐ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-16T19:30:01&#43;09:00'/><meta property='article:modified_time' content='2021-06-16T19:30:01&#43;09:00'/>
-<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level10〜12">
-<meta name="twitter:description" content="Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-17T14:04:21&#43;09:00'/><meta property='article:modified_time' content='2021-06-17T14:04:21&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level14">
+<meta name="twitter:description" content="Level14 Goal  The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+  パスワードは/etc/bandit_pass/bandit14にある bandit14ユーザでしかみることはできない このレベルではbandit14ユーザでSSHできるプライベートkeyを手に入れることができる  resolve bandit13@bandit:~$ cat sshkey.">
     </head>
     <body class="">
     <script>
@@ -199,7 +199,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/over-the-wire/bandit/level10-12/">【OverTheWire奮闘記】Bandit: Level10〜12</a>
+        <a href="/post/over-the-wire/bandit/level14/">【OverTheWire奮闘記】Bandit: Level14</a>
     </h2>
 
     <footer class="article-time">
@@ -211,152 +211,110 @@
 
 
 
-        <time class="article-time--published">2021-06-16</time>
+        <time class="article-time--published">2021-06-17</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <h2 id="level-10">Level 10</h2>
+    <h2 id="level14">Level14</h2>
 <h3 id="goal">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.</p>
+<p>The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on</p>
 </blockquote>
 <ul>
-<li>パスワードはdata.txtの中にある</li>
-<li>人間に読める形式で、いくつかの&quot;=&ldquo;という文字列が前にある</li>
+<li>パスワードは<code>/etc/bandit_pass/bandit14</code>にある</li>
+<li><code>bandit14</code>ユーザでしかみることはできない</li>
+<li>このレベルでは<code>bandit14</code>ユーザでSSHできるプライベートkeyを手に入れることができる</li>
 </ul>
 <h3 id="resolve">resolve</h3>
-<pre><code>bandit9@bandit:~$ strings data.txt | grep '==='
-========== the*2i&quot;4
-========== password
-Z)========== is
-&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-bandit9@bandit:~$ exit
+<pre><code>bandit13@bandit:~$ cat sshkey.private 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAxkkOE83W2cOT7IWhFc9aPaaQmQDdgzuXCv+ppZHa++buSkN+
+gg0tcr7Fw8NLGa5+Uzec2rEg0WmeevB13AIoYp0MZyETq46t+jk9puNwZwIt9XgB
+ZufGtZEwWbFWw/vVLNwOXBe4UWStGRWzgPpEeSv5Tb1VjLZIBdGphTIK22Amz6Zb
+ThMsiMnyJafEwJ/T8PQO3myS91vUHEuoOMAzoUID4kN0MEZ3+XahyK0HJVq68KsV
+ObefXG1vvA3GAJ29kxJaqvRfgYnqZryWN7w3CHjNU4c/2Jkp+n8L0SnxaNA+WYA7
+jiPyTF0is8uzMlYQ4l1Lzh/8/MpvhCQF8r22dwIDAQABAoIBAQC6dWBjhyEOzjeA
+J3j/RWmap9M5zfJ/wb2bfidNpwbB8rsJ4sZIDZQ7XuIh4LfygoAQSS+bBw3RXvzE
+pvJt3SmU8hIDuLsCjL1VnBY5pY7Bju8g8aR/3FyjyNAqx/TLfzlLYfOu7i9Jet67
+xAh0tONG/u8FB5I3LAI2Vp6OviwvdWeC4nOxCthldpuPKNLA8rmMMVRTKQ+7T2VS
+nXmwYckKUcUgzoVSpiNZaS0zUDypdpy2+tRH3MQa5kqN1YKjvF8RC47woOYCktsD
+o3FFpGNFec9Taa3Msy+DfQQhHKZFKIL3bJDONtmrVvtYK40/yeU4aZ/HA2DQzwhe
+ol1AfiEhAoGBAOnVjosBkm7sblK+n4IEwPxs8sOmhPnTDUy5WGrpSCrXOmsVIBUf
+laL3ZGLx3xCIwtCnEucB9DvN2HZkupc/h6hTKUYLqXuyLD8njTrbRhLgbC9QrKrS
+M1F2fSTxVqPtZDlDMwjNR04xHA/fKh8bXXyTMqOHNJTHHNhbh3McdURjAoGBANkU
+1hqfnw7+aXncJ9bjysr1ZWbqOE5Nd8AFgfwaKuGTTVX2NsUQnCMWdOp+wFak40JH
+PKWkJNdBG+ex0H9JNQsTK3X5PBMAS8AfX0GrKeuwKWA6erytVTqjOfLYcdp5+z9s
+8DtVCxDuVsM+i4X8UqIGOlvGbtKEVokHPFXP1q/dAoGAcHg5YX7WEehCgCYTzpO+
+xysX8ScM2qS6xuZ3MqUWAxUWkh7NGZvhe0sGy9iOdANzwKw7mUUFViaCMR/t54W1
+GC83sOs3D7n5Mj8x3NdO8xFit7dT9a245TvaoYQ7KgmqpSg/ScKCw4c3eiLava+J
+3btnJeSIU+8ZXq9XjPRpKwUCgYA7z6LiOQKxNeXH3qHXcnHok855maUj5fJNpPbY
+iDkyZ8ySF8GlcFsky8Yw6fWCqfG3zDrohJ5l9JmEsBh7SadkwsZhvecQcS9t4vby
+9/8X4jS0P8ibfcKS4nBP+dT81kkkg5Z5MohXBORA7VWx+ACohcDEkprsQ+w32xeD
+qT1EvQKBgQDKm8ws2ByvSUVs9GjTilCajFqLJ0eVYzRPaY6f++Gv/UVfAPV4c+S0
+kAWpXbv5tbkkzbS0eaLPTKgLzavXtQoTtKwrjpolHKIHUz6Wu+n4abfAIRFubOdN
+/+aLoRQ0yBDRbdXMsZN/jvY44eM+xRLdRVyMmdPtP8belRi2E2aEzA==
+-----END RSA PRIVATE KEY-----
+bandit13@bandit:~$ exit
 
-# 以下はローカル
-$ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org
+# 以下はローカルで
+$ touch ~/.ssh/bandit/bandit13.private.pem
+$ vim ~/.ssh/bandit/bandit13.private.pem # $cat sshkey.private の結果を貼り付ける
+$ chmod 600 ~/.ssh/bandit/bandit13.private.pem
+$ ssh -i ~/.ssh/bandit/bandit13.private.pem -l bandit14 -p 2220 bandit.labs.overthewire.org
+
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14 
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>「次のレベルのパスワードはファイルに保存してあるよ、でもこのレベルでは次のレベルのパスワードは手に入れることができないよ」という英語の罠にハマっていました。</p>
+<p>哲学していても仕方ないので、<code>ls</code>、<code>cat</code>すると問題文通り秘密鍵が出てきました。おそらくこれを使って<code>bandit14</code>で<code>ssh</code>し直すのかなとあたりをつけました。</p>
+<p>秘密鍵をローカルに登録するしたあとに以下のエラー文が表示されました</p>
+<pre><code>$ ssh -i ~/.ssh/bandit/bandit13.private.pem -l bandit14 -p 2220 bandit.labs.overthewire.org                         ?[master]
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit10@bandit.labs.overthewire.org's password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
-<p>とりあえず<code>cat data.txt</code>してみて意味のわからん文字列であることはわかりました。前に'=&lsquo;がついているとのことなので、<code>grep '=' data.txt</code>してみると</p>
-<pre><code>bandit9@bandit:~$ grep '=' data.txt
-Binary file (standard input) matches
-</code></pre><p>うーんと思っていると、問題文下の<code>Commands you may need to solve this level</code>に<code>strings</code>という文字が目に入ってきました。これどんなコマンドなんだろうと思って試してみると</p>
-<pre><code>andit9@bandit:~$ strings data.txt 
-.
-.
-.
-
-blsN
-~U^y
-x@nQ
-*SF=s
-}1:LF
-]vur
-Emlld
-&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-_Gmz
-\Uli,
-A5RK
-S'$0
-&lt;4t&quot;,
-4cXO
-cj13c:?
-&amp;Yra
-zEwa
-b2+x
-z`tlR
-o|8M]
-.p4Hv
-)z&lt;p
-S=A.H&amp;^
-#hu#
-&quot;C}Jy
-0R@R_
-~KW?
-b#Nzx$b
-RlG#t]Z}
-e790
-JzV1O
-XEgp
-2Q d
-z#j\
-1Qit
-a'b~
-bxBB\u$
-8Zpc    $FOxF[
-ANYwPCpk
-Xk]E
-bh}s
-P'uP
-\-A:
-sCtY
-Z/1x+
-ej8z
-P&quot;`\XZ
-1KOA
-</code></pre><p>なんかぽいのが出てきた！</p>
-<p>stringsコマンドはバイナリファイルから可読部分を表示できるコマンドのようです。これが問題文の<code>human-readable</code>につながるわけです。</p>
-<p>あとはこの結果を<code>=</code>で<code>grep</code>すれば出てきました！</p>
-<h2 id="level-11">Level 11</h2>
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0755 for '/Users/taka/.ssh/bandit/bandit13.private.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key &quot;/Users/taka/.ssh/bandit/bandit13.private.pem&quot;: bad permissions
+</code></pre><p>これは秘密鍵のパーミッションが広すぎる警告です。秘密鍵のパーミッションは<code>600</code>にする必要があるので、<code>chmod</code>で直しました。</p>
+<p>ひっかけポイントとしては、ここではパスワードを取得できたら成功で、次のレベルに行きます。このパスワードで<code>ssh -l bandit15 -p 2220 bandit.labs.overthewire.org</code>しても上手くいかなかったです。これに気づくのに時間をくった。</p>
+<h2 id="level15">Level15</h2>
 <h3 id="goal-1">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in the file data.txt, which contains base64 encoded data</p>
+<p>The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.</p>
 </blockquote>
-<ul>
-<li>パスワードはdata.txtにある</li>
-<li>そのファイルはbase64でエンコードされている</li>
-</ul>
 <h3 id="resolve-1">resolve</h3>
-<pre><code>bandit10@bandit:~$ base64 -d data.txt 
-The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
-bandit10@bandit:~$ exit
+<pre><code>bandit14@bandit:~$ nc localhost 30000
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+bandit14@bandit:~$ exit
 
-# 以下はローカル
-❯❯❯ ssh -l bandit11 -p 2220 bandit.labs.overthewire.org
+# 以下はローカルで
+❯❯❯ ssh -l bandit15 -p 2220 bandit.labs.overthewire.org
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit11@bandit.labs.overthewire.org's password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+bandit15@bandit.labs.overthewire.org's password: BfMYroe26WYalil77FoDi9qh59eK5xNr
 </code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
-<p><code>Commands you may need to solve this level</code>に<code>base64</code>コマンドがあるからきっとそれだろうと当たりをつけました。<code>man base64</code>でデコードするオプションを調べて終わりです。</p>
-<h2 id="level-12">Level 12</h2>
-<h3 id="goal-2">Goal</h3>
-<blockquote>
-<p>The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</p>
-</blockquote>
-<ul>
-<li>パスワードはdata.txtにある</li>
-<li>大文字小文字がそれぞれ13個分ずらされている</li>
-</ul>
-<h3 id="resolve-2">resolve</h3>
-<pre><code>bandit11@bandit:~$ cat data.txt | tr A-Za-z N-ZA-Mn-za-m
-The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
-bandit11@bandit:~$ exit
+<p>Goalの<code>by submitting the password</code>の意味をずっと考えていました。30000ポートに入力ってどう言う意味だこれ？</p>
+<p>とりあえず、足掛かりがほしくて、<code>Commands you may need to solve this level</code>にある接続系のコマンドを調べてました(<code>ssh</code>, <code>telnet</code>, <code>nc</code>・・・)</p>
+<p>そして<code>nc</code>コマンドに行きつきました。<code>nc</code>は簡易的なサーバにも、サーバに接続もできるクライアントの役割もできるコマンドのようです。最初、何も表示されないのが怖かったのですが、パスワードを入れたら反応が返ってきました。返ってきてよかったぁ。</p>
+<p>後で調べてみましたが、<code>telnet</code>でもできました。</p>
+<pre><code>bandit14@bandit:~$ telnet localhost 30000
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
 
-❯❯❯ ssh -l bandit12 -p 2220 bandit.labs.overthewire.org
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
-
-bandit12@bandit.labs.overthewire.org's password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
-</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
-<p>問題文を読んで、これはきっとシーザー暗号ような形式になっているのかなと。<code>cat data.txt</code>してみるとQ.E.D</p>
-<pre><code>bandit11@bandit:~$ cat data.txt 
-Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
-</code></pre><p>おそらく<code>The password is hogehoge</code>のような形式になることはお見通し。問題はその形式に直すコマンドを知らないこと。</p>
-<p><code>シーザー暗号 linuxコマンド</code>で検索すると<code>tr</code>コマンドを使ったものがいくつかヒットした。
-そして文字を13文字ずらす方式のことを<code>ROT13</code>というらしい。</p>
-<p>最終的には以下に解法が載ってました.。</p>
-<ul>
-<li><a class="link" href="https://en.wikipedia.org/wiki/ROT13"  target="_blank" rel="noopener"
-    >ROT13</a></li>
-</ul>
-<p><code>tr</code>は文字の置換をするコマンドですが、<code>A-Za-z N-ZA-Mn-za-m</code>の意味がわからなかったのでした。少し見方を変えて、置換前と置換後の文字のマッピングであると捉えれば腑に落ちました。</p>
-<pre><code># 以下のコマンドは同じことをしている
-$ tr A-Za-z N-ZA-Mn-za-m
-$ tr ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm
-</code></pre><p>AはNにVはIに置換されるということです</p>
-<h2 id="今日はおしまい">今日はおしまい</h2>
-<p>英語が弱いのでDeepLでがんばりましょう。</p>
+Connection closed by foreign host.
+</code></pre><h2 id="今日はおしまい">今日はおしまい</h2>
+<p>Levelが上がるごとに知らない知識が増えてきて、考える時間が増えています。その考える時間が最近は楽しいです。sshの秘密鍵なんかはお仕事でも何度か出てきたので、次からは迷わずに済みそうです。</p>
+<p>全然関係ないですが、“Done is better than perfect.”と言う言葉が好きなので、近々ブログ名をこれに変更するつもりです。</p>
 
 </section>
 
@@ -378,24 +336,24 @@ $ tr ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz NOPQRSTUVWXYZABCDEFGHI
                 
                     
 <article class="">
-    <a href="/post/over-the-wire/bandit/level14/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level14</h2>
-        </div>
-    </a>
-</article>
-                
-                    
-<article class="">
     <a href="/post/over-the-wire/bandit/level13/">
         
         
 
         <div class="article-details">
             <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level13</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level10-12/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level10〜12</h2>
         </div>
     </a>
 </article>
