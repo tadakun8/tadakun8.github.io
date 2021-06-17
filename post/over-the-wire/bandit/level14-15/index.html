@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
-  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.'><title>【OverTheWire奮闘記】Bandit: Level13</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level14 Goal  The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+  パスワードは/etc/bandit_pass/bandit14にある bandit14ユーザでしかみることはできない このレベルではbandit14ユーザでSSHできるプライベートkeyを手に入れることができる  resolve bandit13@bandit:~$ cat sshkey.'><title>【OverTheWire奮闘記】Bandit: Level14〜15</title>
 
-<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level13/'>
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level14-15/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level13'>
-<meta property='og:description' content='Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
-  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.'>
-<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level13/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level14〜15'>
+<meta property='og:description' content='Level14 Goal  The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+  パスワードは/etc/bandit_pass/bandit14にある bandit14ユーザでしかみることはできない このレベルではbandit14ユーザでSSHできるプライベートkeyを手に入れることができる  resolve bandit13@bandit:~$ cat sshkey.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level14-15/'>
 <meta property='og:site_name' content='ただくんぶろぐ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-16T22:58:34&#43;09:00'/><meta property='article:modified_time' content='2021-06-16T22:58:34&#43;09:00'/>
-<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level13">
-<meta name="twitter:description" content="Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
-  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-17T14:04:21&#43;09:00'/><meta property='article:modified_time' content='2021-06-17T14:04:21&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level14〜15">
+<meta name="twitter:description" content="Level14 Goal  The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+  パスワードは/etc/bandit_pass/bandit14にある bandit14ユーザでしかみることはできない このレベルではbandit14ユーザでSSHできるプライベートkeyを手に入れることができる  resolve bandit13@bandit:~$ cat sshkey.">
     </head>
     <body class="">
     <script>
@@ -199,7 +199,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/over-the-wire/bandit/level13/">【OverTheWire奮闘記】Bandit: Level13</a>
+        <a href="/post/over-the-wire/bandit/level14-15/">【OverTheWire奮闘記】Bandit: Level14〜15</a>
     </h2>
 
     <footer class="article-time">
@@ -211,133 +211,110 @@
 
 
 
-        <time class="article-time--published">2021-06-16</time>
+        <time class="article-time--published">2021-06-17</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <h2 id="level-13">Level 13</h2>
+    <h2 id="level14">Level14</h2>
 <h3 id="goal">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)</p>
+<p>The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on</p>
 </blockquote>
 <ul>
-<li>パスワードはdata.txtにある</li>
-<li><del>data.txtは何回もhexdumpされている</del></li>
-<li>data.txtはhexdumpファイルであり、何回も圧縮されている</li>
+<li>パスワードは<code>/etc/bandit_pass/bandit14</code>にある</li>
+<li><code>bandit14</code>ユーザでしかみることはできない</li>
+<li>このレベルでは<code>bandit14</code>ユーザでSSHできるプライベートkeyを手に入れることができる</li>
 </ul>
 <h3 id="resolve">resolve</h3>
-<pre><code>bandit12@bandit:~$ mkdir /tmp/mydir
-bandit12@bandit:~$ cp data.txt /tmp/mydir
-bandit12@bandit:~$ cd /tmp/mydir
-bandit12@bandit:/tmp/mydir$ xxd -r data.txt | gzip -d &gt; data.decompress.txt
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt 
-data.decompress.txt: bzip2 compressed data, block size = 900k
-bandit12@bandit:/tmp/mydir$ mv data.decompress.txt data.decompress.txt.bz
-bandit12@bandit:/tmp/mydir$ bzip2 -d data.decompress.txt.bz
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt
-data.decompress.txt: gzip compressed data, was &quot;data4.bin&quot;, last modified: Thu May  7 18:14:30 2020, max compression, from Unix
-bandit12@bandit:/tmp/mydir$ mv data.decompress.txt data.decompress.txt.gz
-bandit12@bandit:/tmp/mydir$ gzip -d data.decompress.txt.gz 
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt
-data.decompress.txt: POSIX tar archive (GNU)
-bandit12@bandit:/tmp/mydir$ tar -xvf data.decompress.txt
-data5.bin
-bandit12@bandit:/tmp/mydir$ file data5.bin
-data5.bin: POSIX tar archive (GNU)
-bandit12@bandit:/tmp/mydir$ tar -xvf data5.bin
-data6.bin
-bandit12@bandit:/tmp/mydir$ file data6.bin 
-data6.bin: bzip2 compressed data, block size = 900k
-bandit12@bandit:/tmp/mydir$ bzip2 -d data6.bin.bz 
-data5.bin  data6.bin  data.decompress.txt  data.decompress.txt.out  data.txt
-bandit12@bandit:/tmp/mydir$ file data6.bin
-data6.bin: POSIX tar archive (GNU)
-bandit12@bandit:/tmp/mydir$ tar -xvf data6.bin
-data8.bin
-bandit12@bandit:/tmp/mydir$ file data8.bin
-data8.bin: gzip compressed data, was &quot;data9.bin&quot;, last modified: Thu May  7 18:14:30 2020, max compression, from Unix
-bandit12@bandit:/tmp/mydir$ file data8.bin
-data8.bin: ASCII text
-bandit12@bandit:/tmp/mydir$ cat data8.bin 
-The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
-bandit12@bandit:/tmp/mydir$ exit
+<pre><code>bandit13@bandit:~$ cat sshkey.private 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAxkkOE83W2cOT7IWhFc9aPaaQmQDdgzuXCv+ppZHa++buSkN+
+gg0tcr7Fw8NLGa5+Uzec2rEg0WmeevB13AIoYp0MZyETq46t+jk9puNwZwIt9XgB
+ZufGtZEwWbFWw/vVLNwOXBe4UWStGRWzgPpEeSv5Tb1VjLZIBdGphTIK22Amz6Zb
+ThMsiMnyJafEwJ/T8PQO3myS91vUHEuoOMAzoUID4kN0MEZ3+XahyK0HJVq68KsV
+ObefXG1vvA3GAJ29kxJaqvRfgYnqZryWN7w3CHjNU4c/2Jkp+n8L0SnxaNA+WYA7
+jiPyTF0is8uzMlYQ4l1Lzh/8/MpvhCQF8r22dwIDAQABAoIBAQC6dWBjhyEOzjeA
+J3j/RWmap9M5zfJ/wb2bfidNpwbB8rsJ4sZIDZQ7XuIh4LfygoAQSS+bBw3RXvzE
+pvJt3SmU8hIDuLsCjL1VnBY5pY7Bju8g8aR/3FyjyNAqx/TLfzlLYfOu7i9Jet67
+xAh0tONG/u8FB5I3LAI2Vp6OviwvdWeC4nOxCthldpuPKNLA8rmMMVRTKQ+7T2VS
+nXmwYckKUcUgzoVSpiNZaS0zUDypdpy2+tRH3MQa5kqN1YKjvF8RC47woOYCktsD
+o3FFpGNFec9Taa3Msy+DfQQhHKZFKIL3bJDONtmrVvtYK40/yeU4aZ/HA2DQzwhe
+ol1AfiEhAoGBAOnVjosBkm7sblK+n4IEwPxs8sOmhPnTDUy5WGrpSCrXOmsVIBUf
+laL3ZGLx3xCIwtCnEucB9DvN2HZkupc/h6hTKUYLqXuyLD8njTrbRhLgbC9QrKrS
+M1F2fSTxVqPtZDlDMwjNR04xHA/fKh8bXXyTMqOHNJTHHNhbh3McdURjAoGBANkU
+1hqfnw7+aXncJ9bjysr1ZWbqOE5Nd8AFgfwaKuGTTVX2NsUQnCMWdOp+wFak40JH
+PKWkJNdBG+ex0H9JNQsTK3X5PBMAS8AfX0GrKeuwKWA6erytVTqjOfLYcdp5+z9s
+8DtVCxDuVsM+i4X8UqIGOlvGbtKEVokHPFXP1q/dAoGAcHg5YX7WEehCgCYTzpO+
+xysX8ScM2qS6xuZ3MqUWAxUWkh7NGZvhe0sGy9iOdANzwKw7mUUFViaCMR/t54W1
+GC83sOs3D7n5Mj8x3NdO8xFit7dT9a245TvaoYQ7KgmqpSg/ScKCw4c3eiLava+J
+3btnJeSIU+8ZXq9XjPRpKwUCgYA7z6LiOQKxNeXH3qHXcnHok855maUj5fJNpPbY
+iDkyZ8ySF8GlcFsky8Yw6fWCqfG3zDrohJ5l9JmEsBh7SadkwsZhvecQcS9t4vby
+9/8X4jS0P8ibfcKS4nBP+dT81kkkg5Z5MohXBORA7VWx+ACohcDEkprsQ+w32xeD
+qT1EvQKBgQDKm8ws2ByvSUVs9GjTilCajFqLJ0eVYzRPaY6f++Gv/UVfAPV4c+S0
+kAWpXbv5tbkkzbS0eaLPTKgLzavXtQoTtKwrjpolHKIHUz6Wu+n4abfAIRFubOdN
+/+aLoRQ0yBDRbdXMsZN/jvY44eM+xRLdRVyMmdPtP8belRi2E2aEzA==
+-----END RSA PRIVATE KEY-----
+bandit13@bandit:~$ exit
 
-# 以下ローカルで
-❯❯❯ ssh -l bandit13 -p 2220 bandit.labs.overthewire.org
+# 以下はローカルで
+$ touch ~/.ssh/bandit/bandit13.private.pem
+$ vim ~/.ssh/bandit/bandit13.private.pem # $cat sshkey.private の結果を貼り付ける
+$ chmod 600 ~/.ssh/bandit/bandit13.private.pem
+$ ssh -i ~/.ssh/bandit/bandit13.private.pem -l bandit14 -p 2220 bandit.labs.overthewire.org
+
+bandit14@bandit:~$ cat /etc/bandit_pass/bandit14 
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>「次のレベルのパスワードはファイルに保存してあるよ、でもこのレベルでは次のレベルのパスワードは手に入れることができないよ」という英語の罠にハマっていました。</p>
+<p>哲学していても仕方ないので、<code>ls</code>、<code>cat</code>すると問題文通り秘密鍵が出てきました。おそらくこれを使って<code>bandit14</code>で<code>ssh</code>し直すのかなとあたりをつけました。</p>
+<p>秘密鍵をローカルに登録するしたあとに以下のエラー文が表示されました</p>
+<pre><code>$ ssh -i ~/.ssh/bandit/bandit13.private.pem -l bandit14 -p 2220 bandit.labs.overthewire.org                         ?[master]
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit13@bandit.labs.overthewire.org's password: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
-</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
-<h4 id="異次元の世界へようこそ">異次元の世界へようこそ</h4>
-<p>いつものように<code>cat data.txt</code>しましたが</p>
-<pre><code>bandit12@bandit:~$ cat data.txt 
-00000000: 1f8b 0808 0650 b45e 0203 6461 7461 322e  .....P.^..data2.
-00000010: 6269 6e00 013d 02c2 fd42 5a68 3931 4159  bin..=...BZh91AY
-00000020: 2653 598e 4f1c c800 001e 7fff fbf9 7fda  &amp;SY.O...........
-00000030: 9e7f 4f76 9fcf fe7d 3fff f67d abde 5e9f  ..Ov...}?..}..^.
-00000040: f3fe 9fbf f6f1 feee bfdf a3ff b001 3b1b  ..............;.
-00000050: 5481 a1a0 1ea0 1a34 d0d0 001a 68d3 4683  T......4....h.F.
-00000060: 4680 0680 0034 1918 4c4d 190c 4000 0001  F....4..LM..@...
-00000070: a000 c87a 81a3 464d a8d3 43c5 1068 0346  ...z..FM..C..h.F
-.
-.
-.
-
-</code></pre><p>うーん、わからん！</p>
-<p>今まで見たことない形式でした。<code>cat data.txt</code>で異次元の扉を開けたようです。</p>
-<h4 id="hexdumpとは16進数ダンプのこと">hexdumpとは16進数ダンプのこと！</h4>
-<p>そこから離れて、Goalにある<code>hexdump</code>とは何かを調べました。16進数ダンプのことでした。そこを手がかりに<code>hexdump</code>コマンドを調べていくうちに、data.txtの右側にある文字はASCII文字だとわかりました。・</p>
-<p>・・・だからなんだっていうんだ。これは糸口になりそうにないです。</p>
-<h4 id="ぐるぐるたいむ">ぐるぐるたいむ</h4>
-<p>それに、Goalの<code>which is a hexdump of a file that has been repeatedly compressed.</code>というところが気になってました。hexdumpコマンドを何回も叩いて圧縮されたのか？とか色々考えてぐるぐるしてました。</p>
-<p>その途中、30分ぐらいずっと<code>hexdump 復元</code>とかで調べてました。<code>xxd</code>コマンドとの出会いはそのときです。</p>
-<p><code>xdd</code>は<code>hexdump</code>と似ていて、どちらも16進数ダンプできるコマンドですが、<code>xdd </code>は<code>-r</code>でダンプされたものを元に戻すということもできます。そのときは、<code>xdd -r data.txt</code>としても手がかりはつかめなかったのでスルーしていました。</p>
-<p>また、<code>Commands you may need to solve this level</code>にある<code>file</code>コマンドで<code>file data.txt</code>をしても</p>
-<pre><code>bandit12@bandit:~$ file data.txt 
-data.txt: ASCII text
-</code></pre><p>普通のテキストファイルだったので、打つ手がなくなってきました。</p>
-<h4 id="光が見えてきた">光が見えてきた</h4>
-<p>ふと、<code>which is a hexdump of a file that has been repeatedly compressed.</code>の<code>compressed</code>って圧縮だよな？圧縮ってzipとかかなぁと思って<code>16進数 ダンプ 圧縮</code>で検索したらようやく糸口を見つけました。</p>
-<ul>
-<li><a class="link" href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11156143746"  target="_blank" rel="noopener"
-    >暗号の解き方教えて下さい</a></li>
-</ul>
-<p>このサイトに</p>
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0755 for '/Users/taka/.ssh/bandit/bandit13.private.pem' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key &quot;/Users/taka/.ssh/bandit/bandit13.private.pem&quot;: bad permissions
+</code></pre><p>これは秘密鍵のパーミッションが広すぎる警告です。秘密鍵のパーミッションは<code>600</code>にする必要があるので、<code>chmod</code>で直しました。</p>
+<p>ひっかけポイントとしては、ここではパスワードを取得できたら成功で、次のレベルに行きます。このパスワードで<code>ssh -l bandit15 -p 2220 bandit.labs.overthewire.org</code>しても上手くいかなかったです。これに気づくのに時間をくった。</p>
+<h2 id="level15">Level15</h2>
+<h3 id="goal-1">Goal</h3>
 <blockquote>
-<p>1f8bで始まっているのでgzip圧縮されたファイルのヘックスダンプと予想されます</p>
+<p>The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.</p>
 </blockquote>
-<p>そういえば、data.txtも<code>1f8b</code>で始まっている！つまり、data.txtはgzipで圧縮されたファイルなのか！？でも<code>file data.txt</code>での結果はテキストファイルっていう結果だったしな・・・</p>
-<p>・・・data.txt自体はテキストファイルだけど、その中身がgzipで圧縮されているのかもと気づいたときに繋がりました。実際に確かめてみると</p>
-<pre><code>bandit12@bandit:/tmp/mydir$ xxd -r data.txt | gzip -d &gt; data.decompress.txt
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt 
-data.decompress.txt: bzip2 compressed data, block size = 900k
-</code></pre><p>予想はあってました</p>
-<p>あとはファイルの形式に従ってbzip2やtar、gzipで展開していけばパスワードが取得できました。</p>
-<h4 id="展開に使ったコマンド">展開に使ったコマンド</h4>
-<ul>
-<li>bzip
-<ul>
-<li><code>-d</code> : 展開する</li>
-<li>パイプからの標準入力も受け付けることができる</li>
-</ul>
-</li>
-<li>tar
-<ul>
-<li><code>-v</code> : 処理したファイルを一覧表示する</li>
-<li><code>-x</code> : 展開する</li>
-<li><code>-f</code> : アーカイブファイルを指定する</li>
-</ul>
-</li>
-<li>gzip
-<ul>
-<li><code>-d</code> : 展開する</li>
-<li>パイプからの標準入力も受け付けることができる</li>
-</ul>
-</li>
-</ul>
-<h2 id="今日はおしまい">今日はおしまい</h2>
-<p>Level13、かなりの難敵でした。<code>cat</code>しても「&hellip;で？」っていう状態からのスタートだったのはきつかったです。特に、<code>1f8b</code>がgzip形式のファイルだと気づくのに時間がかかりました。ダンプされたファイルの初めは意味がわからなくても検索した方がいいと教訓を得ました。</p>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit14@bandit:~$ nc localhost 30000
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+bandit14@bandit:~$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit15 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit15@bandit.labs.overthewire.org's password: BfMYroe26WYalil77FoDi9qh59eK5xNr
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p>Goalの<code>by submitting the password</code>の意味をずっと考えていました。30000ポートに入力ってどう言う意味だこれ？</p>
+<p>とりあえず、足掛かりがほしくて、<code>Commands you may need to solve this level</code>にある接続系のコマンドを調べてました(<code>ssh</code>, <code>telnet</code>, <code>nc</code>・・・)</p>
+<p>そして<code>nc</code>コマンドに行きつきました。<code>nc</code>は簡易的なサーバにも、サーバに接続もできるクライアントの役割もできるコマンドのようです。最初、何も表示されないのが怖かったのですが、パスワードを入れたら反応が返ってきました。返ってきてよかったぁ。</p>
+<p>後で調べてみましたが、<code>telnet</code>でもできました。</p>
+<pre><code>bandit14@bandit:~$ telnet localhost 30000
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+Connection closed by foreign host.
+</code></pre><h2 id="今日はおしまい">今日はおしまい</h2>
+<p>Levelが上がるごとに知らない知識が増えてきて、考える時間が増えています。その考える時間が最近は楽しいです。sshの秘密鍵なんかはお仕事でも何度か出てきたので、次からは迷わずに済みそうです。</p>
+<p>全然関係ないですが、“Done is better than perfect.”と言う言葉が好きなので、近々ブログ名をこれに変更するつもりです。</p>
 
 </section>
 
@@ -359,12 +336,12 @@ data.decompress.txt: bzip2 compressed data, block size = 900k
                 
                     
 <article class="">
-    <a href="/post/over-the-wire/bandit/level14-15/">
+    <a href="/post/over-the-wire/bandit/level13/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level14〜15</h2>
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level13</h2>
         </div>
     </a>
 </article>
