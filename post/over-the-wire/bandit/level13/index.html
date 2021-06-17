@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.'><title>【OverTheWire奮闘記】Bandit: Level10〜12</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.'><title>【OverTheWire奮闘記】Bandit: Level13</title>
 
-<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/'>
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level13/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level10〜12'>
-<meta property='og:description' content='Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.'>
-<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level10-12/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level13'>
+<meta property='og:description' content='Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level13/'>
 <meta property='og:site_name' content='ただくんぶろぐ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-16T19:30:01&#43;09:00'/><meta property='article:modified_time' content='2021-06-16T19:30:01&#43;09:00'/>
-<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level10〜12">
-<meta name="twitter:description" content="Level 10 Goal  The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
-  パスワードはdata.txtの中にある 人間に読める形式で、いくつかの&amp;quot;=&amp;ldquo;という文字列が前にある  resolve bandit9@bandit:~$ strings data.txt | grep &#39;===&#39; ========== the*2i&amp;quot;4 ========== password Z)========== is &amp;amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk bandit9@bandit:~$ exit # 以下はローカル $ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit10@bandit.labs.overthewire.org&#39;s password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk resolveまでにやったこと とりあえずcat data.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-16T22:58:34&#43;09:00'/><meta property='article:modified_time' content='2021-06-16T22:58:34&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level13">
+<meta name="twitter:description" content="Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.">
     </head>
     <body class="">
     <script>
@@ -199,7 +199,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/over-the-wire/bandit/level10-12/">【OverTheWire奮闘記】Bandit: Level10〜12</a>
+        <a href="/post/over-the-wire/bandit/level13/">【OverTheWire奮闘記】Bandit: Level13</a>
     </h2>
 
     <footer class="article-time">
@@ -216,147 +216,129 @@
 </header>
 
     <section class="article-content">
-    <h2 id="level-10">Level 10</h2>
+    <h2 id="level-13">Level 13</h2>
 <h3 id="goal">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.</p>
+<p>The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)</p>
 </blockquote>
 <ul>
-<li>パスワードはdata.txtの中にある</li>
-<li>人間に読める形式で、いくつかの&quot;=&ldquo;という文字列が前にある</li>
+<li>パスワードはdata.txtにある</li>
+<li><del>data.txtは何回もhexdumpされている</del></li>
+<li>data.txtはhexdumpファイルであり、何回も圧縮されている</li>
 </ul>
 <h3 id="resolve">resolve</h3>
-<pre><code>bandit9@bandit:~$ strings data.txt | grep '==='
-========== the*2i&quot;4
-========== password
-Z)========== is
-&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-bandit9@bandit:~$ exit
+<pre><code>bandit12@bandit:~$ mkdir /tmp/mydir
+bandit12@bandit:~$ cp data.txt /tmp/mydir
+bandit12@bandit:~$ cd /tmp/mydir
+bandit12@bandit:/tmp/mydir$ xxd -r data.txt | gzip -d &gt; data.decompress.txt
+bandit12@bandit:/tmp/mydir$ file data.decompress.txt 
+data.decompress.txt: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/mydir$ mv data.decompress.txt data.decompress.txt.bz
+bandit12@bandit:/tmp/mydir$ bzip2 -d data.decompress.txt.bz
+bandit12@bandit:/tmp/mydir$ file data.decompress.txt
+data.decompress.txt: gzip compressed data, was &quot;data4.bin&quot;, last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+bandit12@bandit:/tmp/mydir$ mv data.decompress.txt data.decompress.txt.gz
+bandit12@bandit:/tmp/mydir$ gzip -d data.decompress.txt.gz 
+bandit12@bandit:/tmp/mydir$ file data.decompress.txt
+data.decompress.txt: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/mydir$ tar -xvf data.decompress.txt
+data5.bin
+bandit12@bandit:/tmp/mydir$ file data5.bin
+data5.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/mydir$ tar -xvf data5.bin
+data6.bin
+bandit12@bandit:/tmp/mydir$ file data6.bin 
+data6.bin: bzip2 compressed data, block size = 900k
+bandit12@bandit:/tmp/mydir$ bzip2 -d data6.bin.bz 
+data5.bin  data6.bin  data.decompress.txt  data.decompress.txt.out  data.txt
+bandit12@bandit:/tmp/mydir$ file data6.bin
+data6.bin: POSIX tar archive (GNU)
+bandit12@bandit:/tmp/mydir$ tar -xvf data6.bin
+data8.bin
+bandit12@bandit:/tmp/mydir$ file data8.bin
+data8.bin: gzip compressed data, was &quot;data9.bin&quot;, last modified: Thu May  7 18:14:30 2020, max compression, from Unix
+bandit12@bandit:/tmp/mydir$ file data8.bin
+data8.bin: ASCII text
+bandit12@bandit:/tmp/mydir$ cat data8.bin 
+The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+bandit12@bandit:/tmp/mydir$ exit
 
-# 以下はローカル
-$ ssh -l bandit10 -p 2220 bandit.labs.overthewire.org
+# 以下ローカルで
+❯❯❯ ssh -l bandit13 -p 2220 bandit.labs.overthewire.org
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
-bandit10@bandit.labs.overthewire.org's password: truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+bandit13@bandit.labs.overthewire.org's password: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 </code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
-<p>とりあえず<code>cat data.txt</code>してみて意味のわからん文字列であることはわかりました。前に'=&lsquo;がついているとのことなので、<code>grep '=' data.txt</code>してみると</p>
-<pre><code>bandit9@bandit:~$ grep '=' data.txt
-Binary file (standard input) matches
-</code></pre><p>うーんと思っていると、問題文下の<code>Commands you may need to solve this level</code>に<code>strings</code>という文字が目に入ってきました。これどんなコマンドなんだろうと思って試してみると</p>
-<pre><code>andit9@bandit:~$ strings data.txt 
+<h4 id="異次元の世界へようこそ">異次元の世界へようこそ</h4>
+<p>いつものように<code>cat data.txt</code>しましたが</p>
+<pre><code>bandit12@bandit:~$ cat data.txt 
+00000000: 1f8b 0808 0650 b45e 0203 6461 7461 322e  .....P.^..data2.
+00000010: 6269 6e00 013d 02c2 fd42 5a68 3931 4159  bin..=...BZh91AY
+00000020: 2653 598e 4f1c c800 001e 7fff fbf9 7fda  &amp;SY.O...........
+00000030: 9e7f 4f76 9fcf fe7d 3fff f67d abde 5e9f  ..Ov...}?..}..^.
+00000040: f3fe 9fbf f6f1 feee bfdf a3ff b001 3b1b  ..............;.
+00000050: 5481 a1a0 1ea0 1a34 d0d0 001a 68d3 4683  T......4....h.F.
+00000060: 4680 0680 0034 1918 4c4d 190c 4000 0001  F....4..LM..@...
+00000070: a000 c87a 81a3 464d a8d3 43c5 1068 0346  ...z..FM..C..h.F
 .
 .
 .
 
-blsN
-~U^y
-x@nQ
-*SF=s
-}1:LF
-]vur
-Emlld
-&amp;========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
-_Gmz
-\Uli,
-A5RK
-S'$0
-&lt;4t&quot;,
-4cXO
-cj13c:?
-&amp;Yra
-zEwa
-b2+x
-z`tlR
-o|8M]
-.p4Hv
-)z&lt;p
-S=A.H&amp;^
-#hu#
-&quot;C}Jy
-0R@R_
-~KW?
-b#Nzx$b
-RlG#t]Z}
-e790
-JzV1O
-XEgp
-2Q d
-z#j\
-1Qit
-a'b~
-bxBB\u$
-8Zpc    $FOxF[
-ANYwPCpk
-Xk]E
-bh}s
-P'uP
-\-A:
-sCtY
-Z/1x+
-ej8z
-P&quot;`\XZ
-1KOA
-</code></pre><p>なんかぽいのが出てきた！</p>
-<p>stringsコマンドはバイナリファイルから可読部分を表示できるコマンドのようです。これが問題文の<code>human-readable</code>につながるわけです。</p>
-<p>あとはこの結果を<code>=</code>で<code>grep</code>すれば出てきました！</p>
-<h2 id="level-11">Level 11</h2>
-<h3 id="goal-1">Goal</h3>
+</code></pre><p>うーん、わからん！</p>
+<p>今まで見たことない形式でした。<code>cat data.txt</code>で異次元の扉を開けたようです。</p>
+<h4 id="hexdumpとは16進数ダンプのこと">hexdumpとは16進数ダンプのこと！</h4>
+<p>そこから離れて、Goalにある<code>hexdump</code>とは何かを調べました。16進数ダンプのことでした。そこを手がかりに<code>hexdump</code>コマンドを調べていくうちに、data.txtの右側にある文字はASCII文字だとわかりました。・</p>
+<p>・・・だからなんだっていうんだ。これは糸口になりそうにないです。</p>
+<h4 id="ぐるぐるたいむ">ぐるぐるたいむ</h4>
+<p>それに、Goalの<code>which is a hexdump of a file that has been repeatedly compressed.</code>というところが気になってました。hexdumpコマンドを何回も叩いて圧縮されたのか？とか色々考えてぐるぐるしてました。</p>
+<p>その途中、30分ぐらいずっと<code>hexdump 復元</code>とかで調べてました。<code>xxd</code>コマンドとの出会いはそのときです。</p>
+<p><code>xdd</code>は<code>hexdump</code>と似ていて、どちらも16進数ダンプできるコマンドですが、<code>xdd </code>は<code>-r</code>でダンプされたものを元に戻すということもできます。そのときは、<code>xdd -r data.txt</code>としても手がかりはつかめなかったのでスルーしていました。</p>
+<p>また、<code>Commands you may need to solve this level</code>にある<code>file</code>コマンドで<code>file data.txt</code>をしても</p>
+<pre><code>bandit12@bandit:~$ file data.txt 
+data.txt: ASCII text
+</code></pre><p>普通のテキストファイルだったので、打つ手がなくなってきました。</p>
+<h4 id="光が見えてきた">光が見えてきた</h4>
+<p>ふと、<code>which is a hexdump of a file that has been repeatedly compressed.</code>の<code>compressed</code>って圧縮だよな？圧縮ってzipとかかなぁと思って<code>16進数 ダンプ 圧縮</code>で検索したらようやく糸口を見つけました。</p>
+<ul>
+<li><a class="link" href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11156143746"  target="_blank" rel="noopener"
+    >暗号の解き方教えて下さい</a></li>
+</ul>
+<p>このサイトに</p>
 <blockquote>
-<p>The password for the next level is stored in the file data.txt, which contains base64 encoded data</p>
+<p>1f8bで始まっているのでgzip圧縮されたファイルのヘックスダンプと予想されます</p>
 </blockquote>
+<p>そういえば、data.txtも<code>1f8b</code>で始まっている！つまり、data.txtはgzipで圧縮されたファイルなのか！？でも<code>file data.txt</code>での結果はテキストファイルっていう結果だったしな・・・</p>
+<p>・・・data.txt自体はテキストファイルだけど、その中身がgzipで圧縮されているのかもと気づいたときに繋がりました。実際に確かめてみると</p>
+<pre><code>bandit12@bandit:/tmp/mydir$ xxd -r data.txt | gzip -d &gt; data.decompress.txt
+bandit12@bandit:/tmp/mydir$ file data.decompress.txt 
+data.decompress.txt: bzip2 compressed data, block size = 900k
+</code></pre><p>予想はあってました</p>
+<p>あとはファイルの形式に従ってbzip2やtar、gzipで展開していけばパスワードが取得できました。</p>
+<h4 id="展開に使ったコマンド">展開に使ったコマンド</h4>
 <ul>
-<li>パスワードはdata.txtにある</li>
-<li>そのファイルはbase64でエンコードされている</li>
-</ul>
-<h3 id="resolve-1">resolve</h3>
-<pre><code>bandit10@bandit:~$ base64 -d data.txt 
-The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
-bandit10@bandit:~$ exit
-
-# 以下はローカル
-❯❯❯ ssh -l bandit11 -p 2220 bandit.labs.overthewire.org
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
-
-bandit11@bandit.labs.overthewire.org's password: IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
-</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
-<p><code>Commands you may need to solve this level</code>に<code>base64</code>コマンドがあるからきっとそれだろうと当たりをつけました。<code>man base64</code>でデコードするオプションを調べて終わりです。</p>
-<h2 id="level-12">Level 12</h2>
-<h3 id="goal-2">Goal</h3>
-<blockquote>
-<p>The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</p>
-</blockquote>
+<li>bzip
 <ul>
-<li>パスワードはdata.txtにある</li>
-<li>大文字小文字がそれぞれ13個分ずらされている</li>
+<li><code>-d</code> : 展開する</li>
+<li>パイプからの標準入力も受け付けることができる</li>
 </ul>
-<h3 id="resolve-2">resolve</h3>
-<pre><code>bandit11@bandit:~$ cat data.txt | tr A-Za-z N-ZA-Mn-za-m
-The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
-bandit11@bandit:~$ exit
-
-❯❯❯ ssh -l bandit12 -p 2220 bandit.labs.overthewire.org
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
-
-bandit12@bandit.labs.overthewire.org's password: 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
-</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
-<p>問題文を読んで、これはきっとシーザー暗号ような形式になっているのかなと。<code>cat data.txt</code>してみるとQ.E.D</p>
-<pre><code>bandit11@bandit:~$ cat data.txt 
-Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
-</code></pre><p>おそらく<code>The password is hogehoge</code>のような形式になることはお見通し。問題はその形式に直すコマンドを知らないこと。</p>
-<p><code>シーザー暗号 linuxコマンド</code>で検索すると<code>tr</code>コマンドを使ったものがいくつかヒットした。
-そして文字を13文字ずらす方式のことを<code>ROT13</code>というらしい。</p>
-<p>最終的には以下に解法が載ってました.。</p>
+</li>
+<li>tar
 <ul>
-<li><a class="link" href="https://en.wikipedia.org/wiki/ROT13"  target="_blank" rel="noopener"
-    >ROT13</a></li>
+<li><code>-v</code> : 処理したファイルを一覧表示する</li>
+<li><code>-x</code> : 展開する</li>
+<li><code>-f</code> : アーカイブファイルを指定する</li>
 </ul>
-<p><code>tr</code>は文字の置換をするコマンドですが、<code>A-Za-z N-ZA-Mn-za-m</code>の意味がわからなかったのでした。少し見方を変えて、置換前と置換後の文字のマッピングであると捉えれば腑に落ちました。</p>
-<pre><code># 以下のコマンドは同じことをしている
-$ tr A-Za-z N-ZA-Mn-za-m
-$ tr ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm
-</code></pre><p>AはNにVはIに置換されるということです</p>
+</li>
+<li>gzip
+<ul>
+<li><code>-d</code> : 展開する</li>
+<li>パイプらからの標準入力も受け付けることができる</li>
+</ul>
+</li>
+</ul>
 <h2 id="今日はおしまい">今日はおしまい</h2>
-<p>英語が弱いのでDeepLでがんばりましょう。</p>
+<p>Level13、かなりの難敵でした。<code>cat</code>しても「&hellip;で？」っていう状態からのスタートだったのはきつかったです。特に、<code>1f8b</code>がgzip形式のファイルだと気づくのに時間がかかりました。ダンプされたファイルの初めは意味がわからなくても検索した方がいいと教訓を得ました。</p>
+<p>この問題で結構鍛えられてたと思っていて、展開の仕方とかファイル形式の見極め方を知ることができたので非常に密度の濃い時間でした。</p>
 
 </section>
 
@@ -378,12 +360,12 @@ $ tr ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz NOPQRSTUVWXYZABCDEFGHI
                 
                     
 <article class="">
-    <a href="/post/over-the-wire/bandit/level13/">
+    <a href="/post/over-the-wire/bandit/level10-12/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level13</h2>
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level10〜12</h2>
         </div>
     </a>
 </article>
