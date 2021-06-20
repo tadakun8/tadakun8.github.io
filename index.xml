@@ -6,7 +6,150 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 20 Jun 2021 11:22:59 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 20 Jun 2021 15:24:42 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level19〜21</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level19-21/</link>
+        <pubDate>Sun, 20 Jun 2021 15:24:42 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level19-21/</guid>
+        <description>&lt;h2 id=&#34;level-19&#34;&gt;Level 19&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;パスワードは&lt;code&gt;readme&lt;/code&gt;ファイルにある&lt;/li&gt;
+&lt;li&gt;誰かが&lt;code&gt;.bashrc&lt;/code&gt;ファイルを修正し、SSHでログインするときにログアウトするように設定している&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# 以下はローカルで
+$ ssh -l bandit18 -p 2220 bandit.labs.overthewire.org cat readme
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org&#39;s password: 
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+$ 
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;ログインできないので、sshでコマンド実行ならいけるかと思い、実行してみたらいけました。半信半疑でしたが、sshでコマンド実行するだけなのでログイン扱いにはならないみたいです。&lt;/p&gt;
+&lt;h2 id=&#34;level-20&#34;&gt;Level 20&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;homeディレクトリにある&lt;code&gt;setuid&lt;/code&gt;を実行し、そのあと&lt;code&gt;/etc/bandit_pass&lt;/code&gt;からパスワードを取得する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+bandit19@bandit:~$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit20 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit20@bandit.labs.overthewire.org&#39;s password: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ls&lt;/code&gt;してみると&lt;code&gt;bandit20 do&lt;/code&gt;というファイルがあったので、これを実行すると使い方が表示されました&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit19@bandit:~$ ./bandit20-do 
+Run a command as another user.
+  Example: ./bandit20-do id
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;とりあえずExampleのようにしてみます。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit19@bandit:~$ ./bandit20-do id
+uid=11019(bandit19) gid=11019(bandit19) euid=11020(bandit20) groups=11019(bandit19)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;・・・これでいいのか？と不安を覚えながら&lt;code&gt;cat&lt;/code&gt;してみると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit19@bandit:~$ cat /etc/bandit_pass/bandit20
+cat: /etc/bandit_pass/bandit20: Permission denied`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;だめじゃん！&lt;/p&gt;
+&lt;p&gt;うーんと首を傾げながら考えてみると・・・&lt;code&gt;Example: ./bandit20-do id&lt;/code&gt;の&lt;code&gt;id&lt;/code&gt;はコマンドでは？ということに気づきました。ということで、&lt;code&gt;./bandit20-do cat /etc/bandit_bass/bandit20&lt;/code&gt;でパスワードを取得できました。&lt;/p&gt;
+&lt;h2 id=&#34;level-21&#34;&gt;Level 21&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+NOTE: Try connecting to your own network daemon to see if it works as you think&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;setuidバイナリを使用する&lt;/li&gt;
+&lt;li&gt;このバイナリはポート番号を引数にとる&lt;/li&gt;
+&lt;li&gt;テキストを読み取り、前のレベルのパスワードと比較し合っていたら次のパスワードを返す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit20@bandit:~$ echo &amp;quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&amp;quot; | nc -l localhost -p 61337 &amp;amp;
+[4] 2721
+bandit20@bandit:~$ ./suconnect 61337
+Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+Password matches, sending next password
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+[4]   Done                    echo &amp;quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&amp;quot; | nc -l localhost -p 61337
+bandit20@bandit:~$ exit
+
+# 以下はローカルで
+$ ssh -l bandit21 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit21@bandit.labs.overthewire.org&#39;s password: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;h4 id=&#34;まずはやってみる&#34;&gt;まずはやってみる&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;ls&lt;/code&gt;するとバイナリファイルがあったので、実行して見ると使い方が表示されました。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit20@bandit:~$ ./suconnect 
+Usage: ./suconnect &amp;lt;portnumber&amp;gt;
+This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;どうやら引数にポート番号を与えるようです。&lt;/p&gt;
+&lt;p&gt;問題文からポートが与えられていないので、&lt;code&gt;nmap&lt;/code&gt;でポートを受け付けているところを調べてみました。&lt;code&gt;nmap -p -&lt;/code&gt;で全てのポートをスキャンします。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit20@bandit:~$ nmap -p - localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2021-06-20 11:56 CEST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00024s latency).
+Not shown: 65525 closed ports
+PORT      STATE SERVICE
+22/tcp    open  ssh
+113/tcp   open  ident
+30000/tcp open  ndmps
+30001/tcp open  pago-services1
+30002/tcp open  pago-services2
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 4.00 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;色々出てきました。これにポート番号はこれらが候補です。なので、これらのポート番号を引数に&lt;code&gt;./suconnect&lt;/code&gt;を実行してみました。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit20@bandit:~$ ./suconnect 31046
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;・・・が、一向に成功しません。他のポートでも試してみましたができませんでした。&lt;/p&gt;
+&lt;h4 id=&#34;途方に暮れました&#34;&gt;途方に暮れました&lt;/h4&gt;
+&lt;p&gt;NOTEの&lt;code&gt;NOTE: Try connecting to your own network daemon to see if it works as you think&lt;/code&gt;をみて見ましたが、あまりよくわかりませんでした。このバイナリファイルをローカルにもってくればいいの！？あほな雑念が頭をよぎったまであります。&lt;code&gt;Commands you may need to solve this level&lt;/code&gt;を見てみてもこのコマンドなら出来そうという直感も働かず、ずぅぅぅっと悩んでみました。&lt;/p&gt;
+&lt;p&gt;そしてギブアップです。&lt;/p&gt;
+&lt;h4 id=&#34;解き方を整理してみる&#34;&gt;解き方を整理してみる&lt;/h4&gt;
+&lt;p&gt;この問題について調べてみると解法は以下のようです&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nc -l localhost -p 61337&lt;/code&gt;でlocalhostにサーバを立ち上げます。ポートの指定ですが、&lt;code&gt;nmap -p -&lt;/code&gt;で出てきたポートはすでにサービスが動いているのでそれ以外を指定します。&lt;/p&gt;
+&lt;p&gt;次に、上記ポートにアクセスしたときのレスポンスはLevel20のパスワードなので、そのパスワードをアクセスした際に返すように定義します。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&amp;quot; | nc -l localhost -p 61337
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ncコマンドはパイプで標準入力を受け付けることができるようです。&lt;/p&gt;
+&lt;p&gt;上記をそのまま動かすと&lt;code&gt;./suconnect&lt;/code&gt;が打てません。なので、上記はバックグラウンドで動かすために&lt;code&gt;&amp;amp;&lt;/code&gt;をつけましょう&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&amp;quot; | nc -l localhost -p 61337 &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;これで&lt;code&gt;./suconnect&lt;/code&gt;打てるようになりました。あとは&lt;code&gt;./succonect 61337&lt;/code&gt;と打てば次のパスワードが返ってきます。&lt;/p&gt;
+&lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.intellilink.co.jp/column/security/2015/070100.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ネットワーク診断の現場から（netcat編・その1）&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://medium.com/secttp/overthewire-bandit-level-20-a1af9a042c56&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OverTheWire: Bandit Level 20&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://medium.com/@theGirlWhoEncrypts/overthewire-bandit-level-20-level-21-d64ffa5d7802&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;&amp;lt;/ OverTheWire &amp;gt; Bandit Level 20 → Level 21&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;おわりに&#34;&gt;おわりに&lt;/h3&gt;
+&lt;p&gt;Level21難しかったです。初めてギブアップをしてしまったのがすごく悔しい！&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NOTE: Try connecting to your own network daemon to see if it works as you think&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;終わった後に振り返るとこれがヒントにはなっていると思いますが、このGoalをみて自分自身で&lt;code&gt;nc&lt;/code&gt;コマンドでサーバを立ち上げ、レスポンスは前のパスワードを返せばいいんだ！・・・となる人がどれくらいいるのでしょう？ガチプロハッカーならこの程度朝飯前の理解なのでしょうか。私もまだまだなようです。精進します！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level16〜18</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level16-18/</link>
         <pubDate>Sun, 20 Jun 2021 11:22:59 +0900</pubDate>

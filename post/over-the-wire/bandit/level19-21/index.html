@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 19 Goal  The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+  パスワードはreadmeファイルにある 誰かが.bashrcファイルを修正し、SSHでログインするときにログアウトするように設定している  resolve # 以下はローカルで $ ssh -l bandit18 -p 2220 bandit.labs.overthewire.org cat readme This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit18@bandit.labs.overthewire.org&#39;s password: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x $ resolveまでにやったこと ログインできないので、sshでコマンド実行ならいけるかと思い、実行してみたらいけました。半信半疑でしたが、sshでコマンド実行するだけなのでログイン扱いにはならないみたいです。
+Level 20 Goal  To gain access to the next level, you should use the setuid binary in the homedirectory.'><title>【OverTheWire奮闘記】Bandit: Level19〜21</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level19-21/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level19〜21'>
+<meta property='og:description' content='Level 19 Goal  The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+  パスワードはreadmeファイルにある 誰かが.bashrcファイルを修正し、SSHでログインするときにログアウトするように設定している  resolve # 以下はローカルで $ ssh -l bandit18 -p 2220 bandit.labs.overthewire.org cat readme This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit18@bandit.labs.overthewire.org&#39;s password: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x $ resolveまでにやったこと ログインできないので、sshでコマンド実行ならいけるかと思い、実行してみたらいけました。半信半疑でしたが、sshでコマンド実行するだけなのでログイン扱いにはならないみたいです。
+Level 20 Goal  To gain access to the next level, you should use the setuid binary in the homedirectory.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level19-21/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-20T15:24:42&#43;09:00'/><meta property='article:modified_time' content='2021-06-20T15:24:42&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level19〜21">
+<meta name="twitter:description" content="Level 19 Goal  The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+  パスワードはreadmeファイルにある 誰かが.bashrcファイルを修正し、SSHでログインするときにログアウトするように設定している  resolve # 以下はローカルで $ ssh -l bandit18 -p 2220 bandit.labs.overthewire.org cat readme This is a OverTheWire game server. More information on http://www.overthewire.org/wargames bandit18@bandit.labs.overthewire.org&#39;s password: IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x $ resolveまでにやったこと ログインできないので、sshでコマンド実行ならいけるかと思い、実行してみたらいけました。半信半疑でしたが、sshでコマンド実行するだけなのでログイン扱いにはならないみたいです。
+Level 20 Goal  To gain access to the next level, you should use the setuid binary in the homedirectory.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/bandit/level19-21/">【OverTheWire奮闘記】Bandit: Level19〜21</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-20</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-19">Level 19</h2>
+<h3 id="goal">Goal</h3>
+<blockquote>
+<p>The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.</p>
+</blockquote>
+<ul>
+<li>パスワードは<code>readme</code>ファイルにある</li>
+<li>誰かが<code>.bashrc</code>ファイルを修正し、SSHでログインするときにログアウトするように設定している</li>
+</ul>
+<h3 id="resolve">resolve</h3>
+<pre><code># 以下はローカルで
+$ ssh -l bandit18 -p 2220 bandit.labs.overthewire.org cat readme
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org's password: 
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+$ 
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>ログインできないので、sshでコマンド実行ならいけるかと思い、実行してみたらいけました。半信半疑でしたが、sshでコマンド実行するだけなのでログイン扱いにはならないみたいです。</p>
+<h2 id="level-20">Level 20</h2>
+<h3 id="goal-1">Goal</h3>
+<blockquote>
+<p>To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.</p>
+</blockquote>
+<ul>
+<li>homeディレクトリにある<code>setuid</code>を実行し、そのあと<code>/etc/bandit_pass</code>からパスワードを取得する</li>
+</ul>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit19@bandit:~$ ./bandit20-do cat /etc/bandit_pass/bandit20
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+bandit19@bandit:~$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit20 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit20@bandit.labs.overthewire.org's password: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p><code>ls</code>してみると<code>bandit20 do</code>というファイルがあったので、これを実行すると使い方が表示されました</p>
+<pre><code>bandit19@bandit:~$ ./bandit20-do 
+Run a command as another user.
+  Example: ./bandit20-do id
+</code></pre><p>とりあえずExampleのようにしてみます。</p>
+<pre><code>bandit19@bandit:~$ ./bandit20-do id
+uid=11019(bandit19) gid=11019(bandit19) euid=11020(bandit20) groups=11019(bandit19)
+</code></pre><p>・・・これでいいのか？と不安を覚えながら<code>cat</code>してみると</p>
+<pre><code>bandit19@bandit:~$ cat /etc/bandit_pass/bandit20
+cat: /etc/bandit_pass/bandit20: Permission denied`
+</code></pre><p>だめじゃん！</p>
+<p>うーんと首を傾げながら考えてみると・・・<code>Example: ./bandit20-do id</code>の<code>id</code>はコマンドでは？ということに気づきました。ということで、<code>./bandit20-do cat /etc/bandit_bass/bandit20</code>でパスワードを取得できました。</p>
+<h2 id="level-21">Level 21</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+NOTE: Try connecting to your own network daemon to see if it works as you think</p>
+</blockquote>
+<ul>
+<li>setuidバイナリを使用する</li>
+<li>このバイナリはポート番号を引数にとる</li>
+<li>テキストを読み取り、前のレベルのパスワードと比較し合っていたら次のパスワードを返す</li>
+</ul>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>bandit20@bandit:~$ echo &quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&quot; | nc -l localhost -p 61337 &amp;
+[4] 2721
+bandit20@bandit:~$ ./suconnect 61337
+Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+Password matches, sending next password
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+[4]   Done                    echo &quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&quot; | nc -l localhost -p 61337
+bandit20@bandit:~$ exit
+
+# 以下はローカルで
+$ ssh -l bandit21 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit21@bandit.labs.overthewire.org's password: gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<h4 id="まずはやってみる">まずはやってみる</h4>
+<p><code>ls</code>するとバイナリファイルがあったので、実行して見ると使い方が表示されました。</p>
+<pre><code>bandit20@bandit:~$ ./suconnect 
+Usage: ./suconnect &lt;portnumber&gt;
+This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+</code></pre><p>どうやら引数にポート番号を与えるようです。</p>
+<p>問題文からポートが与えられていないので、<code>nmap</code>でポートを受け付けているところを調べてみました。<code>nmap -p -</code>で全てのポートをスキャンします。</p>
+<pre><code>bandit20@bandit:~$ nmap -p - localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2021-06-20 11:56 CEST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00024s latency).
+Not shown: 65525 closed ports
+PORT      STATE SERVICE
+22/tcp    open  ssh
+113/tcp   open  ident
+30000/tcp open  ndmps
+30001/tcp open  pago-services1
+30002/tcp open  pago-services2
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 4.00 seconds
+</code></pre><p>色々出てきました。これにポート番号はこれらが候補です。なので、これらのポート番号を引数に<code>./suconnect</code>を実行してみました。</p>
+<pre><code>bandit20@bandit:~$ ./suconnect 31046
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+</code></pre><p>・・・が、一向に成功しません。他のポートでも試してみましたができませんでした。</p>
+<h4 id="途方に暮れました">途方に暮れました</h4>
+<p>NOTEの<code>NOTE: Try connecting to your own network daemon to see if it works as you think</code>をみて見ましたが、あまりよくわかりませんでした。このバイナリファイルをローカルにもってくればいいの！？あほな雑念が頭をよぎったまであります。<code>Commands you may need to solve this level</code>を見てみてもこのコマンドなら出来そうという直感も働かず、ずぅぅぅっと悩んでみました。</p>
+<p>そしてギブアップです。</p>
+<h4 id="解き方を整理してみる">解き方を整理してみる</h4>
+<p>この問題について調べてみると解法は以下のようです</p>
+<p><code>nc -l localhost -p 61337</code>でlocalhostにサーバを立ち上げます。ポートの指定ですが、<code>nmap -p -</code>で出てきたポートはすでにサービスが動いているのでそれ以外を指定します。</p>
+<p>次に、上記ポートにアクセスしたときのレスポンスはLevel20のパスワードなので、そのパスワードをアクセスした際に返すように定義します。</p>
+<pre><code>echo &quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&quot; | nc -l localhost -p 61337
+</code></pre><p>ncコマンドはパイプで標準入力を受け付けることができるようです。</p>
+<p>上記をそのまま動かすと<code>./suconnect</code>が打てません。なので、上記はバックグラウンドで動かすために<code>&amp;</code>をつけましょう</p>
+<pre><code>echo &quot;GbKksEFF4yrVs6il55v6gwY5aVje5f0j&quot; | nc -l localhost -p 61337 &amp;
+</code></pre><p>これで<code>./suconnect</code>打てるようになりました。あとは<code>./succonect 61337</code>と打てば次のパスワードが返ってきます。</p>
+<h4 id="参考">参考</h4>
+<ul>
+<li><a class="link" href="https://www.intellilink.co.jp/column/security/2015/070100.aspx"  target="_blank" rel="noopener"
+    >ネットワーク診断の現場から（netcat編・その1）</a></li>
+<li><a class="link" href="https://medium.com/secttp/overthewire-bandit-level-20-a1af9a042c56"  target="_blank" rel="noopener"
+    >OverTheWire: Bandit Level 20</a></li>
+<li><a class="link" href="https://medium.com/@theGirlWhoEncrypts/overthewire-bandit-level-20-level-21-d64ffa5d7802"  target="_blank" rel="noopener"
+    >&lt;/ OverTheWire &gt; Bandit Level 20 → Level 21</a></li>
+</ul>
+<h3 id="おわりに">おわりに</h3>
+<p>Level21難しかったです。初めてギブアップをしてしまったのがすごく悔しい！</p>
+<blockquote>
+<p>NOTE: Try connecting to your own network daemon to see if it works as you think</p>
+</blockquote>
+<p>終わった後に振り返るとこれがヒントにはなっていると思いますが、このGoalをみて自分自身で<code>nc</code>コマンドでサーバを立ち上げ、レスポンスは前のパスワードを返せばいいんだ！・・・となる人がどれくらいいるのでしょう？ガチプロハッカーならこの程度朝飯前の理解なのでしょうか。私もまだまだなようです。精進します！</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level16-18/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level16〜18</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level14-15/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level14〜15</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level13/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level13</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level10-12/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level10〜12</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level7-9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level7〜9</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
