@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 16 Goal  The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption. Helpful note: Getting &amp;ldquo;HEARTBEATING&amp;rdquo; and &amp;ldquo;Read R BLOCK&amp;rdquo;? Use -ign_eof and read the &amp;ldquo;CONNECTED COMMANDS&amp;rdquo; section in the manpage. Next to &amp;lsquo;R&amp;rsquo; and &amp;lsquo;Q&amp;rsquo;, the &amp;lsquo;B&amp;rsquo; command also works in this version of that command…
+ resolve bandit15@bandit:~$ openssl s_client -connect localhost:30001 CONNECTED(00000003) depth=0 CN = localhost verify error:num=18:self signed certificate verify return:1 depth=0 CN = localhost verify return:1 --- Certificate chain 0 s:/CN=localhost i:/CN=localhost --- Server certificate -----BEGIN CERTIFICATE----- MIICBjCCAW&#43;gAwIBAgIEfftLGTANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls b2NhbGhvc3QwHhcNMjEwNDEzMDgzODA3WhcNMjIwNDEzMDgzODA3WjAUMRIwEAYD VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMLfXBVa jVKDHlA3U&#43;S0hBMJMJlfue3xKECpmx1Ajp4/khUuWwvPB7&#43;wLjqasBO2WfFYJzcq z9t7FfAPIlYjgvOTQs5X4vQ1aGzanvnNn&#43;1VknpOnFAJQBSFq6ZD3ipWrhwm9XZq 8CgFhTGp9IPthZp8Y0B7OgobhlMtXD/zLaTbAgMBAAGjZTBjMBQGA1UdEQQNMAuC CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0 ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3 DQEBBQUAA4GBAMFH9rsZovwnb5k71/MpyCnXEwGlIhixUu6qfi1kiFvhJ6lJCvaO weOYxV4oJy1OEB0LSEAQOnSPfzC8dDasijFcdVhuIGGPuQ2GZ05nCiiIZUNnrMRB 0z2RuRxgxMVjOvcSIJyvwyjVH4jY4I434fMyldePLxO1POLd1cxoKNTO -----END CERTIFICATE----- subject=/CN=localhost issuer=/CN=localhost --- No client certificate CA names sent Peer signing digest: SHA512 Server Temp Key: X25519, 253 bits --- SSL handshake has read 1019 bytes and written 269 bytes Verification error: self signed certificate --- New, TLSv1.'><title>【OverTheWire奮闘記】Bandit: Level16〜18</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level16-18/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level16〜18'>
+<meta property='og:description' content='Level 16 Goal  The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption. Helpful note: Getting &amp;ldquo;HEARTBEATING&amp;rdquo; and &amp;ldquo;Read R BLOCK&amp;rdquo;? Use -ign_eof and read the &amp;ldquo;CONNECTED COMMANDS&amp;rdquo; section in the manpage. Next to &amp;lsquo;R&amp;rsquo; and &amp;lsquo;Q&amp;rsquo;, the &amp;lsquo;B&amp;rsquo; command also works in this version of that command…
+ resolve bandit15@bandit:~$ openssl s_client -connect localhost:30001 CONNECTED(00000003) depth=0 CN = localhost verify error:num=18:self signed certificate verify return:1 depth=0 CN = localhost verify return:1 --- Certificate chain 0 s:/CN=localhost i:/CN=localhost --- Server certificate -----BEGIN CERTIFICATE----- MIICBjCCAW&#43;gAwIBAgIEfftLGTANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls b2NhbGhvc3QwHhcNMjEwNDEzMDgzODA3WhcNMjIwNDEzMDgzODA3WjAUMRIwEAYD VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMLfXBVa jVKDHlA3U&#43;S0hBMJMJlfue3xKECpmx1Ajp4/khUuWwvPB7&#43;wLjqasBO2WfFYJzcq z9t7FfAPIlYjgvOTQs5X4vQ1aGzanvnNn&#43;1VknpOnFAJQBSFq6ZD3ipWrhwm9XZq 8CgFhTGp9IPthZp8Y0B7OgobhlMtXD/zLaTbAgMBAAGjZTBjMBQGA1UdEQQNMAuC CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0 ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3 DQEBBQUAA4GBAMFH9rsZovwnb5k71/MpyCnXEwGlIhixUu6qfi1kiFvhJ6lJCvaO weOYxV4oJy1OEB0LSEAQOnSPfzC8dDasijFcdVhuIGGPuQ2GZ05nCiiIZUNnrMRB 0z2RuRxgxMVjOvcSIJyvwyjVH4jY4I434fMyldePLxO1POLd1cxoKNTO -----END CERTIFICATE----- subject=/CN=localhost issuer=/CN=localhost --- No client certificate CA names sent Peer signing digest: SHA512 Server Temp Key: X25519, 253 bits --- SSL handshake has read 1019 bytes and written 269 bytes Verification error: self signed certificate --- New, TLSv1.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level16-18/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-20T11:22:59&#43;09:00'/><meta property='article:modified_time' content='2021-06-20T11:22:59&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level16〜18">
+<meta name="twitter:description" content="Level 16 Goal  The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption. Helpful note: Getting &amp;ldquo;HEARTBEATING&amp;rdquo; and &amp;ldquo;Read R BLOCK&amp;rdquo;? Use -ign_eof and read the &amp;ldquo;CONNECTED COMMANDS&amp;rdquo; section in the manpage. Next to &amp;lsquo;R&amp;rsquo; and &amp;lsquo;Q&amp;rsquo;, the &amp;lsquo;B&amp;rsquo; command also works in this version of that command…
+ resolve bandit15@bandit:~$ openssl s_client -connect localhost:30001 CONNECTED(00000003) depth=0 CN = localhost verify error:num=18:self signed certificate verify return:1 depth=0 CN = localhost verify return:1 --- Certificate chain 0 s:/CN=localhost i:/CN=localhost --- Server certificate -----BEGIN CERTIFICATE----- MIICBjCCAW&#43;gAwIBAgIEfftLGTANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls b2NhbGhvc3QwHhcNMjEwNDEzMDgzODA3WhcNMjIwNDEzMDgzODA3WjAUMRIwEAYD VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMLfXBVa jVKDHlA3U&#43;S0hBMJMJlfue3xKECpmx1Ajp4/khUuWwvPB7&#43;wLjqasBO2WfFYJzcq z9t7FfAPIlYjgvOTQs5X4vQ1aGzanvnNn&#43;1VknpOnFAJQBSFq6ZD3ipWrhwm9XZq 8CgFhTGp9IPthZp8Y0B7OgobhlMtXD/zLaTbAgMBAAGjZTBjMBQGA1UdEQQNMAuC CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0 ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3 DQEBBQUAA4GBAMFH9rsZovwnb5k71/MpyCnXEwGlIhixUu6qfi1kiFvhJ6lJCvaO weOYxV4oJy1OEB0LSEAQOnSPfzC8dDasijFcdVhuIGGPuQ2GZ05nCiiIZUNnrMRB 0z2RuRxgxMVjOvcSIJyvwyjVH4jY4I434fMyldePLxO1POLd1cxoKNTO -----END CERTIFICATE----- subject=/CN=localhost issuer=/CN=localhost --- No client certificate CA names sent Peer signing digest: SHA512 Server Temp Key: X25519, 253 bits --- SSL handshake has read 1019 bytes and written 269 bytes Verification error: self signed certificate --- New, TLSv1.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/bandit/level16-18/">【OverTheWire奮闘記】Bandit: Level16〜18</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-20</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-16">Level 16</h2>
+<h3 id="goal">Goal</h3>
+<blockquote>
+<p>The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
+Helpful note: Getting &ldquo;HEARTBEATING&rdquo; and &ldquo;Read R BLOCK&rdquo;? Use -ign_eof and read the &ldquo;CONNECTED COMMANDS&rdquo; section in the manpage. Next to &lsquo;R&rsquo; and &lsquo;Q&rsquo;, the &lsquo;B&rsquo; command also works in this version of that command…</p>
+</blockquote>
+<h3 id="resolve">resolve</h3>
+<pre><code>bandit15@bandit:~$ openssl s_client -connect localhost:30001
+CONNECTED(00000003)
+depth=0 CN = localhost
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = localhost
+verify return:1
+---
+Certificate chain
+ 0 s:/CN=localhost
+   i:/CN=localhost
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIICBjCCAW+gAwIBAgIEfftLGTANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls
+b2NhbGhvc3QwHhcNMjEwNDEzMDgzODA3WhcNMjIwNDEzMDgzODA3WjAUMRIwEAYD
+VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMLfXBVa
+jVKDHlA3U+S0hBMJMJlfue3xKECpmx1Ajp4/khUuWwvPB7+wLjqasBO2WfFYJzcq
+z9t7FfAPIlYjgvOTQs5X4vQ1aGzanvnNn+1VknpOnFAJQBSFq6ZD3ipWrhwm9XZq
+8CgFhTGp9IPthZp8Y0B7OgobhlMtXD/zLaTbAgMBAAGjZTBjMBQGA1UdEQQNMAuC
+CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0
+ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3
+DQEBBQUAA4GBAMFH9rsZovwnb5k71/MpyCnXEwGlIhixUu6qfi1kiFvhJ6lJCvaO
+weOYxV4oJy1OEB0LSEAQOnSPfzC8dDasijFcdVhuIGGPuQ2GZ05nCiiIZUNnrMRB
+0z2RuRxgxMVjOvcSIJyvwyjVH4jY4I434fMyldePLxO1POLd1cxoKNTO
+-----END CERTIFICATE-----
+subject=/CN=localhost
+issuer=/CN=localhost
+---
+No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1019 bytes and written 269 bytes
+Verification error: self signed certificate
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 1024 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: 2F3C02B68D83F842F902E5F993331C4453C3DE966710F785C5AE2C9C74CA79A5
+    Session-ID-ctx: 
+    Master-Key: B86492136E25B3339C36784746239E845111C6401F7AD43B49CB86429B85A2FE2E89537AF7DFA7E43C5AFAAC71C36963
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - f2 5b 83 7e f0 ca 58 ca-aa f3 8f 83 b9 65 d5 23   .[.~..X......e.#
+    0010 - 9d 6d 8a a1 b0 30 ec 5b-8f ab d1 e6 ab a5 20 8c   .m...0.[...... .
+    0020 - f2 81 e3 62 ee ea 0a cc-2f 7a dc b8 6e 5a b7 a7   ...b..../z..nZ..
+    0030 - 76 03 49 cd a3 f7 a1 de-db cd 75 6c c4 a6 8e 1a   v.I.......ul....
+    0040 - 99 89 be 3d 8b 39 c4 52-8e 31 ad f2 96 8d 28 7f   ...=.9.R.1....(.
+    0050 - c9 aa 2b 22 13 34 4d 21-3b 18 34 44 e0 92 9c 94   ..+&quot;.4M!;.4D....
+    0060 - 8c e0 15 0e 59 63 3c 24-bb 8c 7b 14 4e 0e 9d 56   ....Yc&lt;$..{.N..V
+    0070 - d5 24 ea 4c 00 95 49 98-be 71 e4 02 79 9b 11 5a   .$.L..I..q..y..Z
+    0080 - 33 56 fa 99 30 21 3d d7-96 0f 8f 72 4b 3a a1 6f   3V..0!=....rK:.o
+    0090 - 02 29 fe db ad a2 5c 61-5f 05 93 cc aa e0 50 04   .)....\a_.....P.
+    Start Time: 1623987625
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: yes
+---
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+Correct!
+cluFn7wTiGryunymYOu4RcffSxQluehd
+closed
+bandit15@bandit:~$ exit
+
+# 以下はローカル
+$ ssh -l bandit16 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit16@bandit.labs.overthewire.org's password: cluFn7wTiGryunymYOu4RcffSxQluehd
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p><code>nc</code>のSSL化されたコマンドでLevel15と同じことをやればいいという直感に従い、｀Commands you may need to solve this level｀の中で<code>s_client</code>がぽいなと思ったのでそのコマンドを調査。</p>
+<p><code>s_client</code>は<code>openssl</code>のサブコマンドのようで、<code>$ openssl s_cilent</code>という形式で使うようです。用途は<code>man s_client</code>に書いてあり</p>
+<blockquote>
+<p>The s_client command implements a generic SSL/TLS client which connects to a remote host using SSL/TLS. It is a very useful diagnostic tool for SSL servers.
+SSL/TLSを使ってサーバにアクセスするためのクライアントプログラムのようです。</p>
+</blockquote>
+<h2 id="level17">Level17</h2>
+<h3 id="goal-1">Goal</h3>
+<blockquote>
+<p>The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.</p>
+</blockquote>
+<ul>
+<li>現在のパスワードをlocalhostの31000〜32000のいずれかのポートに送信する</li>
+<li>まずサーバが受け付けているポートを調べ、どのポートがSSLに対応しているのか、またはしてないのかを調べる</li>
+<li>認証情報を返すサーバは1つだけであり、他のサーバは入力したものをそのまま返してくる</li>
+</ul>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit16@bandit:~$ nmap -p 31000-32000  localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2021-06-20 06:15 CEST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00034s latency).
+Not shown: 996 closed ports
+PORT      STATE SERVICE
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.10 seconds
+bandit16@bandit:~$ openssl s_client -connect localhost:31790
+CONNECTED(00000003)
+depth=0 CN = localhost
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = localhost
+verify return:1
+---
+Certificate chain
+ 0 s:/CN=localhost
+   i:/CN=localhost
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIICBjCCAW+gAwIBAgIESK0prjANBgkqhkiG9w0BAQUFADAUMRIwEAYDVQQDDAls
+b2NhbGhvc3QwHhcNMjEwNjE0MTkzOTAyWhcNMjIwNjE0MTkzOTAyWjAUMRIwEAYD
+VQQDDAlsb2NhbGhvc3QwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAL3AJi7+
+mhQwXXHZweajk45kDauQ8gItcbmfbmCE8dvjBuzjFho+nN9OZ/5xPHjNy+15d+Kr
+iv+p1DPsjtPdDP5LNhShGBJIdj+h1DanaQbZnILW64fmbZPQzsvf1U0q3KUX/Hr5
+OlZNV5eryXtPGELBddTVB4QyRo7qEdCIjf83AgMBAAGjZTBjMBQGA1UdEQQNMAuC
+CWxvY2FsaG9zdDBLBglghkgBhvhCAQ0EPhY8QXV0b21hdGljYWxseSBnZW5lcmF0
+ZWQgYnkgTmNhdC4gU2VlIGh0dHBzOi8vbm1hcC5vcmcvbmNhdC8uMA0GCSqGSIb3
+DQEBBQUAA4GBACDBqqnOEy6516ocDng2iqNRS+mLAiaVKONccL+847NK54W4g4Wo
+0PdPF4dVhkNiLGJDcrx3aY4A+u+aFAcZmDYJOFsGJMCBOdle8v9PvQ6V/y8x4TkR
+JUvpO+seiTk7lj/4byRQXlHcYxMdAflrDl+m9tKeDJlYaAPO5d9P28Iv
+-----END CERTIFICATE-----
+subject=/CN=localhost
+issuer=/CN=localhost
+---
+No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: X25519, 253 bits
+---
+SSL handshake has read 1019 bytes and written 269 bytes
+Verification error: self signed certificate
+---
+New, TLSv1.2, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 1024 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: B522919D36B7CC85DE791F813E87A41D5728F6345169AEC7749AA1F22FCFF7C8
+    Session-ID-ctx: 
+    Master-Key: 40BB20219FDBCE7420F2743F4696D44FFE8699AAEB895B85A94666BCC8DCC5BF6A4B6AB95C5D9DA18FCF05D73F1A9C1D
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - 4d 56 29 e9 f1 5c 3e 86-5d 40 4d 5e 38 22 f0 d1   MV)..\&gt;.]@M^8&quot;..
+    0010 - 8f 58 b1 a3 16 82 ad fe-02 04 7a e7 ff b9 37 e1   .X........z...7.
+    0020 - d4 6e 01 5b 10 9f 4b 2b-f7 73 ae f4 5f 5d d8 86   .n.[..K+.s.._]..
+    0030 - 8b 23 23 15 b3 80 d2 59-55 f4 11 e5 44 6d 47 d8   .##....YU...DmG.
+    0040 - 84 0e dc f0 09 d2 a6 19-5d 95 a2 21 8f b5 6e e8   ........]..!..n.
+    0050 - 6b 52 9b e4 4c 51 a7 78-f5 01 30 fe 2a e6 99 bc   kR..LQ.x..0.*...
+    0060 - 29 9a da 3a 4d 47 eb a2-f7 07 bf 93 df f2 cf ac   )..:MG..........
+    0070 - 8c 05 b9 1b 89 ad c7 91-08 c8 15 74 b3 d1 ef da   ...........t....
+    0080 - f2 1c dd 7f 4e 8b c8 15-59 73 19 5e 9d 73 30 33   ....N...Ys.^.s03
+    0090 - e5 8d 2a a5 38 48 70 94-4b c8 8a 88 ce 68 d2 72   ..*.8Hp.K....h.r
+
+    Start Time: 1624162727
+    Timeout   : 7200 (sec)
+    Verify return code: 18 (self signed certificate)
+    Extended master secret: yes
+---
+cluFn7wTiGryunymYOu4RcffSxQluehd
+Correct!
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+
+closed
+bandit16@bandit:~$ exit
+
+# 以下はローカル
+$ vim ~/.ssh/bandit/bandit17.private.pem # 上記で返ってきた認証情報を貼り付ける
+$ chmod ~/.ssh/bandit/bandit17.private.pem
+$ ssh -i ~/.ssh/bandit/bandit17.private.pem -l bandit17 -p 2220 bandit.labs.overthewire.org 
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<h4 id="大学での講義が蘇ってきた">大学での講義が蘇ってきた</h4>
+<p>大学のセキュリティの講義で、どのポートでどういうサービスが動いているかを調べることを<code>ポートスキャン</code>といい、それを<code>nmap</code>コマンドで調べる・・・という遠い記憶が蘇ってきました。</p>
+<p>記憶に従って、<code>nmap localhost</code>と打ってみましたが、31000から32000の結果が返ってきませんでした。(<code>-v</code>オプションをつけても結果は変わらず。)</p>
+<pre><code>bandit16@bandit:~$ nmap localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2021-06-20 04:36 CEST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00036s latency).
+Not shown: 997 closed ports
+PORT      STATE SERVICE
+22/tcp    open  ssh
+113/tcp   open  ident
+30000/tcp open  ndmps
+
+Nmap done: 1 IP address (1 host up) scanned in 0.10 seconds
+</code></pre><p>何かポートを指定するためのオプションがあるのかなと<code>nmap --help</code>で調べてみると<code>-p</code>でポートを指定できる記述がありました。ポートの範囲も指定することもできるようなので、打ってみると</p>
+<pre><code>bandit16@bandit:~$ nmap -p 31000-32000 localhost
+
+Starting Nmap 7.40 ( https://nmap.org ) at 2021-06-20 04:40 CEST
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00038s latency).
+Not shown: 996 closed ports
+PORT      STATE SERVICE
+31046/tcp open  unknown
+31518/tcp open  unknown
+31691/tcp open  unknown
+31790/tcp open  unknown
+31960/tcp open  unknown
+
+Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds
+</code></pre><h4 id="ssl対応しているか否かを調べる">SSL対応しているか否かを調べる</h4>
+<p><code>nmap</code>の結果から5つのポートが候補に上がったが、これらがSSLに対応しているかを調べなくてはなりません。</p>
+<p><code>nmap</code>にssl対応しているかもスキャンしてくれるオプションがあるとよかったのですが、どれも該当せず。1つ1つのポートに対して<code>openssl s_client</code>を行いました。</p>
+<h3 id="追加で調べてみた">追加で調べてみた</h3>
+<p><code>-p</code>でポートを指定しているのだとしたら、デフォルトだとどのポートをスキャンしているんだろうと思って調べたら、以下のサイトを見つけました</p>
+<blockquote>
+<p>デフォルトでは、Nmapは、1024番(を含む)までの全ポートと、1025番以降のポートはスキャン対象のプロトコルに応じてnmap-servicesファイルに記載されたポートをスキャンする。(引用元 : <a class="link" href="https://nmap.org/man/ja/man-port-specification.html"  target="_blank" rel="noopener"
+    >ポートの指定とスキャンの順序</a>)</p>
+</blockquote>
+<p>また以下のサイトも<code>nmap</code>についての説明が大変わかりやすかったです。</p>
+<ul>
+<li><a class="link" href="http://www.yk.rim.or.jp/~shikap/security/use_nmap.html"  target="_blank" rel="noopener"
+    >清く、正しい、nmapの使い方</a></li>
+</ul>
+<h2 id="level18">Level18</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19</p>
+</blockquote>
+<ul>
+<li>パスワードはpasswords.newにある</li>
+<li>パスワードはpasswords.newとpasswords.old比較したときに変更がある行である</li>
+</ul>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>bandit17@bandit:~$ diff passwords.old  passwords.new
+42c42
+&lt; w0Yfolrc5bwjS4qw5mq1nnQi6mF03bii
+---
+&gt; kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+bandit17@bandit:~$ exit
+
+# 以下はローカルで
+$ ssh -l bandit18 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit18@bandit.labs.overthewire.org's password: kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+.
+.
+.
+Byebye !
+Connection to bandit.labs.overthewire.org closed.
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<p>特になし</p>
+<p>最後に&quot;Byebye !&ldquo;と表示されましたが、GoalのNoteをみると正しい表示みたいなのでLevel19に進みます。</p>
+<h2 id="終わりに">終わりに</h2>
+<p><code>nmap</code>は攻撃者が攻撃先のホストではどのようなサービスが動いているのかを調査するコマンドのようですが、自身のホストがどのような状態になっているかを調べるコマンドにもなることを知りました。セキュリティを学ぶ上では攻撃と防御両方の知識が必要だと改めて感じています。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level14-15/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level14〜15</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level13/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level13</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level10-12/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level10〜12</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level7-9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level7〜9</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level4-6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level4〜6</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
