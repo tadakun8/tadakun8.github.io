@@ -268,10 +268,10 @@ PORT      STATE SERVICE
 
 Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;ssl対応しているか否かを調べる&#34;&gt;SSL対応しているか否かを調べる&lt;/h4&gt;
-&lt;p&gt;&lt;code&gt;nmap&lt;/code&gt;の結果から5つのポートが候補に上がったが、これらがSSLに対応しているかを調べなくてはなりません。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nmap&lt;/code&gt;にssl対応しているかもスキャンしてくれるオプションがあるとよかったのですが、どれも該当せず。1つ1つのポートに対して&lt;code&gt;openssl s_client&lt;/code&gt;を行いました。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nmap&lt;/code&gt;の結果から5つのポートが候補に上がりましが、これらがSSLに対応しているかを調べなくてはなりません。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nmap&lt;/code&gt;にssl対応しているかもスキャンしてくれるオプションがあるとよかったのですが、どれも該当せず。1つ1つのポートに対して&lt;code&gt;openssl s_client&lt;/code&gt;を行い答えを見つけました。&lt;/p&gt;
 &lt;h3 id=&#34;追加で調べてみた&#34;&gt;追加で調べてみた&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;-p&lt;/code&gt;でポートを指定しているのだとしたら、デフォルトだとどのポートをスキャンしているんだろうと思って調べたら、以下のサイトを見つけました&lt;/p&gt;
+&lt;p&gt;ポートスキャンを&lt;code&gt;nmap&lt;/code&gt;で行う際、&lt;code&gt;-p&lt;/code&gt;でポートを指定しているのだとしたら、デフォルトではどのポートをスキャンしているんだろうと思って調べたら、以下のサイトを見つけました&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;デフォルトでは、Nmapは、1024番(を含む)までの全ポートと、1025番以降のポートはスキャン対象のプロトコルに応じてnmap-servicesファイルに記載されたポートをスキャンする。(引用元 : &lt;a class=&#34;link&#34; href=&#34;https://nmap.org/man/ja/man-port-specification.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;ポートの指定とスキャンの順序&lt;/a&gt;)&lt;/p&gt;

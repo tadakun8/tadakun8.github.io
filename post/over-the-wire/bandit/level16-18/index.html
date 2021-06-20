@@ -472,10 +472,10 @@ PORT      STATE SERVICE
 
 Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds
 </code></pre><h4 id="ssl対応しているか否かを調べる">SSL対応しているか否かを調べる</h4>
-<p><code>nmap</code>の結果から5つのポートが候補に上がったが、これらがSSLに対応しているかを調べなくてはなりません。</p>
-<p><code>nmap</code>にssl対応しているかもスキャンしてくれるオプションがあるとよかったのですが、どれも該当せず。1つ1つのポートに対して<code>openssl s_client</code>を行いました。</p>
+<p><code>nmap</code>の結果から5つのポートが候補に上がりましが、これらがSSLに対応しているかを調べなくてはなりません。</p>
+<p><code>nmap</code>にssl対応しているかもスキャンしてくれるオプションがあるとよかったのですが、どれも該当せず。1つ1つのポートに対して<code>openssl s_client</code>を行い答えを見つけました。</p>
 <h3 id="追加で調べてみた">追加で調べてみた</h3>
-<p><code>-p</code>でポートを指定しているのだとしたら、デフォルトだとどのポートをスキャンしているんだろうと思って調べたら、以下のサイトを見つけました</p>
+<p>ポートスキャンを<code>nmap</code>で行う際、<code>-p</code>でポートを指定しているのだとしたら、デフォルトではどのポートをスキャンしているんだろうと思って調べたら、以下のサイトを見つけました</p>
 <blockquote>
 <p>デフォルトでは、Nmapは、1024番(を含む)までの全ポートと、1025番以降のポートはスキャン対象のプロトコルに応じてnmap-servicesファイルに記載されたポートをスキャンする。(引用元 : <a class="link" href="https://nmap.org/man/ja/man-port-specification.html"  target="_blank" rel="noopener"
     >ポートの指定とスキャンの順序</a>)</p>
