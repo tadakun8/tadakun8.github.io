@@ -6,7 +6,50 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 20 Jun 2021 15:24:42 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 23 Jun 2021 23:04:20 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ぼくの投資方針(仮)</title>
+        <link>https://tadakun8.github.io/post/invest/policy/</link>
+        <pubDate>Wed, 23 Jun 2021 23:04:20 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/invest/policy/</guid>
+        <description>&lt;h2 id=&#34;見るべき銘柄&#34;&gt;見るべき銘柄&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;amzn : Amazon&lt;/li&gt;
+&lt;li&gt;msft : Microsoft&lt;/li&gt;
+&lt;li&gt;appl : Apple&lt;/li&gt;
+&lt;li&gt;googl : Google&lt;/li&gt;
+&lt;li&gt;S&amp;amp;P500&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;投資方針&#34;&gt;投資方針&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;一度買ったらそのまま持っておく&lt;/li&gt;
+&lt;li&gt;SBIチャートで 6ヶ月 / 日足 / 25日線にタッチしたら買う
+&lt;ul&gt;
+&lt;li&gt;25日線より下がっていて、かつお金に余裕があれば買い続ける&lt;/li&gt;
+&lt;li&gt;ただし、Amazonは株価が高いのでそれ以外で行う)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;毎日21時に株価をチェック&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;投資方針の根拠&#34;&gt;投資方針の根拠&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;はじめて買ったAmazonの株が失敗することなく上がり続けている&lt;/li&gt;
+&lt;li&gt;そしてそれは25日線より下で買っていた&lt;/li&gt;
+&lt;li&gt;見るべき銘柄にあげたものは将来的にも上がり続けると予想しているため、25日線もしくはそれを下回れば安いと判断し買う&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;戒め&#34;&gt;戒め&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ルール以外では&lt;strong&gt;絶対に買わない&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;例え現在が調子が良くて株が上がり続けていても冷静になり、ルールに従っているかを確認する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;見るべき銘柄以外の銘柄について&#34;&gt;見るべき銘柄以外の銘柄について&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;投資を積極的に行なっている企業の株はチェックしたい&lt;/li&gt;
+&lt;li&gt;NVDA : NVIDIA もチェックしたい&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level19〜21</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level19-21/</link>
         <pubDate>Sun, 20 Jun 2021 15:24:42 +0900</pubDate>
