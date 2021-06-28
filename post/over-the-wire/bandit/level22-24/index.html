@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 22 Goal  A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+  cronでどのコマンドが動いているのかをみる  resolve bandit21@bandit:~$ cd /etc/cron.d cronjob_bandit15_root cronjob_bandit17_root cronjob_bandit22 cronjob_bandit23 cronjob_bandit24 cronjob_bandit25_root bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22 @reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null * * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh #!/bin/bash chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv cat /etc/bandit_pass/bandit22 &amp;gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv bandit21@bandit:/etc/cron.'><title>【OverTheWire奮闘記】Bandit: Level22〜24</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level22-24/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level22〜24'>
+<meta property='og:description' content='Level 22 Goal  A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+  cronでどのコマンドが動いているのかをみる  resolve bandit21@bandit:~$ cd /etc/cron.d cronjob_bandit15_root cronjob_bandit17_root cronjob_bandit22 cronjob_bandit23 cronjob_bandit24 cronjob_bandit25_root bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22 @reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null * * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh #!/bin/bash chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv cat /etc/bandit_pass/bandit22 &amp;gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv bandit21@bandit:/etc/cron.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level22-24/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-24T12:30:46&#43;09:00'/><meta property='article:modified_time' content='2021-06-24T12:30:46&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level22〜24">
+<meta name="twitter:description" content="Level 22 Goal  A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+  cronでどのコマンドが動いているのかをみる  resolve bandit21@bandit:~$ cd /etc/cron.d cronjob_bandit15_root cronjob_bandit17_root cronjob_bandit22 cronjob_bandit23 cronjob_bandit24 cronjob_bandit25_root bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22 @reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null * * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh #!/bin/bash chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv cat /etc/bandit_pass/bandit22 &amp;gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv bandit21@bandit:/etc/cron.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/bandit/level22-24/">【OverTheWire奮闘記】Bandit: Level22〜24</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-24</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-22">Level 22</h2>
+<h3 id="goal">Goal</h3>
+<blockquote>
+<p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.</p>
+</blockquote>
+<ul>
+<li>cronでどのコマンドが動いているのかをみる</li>
+</ul>
+<h3 id="resolve">resolve</h3>
+<pre><code>bandit21@bandit:~$ cd /etc/cron.d
+cronjob_bandit15_root  cronjob_bandit17_root  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  cronjob_bandit25_root
+bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh 
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 &gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+bandit21@bandit:/etc/cron.d$ exit
+
+# 以下はローカルで実行
+$ ssh -l bandit22 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit22@bandit.labs.overthewire.org's password: Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>問題文で<code>/etc/cron.d</code>のなかにファイルがあるとのことなので、そこからファイルをたどっていきパスワードを見つけることができました。</p>
+<h2 id="level-23">Level 23</h2>
+<h3 id="goal-1">Goal</h3>
+<blockquote>
+<p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.</p>
+</blockquote>
+<ul>
+<li>cronでどのコマンドが動いているのかを見る</li>
+</ul>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit22@bandit:~$ cd /etc/cron.d
+bandit22@bandit:/etc/cron.d$ ls
+cronjob_bandit15_root  cronjob_bandit17_root  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  cronjob_bandit25_root
+bandit22@bandit:/etc/cron.d$ cat cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null
+bandit22@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo &quot;Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget&quot;
+
+cat /etc/bandit_pass/$myname &gt; /tmp/$mytarget
+bandit22@bandit:/etc/cron.d$ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:/etc/cron.d$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:/etc/cron.d$ exit
+
+# 以下はローカルで実行
+$ ssh -l bandit23 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit23@bandit.labs.overthewire.org's password: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p>Level22同じようにファイルをたどっていきました。</p>
+<h2 id="level-24">Level 24</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…</p>
+</blockquote>
+<ul>
+<li>cronでどのコマンドが動いているのかを見る</li>
+<li>シェルスクリプトを作ってみる</li>
+</ul>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>bandit23@bandit:~$ mkdir -p /tmp/shell
+bandit23@bandit:~$ cd /tmp/shell
+bandit23@bandit:/tmp/shell$ vim cat-password.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 &gt; /tmp/shell/password
+bandit23@bandit:/tmp/shell$ chmod +x cat-password.sh
+bandit23@bandit:/tmp/shell$ touch password
+bandit23@bandit:/tmp/shell$ chmod 666 password
+bandit23@bandit:/tmp/shell$ cp cat-password.sh /var/spool/bandit24
+(1分待つ)
+bandit23@bandit:/tmp/shell$ cat password 
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+bandit23@bandit:/tmp/shell$ exit
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<h4 id="まずはcdとcatする">まずはcdとcatする</h4>
+<p><code>cd /etc/cron.d</code>、<code>cat cronjob_bandit24</code>すると</p>
+<pre><code>bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24 
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+</code></pre><p>cronで<code>@reboot</code>は見たことなかったのですが、調べて見るとシステム起動時に一回だけ実行するときに指定するものらしいです(<code>man 5 crontab</code>に記載がありました)</p>
+<p><code>@reboot</code>についてわかったので、改めて<code>cat</code>の結果を見てみると、<code>/usr/bin/cronjob_bandit24.sh</code>が動いているらしいので、このファイルを<code>cat</code>します。</p>
+<pre><code>bandit23@bandit:/etc/cron.d$ cat -n /usr/bin/cronjob_bandit24.sh 
+     1  #!/bin/bash
+     2
+     3  myname=$(whoami)
+     4
+     5  cd /var/spool/$myname
+     6  echo &quot;Executing and deleting all scripts in /var/spool/$myname:&quot;
+     7  for i in * .*;
+     8  do
+     9      if [ &quot;$i&quot; != &quot;.&quot; -a &quot;$i&quot; != &quot;..&quot; ];
+    10      then
+    11          echo &quot;Handling $i&quot;
+    12          owner=&quot;$(stat --format &quot;%U&quot; ./$i)&quot;
+    13          if [ &quot;${owner}&quot; = &quot;bandit23&quot; ]; then
+    14              timeout -s 9 60 ./$i
+    15          fi
+    16          rm -f ./$i
+    17      fi
+    18  done
+    19
+</code></pre><h4 id="shellを探る">shellを探る</h4>
+<p>3行目の<code>whoami</code>の結果はこのファイルを<code>ls -l</code>すると<code>bandit24</code>とわかりました</p>
+<pre><code>bandit23@bandit:/etc/cron.d$ ls -l /usr/bin/cronjob_bandit24.sh 
+-rwxr-x--- 1 bandit24 bandit23 376 May 14  2020 /usr/bin/cronjob_bandit24.sh
+</code></pre><p>なので、5行目は<code>cd /var/spool/bandit24</code>ですね。</p>
+<p>7行目の<code>for i in * .*;</code>は<code>/var/spool/bandit24</code>にある全てのファイルをループさせています。</p>
+<p>9行目を見ると、カレントディレクトリとその1つ前のディレクトリ以外のファイルを対象にした処理だとわかります。</p>
+<p>続いて<code>stat</code>ですが、ファイルの属性や状態を表示するコマンドです。<code>ls</code>との違いですが、statの方が、より細かい属性や状態を表示できると受け取りました。
+<code>stat --format &quot;%U&quot; ファイル名</code>でそのファイルのオーナーを表示しています。</p>
+<p>次に<code>timeout</code>コマンドですが、制限時間を指定してコマンドを実行するコマンドです。</p>
+<p><code>timeout -s 9 60 ./$i</code>の意味ですが、コマンドの実行に60秒間という制限時間をもうけて、60秒超えたら<code>-s 9</code>、シグナルの9を送信するという意味です。シグナルの9は強制終了を意味します。</p>
+<p>つまり、コマンドが実行されて60秒経ったらそのコマンドを強制終了するということです。</p>
+<p>Goalにシェルを作る旨の文があるので、<code>/var/spool/bandit24</code>にシェルを作ればいいのかなと当たりをつけました。</p>
+<h4 id="shellを作る">shellを作る</h4>
+<p><code>vi display-date.sh</code>以下のシェルを作ってみました。</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh:display-date.sh" data-lang="sh:display-date.sh"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="k">while</span> <span class="nb">true</span>
+<span class="k">do</span>
+  sleep <span class="m">1</span>
+  date
+<span class="k">done</span>
+</code></pre></div><h4 id="それで">・・・それで？</h4>
+<p>shellも作って<code>/var/spool/bandit24</code>に配置させたのですが、ここから手がつきました。結局このシェルからパスワードをどうやって手に入れるんだろうとずっと悩んでいました。</p>
+<p>ということで、諦めて回答を探しました。回答はこちらのサイトを参考にしました。</p>
+<ul>
+<li><a href="https://medium.com/secttp/overthewire-bandit-level-23-424786d305bf">https://medium.com/secttp/overthewire-bandit-level-23-424786d305bf</a></li>
+</ul>
+<p>なるほど、どうやら<code>/etc/bandit_pass/</code>に全てのLevelのパスワードが格納されているみたいです。</p>
+<p>そして一時ファイル置き場は<code>/tmp</code>以下に作れば良さそうでした。</p>
+<p>なので、方針として<code>/tmp</code>にシェルを作り、実行権限を調整し、作成したものを<code>cp</code>で<code>/var/spool/bandit24</code>に格納することでパスワードが取得できそうです</p>
+<h3 id="おわり">おわり</h3>
+<p>次以降にbanditを進めるに当たって、いくつか重要なものが出てきました。</p>
+<p>まとめると・・・</p>
+<ul>
+<li><code>/etc/bandit_pass</code>に全てのLevelのパスワードが格納されている</li>
+<li>Levelによっては上記ディレクトリの中のファイルからパスワードを取得する必要がある</li>
+<li>一時ファイルの場所は<code>/tmp</code>以下に作れる</li>
+</ul>
+<p>今までは進めていくうちにパスワードが手に入ったものが多かったので、こういう情報は覚えておきます。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level19-21/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level19〜21</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level16-18/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level16〜18</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level14-15/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level14〜15</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level13/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level13</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level10-12/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level10〜12</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

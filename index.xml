@@ -6,7 +6,174 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 23 Jun 2021 23:04:20 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 24 Jun 2021 12:30:46 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level22〜24</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level22-24/</link>
+        <pubDate>Thu, 24 Jun 2021 12:30:46 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level22-24/</guid>
+        <description>&lt;h2 id=&#34;level-22&#34;&gt;Level 22&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;cronでどのコマンドが動いているのかをみる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit21@bandit:~$ cd /etc/cron.d
+cronjob_bandit15_root  cronjob_bandit17_root  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  cronjob_bandit25_root
+bandit21@bandit:/etc/cron.d$ cat cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &amp;amp;&amp;gt; /dev/null
+bandit21@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit22.sh 
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 &amp;gt; /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+bandit21@bandit:/etc/cron.d$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+bandit21@bandit:/etc/cron.d$ exit
+
+# 以下はローカルで実行
+$ ssh -l bandit22 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit22@bandit.labs.overthewire.org&#39;s password: Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;問題文で&lt;code&gt;/etc/cron.d&lt;/code&gt;のなかにファイルがあるとのことなので、そこからファイルをたどっていきパスワードを見つけることができました。&lt;/p&gt;
+&lt;h2 id=&#34;level-23&#34;&gt;Level 23&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+NOTE: Looking at shell scripts written by other people is a very useful skill. The script for this level is intentionally made easy to read. If you are having problems understanding what it does, try executing it to see the debug information it prints.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;cronでどのコマンドが動いているのかを見る&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit22@bandit:~$ cd /etc/cron.d
+bandit22@bandit:/etc/cron.d$ ls
+cronjob_bandit15_root  cronjob_bandit17_root  cronjob_bandit22  cronjob_bandit23  cronjob_bandit24  cronjob_bandit25_root
+bandit22@bandit:/etc/cron.d$ cat cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &amp;amp;&amp;gt; /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &amp;amp;&amp;gt; /dev/null
+bandit22@bandit:/etc/cron.d$ cat /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d &#39; &#39; -f 1)
+
+echo &amp;quot;Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget&amp;quot;
+
+cat /etc/bandit_pass/$myname &amp;gt; /tmp/$mytarget
+bandit22@bandit:/etc/cron.d$ echo I am user bandit23 | md5sum | cut -d &#39; &#39; -f 1
+8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:/etc/cron.d$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+bandit22@bandit:/etc/cron.d$ exit
+
+# 以下はローカルで実行
+$ ssh -l bandit23 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit23@bandit.labs.overthewire.org&#39;s password: jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;Level22同じようにファイルをたどっていきました。&lt;/p&gt;
+&lt;h2 id=&#34;level-24&#34;&gt;Level 24&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!
+NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;cronでどのコマンドが動いているのかを見る&lt;/li&gt;
+&lt;li&gt;シェルスクリプトを作ってみる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit23@bandit:~$ mkdir -p /tmp/shell
+bandit23@bandit:~$ cd /tmp/shell
+bandit23@bandit:/tmp/shell$ vim cat-password.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 &amp;gt; /tmp/shell/password
+bandit23@bandit:/tmp/shell$ chmod +x cat-password.sh
+bandit23@bandit:/tmp/shell$ touch password
+bandit23@bandit:/tmp/shell$ chmod 666 password
+bandit23@bandit:/tmp/shell$ cp cat-password.sh /var/spool/bandit24
+(1分待つ)
+bandit23@bandit:/tmp/shell$ cat password 
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+bandit23@bandit:/tmp/shell$ exit
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;h4 id=&#34;まずはcdとcatする&#34;&gt;まずはcdとcatする&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;cd /etc/cron.d&lt;/code&gt;、&lt;code&gt;cat cronjob_bandit24&lt;/code&gt;すると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit23@bandit:/etc/cron.d$ cat cronjob_bandit24 
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &amp;amp;&amp;gt; /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh &amp;amp;&amp;gt; /dev/null
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;cronで&lt;code&gt;@reboot&lt;/code&gt;は見たことなかったのですが、調べて見るとシステム起動時に一回だけ実行するときに指定するものらしいです(&lt;code&gt;man 5 crontab&lt;/code&gt;に記載がありました)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;@reboot&lt;/code&gt;についてわかったので、改めて&lt;code&gt;cat&lt;/code&gt;の結果を見てみると、&lt;code&gt;/usr/bin/cronjob_bandit24.sh&lt;/code&gt;が動いているらしいので、このファイルを&lt;code&gt;cat&lt;/code&gt;します。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit23@bandit:/etc/cron.d$ cat -n /usr/bin/cronjob_bandit24.sh 
+     1  #!/bin/bash
+     2
+     3  myname=$(whoami)
+     4
+     5  cd /var/spool/$myname
+     6  echo &amp;quot;Executing and deleting all scripts in /var/spool/$myname:&amp;quot;
+     7  for i in * .*;
+     8  do
+     9      if [ &amp;quot;$i&amp;quot; != &amp;quot;.&amp;quot; -a &amp;quot;$i&amp;quot; != &amp;quot;..&amp;quot; ];
+    10      then
+    11          echo &amp;quot;Handling $i&amp;quot;
+    12          owner=&amp;quot;$(stat --format &amp;quot;%U&amp;quot; ./$i)&amp;quot;
+    13          if [ &amp;quot;${owner}&amp;quot; = &amp;quot;bandit23&amp;quot; ]; then
+    14              timeout -s 9 60 ./$i
+    15          fi
+    16          rm -f ./$i
+    17      fi
+    18  done
+    19
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;shellを探る&#34;&gt;shellを探る&lt;/h4&gt;
+&lt;p&gt;3行目の&lt;code&gt;whoami&lt;/code&gt;の結果はこのファイルを&lt;code&gt;ls -l&lt;/code&gt;すると&lt;code&gt;bandit24&lt;/code&gt;とわかりました&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit23@bandit:/etc/cron.d$ ls -l /usr/bin/cronjob_bandit24.sh 
+-rwxr-x--- 1 bandit24 bandit23 376 May 14  2020 /usr/bin/cronjob_bandit24.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;なので、5行目は&lt;code&gt;cd /var/spool/bandit24&lt;/code&gt;ですね。&lt;/p&gt;
+&lt;p&gt;7行目の&lt;code&gt;for i in * .*;&lt;/code&gt;は&lt;code&gt;/var/spool/bandit24&lt;/code&gt;にある全てのファイルをループさせています。&lt;/p&gt;
+&lt;p&gt;9行目を見ると、カレントディレクトリとその1つ前のディレクトリ以外のファイルを対象にした処理だとわかります。&lt;/p&gt;
+&lt;p&gt;続いて&lt;code&gt;stat&lt;/code&gt;ですが、ファイルの属性や状態を表示するコマンドです。&lt;code&gt;ls&lt;/code&gt;との違いですが、statの方が、より細かい属性や状態を表示できると受け取りました。
+&lt;code&gt;stat --format &amp;quot;%U&amp;quot; ファイル名&lt;/code&gt;でそのファイルのオーナーを表示しています。&lt;/p&gt;
+&lt;p&gt;次に&lt;code&gt;timeout&lt;/code&gt;コマンドですが、制限時間を指定してコマンドを実行するコマンドです。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;timeout -s 9 60 ./$i&lt;/code&gt;の意味ですが、コマンドの実行に60秒間という制限時間をもうけて、60秒超えたら&lt;code&gt;-s 9&lt;/code&gt;、シグナルの9を送信するという意味です。シグナルの9は強制終了を意味します。&lt;/p&gt;
+&lt;p&gt;つまり、コマンドが実行されて60秒経ったらそのコマンドを強制終了するということです。&lt;/p&gt;
+&lt;p&gt;Goalにシェルを作る旨の文があるので、&lt;code&gt;/var/spool/bandit24&lt;/code&gt;にシェルを作ればいいのかなと当たりをつけました。&lt;/p&gt;
+&lt;h4 id=&#34;shellを作る&#34;&gt;shellを作る&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;vi display-date.sh&lt;/code&gt;以下のシェルを作ってみました。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh:display-date.sh&#34; data-lang=&#34;sh:display-date.sh&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;while&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;do&lt;/span&gt;
+  sleep &lt;span class=&#34;m&#34;&gt;1&lt;/span&gt;
+  date
+&lt;span class=&#34;k&#34;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;それで&#34;&gt;・・・それで？&lt;/h4&gt;
+&lt;p&gt;shellも作って&lt;code&gt;/var/spool/bandit24&lt;/code&gt;に配置させたのですが、ここから手がつきました。結局このシェルからパスワードをどうやって手に入れるんだろうとずっと悩んでいました。&lt;/p&gt;
+&lt;p&gt;ということで、諦めて回答を探しました。回答はこちらのサイトを参考にしました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/secttp/overthewire-bandit-level-23-424786d305bf&#34;&gt;https://medium.com/secttp/overthewire-bandit-level-23-424786d305bf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;なるほど、どうやら&lt;code&gt;/etc/bandit_pass/&lt;/code&gt;に全てのLevelのパスワードが格納されているみたいです。&lt;/p&gt;
+&lt;p&gt;そして一時ファイル置き場は&lt;code&gt;/tmp&lt;/code&gt;以下に作れば良さそうでした。&lt;/p&gt;
+&lt;p&gt;なので、方針として&lt;code&gt;/tmp&lt;/code&gt;にシェルを作り、実行権限を調整し、作成したものを&lt;code&gt;cp&lt;/code&gt;で&lt;code&gt;/var/spool/bandit24&lt;/code&gt;に格納することでパスワードが取得できそうです&lt;/p&gt;
+&lt;h3 id=&#34;おわり&#34;&gt;おわり&lt;/h3&gt;
+&lt;p&gt;次以降にbanditを進めるに当たって、いくつか重要なものが出てきました。&lt;/p&gt;
+&lt;p&gt;まとめると・・・&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/etc/bandit_pass&lt;/code&gt;に全てのLevelのパスワードが格納されている&lt;/li&gt;
+&lt;li&gt;Levelによっては上記ディレクトリの中のファイルからパスワードを取得する必要がある&lt;/li&gt;
+&lt;li&gt;一時ファイルの場所は&lt;code&gt;/tmp&lt;/code&gt;以下に作れる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今までは進めていくうちにパスワードが手に入ったものが多かったので、こういう情報は覚えておきます。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>ぼくの投資方針(仮)</title>
         <link>https://tadakun8.github.io/post/invest/policy/</link>
         <pubDate>Wed, 23 Jun 2021 23:04:20 +0900</pubDate>
