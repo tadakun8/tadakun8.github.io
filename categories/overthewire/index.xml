@@ -6,7 +6,17 @@
     <description>Recent content in OverTheWire on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 28 Jun 2021 21:29:30 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Jun 2021 21:06:50 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Bandit: Level28〜30</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/</link>
+      <pubDate>Tue, 29 Jun 2021 21:06:50 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/</guid>
+      <description>Level 28 Goal  There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27. Clone the repository and find the password for the next level.
+ resolve bandit27@bandit:~$ mkdir /tmp/clone bandit27@bandit:~$ cd /tmp/clone bandit27@bandit:/tmp/clone$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo Cloning into &#39;repo&#39;... Could not create directory &#39;/home/bandit27/.ssh&#39;. The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established. ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc. Are you sure you want to continue connecting (yes/no)?</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Bandit: Level25〜27</title>
       <link>https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/</link>

@@ -6,7 +6,218 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Mon, 28 Jun 2021 21:29:30 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 29 Jun 2021 21:06:50 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level28〜30</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/</link>
+        <pubDate>Tue, 29 Jun 2021 21:06:50 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/</guid>
+        <description>&lt;h2 id=&#34;level-28&#34;&gt;Level 28&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27.
+Clone the repository and find the password for the next level.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit27@bandit:~$ mkdir /tmp/clone
+bandit27@bandit:~$ cd /tmp/clone
+bandit27@bandit:/tmp/clone$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+Cloning into &#39;repo&#39;...
+Could not create directory &#39;/home/bandit27/.ssh&#39;.
+The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit27/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit27-git@localhost&#39;s password: 3ba3118a22e93127a4ed485be72ef5ea
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (3/3), done.
+bandit27@bandit:/tmp/clone$ ls
+repo
+bandit27@bandit:/tmp/clone$ cd repo/
+bandit27@bandit:/tmp/clone/repo$ cat README 
+The password to the next level is: 0ef186ac70e04ea33b4c1853d2526fa2
+bandit27@bandit:/tmp/clone/repo$ exit
+
+# 以下はローカルで
+$ ssh -l bandit28 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit28@bandit.labs.overthewire.org&#39;s password: 0ef186ac70e04ea33b4c1853d2526fa2
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;強いて言うならcloneする場所で少し詰まったぐらいです。&lt;/p&gt;
+&lt;p&gt;ホームディレクトリ直下でcloneすると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit27@bandit:~$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+fatal: could not create work tree dir &#39;repo&#39;: Permission denied
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;このようにエラーが出ます。&lt;/p&gt;
+&lt;p&gt;以下のサイトにも記載がありますが、&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chico-shikaku.com/2020/06/git-could-not-create-work-tree-dir/&#34;&gt;https://chico-shikaku.com/2020/06/git-could-not-create-work-tree-dir/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;cloneするディレクトリに権限がないことで怒られています。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/tmp&lt;/code&gt;に適当なディレクトリを作成し、そこでcloneしたらいけました。&lt;/p&gt;
+&lt;h2 id=&#34;level-29&#34;&gt;Level 29&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is a git repository at ssh://bandit28-git@localhost/home/bandit28-git/repo. The password for the user bandit28-git is the same as for the user bandit28.
+Clone the repository and find the password for the next level.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit28@bandit:~$ mkdir /tmp/bandit28_clone
+bandit28@bandit:~$ cd /tmp/bandit28_clone
+bandit28@bandit:/tmp/bandit28_clone$ git clone ssh://bandit28-git@localhost/home/bandit28-git/repo
+Cloning into &#39;repo&#39;...
+Could not create directory &#39;/home/bandit28/.ssh&#39;.
+The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit28/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit28-git@localhost&#39;s password: 0ef186ac70e04ea33b4c1853d2526fa2
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 9 (delta 2), reused 0 (delta 0)
+Receiving objects: 100% (9/9), 796 bytes | 0 bytes/s, done.
+Resolving deltas: 100% (2/2), done.
+bandit28@bandit:/tmp/bandit28_clone$ cd repo/
+bandit28@bandit:/tmp/bandit28_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+bandit28@bandit:/tmp/bandit28_clone/repo$ git log
+commit edd935d60906b33f0619605abd1689808ccdd5ee
+Author: Morla Porla &amp;lt;morla@overthewire.org&amp;gt;
+Date:   Thu May 7 20:14:49 2020 +0200
+
+    fix info leak
+
+commit c086d11a00c0648d095d04c089786efef5e01264
+Author: Morla Porla &amp;lt;morla@overthewire.org&amp;gt;
+Date:   Thu May 7 20:14:49 2020 +0200
+
+    add missing data
+
+commit de2ebe2d5fd1598cd547f4d56247e053be3fdc38
+Author: Ben Dover &amp;lt;noone@overthewire.org&amp;gt;
+Date:   Thu May 7 20:14:49 2020 +0200
+
+    initial commit of README.md
+bandit28@bandit:/tmp/bandit28_clone/repo$ git checkout c086d11a00c0648d095d04c089786efef5e01264
+Note: checking out &#39;c086d11a00c0648d095d04c089786efef5e01264&#39;.
+
+You are in &#39;detached HEAD&#39; state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b &amp;lt;new-branch-name&amp;gt;
+
+HEAD is now at c086d11... add missing data
+bandit28@bandit:/tmp/bandit28_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: bbc96594b4e001778eee9975372716b2
+bandit28@bandit:/tmp/bandit28_clone/repo$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit29 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit29@bandit.labs.overthewire.org&#39;s password: bbc96594b4e001778eee9975372716b2
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;cloneまではうまくいきましたが、&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit28@bandit:/tmp/bandit28_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;passwordが隠されている！&lt;/p&gt;
+&lt;p&gt;最初は&lt;code&gt;.git&lt;/code&gt;ディレクトリに隠してあるのかなぁと&lt;code&gt;cat&lt;/code&gt;おじさんし1てました。&lt;/p&gt;
+&lt;p&gt;そのとき、あー過去コミットにあるんじゃね？と&lt;code&gt;git log&lt;/code&gt;してみると&lt;code&gt;fix leak info&lt;/code&gt;というあぶなさが漂うコミットメッセージがありました。ここで修正しているということはその前のコミットにあると確信。そのコミットにcheckoutすると見事にありました。&lt;/p&gt;
+&lt;h2 id=&#34;level-30&#34;&gt;Level 30&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo. The password for the user bandit29-git is the same as for the user bandit29.
+Clone the repository and find the password for the next level.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit29@bandit:~$ mkdir /tmp/bandit29_clone
+bandit29@bandit:~$ cd /tmp/bandit29_clone
+bandit29@bandit:/tmp/bandit29_clone$ git clone ssh://bandit29-git@localhost/home/bandit29-git/repo
+Cloning into &#39;repo&#39;...
+Could not create directory &#39;/home/bandit29/.ssh&#39;.
+The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit29/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit29-git@localhost&#39;s password: bbc96594b4e001778eee9975372716b2
+remote: Counting objects: 16, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 16 (delta 2), reused 0 (delta 0)
+Receiving objects: 100% (16/16), done.
+Resolving deltas: 100% (2/2), done.
+bandit29@bandit:/tmp/bandit29_clone$ cd repo/
+bandit29@bandit:/tmp/bandit29_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: &amp;lt;no passwords in production!&amp;gt;
+bandit29@bandit:/tmp/bandit29_clone/repo$ git branch -a
+* master
+  remotes/origin/HEAD -&amp;gt; origin/master
+  remotes/origin/dev
+  remotes/origin/master
+  remotes/origin/sploits-dev
+bandit29@bandit:/tmp/bandit29_clone/repo$ git checkout -b dev origin/dev 
+Branch dev set up to track remote branch dev from origin.
+Switched to a new branch &#39;dev&#39;
+bandit29@bandit:/tmp/bandit29_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: 5b90576bedb2cc04c86a9e924ce42faf
+bandit29@bandit:/tmp/bandit29_clone/repo$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit30 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit30@bandit.labs.overthewire.org&#39;s password: 5b90576bedb2cc04c86a9e924ce42faf
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;前のLevelが過去のコミットからパスワードを入手したから、次は違うブランチに隠してるんだろ！という気持ちのもと&lt;code&gt;git branch -a&lt;/code&gt;してみたら、案の定。いくつか新しいブランチがありました。&lt;/p&gt;
+&lt;p&gt;そしてdevブランチにチェックアウトし見つけることができました。&lt;/p&gt;
+&lt;p&gt;普段からgitの基本的なコマンドは使い慣れているので、詰まることはなかったです。&lt;/p&gt;
+&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;リポジトリに機密情報などは格納してはいけないというのが今回の教訓です。特にLevel19では、間違って機密情報をコミットしたものを修正しているようなログがありましたが、過去のコミットをさかのぼることで機密情報がわかってしまいます。OSSでこれをやるとアウトですね。&lt;/p&gt;
+&lt;p&gt;間違えて機密情報をコミットしてしまったら、&lt;code&gt;git reset&lt;/code&gt;しましょう。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level25〜27</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/</link>
         <pubDate>Mon, 28 Jun 2021 21:29:30 +0900</pubDate>

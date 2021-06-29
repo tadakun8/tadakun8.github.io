@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 28 Goal  There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27. Clone the repository and find the password for the next level.
+ resolve bandit27@bandit:~$ mkdir /tmp/clone bandit27@bandit:~$ cd /tmp/clone bandit27@bandit:/tmp/clone$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo Cloning into &#39;repo&#39;... Could not create directory &#39;/home/bandit27/.ssh&#39;. The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established. ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc. Are you sure you want to continue connecting (yes/no)?'><title>【OverTheWire奮闘記】Bandit: Level28〜30</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level28〜30'>
+<meta property='og:description' content='Level 28 Goal  There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27. Clone the repository and find the password for the next level.
+ resolve bandit27@bandit:~$ mkdir /tmp/clone bandit27@bandit:~$ cd /tmp/clone bandit27@bandit:/tmp/clone$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo Cloning into &#39;repo&#39;... Could not create directory &#39;/home/bandit27/.ssh&#39;. The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established. ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc. Are you sure you want to continue connecting (yes/no)?'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-29T21:06:50&#43;09:00'/><meta property='article:modified_time' content='2021-06-29T21:06:50&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level28〜30">
+<meta name="twitter:description" content="Level 28 Goal  There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27. Clone the repository and find the password for the next level.
+ resolve bandit27@bandit:~$ mkdir /tmp/clone bandit27@bandit:~$ cd /tmp/clone bandit27@bandit:/tmp/clone$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo Cloning into &#39;repo&#39;... Could not create directory &#39;/home/bandit27/.ssh&#39;. The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established. ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc. Are you sure you want to continue connecting (yes/no)?">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/bandit/level28-30/">【OverTheWire奮闘記】Bandit: Level28〜30</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-29</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-28">Level 28</h2>
+<h3 id="goal">Goal</h3>
+<blockquote>
+<p>There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo. The password for the user bandit27-git is the same as for the user bandit27.
+Clone the repository and find the password for the next level.</p>
+</blockquote>
+<h3 id="resolve">resolve</h3>
+<pre><code>bandit27@bandit:~$ mkdir /tmp/clone
+bandit27@bandit:~$ cd /tmp/clone
+bandit27@bandit:/tmp/clone$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit27/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit27/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit27-git@localhost's password: 3ba3118a22e93127a4ed485be72ef5ea
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (3/3), done.
+bandit27@bandit:/tmp/clone$ ls
+repo
+bandit27@bandit:/tmp/clone$ cd repo/
+bandit27@bandit:/tmp/clone/repo$ cat README 
+The password to the next level is: 0ef186ac70e04ea33b4c1853d2526fa2
+bandit27@bandit:/tmp/clone/repo$ exit
+
+# 以下はローカルで
+$ ssh -l bandit28 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit28@bandit.labs.overthewire.org's password: 0ef186ac70e04ea33b4c1853d2526fa2
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>強いて言うならcloneする場所で少し詰まったぐらいです。</p>
+<p>ホームディレクトリ直下でcloneすると</p>
+<pre><code>bandit27@bandit:~$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo
+fatal: could not create work tree dir 'repo': Permission denied
+</code></pre><p>このようにエラーが出ます。</p>
+<p>以下のサイトにも記載がありますが、</p>
+<ul>
+<li><a href="https://chico-shikaku.com/2020/06/git-could-not-create-work-tree-dir/">https://chico-shikaku.com/2020/06/git-could-not-create-work-tree-dir/</a></li>
+</ul>
+<p>cloneするディレクトリに権限がないことで怒られています。</p>
+<p><code>/tmp</code>に適当なディレクトリを作成し、そこでcloneしたらいけました。</p>
+<h2 id="level-29">Level 29</h2>
+<h3 id="goal-1">Goal</h3>
+<blockquote>
+<p>There is a git repository at ssh://bandit28-git@localhost/home/bandit28-git/repo. The password for the user bandit28-git is the same as for the user bandit28.
+Clone the repository and find the password for the next level.</p>
+</blockquote>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit28@bandit:~$ mkdir /tmp/bandit28_clone
+bandit28@bandit:~$ cd /tmp/bandit28_clone
+bandit28@bandit:/tmp/bandit28_clone$ git clone ssh://bandit28-git@localhost/home/bandit28-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit28/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit28/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit28-git@localhost's password: 0ef186ac70e04ea33b4c1853d2526fa2
+remote: Counting objects: 9, done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 9 (delta 2), reused 0 (delta 0)
+Receiving objects: 100% (9/9), 796 bytes | 0 bytes/s, done.
+Resolving deltas: 100% (2/2), done.
+bandit28@bandit:/tmp/bandit28_clone$ cd repo/
+bandit28@bandit:/tmp/bandit28_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+bandit28@bandit:/tmp/bandit28_clone/repo$ git log
+commit edd935d60906b33f0619605abd1689808ccdd5ee
+Author: Morla Porla &lt;morla@overthewire.org&gt;
+Date:   Thu May 7 20:14:49 2020 +0200
+
+    fix info leak
+
+commit c086d11a00c0648d095d04c089786efef5e01264
+Author: Morla Porla &lt;morla@overthewire.org&gt;
+Date:   Thu May 7 20:14:49 2020 +0200
+
+    add missing data
+
+commit de2ebe2d5fd1598cd547f4d56247e053be3fdc38
+Author: Ben Dover &lt;noone@overthewire.org&gt;
+Date:   Thu May 7 20:14:49 2020 +0200
+
+    initial commit of README.md
+bandit28@bandit:/tmp/bandit28_clone/repo$ git checkout c086d11a00c0648d095d04c089786efef5e01264
+Note: checking out 'c086d11a00c0648d095d04c089786efef5e01264'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at c086d11... add missing data
+bandit28@bandit:/tmp/bandit28_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: bbc96594b4e001778eee9975372716b2
+bandit28@bandit:/tmp/bandit28_clone/repo$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit29 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit29@bandit.labs.overthewire.org's password: bbc96594b4e001778eee9975372716b2
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p>cloneまではうまくいきましたが、</p>
+<pre><code>bandit28@bandit:/tmp/bandit28_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for level29 of bandit.
+
+## credentials
+
+- username: bandit29
+- password: xxxxxxxxxx
+</code></pre><p>passwordが隠されている！</p>
+<p>最初は<code>.git</code>ディレクトリに隠してあるのかなぁと<code>cat</code>おじさんし1てました。</p>
+<p>そのとき、あー過去コミットにあるんじゃね？と<code>git log</code>してみると<code>fix leak info</code>というあぶなさが漂うコミットメッセージがありました。ここで修正しているということはその前のコミットにあると確信。そのコミットにcheckoutすると見事にありました。</p>
+<h2 id="level-30">Level 30</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>There is a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo. The password for the user bandit29-git is the same as for the user bandit29.
+Clone the repository and find the password for the next level.</p>
+</blockquote>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>bandit29@bandit:~$ mkdir /tmp/bandit29_clone
+bandit29@bandit:~$ cd /tmp/bandit29_clone
+bandit29@bandit:/tmp/bandit29_clone$ git clone ssh://bandit29-git@localhost/home/bandit29-git/repo
+Cloning into 'repo'...
+Could not create directory '/home/bandit29/.ssh'.
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit29/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit29-git@localhost's password: bbc96594b4e001778eee9975372716b2
+remote: Counting objects: 16, done.
+remote: Compressing objects: 100% (11/11), done.
+remote: Total 16 (delta 2), reused 0 (delta 0)
+Receiving objects: 100% (16/16), done.
+Resolving deltas: 100% (2/2), done.
+bandit29@bandit:/tmp/bandit29_clone$ cd repo/
+bandit29@bandit:/tmp/bandit29_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: &lt;no passwords in production!&gt;
+bandit29@bandit:/tmp/bandit29_clone/repo$ git branch -a
+* master
+  remotes/origin/HEAD -&gt; origin/master
+  remotes/origin/dev
+  remotes/origin/master
+  remotes/origin/sploits-dev
+bandit29@bandit:/tmp/bandit29_clone/repo$ git checkout -b dev origin/dev 
+Branch dev set up to track remote branch dev from origin.
+Switched to a new branch 'dev'
+bandit29@bandit:/tmp/bandit29_clone/repo$ cat README.md 
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: 5b90576bedb2cc04c86a9e924ce42faf
+bandit29@bandit:/tmp/bandit29_clone/repo$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit30 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit30@bandit.labs.overthewire.org's password: 5b90576bedb2cc04c86a9e924ce42faf
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<p>前のLevelが過去のコミットからパスワードを入手したから、次は違うブランチに隠してるんだろ！という気持ちのもと<code>git branch -a</code>してみたら、案の定。いくつか新しいブランチがありました。</p>
+<p>そしてdevブランチにチェックアウトし見つけることができました。</p>
+<p>普段からgitの基本的なコマンドは使い慣れているので、詰まることはなかったです。</p>
+<h2 id="おわりに">おわりに</h2>
+<p>リポジトリに機密情報などは格納してはいけないというのが今回の教訓です。特にLevel19では、間違って機密情報をコミットしたものを修正しているようなログがありましたが、過去のコミットをさかのぼることで機密情報がわかってしまいます。OSSでこれをやるとアウトですね。</p>
+<p>間違えて機密情報をコミットしてしまったら、<code>git reset</code>しましょう。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level25-27/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level25〜27</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level22-24/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level22〜24</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level19-21/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level19〜21</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level16-18/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level16〜18</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level14-15/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level14〜15</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
