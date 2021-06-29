@@ -6,7 +6,17 @@
     <description>Recent content in OverTheWire on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 24 Jun 2021 12:30:46 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jun 2021 21:29:30 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Bandit: Level25〜27</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/</link>
+      <pubDate>Mon, 28 Jun 2021 21:29:30 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level25-27/</guid>
+      <description>Level 25 Goal  A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+  デーモンがポート30002でlisten状態 このポートにbandit24のパスワードと4桁のピンコードを与えるとbandit25のパスワードが手に入る ピンコードはブルートフォースでしか調べることはできない  resolve bandit24@bandit:~$ mkdir /tmp/shell bandit24@bandit:~$ cd /tmp/shell bandit24@bandit:/tmp/shell$ vim make-password-code.sh #!/bin/bash for i in {0000.</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Bandit: Level22〜24</title>
       <link>https://tadakun8.github.io/post/over-the-wire/bandit/level22-24/</link>
