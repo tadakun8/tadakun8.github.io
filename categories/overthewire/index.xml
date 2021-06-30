@@ -6,7 +6,17 @@
     <description>Recent content in OverTheWire on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 29 Jun 2021 21:06:50 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 30 Jun 2021 22:53:46 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Bandit: Level31〜32</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/bandit/level31-32/</link>
+      <pubDate>Wed, 30 Jun 2021 22:53:46 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level31-32/</guid>
+      <description>Level 31 Goal  There is a git repository at ssh://bandit30-git@localhost/home/bandit30-git/repo. The password for the user bandit30-git is the same as for the user bandit30. Clone the repository and find the password for the next level.
+ resolve bandit30@bandit:~$ mkdir /tmp/bandit31_clone bandit30@bandit:~$ cd /tmp/bandit31_clone bandit30@bandit:/tmp/bandit31_clone$ ls bandit30@bandit:/tmp/bandit31_clone$ git clone ssh://bandit30-git@localhost/home/bandit30-git/repo Cloning into &#39;repo&#39;... Could not create directory &#39;/home/bandit30/.ssh&#39;. The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established. ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Bandit: Level28〜30</title>
       <link>https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/</link>

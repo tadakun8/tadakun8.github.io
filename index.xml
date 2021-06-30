@@ -6,7 +6,136 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Tue, 29 Jun 2021 21:06:50 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Wed, 30 Jun 2021 22:53:46 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level31〜32</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level31-32/</link>
+        <pubDate>Wed, 30 Jun 2021 22:53:46 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level31-32/</guid>
+        <description>&lt;h2 id=&#34;level-31&#34;&gt;Level 31&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is a git repository at ssh://bandit30-git@localhost/home/bandit30-git/repo. The password for the user bandit30-git is the same as for the user bandit30.
+Clone the repository and find the password for the next level.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit30@bandit:~$ mkdir /tmp/bandit31_clone
+bandit30@bandit:~$ cd /tmp/bandit31_clone
+bandit30@bandit:/tmp/bandit31_clone$ ls
+bandit30@bandit:/tmp/bandit31_clone$ git clone ssh://bandit30-git@localhost/home/bandit30-git/repo
+Cloning into &#39;repo&#39;...
+Could not create directory &#39;/home/bandit30/.ssh&#39;.
+The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit30/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit30-git@localhost&#39;s password: 
+remote: Counting objects: 4, done.
+Receiving objects: 100% (4/4), done.
+remote: Total 4 (delta 0), reused 0 (delta 0)
+bandit30@bandit:/tmp/bandit31_clone$ ls
+repo
+bandit30@bandit:/tmp/bandit31_clone$ cd repo/
+bandit30@bandit:/tmp/bandit31_clone/repo$ git tag
+secret
+bandit30@bandit:/tmp/bandit31_clone/repo$ git show secret
+47e603bb428404d265f59c42920d81e5
+bandit30@bandit:/tmp/bandit31_clone/repo$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit31 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit31@bandit.labs.overthewire.org&#39;s password: 47e603bb428404d265f59c42920d81e5
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;ログも1つしかなく、ブランチもmasterしかなかったので、次は何だろうと考えました。&lt;/p&gt;
+&lt;p&gt;考えて考えて、tagがまだあった！ということで&lt;code&gt;git tag&lt;/code&gt;してみると&lt;code&gt;secret&lt;/code&gt;というタグがありました。&lt;/p&gt;
+&lt;p&gt;タグの情報は、&lt;code&gt;git show &amp;lt;tag name&amp;gt;&lt;/code&gt;で見れるようです。&lt;/p&gt;
+&lt;h2 id=&#34;level-32&#34;&gt;Level 32&lt;/h2&gt;
+&lt;h3 id=&#34;goal-1&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There is a git repository at ssh://bandit31-git@localhost/home/bandit31-git/repo. The password for the user bandit31-git is the same as for the user bandit31.
+Clone the repository and find the password for the next level.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;resolve-1&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit31@bandit:~$ mkdir /tmp/bandit32_clone
+bandit31@bandit:~$ cd /tmp/bandit32_clone
+bandit31@bandit:/tmp/bandit32_clone$ git clone ssh://bandit31-git@localhost/home/bandit31-git/repo
+Cloning into &#39;repo&#39;...
+Could not create directory &#39;/home/bandit31/.ssh&#39;.
+The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit31/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit31-git@localhost&#39;s password: 
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (4/4), done.
+bandit31@bandit:/tmp/bandit32_clone$ cd repo/
+bandit31@bandit:/tmp/bandit32_clone/repo$ rm -f .gitignore 
+bandit31@bandit:/tmp/bandit32_clone/repo$ echo &amp;quot;May I come in?&amp;quot; &amp;gt; key.txt 
+bandit31@bandit:/tmp/bandit32_clone/repo$ git add --all
+bandit31@bandit:/tmp/bandit32_clone/repo$ git commit -m &#39;add key.txt&#39;
+bandit31@bandit:/tmp/bandit32_clone/repo$ git push origin master
+Could not create directory &#39;/home/bandit31/.ssh&#39;.
+The authenticity of host &#39;localhost (127.0.0.1)&#39; can&#39;t be established.
+ECDSA key fingerprint is SHA256:98UL0ZWr85496EtCRkKlo20X3OPnyPSB5tB5RPbhczc.
+Are you sure you want to continue connecting (yes/no)? yes
+Failed to add the host to the list of known hosts (/home/bandit31/.ssh/known_hosts).
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit31-git@localhost&#39;s password: 47e603bb428404d265f59c42920d81e5
+Counting objects: 3, done.
+Delta compression using up to 2 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 287 bytes | 0 bytes/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+remote: ### Attempting to validate files... ####
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+remote: Well done! Here is the password for the next level:
+remote: 56a9bf19c63d650ce78e6ec0354ee45e
+remote: 
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote: 
+To ssh://localhost/home/bandit31-git/repo
+ ! [remote rejected] master -&amp;gt; master (pre-receive hook declined)
+error: failed to push some refs to &#39;ssh://bandit31-git@localhost/home/bandit31-git/repo&#39;
+bandit31@bandit:/tmp/bandit32_clone/repo$ exit
+
+# 以下はローカルで
+❯❯❯ ssh -l bandit32 -p 2220 bandit.labs.overthewire.org
+This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+
+bandit32@bandit.labs.overthewire.org&#39;s password: 56a9bf19c63d650ce78e6ec0354ee45e
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと-1&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;bandit31@bandit:/tmp/bandit32_clone/repo$ ls -a
+.  ..  .git  .gitignore  README.md
+bandit31@bandit:/tmp/bandit32_clone/repo$ cat .gitignore 
+*.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;今回は&lt;code&gt;.gitignore&lt;/code&gt;があり、内容は拡張子が&lt;code&gt;.txt&lt;/code&gt;のファイルをignoreする設定みたいでした。&lt;/p&gt;
+&lt;p&gt;次に&lt;code&gt;README.md&lt;/code&gt;を見てみると、今回のすることが書かれていました。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bandit31@bandit:/tmp/bandit32_clone/repo$ cat README.md 
+This time your task is to push a file to the remote repository.
+
+Details:
+    File name: key.txt
+    Content: &#39;May I come in?&#39;
+    Branch: master
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;key.txtをこの内容でpushするということですね。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;.txt&lt;/code&gt;は&lt;code&gt;.gitignore&lt;/code&gt;ではじかれているので、&lt;code&gt;.gitignore&lt;/code&gt;を消してから行い、pushするとパスワードを手に入れることができました。&lt;/p&gt;
+&lt;h2 id=&#34;おしまい&#34;&gt;おしまい&lt;/h2&gt;
+&lt;p&gt;gitのタグ付けについては改めて記事にしたいです。今のお仕事でタグはつけた方がいいと思っているのですが、どうしても後回しになってしまっています。知ることで心理的障壁をなくしたいです。&lt;/p&gt;
+&lt;p&gt;また、Level32では、pushに失敗しているものの、パスワードは取得できているので意図した動作だと思います。おそらくgitのhookスクリプトで制御しているのだと思いますが、hookについても別で調べて記事にしたいです。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level28〜30</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level28-30/</link>
         <pubDate>Tue, 29 Jun 2021 21:06:50 +0900</pubDate>
