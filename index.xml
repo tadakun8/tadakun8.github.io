@@ -149,7 +149,7 @@ Some notes for level29 of bandit.
 - username: bandit29
 - password: xxxxxxxxxx
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;passwordが隠されている！&lt;/p&gt;
-&lt;p&gt;最初は&lt;code&gt;.git&lt;/code&gt;ディレクトリに隠してあるのかなぁと&lt;code&gt;cat&lt;/code&gt;おじさんし1てました。&lt;/p&gt;
+&lt;p&gt;最初は&lt;code&gt;.git&lt;/code&gt;ディレクトリに隠してあるのかなぁと&lt;code&gt;cat&lt;/code&gt;おじさんしてました。&lt;/p&gt;
 &lt;p&gt;そのとき、あー過去コミットにあるんじゃね？と&lt;code&gt;git log&lt;/code&gt;してみると&lt;code&gt;fix leak info&lt;/code&gt;というあぶなさが漂うコミットメッセージがありました。ここで修正しているということはその前のコミットにあると確信。そのコミットにcheckoutすると見事にありました。&lt;/p&gt;
 &lt;h2 id=&#34;level-30&#34;&gt;Level 30&lt;/h2&gt;
 &lt;h3 id=&#34;goal-2&#34;&gt;Goal&lt;/h3&gt;
