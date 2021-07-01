@@ -6,7 +6,54 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Wed, 30 Jun 2021 22:53:46 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 01 Jul 2021 22:30:54 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Bandit: Level33〜34</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/bandit/level33-34/</link>
+        <pubDate>Thu, 01 Jul 2021 22:30:54 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level33-34/</guid>
+        <description>&lt;h2 id=&#34;level-33&#34;&gt;Level 33&lt;/h2&gt;
+&lt;h3 id=&#34;goal&#34;&gt;Goal&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;After all this git stuff its time for another escape. Good luck!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;resolve&#34;&gt;resolve&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt; $0
+$ cat /etc/bandit_pass/bandit33
+c9c3199ddf4121b10cf581a98d51caee
+$ exit
+&amp;gt;&amp;gt; ^C
+
+# 以下はローカルで
+
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;resolveまでにやったこと&#34;&gt;resolveまでにやったこと&lt;/h3&gt;
+&lt;p&gt;まったくわからん&lt;/p&gt;
+&lt;p&gt;全てのコマンドが大文字に変換されてしまうので、どうやってもコマンドを打つことができないです。ただ、やっていくうちに&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt; $HOME
+sh: 1: /home/bandit32: Permission denied
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;環境変数をそのまま打つと、その中身は小文字のままということがわかりました。おそらく何か変数用意し、その中で&lt;code&gt;/bin/bash&lt;/code&gt;を定義できればいいのと思われます。・・・がやはりできず。諦めて回答を見ることにしました。&lt;/p&gt;
+&lt;p&gt;こちらのサイトを参考にしました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a&#34;&gt;https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これを見ると&lt;code&gt;$0&lt;/code&gt;でシェルを奪取できます。こんなに簡単だとは！&lt;/p&gt;
+&lt;h3 id=&#34;0とは&#34;&gt;$0とは&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;$0&lt;/code&gt;とは起動中のシェルスクリプト名が定義されている変数のことです。以下の記事がわかりやすかったです。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665&#34;&gt;https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;$0&lt;/code&gt;は端末上では&lt;code&gt;/bin/bash&lt;/code&gt;が定義されており、シェルスクリプト内ではそのシェルスクリプトの名前が定義される変数です。例えば&lt;code&gt;./example.sh&lt;/code&gt;の中の&lt;code&gt;$0&lt;/code&gt;には&lt;code&gt;./example.sh&lt;/code&gt;が格納されます。&lt;/p&gt;
+&lt;h2 id=&#34;level-34&#34;&gt;Level 34&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;At this moment, level 34 does not exist yet.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;banditはここでおわりみたいです。&lt;/p&gt;
+&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;bandit終了です！最後は自分の力で解きたかったのでそこが悔しかったです。banditをやってみて、Linuxコマンド全然知らないなぁと思うのと同時に、知っているコマンドもためになるオプションがあったりと自分の力になっているのを感じます。&lt;/p&gt;
+&lt;p&gt;とりあえずやり遂げました！次は&lt;code&gt;Natas&lt;/code&gt;に挑戦します。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Bandit: Level31〜32</title>
         <link>https://tadakun8.github.io/post/over-the-wire/bandit/level31-32/</link>
         <pubDate>Wed, 30 Jun 2021 22:53:46 +0900</pubDate>
@@ -45,7 +92,7 @@ bandit30@bandit:/tmp/bandit31_clone/repo$ git show secret
 bandit30@bandit:/tmp/bandit31_clone/repo$ exit
 
 # 以下はローカルで
-❯❯❯ ssh -l bandit31 -p 2220 bandit.labs.overthewire.org
+$ ssh -l bandit31 -p 2220 bandit.labs.overthewire.org
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
 bandit31@bandit.labs.overthewire.org&#39;s password: 47e603bb428404d265f59c42920d81e5
@@ -110,7 +157,7 @@ error: failed to push some refs to &#39;ssh://bandit31-git@localhost/home/bandit
 bandit31@bandit:/tmp/bandit32_clone/repo$ exit
 
 # 以下はローカルで
-❯❯❯ ssh -l bandit32 -p 2220 bandit.labs.overthewire.org
+$ ssh -l bandit32 -p 2220 bandit.labs.overthewire.org
 This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
 
 bandit32@bandit.labs.overthewire.org&#39;s password: 56a9bf19c63d650ce78e6ec0354ee45e

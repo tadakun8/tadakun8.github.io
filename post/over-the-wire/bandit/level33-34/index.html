@@ -1,20 +1,50 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
-  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.'><title>【OverTheWire奮闘記】Bandit: Level13</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 33 Goal  After all this git stuff its time for another escape. Good luck!
+ resolve &amp;gt;&amp;gt; $0 $ cat /etc/bandit_pass/bandit33 c9c3199ddf4121b10cf581a98d51caee $ exit &amp;gt;&amp;gt; ^C # 以下はローカルで resolveまでにやったこと まったくわからん
+全てのコマンドが大文字に変換されてしまうので、どうやってもコマンドを打つことができないです。ただ、やっていくうちに
+&amp;gt;&amp;gt; $HOME sh: 1: /home/bandit32: Permission denied 環境変数をそのまま打つと、その中身は小文字のままということがわかりました。おそらく何か変数用意し、その中で/bin/bashを定義できればいいのと思われます。・・・がやはりできず。諦めて回答を見ることにしました。
+こちらのサイトを参考にしました。
+ https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a  これを見ると$0でシェルを奪取できます。こんなに簡単だとは！
+$0とは $0とは起動中のシェルスクリプト名が定義されている変数のことです。以下の記事がわかりやすかったです。
+ https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665  $0は端末上では/bin/bashが定義されており、シェルスクリプト内ではそのシェルスクリプトの名前が定義される変数です。例えば./example.shの中の$0には./example.shが格納されます。
+Level 34  At this moment, level 34 does not exist yet.
+ banditはここでおわりみたいです。
+おわりに bandit終了です！最後は自分の力で解きたかったのでそこが悔しかったです。banditをやってみて、Linuxコマンド全然知らないなぁと思うのと同時に、知っているコマンドもためになるオプションがあったりと自分の力になっているのを感じます。
+とりあえずやり遂げました！次はNatasに挑戦します。'><title>【OverTheWire奮闘記】Bandit: Level33〜34</title>
 
-<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level13/'>
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/bandit/level33-34/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level13'>
-<meta property='og:description' content='Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
-  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.'>
-<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level13/'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Bandit: Level33〜34'>
+<meta property='og:description' content='Level 33 Goal  After all this git stuff its time for another escape. Good luck!
+ resolve &amp;gt;&amp;gt; $0 $ cat /etc/bandit_pass/bandit33 c9c3199ddf4121b10cf581a98d51caee $ exit &amp;gt;&amp;gt; ^C # 以下はローカルで resolveまでにやったこと まったくわからん
+全てのコマンドが大文字に変換されてしまうので、どうやってもコマンドを打つことができないです。ただ、やっていくうちに
+&amp;gt;&amp;gt; $HOME sh: 1: /home/bandit32: Permission denied 環境変数をそのまま打つと、その中身は小文字のままということがわかりました。おそらく何か変数用意し、その中で/bin/bashを定義できればいいのと思われます。・・・がやはりできず。諦めて回答を見ることにしました。
+こちらのサイトを参考にしました。
+ https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a  これを見ると$0でシェルを奪取できます。こんなに簡単だとは！
+$0とは $0とは起動中のシェルスクリプト名が定義されている変数のことです。以下の記事がわかりやすかったです。
+ https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665  $0は端末上では/bin/bashが定義されており、シェルスクリプト内ではそのシェルスクリプトの名前が定義される変数です。例えば./example.shの中の$0には./example.shが格納されます。
+Level 34  At this moment, level 34 does not exist yet.
+ banditはここでおわりみたいです。
+おわりに bandit終了です！最後は自分の力で解きたかったのでそこが悔しかったです。banditをやってみて、Linuxコマンド全然知らないなぁと思うのと同時に、知っているコマンドもためになるオプションがあったりと自分の力になっているのを感じます。
+とりあえずやり遂げました！次はNatasに挑戦します。'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/bandit/level33-34/'>
 <meta property='og:site_name' content='ただくんぶろぐ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-06-16T22:58:34&#43;09:00'/><meta property='article:modified_time' content='2021-06-16T22:58:34&#43;09:00'/>
-<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level13">
-<meta name="twitter:description" content="Level 13 Goal  The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
-  パスワードはdata.txtにある data.txtは何回もhexdumpされている data.">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-01T22:30:54&#43;09:00'/><meta property='article:modified_time' content='2021-07-01T22:30:54&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Bandit: Level33〜34">
+<meta name="twitter:description" content="Level 33 Goal  After all this git stuff its time for another escape. Good luck!
+ resolve &amp;gt;&amp;gt; $0 $ cat /etc/bandit_pass/bandit33 c9c3199ddf4121b10cf581a98d51caee $ exit &amp;gt;&amp;gt; ^C # 以下はローカルで resolveまでにやったこと まったくわからん
+全てのコマンドが大文字に変換されてしまうので、どうやってもコマンドを打つことができないです。ただ、やっていくうちに
+&amp;gt;&amp;gt; $HOME sh: 1: /home/bandit32: Permission denied 環境変数をそのまま打つと、その中身は小文字のままということがわかりました。おそらく何か変数用意し、その中で/bin/bashを定義できればいいのと思われます。・・・がやはりできず。諦めて回答を見ることにしました。
+こちらのサイトを参考にしました。
+ https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a  これを見ると$0でシェルを奪取できます。こんなに簡単だとは！
+$0とは $0とは起動中のシェルスクリプト名が定義されている変数のことです。以下の記事がわかりやすかったです。
+ https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665  $0は端末上では/bin/bashが定義されており、シェルスクリプト内ではそのシェルスクリプトの名前が定義される変数です。例えば./example.shの中の$0には./example.shが格納されます。
+Level 34  At this moment, level 34 does not exist yet.
+ banditはここでおわりみたいです。
+おわりに bandit終了です！最後は自分の力で解きたかったのでそこが悔しかったです。banditをやってみて、Linuxコマンド全然知らないなぁと思うのと同時に、知っているコマンドもためになるオプションがあったりと自分の力になっているのを感じます。
+とりあえずやり遂げました！次はNatasに挑戦します。">
     </head>
     <body class="">
     <script>
@@ -199,7 +229,7 @@
     
 
     <h2 class="article-title">
-        <a href="/post/over-the-wire/bandit/level13/">【OverTheWire奮闘記】Bandit: Level13</a>
+        <a href="/post/over-the-wire/bandit/level33-34/">【OverTheWire奮闘記】Bandit: Level33〜34</a>
     </h2>
 
     <footer class="article-time">
@@ -211,133 +241,50 @@
 
 
 
-        <time class="article-time--published">2021-06-16</time>
+        <time class="article-time--published">2021-07-01</time>
     </footer></div>
 </header>
 
     <section class="article-content">
-    <h2 id="level-13">Level 13</h2>
+    <h2 id="level-33">Level 33</h2>
 <h3 id="goal">Goal</h3>
 <blockquote>
-<p>The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)</p>
+<p>After all this git stuff its time for another escape. Good luck!</p>
 </blockquote>
-<ul>
-<li>パスワードはdata.txtにある</li>
-<li><del>data.txtは何回もhexdumpされている</del></li>
-<li>data.txtはhexdumpファイルであり、何回も圧縮されている</li>
-</ul>
 <h3 id="resolve">resolve</h3>
-<pre><code>bandit12@bandit:~$ mkdir /tmp/mydir
-bandit12@bandit:~$ cp data.txt /tmp/mydir
-bandit12@bandit:~$ cd /tmp/mydir
-bandit12@bandit:/tmp/mydir$ xxd -r data.txt | gzip -d &gt; data.decompress.txt
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt 
-data.decompress.txt: bzip2 compressed data, block size = 900k
-bandit12@bandit:/tmp/mydir$ mv data.decompress.txt data.decompress.txt.bz
-bandit12@bandit:/tmp/mydir$ bzip2 -d data.decompress.txt.bz
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt
-data.decompress.txt: gzip compressed data, was &quot;data4.bin&quot;, last modified: Thu May  7 18:14:30 2020, max compression, from Unix
-bandit12@bandit:/tmp/mydir$ mv data.decompress.txt data.decompress.txt.gz
-bandit12@bandit:/tmp/mydir$ gzip -d data.decompress.txt.gz 
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt
-data.decompress.txt: POSIX tar archive (GNU)
-bandit12@bandit:/tmp/mydir$ tar -xvf data.decompress.txt
-data5.bin
-bandit12@bandit:/tmp/mydir$ file data5.bin
-data5.bin: POSIX tar archive (GNU)
-bandit12@bandit:/tmp/mydir$ tar -xvf data5.bin
-data6.bin
-bandit12@bandit:/tmp/mydir$ file data6.bin 
-data6.bin: bzip2 compressed data, block size = 900k
-bandit12@bandit:/tmp/mydir$ bzip2 -d data6.bin.bz 
-data5.bin  data6.bin  data.decompress.txt  data.decompress.txt.out  data.txt
-bandit12@bandit:/tmp/mydir$ file data6.bin
-data6.bin: POSIX tar archive (GNU)
-bandit12@bandit:/tmp/mydir$ tar -xvf data6.bin
-data8.bin
-bandit12@bandit:/tmp/mydir$ file data8.bin
-data8.bin: gzip compressed data, was &quot;data9.bin&quot;, last modified: Thu May  7 18:14:30 2020, max compression, from Unix
-bandit12@bandit:/tmp/mydir$ file data8.bin
-data8.bin: ASCII text
-bandit12@bandit:/tmp/mydir$ cat data8.bin 
-The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
-bandit12@bandit:/tmp/mydir$ exit
+<pre><code>&gt;&gt; $0
+$ cat /etc/bandit_pass/bandit33
+c9c3199ddf4121b10cf581a98d51caee
+$ exit
+&gt;&gt; ^C
 
-# 以下ローカルで
-❯❯❯ ssh -l bandit13 -p 2220 bandit.labs.overthewire.org
-This is a OverTheWire game server. More information on http://www.overthewire.org/wargames
+# 以下はローカルで
 
-bandit13@bandit.labs.overthewire.org's password: 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 </code></pre><h3 id="resolveまでにやったこと">resolveまでにやったこと</h3>
-<h4 id="異次元の世界へようこそ">異次元の世界へようこそ</h4>
-<p>いつものように<code>cat data.txt</code>しましたが</p>
-<pre><code>bandit12@bandit:~$ cat data.txt 
-00000000: 1f8b 0808 0650 b45e 0203 6461 7461 322e  .....P.^..data2.
-00000010: 6269 6e00 013d 02c2 fd42 5a68 3931 4159  bin..=...BZh91AY
-00000020: 2653 598e 4f1c c800 001e 7fff fbf9 7fda  &amp;SY.O...........
-00000030: 9e7f 4f76 9fcf fe7d 3fff f67d abde 5e9f  ..Ov...}?..}..^.
-00000040: f3fe 9fbf f6f1 feee bfdf a3ff b001 3b1b  ..............;.
-00000050: 5481 a1a0 1ea0 1a34 d0d0 001a 68d3 4683  T......4....h.F.
-00000060: 4680 0680 0034 1918 4c4d 190c 4000 0001  F....4..LM..@...
-00000070: a000 c87a 81a3 464d a8d3 43c5 1068 0346  ...z..FM..C..h.F
-.
-.
-.
-
-</code></pre><p>うーん、わからん！</p>
-<p>今まで見たことない形式でした。<code>cat data.txt</code>で異次元の扉を開けたようです。</p>
-<h4 id="hexdumpとは16進数ダンプのこと">hexdumpとは16進数ダンプのこと！</h4>
-<p>そこから離れて、Goalにある<code>hexdump</code>とは何かを調べました。16進数ダンプのことでした。そこを手がかりに<code>hexdump</code>コマンドを調べていくうちに、data.txtの右側にある文字はASCII文字だとわかりました。・</p>
-<p>・・・だからなんだっていうんだ。これは糸口になりそうにないです。</p>
-<h4 id="ぐるぐるたいむ">ぐるぐるたいむ</h4>
-<p>それに、Goalの<code>which is a hexdump of a file that has been repeatedly compressed.</code>というところが気になってました。hexdumpコマンドを何回も叩いて圧縮されたのか？とか色々考えてぐるぐるしてました。</p>
-<p>その途中、30分ぐらいずっと<code>hexdump 復元</code>とかで調べてました。<code>xxd</code>コマンドとの出会いはそのときです。</p>
-<p><code>xdd</code>は<code>hexdump</code>と似ていて、どちらも16進数ダンプできるコマンドですが、<code>xdd </code>は<code>-r</code>でダンプされたものを元に戻すということもできます。そのときは、<code>xdd -r data.txt</code>としても手がかりはつかめなかったのでスルーしていました。</p>
-<p>また、<code>Commands you may need to solve this level</code>にある<code>file</code>コマンドで<code>file data.txt</code>をしても</p>
-<pre><code>bandit12@bandit:~$ file data.txt 
-data.txt: ASCII text
-</code></pre><p>普通のテキストファイルだったので、打つ手がなくなってきました。</p>
-<h4 id="光が見えてきた">光が見えてきた</h4>
-<p>ふと、<code>which is a hexdump of a file that has been repeatedly compressed.</code>の<code>compressed</code>って圧縮だよな？圧縮ってzipとかかなぁと思って<code>16進数 ダンプ 圧縮</code>で検索したらようやく糸口を見つけました。</p>
+<p>まったくわからん</p>
+<p>全てのコマンドが大文字に変換されてしまうので、どうやってもコマンドを打つことができないです。ただ、やっていくうちに</p>
+<pre><code>&gt;&gt; $HOME
+sh: 1: /home/bandit32: Permission denied
+</code></pre><p>環境変数をそのまま打つと、その中身は小文字のままということがわかりました。おそらく何か変数用意し、その中で<code>/bin/bash</code>を定義できればいいのと思われます。・・・がやはりできず。諦めて回答を見ることにしました。</p>
+<p>こちらのサイトを参考にしました。</p>
 <ul>
-<li><a class="link" href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q11156143746"  target="_blank" rel="noopener"
-    >暗号の解き方教えて下さい</a></li>
+<li><a href="https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a">https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a</a></li>
 </ul>
-<p>このサイトに</p>
+<p>これを見ると<code>$0</code>でシェルを奪取できます。こんなに簡単だとは！</p>
+<h3 id="0とは">$0とは</h3>
+<p><code>$0</code>とは起動中のシェルスクリプト名が定義されている変数のことです。以下の記事がわかりやすかったです。</p>
+<ul>
+<li><a href="https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665">https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665</a></li>
+</ul>
+<p><code>$0</code>は端末上では<code>/bin/bash</code>が定義されており、シェルスクリプト内ではそのシェルスクリプトの名前が定義される変数です。例えば<code>./example.sh</code>の中の<code>$0</code>には<code>./example.sh</code>が格納されます。</p>
+<h2 id="level-34">Level 34</h2>
 <blockquote>
-<p>1f8bで始まっているのでgzip圧縮されたファイルのヘックスダンプと予想されます</p>
+<p>At this moment, level 34 does not exist yet.</p>
 </blockquote>
-<p>そういえば、data.txtも<code>1f8b</code>で始まっている！つまり、data.txtはgzipで圧縮されたファイルなのか！？でも<code>file data.txt</code>での結果はテキストファイルっていう結果だったしな・・・</p>
-<p>・・・data.txt自体はテキストファイルだけど、その中身がgzipで圧縮されているのかもと気づいたときに繋がりました。実際に確かめてみると</p>
-<pre><code>bandit12@bandit:/tmp/mydir$ xxd -r data.txt | gzip -d &gt; data.decompress.txt
-bandit12@bandit:/tmp/mydir$ file data.decompress.txt 
-data.decompress.txt: bzip2 compressed data, block size = 900k
-</code></pre><p>予想はあってました</p>
-<p>あとはファイルの形式に従ってbzip2やtar、gzipで展開していけばパスワードが取得できました。</p>
-<h4 id="展開に使ったコマンド">展開に使ったコマンド</h4>
-<ul>
-<li>bzip
-<ul>
-<li><code>-d</code> : 展開する</li>
-<li>パイプからの標準入力も受け付けることができる</li>
-</ul>
-</li>
-<li>tar
-<ul>
-<li><code>-v</code> : 処理したファイルを一覧表示する</li>
-<li><code>-x</code> : 展開する</li>
-<li><code>-f</code> : アーカイブファイルを指定する</li>
-</ul>
-</li>
-<li>gzip
-<ul>
-<li><code>-d</code> : 展開する</li>
-<li>パイプからの標準入力も受け付けることができる</li>
-</ul>
-</li>
-</ul>
-<h2 id="今日はおしまい">今日はおしまい</h2>
-<p>Level13、かなりの難敵でした。<code>cat</code>しても「&hellip;で？」っていう状態からのスタートだったのはきつかったです。特に、<code>1f8b</code>がgzip形式のファイルだと気づくのに時間がかかりました。ダンプされたファイルの初めは意味がわからなくても検索した方がいいと教訓を得ました。</p>
+<p>banditはここでおわりみたいです。</p>
+<h2 id="おわりに">おわりに</h2>
+<p>bandit終了です！最後は自分の力で解きたかったのでそこが悔しかったです。banditをやってみて、Linuxコマンド全然知らないなぁと思うのと同時に、知っているコマンドもためになるオプションがあったりと自分の力になっているのを感じます。</p>
+<p>とりあえずやり遂げました！次は<code>Natas</code>に挑戦します。</p>
 
 </section>
 
@@ -356,18 +303,6 @@ data.decompress.txt: bzip2 compressed data, block size = 900k
         <h2 class="section-title">Related contents</h2>
         <div class="related-contents">
             <div class="flex article-list--tile">
-                
-                    
-<article class="">
-    <a href="/post/over-the-wire/bandit/level33-34/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level33〜34</h2>
-        </div>
-    </a>
-</article>
                 
                     
 <article class="">
@@ -413,6 +348,18 @@ data.decompress.txt: bzip2 compressed data, block size = 900k
 
         <div class="article-details">
             <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level22〜24</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level19-21/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level19〜21</h2>
         </div>
     </a>
 </article>

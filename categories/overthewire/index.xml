@@ -6,7 +6,27 @@
     <description>Recent content in OverTheWire on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Wed, 30 Jun 2021 22:53:46 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jul 2021 22:30:54 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Bandit: Level33〜34</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/bandit/level33-34/</link>
+      <pubDate>Thu, 01 Jul 2021 22:30:54 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/bandit/level33-34/</guid>
+      <description>Level 33 Goal  After all this git stuff its time for another escape. Good luck!
+ resolve &amp;gt;&amp;gt; $0 $ cat /etc/bandit_pass/bandit33 c9c3199ddf4121b10cf581a98d51caee $ exit &amp;gt;&amp;gt; ^C # 以下はローカルで resolveまでにやったこと まったくわからん
+全てのコマンドが大文字に変換されてしまうので、どうやってもコマンドを打つことができないです。ただ、やっていくうちに
+&amp;gt;&amp;gt; $HOME sh: 1: /home/bandit32: Permission denied 環境変数をそのまま打つと、その中身は小文字のままということがわかりました。おそらく何か変数用意し、その中で/bin/bashを定義できればいいのと思われます。・・・がやはりできず。諦めて回答を見ることにしました。
+こちらのサイトを参考にしました。
+ https://medium.com/secttp/overthewire-bandit-level-31-e3b82064285a  これを見ると$0でシェルを奪取できます。こんなに簡単だとは！
+$0とは $0とは起動中のシェルスクリプト名が定義されている変数のことです。以下の記事がわかりやすかったです。
+ https://qiita.com/blueskyarea/items/b96c5b6cae02db4b9665  $0は端末上では/bin/bashが定義されており、シェルスクリプト内ではそのシェルスクリプトの名前が定義される変数です。例えば./example.shの中の$0には./example.shが格納されます。
+Level 34  At this moment, level 34 does not exist yet.
+ banditはここでおわりみたいです。
+おわりに bandit終了です！最後は自分の力で解きたかったのでそこが悔しかったです。banditをやってみて、Linuxコマンド全然知らないなぁと思うのと同時に、知っているコマンドもためになるオプションがあったりと自分の力になっているのを感じます。
+とりあえずやり遂げました！次はNatasに挑戦します。</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Bandit: Level31〜32</title>
       <link>https://tadakun8.github.io/post/over-the-wire/bandit/level31-32/</link>
