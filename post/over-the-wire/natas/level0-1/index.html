@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='はじめに 今回からのOverTheWireはNatasに挑戦です。
+ https://overthewire.org/wargames/natas/  Natasではサーバーサイドのウェブセキュリティ基礎を学ぶことができます。BanditではSSHでサーバにログインして次のレベルへと進んでしましたが、Natasではwebサイトにアクセスして次のレベルへ進めます。次のレベルのパスワードを取得するということは変わっていません。
+また説明文には以下のように書いてあり
+ . All passwords are also stored in /etc/natas_webpass/. E.g. the password for natas5 is stored in the file /etc/natas_webpass/natas5 and only readable by natas4 and natas5.
+ 全てのパスワードが保存されている場所も示してくれています。何かヒントになるかもしれません。
+それでは挑戦していきます！
+(ちなみにNatasとはスペイン語でクリームという意味らしいです)
+Level 0  Username: natas0
+Password: natas0
+URL: http://natas0.natas.labs.overthewire.org
+  question 
+Answer gtVrDuiDfck831PqWsLEZy5gyDz1clto Answerまでにやったこと どこにも書いてないと思ったので、chromeの開発者ツールでコードを見たらがっつり書いてました。
+ Answer 
+curlでも見れます
+$ curl -u natas0:natas0 http://natas0.natas.labs.overthewire.org/ &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.'><title>【OverTheWire奮闘記】Natas: Level0〜1</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/natas/level0-1/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Natas: Level0〜1'>
+<meta property='og:description' content='はじめに 今回からのOverTheWireはNatasに挑戦です。
+ https://overthewire.org/wargames/natas/  Natasではサーバーサイドのウェブセキュリティ基礎を学ぶことができます。BanditではSSHでサーバにログインして次のレベルへと進んでしましたが、Natasではwebサイトにアクセスして次のレベルへ進めます。次のレベルのパスワードを取得するということは変わっていません。
+また説明文には以下のように書いてあり
+ . All passwords are also stored in /etc/natas_webpass/. E.g. the password for natas5 is stored in the file /etc/natas_webpass/natas5 and only readable by natas4 and natas5.
+ 全てのパスワードが保存されている場所も示してくれています。何かヒントになるかもしれません。
+それでは挑戦していきます！
+(ちなみにNatasとはスペイン語でクリームという意味らしいです)
+Level 0  Username: natas0
+Password: natas0
+URL: http://natas0.natas.labs.overthewire.org
+  question 
+Answer gtVrDuiDfck831PqWsLEZy5gyDz1clto Answerまでにやったこと どこにも書いてないと思ったので、chromeの開発者ツールでコードを見たらがっつり書いてました。
+ Answer 
+curlでも見れます
+$ curl -u natas0:natas0 http://natas0.natas.labs.overthewire.org/ &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/natas/level0-1/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-03T15:29:11&#43;09:00'/><meta property='article:modified_time' content='2021-07-03T15:29:11&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Natas: Level0〜1">
+<meta name="twitter:description" content="はじめに 今回からのOverTheWireはNatasに挑戦です。
+ https://overthewire.org/wargames/natas/  Natasではサーバーサイドのウェブセキュリティ基礎を学ぶことができます。BanditではSSHでサーバにログインして次のレベルへと進んでしましたが、Natasではwebサイトにアクセスして次のレベルへ進めます。次のレベルのパスワードを取得するということは変わっていません。
+また説明文には以下のように書いてあり
+ . All passwords are also stored in /etc/natas_webpass/. E.g. the password for natas5 is stored in the file /etc/natas_webpass/natas5 and only readable by natas4 and natas5.
+ 全てのパスワードが保存されている場所も示してくれています。何かヒントになるかもしれません。
+それでは挑戦していきます！
+(ちなみにNatasとはスペイン語でクリームという意味らしいです)
+Level 0  Username: natas0
+Password: natas0
+URL: http://natas0.natas.labs.overthewire.org
+  question 
+Answer gtVrDuiDfck831PqWsLEZy5gyDz1clto Answerまでにやったこと どこにも書いてないと思ったので、chromeの開発者ツールでコードを見たらがっつり書いてました。
+ Answer 
+curlでも見れます
+$ curl -u natas0:natas0 http://natas0.natas.labs.overthewire.org/ &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/natas/level0-1/">【OverTheWire奮闘記】Natas: Level0〜1</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-07-03</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="はじめに">はじめに</h2>
+<p>今回からのOverTheWireは<code>Natas</code>に挑戦です。</p>
+<ul>
+<li><a href="https://overthewire.org/wargames/natas/">https://overthewire.org/wargames/natas/</a></li>
+</ul>
+<p><code>Natas</code>ではサーバーサイドのウェブセキュリティ基礎を学ぶことができます。<code>Bandit</code>ではSSHでサーバにログインして次のレベルへと進んでしましたが、<code>Natas</code>ではwebサイトにアクセスして次のレベルへ進めます。次のレベルのパスワードを取得するということは変わっていません。</p>
+<p>また説明文には以下のように書いてあり</p>
+<blockquote>
+<p>. All passwords are also stored in /etc/natas_webpass/. E.g. the password for natas5 is stored in the file /etc/natas_webpass/natas5 and only readable by natas4 and natas5.</p>
+</blockquote>
+<p>全てのパスワードが保存されている場所も示してくれています。何かヒントになるかもしれません。</p>
+<p>それでは挑戦していきます！</p>
+<p>(ちなみにNatasとはスペイン語でクリームという意味らしいです)</p>
+<h2 id="level-0">Level 0</h2>
+<blockquote>
+<p>Username: natas0<br>
+Password: natas0<br>
+URL: <a href="http://natas0.natas.labs.overthewire.org">http://natas0.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 193; flex-basis: 465px">
+		<a href="/post/over-the-wire/natas/level0-1/level0/q.png" data-size="2560x1320"><img src="/post/over-the-wire/natas/level0-1/level0/q.png"
+				srcset="/post/over-the-wire/natas/level0-1/level0/q_huc3de3c09b353bba82738ee10424f7bb6_459882_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level0-1/level0/q_huc3de3c09b353bba82738ee10424f7bb6_459882_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1320"
+				loading="lazy"
+				alt="question">
+		</a>
+		
+		<figcaption>question</figcaption>
+		
+	</figure></p>
+<h3 id="answer">Answer</h3>
+<pre><code>gtVrDuiDfck831PqWsLEZy5gyDz1clto
+</code></pre><h3 id="answerまでにやったこと">Answerまでにやったこと</h3>
+<p>どこにも書いてないと思ったので、chromeの開発者ツールでコードを見たらがっつり書いてました。</p>
+<p><figure style="flex-grow: 192; flex-basis: 462px">
+		<a href="/post/over-the-wire/natas/level0-1/level0/a.png" data-size="2560x1328"><img src="/post/over-the-wire/natas/level0-1/level0/a.png"
+				srcset="/post/over-the-wire/natas/level0-1/level0/a_hu7367db0f61ed87a7f047571e6f1aa9f1_1045819_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level0-1/level0/a_hu7367db0f61ed87a7f047571e6f1aa9f1_1045819_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1328"
+				loading="lazy"
+				alt="Answer">
+		</a>
+		
+		<figcaption>Answer</figcaption>
+		
+	</figure></p>
+<p>curlでも見れます</p>
+<pre><code>$ curl -u natas0:natas0 http://natas0.natas.labs.overthewire.org/
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://natas.labs.overthewire.org/css/level.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/jquery-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/wechall.css&quot; /&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&quot;http://natas.labs.overthewire.org/js/wechall.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &quot;level&quot;: &quot;natas0&quot;, &quot;pass&quot;: &quot;natas0&quot; };&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;natas0&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+You can find the password for the next level on this page.
+
+&lt;!--The password for natas1 is gtVrDuiDfck831PqWsLEZy5gyDz1clto --&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><code>curl</code>でbasic認証をしているwebサイトにアクセするためには<code>-u</code>オプションをつけるとみることができます。形式は <code>-u ユーザ名:パスワード</code>です。</p>
+<h2 id="level-1">Level 1</h2>
+<blockquote>
+<p>Username: natas1<br>
+URL: <a href="http://natas1.natas.labs.overthewire.org">http://natas1.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 192; flex-basis: 462px">
+		<a href="/post/over-the-wire/natas/level0-1/level1/q.png" data-size="2558x1328"><img src="/post/over-the-wire/natas/level0-1/level1/q.png"
+				srcset="/post/over-the-wire/natas/level0-1/level1/q_hu0dc1a220916182eb143665a689726084_499879_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level0-1/level1/q_hu0dc1a220916182eb143665a689726084_499879_1024x0_resize_box_2.png 1024w"
+				width="2558"
+				height="1328"
+				loading="lazy"
+				alt="question">
+		</a>
+		
+		<figcaption>question</figcaption>
+		
+	</figure></p>
+<h3 id="answer-1">Answer</h3>
+<pre><code>ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi
+</code></pre><h3 id="answerまでにやったこと-1">Answerまでにやったこと</h3>
+<p>右クリックを押すとAlartが表示されます。右クリックから出なくても、F12ボタンで開発者ツールは開けるのでソースコードは見れます。</p>
+<p><figure style="flex-grow: 193; flex-basis: 464px">
+		<a href="/post/over-the-wire/natas/level0-1/level1/a.png" data-size="2560x1322"><img src="/post/over-the-wire/natas/level0-1/level1/a.png"
+				srcset="/post/over-the-wire/natas/level0-1/level1/a_hu00e68d9b1266f809414b9b065a00dc5e_1118405_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level0-1/level1/a_hu00e68d9b1266f809414b9b065a00dc5e_1118405_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1322"
+				loading="lazy"
+				alt="Answer">
+		</a>
+		
+		<figcaption>Answer</figcaption>
+		
+	</figure></p>
+<p>curlでも同じようにできます。</p>
+<pre><code>curl -u natas1:gtVrDuiDfck831PqWsLEZy5gyDz1clto http://natas1.natas.labs.overthewire.org                          ?[master]
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://natas.labs.overthewire.org/css/level.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/jquery-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/wechall.css&quot; /&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&quot;http://natas.labs.overthewire.org/js/wechall.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &quot;level&quot;: &quot;natas1&quot;, &quot;pass&quot;: &quot;gtVrDuiDfck831PqWsLEZy5gyDz1clto&quot; };&lt;/script&gt;&lt;/head&gt;
+&lt;body oncontextmenu=&quot;javascript:alert('right clicking has been blocked!');return false;&quot;&gt;
+&lt;h1&gt;natas1&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+You can find the password for the
+next level on this page, but rightclicking has been blocked!
+
+&lt;!--The password for natas2 is ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi --&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="おわりに">おわりに</h2>
+<p>ページにある<code>WeChall</code>とはなんのかをざっと調べたところOverTheWireと同じようにハッキングを学べるサイトのようです。こちらはOverTheWireにも説明が書いてありました。</p>
+<ul>
+<li><a href="https://overthewire.org/information/wechall.html">https://overthewire.org/information/wechall.html</a></li>
+</ul>
+<p>どうやらWeChallとOverTheWireは連携していて、WeChallのユーザがOverTheWireをどこまでクリアしたかがわかるようです。</p>
+<p>このOverTheWireが終わったら、次にこのサイトに挑戦してみるのもいいかもしれません。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level33-34/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level33〜34</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level31-32/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level31〜32</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level28-30/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level28〜30</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level25-27/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level25〜27</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level22-24/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level22〜24</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

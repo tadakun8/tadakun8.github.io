@@ -6,7 +6,30 @@
     <description>Recent content in OverTheWire on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 01 Jul 2021 22:30:54 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Jul 2021 15:29:11 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Natas: Level0〜1</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/natas/level0-1/</link>
+      <pubDate>Sat, 03 Jul 2021 15:29:11 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/natas/level0-1/</guid>
+      <description>はじめに 今回からのOverTheWireはNatasに挑戦です。
+ https://overthewire.org/wargames/natas/  Natasではサーバーサイドのウェブセキュリティ基礎を学ぶことができます。BanditではSSHでサーバにログインして次のレベルへと進んでしましたが、Natasではwebサイトにアクセスして次のレベルへ進めます。次のレベルのパスワードを取得するということは変わっていません。
+また説明文には以下のように書いてあり
+ . All passwords are also stored in /etc/natas_webpass/. E.g. the password for natas5 is stored in the file /etc/natas_webpass/natas5 and only readable by natas4 and natas5.
+ 全てのパスワードが保存されている場所も示してくれています。何かヒントになるかもしれません。
+それでは挑戦していきます！
+(ちなみにNatasとはスペイン語でクリームという意味らしいです)
+Level 0  Username: natas0
+Password: natas0
+URL: http://natas0.natas.labs.overthewire.org
+  question 
+Answer gtVrDuiDfck831PqWsLEZy5gyDz1clto Answerまでにやったこと どこにも書いてないと思ったので、chromeの開発者ツールでコードを見たらがっつり書いてました。
+ Answer 
+curlでも見れます
+$ curl -u natas0:natas0 http://natas0.natas.labs.overthewire.org/ &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Bandit: Level33〜34</title>
       <link>https://tadakun8.github.io/post/over-the-wire/bandit/level33-34/</link>
