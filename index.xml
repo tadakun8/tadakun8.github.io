@@ -7,19 +7,19 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
         <lastBuildDate>Sun, 04 Jul 2021 10:15:48 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>【OverTheWire奮闘記】Natas: Level2〜4</title>
-        <link>https://tadakun8.github.io/post/over-the-wire/natas/level2-4/</link>
+        <title>【OverTheWire奮闘記】Natas: Level2〜3</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/natas/level2-3/</link>
         <pubDate>Sun, 04 Jul 2021 10:15:48 +0900</pubDate>
         
-        <guid>https://tadakun8.github.io/post/over-the-wire/natas/level2-4/</guid>
+        <guid>https://tadakun8.github.io/post/over-the-wire/natas/level2-3/</guid>
         <description>&lt;h2 id=&#34;level-2&#34;&gt;Level 2&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Username: natas2&lt;br&gt;
 URL: &lt;a href=&#34;http://natas2.natas.labs.overthewire.org&#34;&gt;http://natas2.natas.labs.overthewire.org&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 194; flex-basis: 467px&#34;&gt;
-		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q.png&#34; data-size=&#34;2560x1314&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q.png&#34;
-				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q_hu2e7297c3a7fffabfbeae47786bad727c_446769_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q_hu2e7297c3a7fffabfbeae47786bad727c_446769_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/q.png&#34; data-size=&#34;2560x1314&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/q_hu2e7297c3a7fffabfbeae47786bad727c_446769_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/q_hu2e7297c3a7fffabfbeae47786bad727c_446769_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2560&#34;
 				height=&#34;1314&#34;
 				loading=&#34;lazy&#34;
@@ -34,8 +34,8 @@ URL: &lt;a href=&#34;http://natas2.natas.labs.overthewire.org&#34;&gt;http://nat
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;answerまでにやったこと&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
 &lt;p&gt;ソースコードを見ると&lt;code&gt;files/pixel.png&lt;/code&gt;という画像ファイルがありました。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 192; flex-basis: 462px&#34;&gt;
-		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1.png&#34; data-size=&#34;2560x1328&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1.png&#34;
-				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_1219506_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_1219506_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a1.png&#34; data-size=&#34;2560x1328&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a1.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_1219506_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_1219506_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2560&#34;
 				height=&#34;1328&#34;
 				loading=&#34;lazy&#34;
@@ -72,8 +72,8 @@ There is nothing on this page
 &lt;/ul&gt;
 &lt;p&gt;なるほど、&lt;code&gt;pixel.png&lt;/code&gt;が格納されている&lt;code&gt;files&lt;/code&gt;ディレクトリにあるみたいです。なので&lt;code&gt;http://natas2.natas.labs.overthewire.org/files/&lt;/code&gt;でアクセスしてみると&lt;code&gt;user.txt&lt;/code&gt;がありました！&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 232; flex-basis: 557px&#34;&gt;
-		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2.png&#34; data-size=&#34;1268x546&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2.png&#34;
-				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2_huecbee5e683a6a9f17b8b7c2ceddade40_275686_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2_huecbee5e683a6a9f17b8b7c2ceddade40_275686_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a2.png&#34; data-size=&#34;1268x546&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a2.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a2_huecbee5e683a6a9f17b8b7c2ceddade40_275686_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a2_huecbee5e683a6a9f17b8b7c2ceddade40_275686_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;1268&#34;
 				height=&#34;546&#34;
 				loading=&#34;lazy&#34;
@@ -85,8 +85,8 @@ There is nothing on this page
 	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;user.txt&lt;/code&gt;をクリックするとパスワードがわかりました。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 307; flex-basis: 737px&#34;&gt;
-		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3.png&#34; data-size=&#34;1204x392&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3.png&#34;
-				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3_hu45bd1d7ce6d459c29e3477574432c2cc_161654_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3_hu45bd1d7ce6d459c29e3477574432c2cc_161654_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a3.png&#34; data-size=&#34;1204x392&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a3.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a3_hu45bd1d7ce6d459c29e3477574432c2cc_161654_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level2/a3_hu45bd1d7ce6d459c29e3477574432c2cc_161654_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;1204&#34;
 				height=&#34;392&#34;
 				loading=&#34;lazy&#34;
@@ -102,8 +102,8 @@ There is nothing on this page
 URL: &lt;a href=&#34;http://natas3.natas.labs.overthewire.org&#34;&gt;http://natas3.natas.labs.overthewire.org&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 192; flex-basis: 462px&#34;&gt;
-		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q.png&#34; data-size=&#34;2560x1328&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q.png&#34;
-				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/q.png&#34; data-size=&#34;2560x1328&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;2560&#34;
 				height=&#34;1328&#34;
 				loading=&#34;lazy&#34;
@@ -155,8 +155,8 @@ Content-Type: text/html
 &lt;h3 id=&#34;robotstxtにアクセスしてみる&#34;&gt;robots.txtにアクセスしてみる&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;http://natas3.natas.labs.overthewire.org/robots.txt&lt;/code&gt;にアクセスしてみると&lt;code&gt;/s3cr3t/&lt;/code&gt;というディレクトリがクロールを拒否されていました。&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 362; flex-basis: 870px&#34;&gt;
-		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1.png&#34; data-size=&#34;1276x352&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1.png&#34;
-				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1_hu5ee3f19269061e7ede869f5d1b40f333_142007_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1_hu5ee3f19269061e7ede869f5d1b40f333_142007_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a1.png&#34; data-size=&#34;1276x352&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a1.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a1_hu5ee3f19269061e7ede869f5d1b40f333_142007_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a1_hu5ee3f19269061e7ede869f5d1b40f333_142007_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;1276&#34;
 				height=&#34;352&#34;
 				loading=&#34;lazy&#34;
@@ -168,8 +168,8 @@ Content-Type: text/html
 	&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;なので直接アクセスすると&lt;code&gt;users.txt&lt;/code&gt;を見つけました&lt;/p&gt;
 &lt;p&gt;&lt;figure style=&#34;flex-grow: 274; flex-basis: 659px&#34;&gt;
-		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2.png&#34; data-size=&#34;1336x486&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2.png&#34;
-				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2_hub35d45b2d1c2aae6eec20cde0f6ade80_247365_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2_hub35d45b2d1c2aae6eec20cde0f6ade80_247365_1024x0_resize_box_2.png 1024w&#34;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a2.png&#34; data-size=&#34;1336x486&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a2.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a2_hub35d45b2d1c2aae6eec20cde0f6ade80_247365_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-3/level3/a2_hub35d45b2d1c2aae6eec20cde0f6ade80_247365_1024x0_resize_box_2.png 1024w&#34;
 				width=&#34;1336&#34;
 				height=&#34;486&#34;
 				loading=&#34;lazy&#34;
