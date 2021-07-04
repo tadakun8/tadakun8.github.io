@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='level 4  Username: natas4
+URL: http://natas4.natas.labs.overthewire.org
+  Question 
+Answer iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq Answerまでにやったこと Refresh Pageを押すと以下のようになりました。
+ Refresh Page後 
+メッセージを見るとhttp://natas5.natas.labs.overthewire.org/からのアクセスしかこのページにアクセスできないみたいです。なので、http://natas5.natas.labs.overthewire.org/から遷移したようにアクセスしました。
+Refererヘッダーとは リクエストヘッダーにはRefererというヘッダーがあります。このヘッダーにどのような情報が格納されるかはMozillaが説明してくれてるので借りてきます。
+https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Referer
+ Referer リクエストヘッダーには、現在リクエストされているページへのリンク先を持った直前のウェブページのアドレスが含まれています。
+ このLevelでは、アクセスする際にRefererヘッダーをつけてあげればいいということになります。
+僕はcurlで行いました。curlでヘッダーを定義する方法は、curlコマンドの使い方でまとめていたのでそちらを参考にしました。
+$ curl -H &amp;quot;Referer: http://natas5.natas.labs.overthewire.org/&amp;quot; -u natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ http://natas4.natas.labs.overthewire.org/index.php &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/level.css&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;quot; /&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/wechall.css&amp;quot; /&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=http://natas.'><title>【OverTheWire奮闘記】Natas: Level4〜6</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/natas/level4-6/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Natas: Level4〜6'>
+<meta property='og:description' content='level 4  Username: natas4
+URL: http://natas4.natas.labs.overthewire.org
+  Question 
+Answer iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq Answerまでにやったこと Refresh Pageを押すと以下のようになりました。
+ Refresh Page後 
+メッセージを見るとhttp://natas5.natas.labs.overthewire.org/からのアクセスしかこのページにアクセスできないみたいです。なので、http://natas5.natas.labs.overthewire.org/から遷移したようにアクセスしました。
+Refererヘッダーとは リクエストヘッダーにはRefererというヘッダーがあります。このヘッダーにどのような情報が格納されるかはMozillaが説明してくれてるので借りてきます。
+https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Referer
+ Referer リクエストヘッダーには、現在リクエストされているページへのリンク先を持った直前のウェブページのアドレスが含まれています。
+ このLevelでは、アクセスする際にRefererヘッダーをつけてあげればいいということになります。
+僕はcurlで行いました。curlでヘッダーを定義する方法は、curlコマンドの使い方でまとめていたのでそちらを参考にしました。
+$ curl -H &amp;quot;Referer: http://natas5.natas.labs.overthewire.org/&amp;quot; -u natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ http://natas4.natas.labs.overthewire.org/index.php &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/level.css&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;quot; /&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/wechall.css&amp;quot; /&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=http://natas.'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/natas/level4-6/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-04T19:08:19&#43;09:00'/><meta property='article:modified_time' content='2021-07-04T19:08:19&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Natas: Level4〜6">
+<meta name="twitter:description" content="level 4  Username: natas4
+URL: http://natas4.natas.labs.overthewire.org
+  Question 
+Answer iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq Answerまでにやったこと Refresh Pageを押すと以下のようになりました。
+ Refresh Page後 
+メッセージを見るとhttp://natas5.natas.labs.overthewire.org/からのアクセスしかこのページにアクセスできないみたいです。なので、http://natas5.natas.labs.overthewire.org/から遷移したようにアクセスしました。
+Refererヘッダーとは リクエストヘッダーにはRefererというヘッダーがあります。このヘッダーにどのような情報が格納されるかはMozillaが説明してくれてるので借りてきます。
+https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Referer
+ Referer リクエストヘッダーには、現在リクエストされているページへのリンク先を持った直前のウェブページのアドレスが含まれています。
+ このLevelでは、アクセスする際にRefererヘッダーをつけてあげればいいということになります。
+僕はcurlで行いました。curlでヘッダーを定義する方法は、curlコマンドの使い方でまとめていたのでそちらを参考にしました。
+$ curl -H &amp;quot;Referer: http://natas5.natas.labs.overthewire.org/&amp;quot; -u natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ http://natas4.natas.labs.overthewire.org/index.php &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/level.css&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;quot; /&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/wechall.css&amp;quot; /&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=http://natas.">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/natas/level4-6/">【OverTheWire奮闘記】Natas: Level4〜6</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-07-04</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-4">level 4</h2>
+<blockquote>
+<p>Username: natas4<br>
+URL: <a href="http://natas4.natas.labs.overthewire.org">http://natas4.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 194; flex-basis: 466px">
+		<a href="/post/over-the-wire/natas/level4-6/level4/q.png" data-size="2560x1318"><img src="/post/over-the-wire/natas/level4-6/level4/q.png"
+				srcset="/post/over-the-wire/natas/level4-6/level4/q_hu99ec95ebe0c30832bf95d59bc787d12e_570666_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level4-6/level4/q_hu99ec95ebe0c30832bf95d59bc787d12e_570666_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1318"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer">Answer</h3>
+<pre><code>iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+</code></pre><h3 id="answerまでにやったこと">Answerまでにやったこと</h3>
+<p>Refresh Pageを押すと以下のようになりました。</p>
+<p><figure style="flex-grow: 193; flex-basis: 464px">
+		<a href="/post/over-the-wire/natas/level4-6/level4/a.png" data-size="2560x1324"><img src="/post/over-the-wire/natas/level4-6/level4/a.png"
+				srcset="/post/over-the-wire/natas/level4-6/level4/a_hucccc12c0ca2cbcf0151f759c49e17995_622371_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level4-6/level4/a_hucccc12c0ca2cbcf0151f759c49e17995_622371_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1324"
+				loading="lazy"
+				alt="Refresh Page後">
+		</a>
+		
+		<figcaption>Refresh Page後</figcaption>
+		
+	</figure></p>
+<p>メッセージを見ると<code>http://natas5.natas.labs.overthewire.org/</code>からのアクセスしかこのページにアクセスできないみたいです。なので、<code>http://natas5.natas.labs.overthewire.org/</code>から遷移したようにアクセスしました。</p>
+<h4 id="refererヘッダーとは">Refererヘッダーとは</h4>
+<p>リクエストヘッダーには<code>Referer</code>というヘッダーがあります。このヘッダーにどのような情報が格納されるかはMozillaが説明してくれてるので借りてきます。</p>
+<p><a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Referer">https://developer.mozilla.org/ja/docs/Web/HTTP/Headers/Referer</a></p>
+<blockquote>
+<p>Referer リクエストヘッダーには、現在リクエストされているページへのリンク先を持った直前のウェブページのアドレスが含まれています。</p>
+</blockquote>
+<p>このLevelでは、アクセスする際に<code>Referer</code>ヘッダーをつけてあげればいいということになります。</p>
+<p>僕は<code>curl</code>で行いました。curlでヘッダーを定義する方法は、<a class="link" href="https://tadakun8.github.io/post/usage-curl/"  target="_blank" rel="noopener"
+    >curlコマンドの使い方</a>でまとめていたのでそちらを参考にしました。</p>
+<pre><code>$ curl -H &quot;Referer: http://natas5.natas.labs.overthewire.org/&quot; -u natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ http://natas4.natas.labs.overthewire.org/index.php
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://natas.labs.overthewire.org/css/level.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/jquery-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/wechall.css&quot; /&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&quot;http://natas.labs.overthewire.org/js/wechall.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &quot;level&quot;: &quot;natas4&quot;, &quot;pass&quot;: &quot;Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ&quot; };&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;natas4&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+
+Access granted. The password for natas5 is iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq
+&lt;br/&gt;
+&lt;div id=&quot;viewsource&quot;&gt;&lt;a href=&quot;index.php&quot;&gt;Refresh page&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="level-5">level 5</h2>
+<blockquote>
+<p>Username: natas5<br>
+URL: <a href="http://natas5.natas.labs.overthewire.org">http://natas5.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 194; flex-basis: 466px">
+		<a href="/post/over-the-wire/natas/level4-6/level5/q.png" data-size="2560x1316"><img src="/post/over-the-wire/natas/level4-6/level5/q.png"
+				srcset="/post/over-the-wire/natas/level4-6/level5/q_hudfdbca77a3be362c40743eb49a5120f4_453389_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level4-6/level5/q_hudfdbca77a3be362c40743eb49a5120f4_453389_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1316"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer-1">Answer</h3>
+<pre><code>aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1
+</code></pre><h3 id="answerまでにやったこと-1">Answerまでにやったこと</h3>
+<p>どうやらログインしないといけないみたいです。</p>
+<p>まずやったことはおなじみの<code>curl</code>でアクセスしました。</p>
+<pre><code>$ curl -u natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq http://natas5.natas.labs.overthewire.org/
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://natas.labs.overthewire.org/css/level.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/jquery-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/wechall.css&quot; /&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&quot;http://natas.labs.overthewire.org/js/wechall.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &quot;level&quot;: &quot;natas5&quot;, &quot;pass&quot;: &quot;iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq&quot; };&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;natas5&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+Access disallowed. You are not logged in&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>これだけだとログインに関係する情報がわからなかったのでcurlの<code>-v</code>オプションで詳細な情報(リクエストヘッダとレスポンスヘッダ)を表示させてみました。</p>
+<pre><code>$ curl -v -u natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq http://natas5.natas.labs.overthewire.org/
+*   Trying 176.9.9.172...
+* TCP_NODELAY set
+* Connected to natas5.natas.labs.overthewire.org (176.9.9.172) port 80 (#0)
+* Server auth using Basic with user 'natas5'
+&gt; GET / HTTP/1.1
+&gt; Host: natas5.natas.labs.overthewire.org
+&gt; Authorization: Basic bmF0YXM1OmlYNklPZm1wTjdBWU9RR1B3dG4zZlhwYmFKVkpjSGZx
+&gt; User-Agent: curl/7.64.1
+&gt; Accept: */*
+&gt; 
+&lt; HTTP/1.1 200 OK
+&lt; Date: Sun, 04 Jul 2021 11:58:34 GMT
+&lt; Server: Apache/2.4.10 (Debian)
+&lt; Set-Cookie: loggedin=0
+&lt; Vary: Accept-Encoding
+&lt; Content-Length: 855
+&lt; Content-Type: text/html; charset=UTF-8
+&lt; 
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://natas.labs.overthewire.org/css/level.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/jquery-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/wechall.css&quot; /&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&quot;http://natas.labs.overthewire.org/js/wechall.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &quot;level&quot;: &quot;natas5&quot;, &quot;pass&quot;: &quot;iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq&quot; };&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;natas5&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+Access disallowed. You are not logged in&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+* Connection #0 to host natas5.natas.labs.overthewire.org left intact
+* Closing connection 0
+</code></pre><p>そしたらレスポンスヘッダに<code>&lt; Set-Cookie: loggedin=0</code>という項目がありました。ログインに関係してそうです。</p>
+<h4 id="cookieについて軽く調べてみた">Cookieについて軽く調べてみた</h4>
+<p>Cookieとは<strong>ブラウザとwebサーバ間で情報のやり取りをする仕組み</strong>のことです。この仕組みは<strong>ブラウザとwebサーバ間で状態を維持</strong>するために利用されます。</p>
+<p>このやり取りですが具体的には、</p>
+<ol>
+<li>ブラウザで最初にwebサイトにアクセスした際、webサーバは<code>Set-Cookie</code>ヘッダーで情報を返します。</li>
+<li>ブラウザはSet-CookieヘッダーがあればそのCookie情報をブラウザに保存します。</li>
+<li>以降、ブラウザは当該webサイトにアクセスする際にはそのCookie情報をリクエストヘッダーの<code>Cookie</code>に格納して送ります。</li>
+</ol>
+<p>例えばログインの状態を維持するためには・・・</p>
+<ol>
+<li>ユーザのログイン成功</li>
+<li>webサーバがSet-Cookieでログイン状態を表す情報をブラウザに送信</li>
+<li>ブラウザがそのCookieを保存</li>
+<li>以降のアクセスでは必ずそのCookieをwebブラウザに送信 という流れになるかと思います。</li>
+</ol>
+<p>より詳しい説明は参考リンクを貼りました。上記説明でわかりにくければみてください。
+とてもわかりやすいです！</p>
+<ul>
+<li><a class="link" href="https://www.infraexpert.com/study/tcpip16.6.html"  target="_blank" rel="noopener"
+    >HTTP Cookie</a></li>
+<li><a class="link" href="https://numb86-tech.hatenablog.com/entry/2020/01/19/004420"  target="_blank" rel="noopener"
+    >Cookie 概説</a></li>
+</ul>
+<h4 id="ログインしてみる">ログインしてみる</h4>
+<p>Cookieとは何かがわかったので、Cookieを使ってログインしてみましょう。</p>
+<p><code>&lt; Set-Cookie: loggedin=0</code>で<code>loggedin=0</code>というCookie情報がセットされています。なのでリクエストヘッダのCookieには<code>loggedin=1</code>という情報をセットすればログインした状態でアクセスしたことになります。</p>
+<pre><code>$ curl -H &quot;Cookie: loggedin=1&quot; -u natas5:iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq http://natas5.natas.labs.overthewire.org/
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://natas.labs.overthewire.org/css/level.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/jquery-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/wechall.css&quot; /&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&quot;http://natas.labs.overthewire.org/js/wechall.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &quot;level&quot;: &quot;natas5&quot;, &quot;pass&quot;: &quot;iX6IOfmpN7AYOQGPwtn3fXpbaJVJcHfq&quot; };&lt;/script&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;natas5&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+Access granted. The password for natas6 is aGoY4q2Dc6MgDq4oL4YtoKtyAg9PeHa1&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="level6">Level6</h2>
+<blockquote>
+<p>Username: natas6<br>
+URL: <a href="http://natas6.natas.labs.overthewire.org">http://natas6.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 194; flex-basis: 466px">
+		<a href="/post/over-the-wire/natas/level4-6/level6/q.png" data-size="2560x1318"><img src="/post/over-the-wire/natas/level4-6/level6/q.png"
+				srcset="/post/over-the-wire/natas/level4-6/level6/q_hu99ec95ebe0c30832bf95d59bc787d12e_511926_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level4-6/level6/q_hu99ec95ebe0c30832bf95d59bc787d12e_511926_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1318"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer-2">Answer</h3>
+<pre><code>7z3hEENjQtflzgnT29q7wAvMNfZdh0i9
+</code></pre><h3 id="answerまでにやったこと-2">Answerまでにやったこと</h3>
+<p>View sourcecodeを押してみました。</p>
+<pre><code>&lt;?
+
+include &quot;includes/secret.inc&quot;;
+
+    if(array_key_exists(&quot;submit&quot;, $_POST)) {
+        if($secret == $_POST['secret']) {
+        print &quot;Access granted. The password for natas7 is &lt;censored&gt;&quot;;
+    } else {
+        print &quot;Wrong secret&quot;;
+    }
+    }
+?&gt;
+</code></pre><p>見たところこれが読めれば何を入力すればいいかがわかりそうです。
+<code>&lt;?</code>とあるのでPHPですね。PHPは明るくはないのですが、<code>include &quot;includes/secret.inc&quot;;</code>とあるのでファイルを読み込んでいる雰囲気は伝わってきます。</p>
+<p>なので、<code>http://natas6.natas.labs.overthewire.org/includes/secret.inc</code>にアクセスしてみると記載がありました！</p>
+<p><figure style="flex-grow: 423; flex-basis: 1016px">
+		<a href="/post/over-the-wire/natas/level4-6/level6/a1.png" data-size="1448x342"><img src="/post/over-the-wire/natas/level4-6/level6/a1.png"
+				srcset="/post/over-the-wire/natas/level4-6/level6/a1_hu7e4004dec341b08498b4fedcb42e40c3_132642_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level4-6/level6/a1_hu7e4004dec341b08498b4fedcb42e40c3_132642_1024x0_resize_box_2.png 1024w"
+				width="1448"
+				height="342"
+				loading="lazy"
+				alt="http://natas6.natas.labs.overthewire.org/includes/secret.inc">
+		</a>
+		
+		<figcaption><a href="http://natas6.natas.labs.overthewire.org/includes/secret.inc">http://natas6.natas.labs.overthewire.org/includes/secret.inc</a></figcaption>
+		
+	</figure></p>
+<p>この値を入力するとパスワードがわかりました</p>
+<p><figure style="flex-grow: 194; flex-basis: 466px">
+		<a href="/post/over-the-wire/natas/level4-6/level6/a2.png" data-size="2560x1316"><img src="/post/over-the-wire/natas/level4-6/level6/a2.png"
+				srcset="/post/over-the-wire/natas/level4-6/level6/a2_hudfdbca77a3be362c40743eb49a5120f4_598203_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level4-6/level6/a2_hudfdbca77a3be362c40743eb49a5120f4_598203_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1316"
+				loading="lazy"
+				alt="http://natas6.natas.labs.overthewire.org/includes/secret.inc">
+		</a>
+		
+		<figcaption><a href="http://natas6.natas.labs.overthewire.org/includes/secret.inc">http://natas6.natas.labs.overthewire.org/includes/secret.inc</a></figcaption>
+		
+	</figure></p>
+<h2 id="おわり">おわり</h2>
+<p>CookieやRefererについて前よりも深く知ることができました。特にCookieについては聞いたことはあってもどのような仕組みか詳しくは知らないというものだったのでここで学び直せてよかったです！</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level2-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level2〜3</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level0-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level0〜1</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level33-34/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level33〜34</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level31-32/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level31〜32</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level28-30/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level28〜30</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
