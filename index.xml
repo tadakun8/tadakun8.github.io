@@ -119,7 +119,7 @@ URL: &lt;a href=&#34;http://natas3.natas.labs.overthewire.org&#34;&gt;http://nat
 &lt;p&gt;ソースコードを見てみるとこんな一文がありました&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;!-- No more information leaks!! Not even Google will find it this time... --&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Googleでは見つけられないみたいなので、検索エンジンを変えればいけるかなと思って、DuckDuckGoに変えてみ変わらなかったです。ブラウザもSafariなどに変えてみましたがだめでした。&lt;/p&gt;
-&lt;p&gt;次に、レスポンスヘッダーに格納されているのでは？と思いそちらもみてみましたが入ってなかったです&lt;/p&gt;
+&lt;p&gt;次に、レスポンスヘッダーに格納されているのでは？と思いそちらも確認しましたが入ってなかったです&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ curl -i -u natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 http://natas3.natas.labs.overthewire.org/
 HTTP/1.1 200 OK
 Date: Sun, 04 Jul 2021 02:12:46 GMT
@@ -183,7 +183,7 @@ Content-Type: text/html
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt:users.txt&#34; data-lang=&#34;txt:users.txt&#34;&gt;natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
 &lt;p&gt;まだレベルは浅いほうなのですが、すでに難しいと感じてます。今まで見向きもしなかったwebの知識が要求されるので調べながら1つ1つクリアしていきます！&lt;/p&gt;
-&lt;p&gt;SEOとかはあまり意識していなかったのですが、ブロガーさんや企業さんがrobots.txtというものを使ってSEOを上げる努力をしているんだなぁと勉強になった回でした。&lt;/p&gt;
+&lt;p&gt;SEOはあまり意識していなかったのですが、ブロガーさんや企業さんがrobots.txtというものを使ってSEOを上げる努力をしているんだなぁと勉強になった回でした。&lt;/p&gt;
 </description>
         </item>
         <item>
