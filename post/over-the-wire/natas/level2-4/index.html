@@ -321,8 +321,9 @@ There is nothing on this page
 <h2 id="level-3">Level 3</h2>
 <blockquote>
 <p>Username: natas3<br>
-URL: <a href="http://natas3.natas.labs.overthewire.org">http://natas3.natas.labs.overthewire.org</a>
-<figure style="flex-grow: 192; flex-basis: 462px">
+URL: <a href="http://natas3.natas.labs.overthewire.org">http://natas3.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 192; flex-basis: 462px">
 		<a href="/post/over-the-wire/natas/level2-4/level3/q.png" data-size="2560x1328"><img src="/post/over-the-wire/natas/level2-4/level3/q.png"
 				srcset="/post/over-the-wire/natas/level2-4/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level2-4/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_1024x0_resize_box_2.png 1024w"
 				width="2560"
@@ -334,14 +335,13 @@ URL: <a href="http://natas3.natas.labs.overthewire.org">http://natas3.natas.labs
 		<figcaption>Question</figcaption>
 		
 	</figure></p>
-</blockquote>
 <h3 id="answer-1">Answer</h3>
 <pre><code>Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
 </code></pre><h3 id="answerまでにやったこと-1">Answerまでにやったこと</h3>
 <p>ソースコードを見てみるとこんな一文がありました</p>
 <pre><code>&lt;!-- No more information leaks!! Not even Google will find it this time... --&gt;
-</code></pre><p>Googleでは見つけられないみたいなので、検索エンジンをDuckDuckGoに変えてみても変わらなかったです。ブラウザもSafariなどに変えてみましたがだめでした。</p>
-<p>レスポンスヘッダーに格納されている？と思いそちらもみてみましたが入ってなかったです</p>
+</code></pre><p>Googleでは見つけられないみたいなので、検索エンジンを変えればいけるかなと思って、DuckDuckGoに変えてみ変わらなかったです。ブラウザもSafariなどに変えてみましたがだめでした。</p>
+<p>次に、レスポンスヘッダーに格納されているのでは？と思いそちらもみてみましたが入ってなかったです</p>
 <pre><code>$ curl -i -u natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 http://natas3.natas.labs.overthewire.org/
 HTTP/1.1 200 OK
 Date: Sun, 04 Jul 2021 02:12:46 GMT
