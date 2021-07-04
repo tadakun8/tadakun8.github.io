@@ -6,7 +6,23 @@
     <description>Recent content in OverTheWire on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sat, 03 Jul 2021 15:29:11 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Jul 2021 10:15:48 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/categories/overthewire/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Natas: Level2〜4</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/natas/level2-4/</link>
+      <pubDate>Sun, 04 Jul 2021 10:15:48 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/natas/level2-4/</guid>
+      <description>Level 2  Username: natas2
+URL: http://natas2.natas.labs.overthewire.org
+  Question 
+Answer sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 Answerまでにやったこと ソースコードを見るとfiles/pixel.pngという画像ファイルがありました。
+ ソースコード 
+この画像ファイルに何かあると思い、http://natas2.natas.labs.overthewire.org/files/pixel.pngでアクセスしてみましたが、真っ黒画像が表示されるだけでした。
+次にcurlで何か情報がないかと思ってみてみました。
+$ curl -u natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi http://natas2.natas.labs.overthewire.org/ &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/level.css&amp;quot;&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;quot; /&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/wechall.css&amp;quot; /&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/wechall.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt;var wechallinfo = { &amp;quot;level&amp;quot;: &amp;quot;natas2&amp;quot;, &amp;quot;pass&amp;quot;: &amp;quot;ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi&amp;quot; };&amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;natas2&amp;lt;/h1&amp;gt; &amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt; There is nothing on this page &amp;lt;img src=&amp;quot;files/pixel.</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Natas: Level0〜1</title>
       <link>https://tadakun8.github.io/post/over-the-wire/natas/level0-1/</link>

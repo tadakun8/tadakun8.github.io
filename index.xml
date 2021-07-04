@@ -6,7 +6,187 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sat, 03 Jul 2021 15:29:11 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 04 Jul 2021 10:15:48 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Natas: Level2〜4</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/natas/level2-4/</link>
+        <pubDate>Sun, 04 Jul 2021 10:15:48 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/natas/level2-4/</guid>
+        <description>&lt;h2 id=&#34;level-2&#34;&gt;Level 2&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Username: natas2&lt;br&gt;
+URL: &lt;a href=&#34;http://natas2.natas.labs.overthewire.org&#34;&gt;http://natas2.natas.labs.overthewire.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 194; flex-basis: 467px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q.png&#34; data-size=&#34;2560x1314&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q_hu2e7297c3a7fffabfbeae47786bad727c_446769_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/q_hu2e7297c3a7fffabfbeae47786bad727c_446769_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1314&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Question&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Question&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;answer&#34;&gt;Answer&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;answerまでにやったこと&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
+&lt;p&gt;ソースコードを見ると&lt;code&gt;files/pixel.png&lt;/code&gt;という画像ファイルがありました。&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 192; flex-basis: 462px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1.png&#34; data-size=&#34;2560x1328&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_1219506_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_1219506_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1328&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;ソースコード&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;ソースコード&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;この画像ファイルに何かあると思い、&lt;code&gt;http://natas2.natas.labs.overthewire.org/files/pixel.png&lt;/code&gt;でアクセスしてみましたが、真っ黒画像が表示されるだけでした。&lt;/p&gt;
+&lt;p&gt;次にcurlで何か情報がないかと思ってみてみました。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -u natas2:ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi http://natas2.natas.labs.overthewire.org/
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/level.css&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;quot; /&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/wechall.css&amp;quot; /&amp;gt;
+&amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/wechall.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;var wechallinfo = { &amp;quot;level&amp;quot;: &amp;quot;natas2&amp;quot;, &amp;quot;pass&amp;quot;: &amp;quot;ZluruAthQk7Q2MqmDeTiUij2ZvWy2mBi&amp;quot; };&amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;natas2&amp;lt;/h1&amp;gt;
+&amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt;
+There is nothing on this page
+&amp;lt;img src=&amp;quot;files/pixel.png&amp;quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;・・・が、次のレベルのパスワードはありませんでした。&lt;/p&gt;
+&lt;p&gt;諦めて回答を見てみました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://raidersec.blogspot.com/2012/10/overthewire-natas-wargame-level-2.html&#34;&gt;http://raidersec.blogspot.com/2012/10/overthewire-natas-wargame-level-2.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;なるほど、&lt;code&gt;pixel.png&lt;/code&gt;が格納されている&lt;code&gt;files&lt;/code&gt;ディレクトリにあるみたいです。なので&lt;code&gt;http://natas2.natas.labs.overthewire.org/files/&lt;/code&gt;でアクセスしてみると&lt;code&gt;user.txt&lt;/code&gt;がありました！&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 232; flex-basis: 557px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2.png&#34; data-size=&#34;1268x546&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2_huecbee5e683a6a9f17b8b7c2ceddade40_275686_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a2_huecbee5e683a6a9f17b8b7c2ceddade40_275686_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1268&#34;
+				height=&#34;546&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;http://natas2.natas.labs.overthewire.org/files/&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;&lt;a href=&#34;http://natas2.natas.labs.overthewire.org/files/&#34;&gt;http://natas2.natas.labs.overthewire.org/files/&lt;/a&gt;&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;user.txt&lt;/code&gt;をクリックするとパスワードがわかりました。&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 307; flex-basis: 737px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3.png&#34; data-size=&#34;1204x392&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3_hu45bd1d7ce6d459c29e3477574432c2cc_161654_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level2/a3_hu45bd1d7ce6d459c29e3477574432c2cc_161654_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1204&#34;
+				height=&#34;392&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;user.txt&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;user.txt&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;level-3&#34;&gt;Level 3&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Username: natas3&lt;br&gt;
+URL: &lt;a href=&#34;http://natas3.natas.labs.overthewire.org&#34;&gt;http://natas3.natas.labs.overthewire.org&lt;/a&gt;
+&lt;figure style=&#34;flex-grow: 192; flex-basis: 462px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q.png&#34; data-size=&#34;2560x1328&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/q_hu7367db0f61ed87a7f047571e6f1aa9f1_137480_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1328&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Question&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Question&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;answer-1&#34;&gt;Answer&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;answerまでにやったこと-1&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
+&lt;p&gt;ソースコードを見てみるとこんな一文がありました&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- No more information leaks!! Not even Google will find it this time... --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Googleでは見つけられないみたいなので、検索エンジンをDuckDuckGoに変えてみても変わらなかったです。ブラウザもSafariなどに変えてみましたがだめでした。&lt;/p&gt;
+&lt;p&gt;レスポンスヘッダーに格納されている？と思いそちらもみてみましたが入ってなかったです&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -i -u natas3:sJIJNW6ucpu6HPZ1ZAchaDtwd7oGrD14 http://natas3.natas.labs.overthewire.org/
+HTTP/1.1 200 OK
+Date: Sun, 04 Jul 2021 02:12:46 GMT
+Server: Apache/2.4.10 (Debian)
+Last-Modified: Tue, 20 Dec 2016 10:15:44 GMT
+ETag: &amp;quot;39b-5441451aed400&amp;quot;
+Accept-Ranges: bytes
+Content-Length: 923
+Vary: Accept-Encoding
+Content-Type: text/html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;こちらも諦めて回答を見てみました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://securitytimes.wordpress.com/2017/06/25/natas3-4/&#34;&gt;https://securitytimes.wordpress.com/2017/06/25/natas3-4/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;どうやら&lt;code&gt;robots.txt&lt;/code&gt;というファイルが関係していそうです&lt;/p&gt;
+&lt;h3 id=&#34;robotstxtとは&#34;&gt;robots.txtとは&lt;/h3&gt;
+&lt;p&gt;検索エンジンやクローラーにサイト内の一部のページの情報を収集されたくない場合に使用するファイルのことです。
+目的の1つとしてはSEO対策です。ユーザーに価値のない情報を収集されてSEOを下げてしまいたくない場合が該当すると思います。&lt;/p&gt;
+&lt;p&gt;他にも検索結果に表示されたくないページなどを指定する場合に使われます。&lt;/p&gt;
+&lt;p&gt;使用する場合はwebサイトのトップディレクトリに格納する必要があります。&lt;/p&gt;
+&lt;p&gt;似たような言葉で&lt;code&gt;インデックス&lt;/code&gt;という言葉があります。クロールがwebページの情報収集をするなら、インデックスはクローラが収集してきた情報を&lt;strong&gt;検索エンジンに登録する処理&lt;/strong&gt;のことです。インデックスされて初めて検索結果に表示されます。&lt;/p&gt;
+&lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://developers.google.com/search/docs/advanced/robots/robots_txt?hl=ja&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Google による robots.txt の指定の解釈&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://sem-journal.com/seo/robots-txt/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;robots.txtとは？作り方・書き方・確認方法を解説します&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://bazubu.com/robots-txt-16678.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;サイト最適化の為のrobots.txtの書き方と効果的な活用方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://seeds-create.co.jp/google-search-console-crawl-index/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Google検索の仕組み「クロール」と「インデックス」の違い&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;robotstxtにアクセスしてみる&#34;&gt;robots.txtにアクセスしてみる&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;http://natas3.natas.labs.overthewire.org/robots.txt&lt;/code&gt;にアクセスしてみると&lt;code&gt;/s3cr3t/&lt;/code&gt;というディレクトリがクロールを拒否されていました。&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 362; flex-basis: 870px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1.png&#34; data-size=&#34;1276x352&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1_hu5ee3f19269061e7ede869f5d1b40f333_142007_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a1_hu5ee3f19269061e7ede869f5d1b40f333_142007_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1276&#34;
+				height=&#34;352&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;robots.txt&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;robots.txt&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;なので直接アクセスすると&lt;code&gt;users.txt&lt;/code&gt;を見つけました&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 274; flex-basis: 659px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2.png&#34; data-size=&#34;1336x486&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2_hub35d45b2d1c2aae6eec20cde0f6ade80_247365_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level2-4/level3/a2_hub35d45b2d1c2aae6eec20cde0f6ade80_247365_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;1336&#34;
+				height=&#34;486&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;/s3cr3t/&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;/s3cr3t/&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;クリックするとパスワードが表示されます&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-txt:users.txt&#34; data-lang=&#34;txt:users.txt&#34;&gt;natas4:Z9tkRkWmpt9Qr7XrR5jWRkgOU901swEZ
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;まだレベルは浅いほうなのですが、すでに難しいと感じてます。今まで見向きもしなかったwebの知識が要求されるので調べながら1つ1つクリアしていきます！&lt;/p&gt;
+&lt;p&gt;SEOとかはあまり意識していなかったのですが、ブロガーさんや企業さんがrobots.txtというものを使ってSEOを上げる努力をしているんだなぁと勉強になった回でした。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Natas: Level0〜1</title>
         <link>https://tadakun8.github.io/post/over-the-wire/natas/level0-1/</link>
         <pubDate>Sat, 03 Jul 2021 15:29:11 +0900</pubDate>
