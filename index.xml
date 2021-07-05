@@ -6,7 +6,224 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Sun, 04 Jul 2021 19:08:19 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 05 Jul 2021 21:06:51 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Natas: Level7〜9</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/natas/level7-9/</link>
+        <pubDate>Mon, 05 Jul 2021 21:06:51 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/natas/level7-9/</guid>
+        <description>&lt;h2 id=&#34;level-7&#34;&gt;Level 7&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Username: natas7&lt;br&gt;
+URL: &lt;a href=&#34;http://natas7.natas.labs.overthewire.org&#34;&gt;http://natas7.natas.labs.overthewire.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 193; flex-basis: 464px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/q.png&#34; data-size=&#34;2560x1324&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/q_hucccc12c0ca2cbcf0151f759c49e17995_135626_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/q_hucccc12c0ca2cbcf0151f759c49e17995_135626_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1324&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Question&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Question&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;answer&#34;&gt;Answer&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;answerまでにやったこと&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
+&lt;p&gt;ページのソースを見ると&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;body&amp;gt;
+&amp;lt;h1&amp;gt;natas7&amp;lt;/h1&amp;gt;
+&amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt;
+
+&amp;lt;a href=&amp;quot;index.php?page=home&amp;quot;&amp;gt;Home&amp;lt;/a&amp;gt;
+&amp;lt;a href=&amp;quot;index.php?page=about&amp;quot;&amp;gt;About&amp;lt;/a&amp;gt;
+&amp;lt;br&amp;gt;
+&amp;lt;br&amp;gt;
+
+&amp;lt;!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 --&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;パスワードは&lt;code&gt;/etc/natas_webpass/natas8&lt;/code&gt;にあると書いています。問題はここにどうやったらアクセスできるかです。&lt;/p&gt;
+&lt;p&gt;HomeやAboutなどのページはクエリパラメータでpage=XXXと指定していることに気づきました。まさかとは思って&lt;code&gt;https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8&lt;/code&gt;でアクセスしてみると&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 194; flex-basis: 466px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/a.png&#34; data-size=&#34;2560x1316&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/a.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/a_hudfdbca77a3be362c40743eb49a5120f4_505624_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level7/a_hudfdbca77a3be362c40743eb49a5120f4_505624_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1316&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;&lt;a href=&#34;https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8&#34;&gt;https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8&lt;/a&gt;&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;手に入れることができました。&lt;/p&gt;
+&lt;p&gt;これどういう攻撃なんだ？と思ったので調べて見ました。&lt;/p&gt;
+&lt;h4 id=&#34;file-inclusion攻撃&#34;&gt;File Inclusion攻撃&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;File Inclusion とは、WEBアプリケーションにファイルを参照するコードがあった場合に意図しないファイルを実行させることで、機密データの取得やシステムの乗っ取りを行う攻撃です。
+&lt;a href=&#34;https://www.kdryblog.com/bwapp-file-inclusion/&#34;&gt;https://www.kdryblog.com/bwapp-file-inclusion/&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;今回はwebサーバが持っているファイルを不正に参照しているので&lt;code&gt;LFI(Local File Inclusion)&lt;/code&gt;に該当します。&lt;/p&gt;
+&lt;p&gt;ファイルをincludeするときの脆弱性を悪用した攻撃のようです。&lt;/p&gt;
+&lt;p&gt;対策としては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;インクルードするべきファイル名かチェックしないこと&lt;/li&gt;
+&lt;li&gt;ファイルの権限を見直す
+などで防げます。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;参考&#34;&gt;参考&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://qiita.com/m-masaki72/items/1ac34e6cae59adb957a6&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;徳丸本の輪講メモ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kdryblog.com/bwapp-file-inclusion/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;bWAPP に対して File Inclusion 攻撃を行う&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;level-8&#34;&gt;Level 8&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Username: natas8&lt;br&gt;
+URL: &lt;a href=&#34;http://natas8.natas.labs.overthewire.org&#34;&gt;http://natas8.natas.labs.overthewire.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 194; flex-basis: 466px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/q.png&#34; data-size=&#34;2560x1318&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/q_hu99ec95ebe0c30832bf95d59bc787d12e_511482_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/q_hu99ec95ebe0c30832bf95d59bc787d12e_511482_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1318&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Question&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Question&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;answer-1&#34;&gt;Answer&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;answerまでにやったこと-1&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;View sourcecode&lt;/code&gt;を押してみました&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;$encodedSecret&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;3d3d516343746d4d6d6c315669563362&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;encodeSecret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;bin2hex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;strrev&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;base64_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$secret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)));&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;array_key_exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;submit&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$_POST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;encodeSecret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_POST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;secret&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$encodedSecret&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Access granted. The password for natas9 is &amp;lt;censored&amp;gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;print&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;Wrong secret&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;if(encodeSecret($_POST[&#39;secret&#39;]) == $encodedSecret)&lt;/code&gt;で入力値とencodedSecretを比べているので、&lt;code&gt;encodeSecret関数&lt;/code&gt;が理解できればパスワードが入手できそうです。&lt;/p&gt;
+&lt;p&gt;encodeSecret関数に使われているのは3つの関数です&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;関数名&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;base64_encode&lt;/td&gt;
+&lt;td&gt;base64で文字をエンコードする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;strrev&lt;/td&gt;
+&lt;td&gt;文字列を逆順にする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;bin2hex&lt;/td&gt;
+&lt;td&gt;バイナリのデータを16進表現に変換する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;つまりこれと逆のことをやれば入力値がわかります。&lt;/p&gt;
+&lt;p&gt;今回は以下のコマンドを使いました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;xxd&lt;/code&gt;: ファイルの内容を16進数に変換して出力したり16進数をバイナリに変換できる
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-r&lt;/code&gt; : 16進数をバイナリに変換する&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-p&lt;/code&gt; : プレーンテキストで表示する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;rev&lt;/code&gt;: ファイルの内容を1行ずつ読み込み文字を逆順で表示する&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;base64&lt;/code&gt;: ファイルの内容をbase64にエンコード / デコードする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;$ echo 3d3d516343746d4d6d6c315669563362 | xxd -r -ps | rev | base64 -d | awk 1
+oubWYf2kBq
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;awk 1をつけないと僕の環境では末尾に％がついてしまいました。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ echo 3d3d516343746d4d6d6c315669563362 | xxd -r -p | rev | base64 -d
+oubWYf2kBq%  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;この％が何を表すのか調べましたがピンとくるものがありませんでした。少しモヤモヤしますが、原因がわかるまでは&lt;code&gt;base64 -d&lt;/code&gt;を使うときは&lt;code&gt;awk 1&lt;/code&gt;とセットにして使うことにします&lt;/p&gt;
+&lt;p&gt;webページに戻り&lt;code&gt;oubWYf2kBq&lt;/code&gt;を入力するとパスワードが取得できました。&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 193; flex-basis: 463px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/a.png&#34; data-size=&#34;2560x1326&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/a.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/a_hu5434f2e47d4571cf1ffb33ee52aa4d33_606130_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level8/a_hu5434f2e47d4571cf1ffb33ee52aa4d33_606130_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1326&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Answer&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Answer&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;level-9&#34;&gt;Level 9&lt;/h2&gt;
+&lt;h3 id=&#34;answer-2&#34;&gt;Answer&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;answerまでにやったこと-2&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;View sourcecode&lt;/code&gt;を押してメインロジックを確認しました&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Output:
+&amp;lt;pre&amp;gt;
+&amp;lt;?
+$key = &amp;quot;&amp;quot;;
+
+if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) {
+    $key = $_REQUEST[&amp;quot;needle&amp;quot;];
+}
+
+if($key != &amp;quot;&amp;quot;) {
+    passthru(&amp;quot;grep -i $key dictionary.txt&amp;quot;);
+}
+?&amp;gt;
+&amp;lt;/pre&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;passthru関数は外部プログラムを実行する関数です。&lt;/p&gt;
+&lt;p&gt;ここでは&lt;code&gt;dictionary.txt&lt;/code&gt;の中身を入力値でgrepしています。&lt;/p&gt;
+&lt;p&gt;パスワードはdictionary.txtにあるんだろうと&lt;code&gt;http://natas9.natas.labs.overthewire.org/dictionary.txt&lt;/code&gt;にアクセスしてみると相当量の単語の羅列・・・。&lt;/p&gt;
+&lt;p&gt;ここではなさそうですね。&lt;/p&gt;
+&lt;p&gt;ふと、そういえばOSのコマンドを使った攻撃があったよな・・・？とよぎりました。名前が思い出せなかったので、&lt;code&gt;os コマンド 脆弱性&lt;/code&gt;と調べました。&lt;/p&gt;
+&lt;h4 id=&#34;osコマンドインジェクション&#34;&gt;OSコマンドインジェクション&lt;/h4&gt;
+&lt;p&gt;そうだった、&lt;code&gt;OSコマンドインジェクション&lt;/code&gt;だ！聞いたことある。&lt;/p&gt;
+&lt;p&gt;今回の攻撃はOSコマンドインジェクションという方法を用いればパスワード取得できます。&lt;/p&gt;
+&lt;p&gt;OSコマンドインジェクションは、入力受け付けるwebアプリにおいて入力値にOSのコマンドを紛れ込ませて不正にファイルを参照したり、不正な操作をする攻撃のことです&lt;/p&gt;
+&lt;p&gt;詳細な説明は以下のサイトにお譲ります。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.shadan-kun.com/blog/measure/2873/&#34;&gt;https://www.shadan-kun.com/blog/measure/2873/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;私は入力欄に&lt;code&gt;; cat /etc/natas_webpass/natas10&lt;/code&gt;と入力しました。&lt;/p&gt;
+&lt;p&gt;こうすると&lt;code&gt;grep -i; cat /etc/natas_webpass/natas10 dictionary.txt&lt;/code&gt;というコマンドに置き換わります。&lt;code&gt;grep -i&lt;/code&gt;で命令が終わり次の&lt;code&gt;cat /etc/natas_webpass/natas9&lt;/code&gt;が実行されます。&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 193; flex-basis: 464px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level9/a.png&#34; data-size=&#34;2560x1324&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level9/a.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level9/a_hucccc12c0ca2cbcf0151f759c49e17995_956521_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level7-9/level9/a_hucccc12c0ca2cbcf0151f759c49e17995_956521_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1324&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;入力後&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;入力後&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;大学時代に講義で聞いたものがよぎります。机上で聞くのと実際に手を動かしてみるのでは理解が全然違います！大学時代にこのサイトに出会っていれば少しは点数も上がった・・・はず。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Natas: Level4〜6</title>
         <link>https://tadakun8.github.io/post/over-the-wire/natas/level4-6/</link>
         <pubDate>Sun, 04 Jul 2021 19:08:19 +0900</pubDate>

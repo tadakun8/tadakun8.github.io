@@ -6,7 +6,29 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Sun, 04 Jul 2021 19:08:19 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 05 Jul 2021 21:06:51 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Natas: Level7〜9</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/natas/level7-9/</link>
+      <pubDate>Mon, 05 Jul 2021 21:06:51 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/natas/level7-9/</guid>
+      <description>Level 7  Username: natas7
+URL: http://natas7.natas.labs.overthewire.org
+  Question 
+Answer DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe Answerまでにやったこと ページのソースを見ると
+&amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;natas7&amp;lt;/h1&amp;gt; &amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=home&amp;quot;&amp;gt;Home&amp;lt;/a&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=about&amp;quot;&amp;gt;About&amp;lt;/a&amp;gt; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt; &amp;lt;!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 --&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; パスワードは/etc/natas_webpass/natas8にあると書いています。問題はここにどうやったらアクセスできるかです。
+HomeやAboutなどのページはクエリパラメータでpage=XXXと指定していることに気づきました。まさかとは思ってhttps://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8でアクセスしてみると
+ https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8 
+手に入れることができました。
+これどういう攻撃なんだ？と思ったので調べて見ました。
+File Inclusion攻撃  File Inclusion とは、WEBアプリケーションにファイルを参照するコードがあった場合に意図しないファイルを実行させることで、機密データの取得やシステムの乗っ取りを行う攻撃です。 https://www.kdryblog.com/bwapp-file-inclusion/
+ 今回はwebサーバが持っているファイルを不正に参照しているのでLFI(Local File Inclusion)に該当します。
+ファイルをincludeするときの脆弱性を悪用した攻撃のようです。
+対策としては
+ インクルードするべきファイル名かチェックしないこと ファイルの権限を見直す などで防げます。  参考  徳丸本の輪講メモ bWAPP に対して File Inclusion 攻撃を行う  Level 8  Username: natas8</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Natas: Level4〜6</title>
       <link>https://tadakun8.github.io/post/over-the-wire/natas/level4-6/</link>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 7  Username: natas7
+URL: http://natas7.natas.labs.overthewire.org
+  Question 
+Answer DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe Answerまでにやったこと ページのソースを見ると
+&amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;natas7&amp;lt;/h1&amp;gt; &amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=home&amp;quot;&amp;gt;Home&amp;lt;/a&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=about&amp;quot;&amp;gt;About&amp;lt;/a&amp;gt; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt; &amp;lt;!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 --&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; パスワードは/etc/natas_webpass/natas8にあると書いています。問題はここにどうやったらアクセスできるかです。
+HomeやAboutなどのページはクエリパラメータでpage=XXXと指定していることに気づきました。まさかとは思ってhttps://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8でアクセスしてみると
+ https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8 
+手に入れることができました。
+これどういう攻撃なんだ？と思ったので調べて見ました。
+File Inclusion攻撃  File Inclusion とは、WEBアプリケーションにファイルを参照するコードがあった場合に意図しないファイルを実行させることで、機密データの取得やシステムの乗っ取りを行う攻撃です。 https://www.kdryblog.com/bwapp-file-inclusion/
+ 今回はwebサーバが持っているファイルを不正に参照しているのでLFI(Local File Inclusion)に該当します。
+ファイルをincludeするときの脆弱性を悪用した攻撃のようです。
+対策としては
+ インクルードするべきファイル名かチェックしないこと ファイルの権限を見直す などで防げます。  参考  徳丸本の輪講メモ bWAPP に対して File Inclusion 攻撃を行う  Level 8  Username: natas8'><title>【OverTheWire奮闘記】Natas: Level7〜9</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/natas/level7-9/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Natas: Level7〜9'>
+<meta property='og:description' content='Level 7  Username: natas7
+URL: http://natas7.natas.labs.overthewire.org
+  Question 
+Answer DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe Answerまでにやったこと ページのソースを見ると
+&amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;natas7&amp;lt;/h1&amp;gt; &amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=home&amp;quot;&amp;gt;Home&amp;lt;/a&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=about&amp;quot;&amp;gt;About&amp;lt;/a&amp;gt; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt; &amp;lt;!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 --&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; パスワードは/etc/natas_webpass/natas8にあると書いています。問題はここにどうやったらアクセスできるかです。
+HomeやAboutなどのページはクエリパラメータでpage=XXXと指定していることに気づきました。まさかとは思ってhttps://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8でアクセスしてみると
+ https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8 
+手に入れることができました。
+これどういう攻撃なんだ？と思ったので調べて見ました。
+File Inclusion攻撃  File Inclusion とは、WEBアプリケーションにファイルを参照するコードがあった場合に意図しないファイルを実行させることで、機密データの取得やシステムの乗っ取りを行う攻撃です。 https://www.kdryblog.com/bwapp-file-inclusion/
+ 今回はwebサーバが持っているファイルを不正に参照しているのでLFI(Local File Inclusion)に該当します。
+ファイルをincludeするときの脆弱性を悪用した攻撃のようです。
+対策としては
+ インクルードするべきファイル名かチェックしないこと ファイルの権限を見直す などで防げます。  参考  徳丸本の輪講メモ bWAPP に対して File Inclusion 攻撃を行う  Level 8  Username: natas8'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/natas/level7-9/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-05T21:06:51&#43;09:00'/><meta property='article:modified_time' content='2021-07-05T21:06:51&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Natas: Level7〜9">
+<meta name="twitter:description" content="Level 7  Username: natas7
+URL: http://natas7.natas.labs.overthewire.org
+  Question 
+Answer DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe Answerまでにやったこと ページのソースを見ると
+&amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;natas7&amp;lt;/h1&amp;gt; &amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=home&amp;quot;&amp;gt;Home&amp;lt;/a&amp;gt; &amp;lt;a href=&amp;quot;index.php?page=about&amp;quot;&amp;gt;About&amp;lt;/a&amp;gt; &amp;lt;br&amp;gt; &amp;lt;br&amp;gt; &amp;lt;!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 --&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; パスワードは/etc/natas_webpass/natas8にあると書いています。問題はここにどうやったらアクセスできるかです。
+HomeやAboutなどのページはクエリパラメータでpage=XXXと指定していることに気づきました。まさかとは思ってhttps://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8でアクセスしてみると
+ https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8 
+手に入れることができました。
+これどういう攻撃なんだ？と思ったので調べて見ました。
+File Inclusion攻撃  File Inclusion とは、WEBアプリケーションにファイルを参照するコードがあった場合に意図しないファイルを実行させることで、機密データの取得やシステムの乗っ取りを行う攻撃です。 https://www.kdryblog.com/bwapp-file-inclusion/
+ 今回はwebサーバが持っているファイルを不正に参照しているのでLFI(Local File Inclusion)に該当します。
+ファイルをincludeするときの脆弱性を悪用した攻撃のようです。
+対策としては
+ インクルードするべきファイル名かチェックしないこと ファイルの権限を見直す などで防げます。  参考  徳丸本の輪講メモ bWAPP に対して File Inclusion 攻撃を行う  Level 8  Username: natas8">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/natas/level7-9/">【OverTheWire奮闘記】Natas: Level7〜9</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-07-05</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-7">Level 7</h2>
+<blockquote>
+<p>Username: natas7<br>
+URL: <a href="http://natas7.natas.labs.overthewire.org">http://natas7.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 193; flex-basis: 464px">
+		<a href="/post/over-the-wire/natas/level7-9/level7/q.png" data-size="2560x1324"><img src="/post/over-the-wire/natas/level7-9/level7/q.png"
+				srcset="/post/over-the-wire/natas/level7-9/level7/q_hucccc12c0ca2cbcf0151f759c49e17995_135626_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level7-9/level7/q_hucccc12c0ca2cbcf0151f759c49e17995_135626_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1324"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer">Answer</h3>
+<pre><code>DBfUBfqQG69KvJvJ1iAbMoIpwSNQ9bWe
+</code></pre><h3 id="answerまでにやったこと">Answerまでにやったこと</h3>
+<p>ページのソースを見ると</p>
+<pre><code>&lt;body&gt;
+&lt;h1&gt;natas7&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+
+&lt;a href=&quot;index.php?page=home&quot;&gt;Home&lt;/a&gt;
+&lt;a href=&quot;index.php?page=about&quot;&gt;About&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;!-- hint: password for webuser natas8 is in /etc/natas_webpass/natas8 --&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+</code></pre><p>パスワードは<code>/etc/natas_webpass/natas8</code>にあると書いています。問題はここにどうやったらアクセスできるかです。</p>
+<p>HomeやAboutなどのページはクエリパラメータでpage=XXXと指定していることに気づきました。まさかとは思って<code>https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8</code>でアクセスしてみると</p>
+<p><figure style="flex-grow: 194; flex-basis: 466px">
+		<a href="/post/over-the-wire/natas/level7-9/level7/a.png" data-size="2560x1316"><img src="/post/over-the-wire/natas/level7-9/level7/a.png"
+				srcset="/post/over-the-wire/natas/level7-9/level7/a_hudfdbca77a3be362c40743eb49a5120f4_505624_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level7-9/level7/a_hudfdbca77a3be362c40743eb49a5120f4_505624_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1316"
+				loading="lazy"
+				alt="https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8">
+		</a>
+		
+		<figcaption><a href="https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8">https://natas7.natas.labs.overthewire.org/index.php?page=/etc/natas_webpass/natas8</a></figcaption>
+		
+	</figure></p>
+<p>手に入れることができました。</p>
+<p>これどういう攻撃なんだ？と思ったので調べて見ました。</p>
+<h4 id="file-inclusion攻撃">File Inclusion攻撃</h4>
+<blockquote>
+<p>File Inclusion とは、WEBアプリケーションにファイルを参照するコードがあった場合に意図しないファイルを実行させることで、機密データの取得やシステムの乗っ取りを行う攻撃です。
+<a href="https://www.kdryblog.com/bwapp-file-inclusion/">https://www.kdryblog.com/bwapp-file-inclusion/</a></p>
+</blockquote>
+<p>今回はwebサーバが持っているファイルを不正に参照しているので<code>LFI(Local File Inclusion)</code>に該当します。</p>
+<p>ファイルをincludeするときの脆弱性を悪用した攻撃のようです。</p>
+<p>対策としては</p>
+<ul>
+<li>インクルードするべきファイル名かチェックしないこと</li>
+<li>ファイルの権限を見直す
+などで防げます。</li>
+</ul>
+<h4 id="参考">参考</h4>
+<ul>
+<li><a class="link" href="https://qiita.com/m-masaki72/items/1ac34e6cae59adb957a6"  target="_blank" rel="noopener"
+    >徳丸本の輪講メモ</a></li>
+<li><a class="link" href="https://www.kdryblog.com/bwapp-file-inclusion/"  target="_blank" rel="noopener"
+    >bWAPP に対して File Inclusion 攻撃を行う</a></li>
+</ul>
+<h2 id="level-8">Level 8</h2>
+<blockquote>
+<p>Username: natas8<br>
+URL: <a href="http://natas8.natas.labs.overthewire.org">http://natas8.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 194; flex-basis: 466px">
+		<a href="/post/over-the-wire/natas/level7-9/level8/q.png" data-size="2560x1318"><img src="/post/over-the-wire/natas/level7-9/level8/q.png"
+				srcset="/post/over-the-wire/natas/level7-9/level8/q_hu99ec95ebe0c30832bf95d59bc787d12e_511482_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level7-9/level8/q_hu99ec95ebe0c30832bf95d59bc787d12e_511482_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1318"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer-1">Answer</h3>
+<pre><code>W0mMhUcRRnG8dcghE4qvk3JA9lGt8nDl
+</code></pre><h3 id="answerまでにやったこと-1">Answerまでにやったこと</h3>
+<p><code>View sourcecode</code>を押してみました</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span>
+
+<span class="nv">$encodedSecret</span> <span class="o">=</span> <span class="s2">&#34;3d3d516343746d4d6d6c315669563362&#34;</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">encodeSecret</span><span class="p">(</span><span class="nv">$secret</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">bin2hex</span><span class="p">(</span><span class="nx">strrev</span><span class="p">(</span><span class="nx">base64_encode</span><span class="p">(</span><span class="nv">$secret</span><span class="p">)));</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">array_key_exists</span><span class="p">(</span><span class="s2">&#34;submit&#34;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">encodeSecret</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;secret&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="nv">$encodedSecret</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">print</span> <span class="s2">&#34;Access granted. The password for natas9 is &lt;censored&gt;&#34;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">print</span> <span class="s2">&#34;Wrong secret&#34;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><p><code>if(encodeSecret($_POST['secret']) == $encodedSecret)</code>で入力値とencodedSecretを比べているので、<code>encodeSecret関数</code>が理解できればパスワードが入手できそうです。</p>
+<p>encodeSecret関数に使われているのは3つの関数です</p>
+<table>
+<thead>
+<tr>
+<th>関数名</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base64_encode</td>
+<td>base64で文字をエンコードする</td>
+</tr>
+<tr>
+<td>strrev</td>
+<td>文字列を逆順にする</td>
+</tr>
+<tr>
+<td>bin2hex</td>
+<td>バイナリのデータを16進表現に変換する</td>
+</tr>
+</tbody>
+</table>
+<p>つまりこれと逆のことをやれば入力値がわかります。</p>
+<p>今回は以下のコマンドを使いました</p>
+<ul>
+<li><code>xxd</code>: ファイルの内容を16進数に変換して出力したり16進数をバイナリに変換できる
+<ul>
+<li><code>-r</code> : 16進数をバイナリに変換する</li>
+<li><code>-p</code> : プレーンテキストで表示する</li>
+</ul>
+</li>
+<li><code>rev</code>: ファイルの内容を1行ずつ読み込み文字を逆順で表示する</li>
+<li><code>base64</code>: ファイルの内容をbase64にエンコード / デコードする</li>
+</ul>
+<pre><code>$ echo 3d3d516343746d4d6d6c315669563362 | xxd -r -ps | rev | base64 -d | awk 1
+oubWYf2kBq
+</code></pre><p>awk 1をつけないと僕の環境では末尾に％がついてしまいました。</p>
+<pre><code>$ echo 3d3d516343746d4d6d6c315669563362 | xxd -r -p | rev | base64 -d
+oubWYf2kBq%  
+</code></pre><p>この％が何を表すのか調べましたがピンとくるものがありませんでした。少しモヤモヤしますが、原因がわかるまでは<code>base64 -d</code>を使うときは<code>awk 1</code>とセットにして使うことにします</p>
+<p>webページに戻り<code>oubWYf2kBq</code>を入力するとパスワードが取得できました。</p>
+<p><figure style="flex-grow: 193; flex-basis: 463px">
+		<a href="/post/over-the-wire/natas/level7-9/level8/a.png" data-size="2560x1326"><img src="/post/over-the-wire/natas/level7-9/level8/a.png"
+				srcset="/post/over-the-wire/natas/level7-9/level8/a_hu5434f2e47d4571cf1ffb33ee52aa4d33_606130_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level7-9/level8/a_hu5434f2e47d4571cf1ffb33ee52aa4d33_606130_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1326"
+				loading="lazy"
+				alt="Answer">
+		</a>
+		
+		<figcaption>Answer</figcaption>
+		
+	</figure></p>
+<h2 id="level-9">Level 9</h2>
+<h3 id="answer-2">Answer</h3>
+<pre><code>nOpp1igQAkUzaI1GUUjzn1bFVj7xCNzu
+</code></pre><h3 id="answerまでにやったこと-2">Answerまでにやったこと</h3>
+<p><code>View sourcecode</code>を押してメインロジックを確認しました</p>
+<pre><code>Output:
+&lt;pre&gt;
+&lt;?
+$key = &quot;&quot;;
+
+if(array_key_exists(&quot;needle&quot;, $_REQUEST)) {
+    $key = $_REQUEST[&quot;needle&quot;];
+}
+
+if($key != &quot;&quot;) {
+    passthru(&quot;grep -i $key dictionary.txt&quot;);
+}
+?&gt;
+&lt;/pre&gt;
+</code></pre><p>passthru関数は外部プログラムを実行する関数です。</p>
+<p>ここでは<code>dictionary.txt</code>の中身を入力値でgrepしています。</p>
+<p>パスワードはdictionary.txtにあるんだろうと<code>http://natas9.natas.labs.overthewire.org/dictionary.txt</code>にアクセスしてみると相当量の単語の羅列・・・。</p>
+<p>ここではなさそうですね。</p>
+<p>ふと、そういえばOSのコマンドを使った攻撃があったよな・・・？とよぎりました。名前が思い出せなかったので、<code>os コマンド 脆弱性</code>と調べました。</p>
+<h4 id="osコマンドインジェクション">OSコマンドインジェクション</h4>
+<p>そうだった、<code>OSコマンドインジェクション</code>だ！聞いたことある。</p>
+<p>今回の攻撃はOSコマンドインジェクションという方法を用いればパスワード取得できます。</p>
+<p>OSコマンドインジェクションは、入力受け付けるwebアプリにおいて入力値にOSのコマンドを紛れ込ませて不正にファイルを参照したり、不正な操作をする攻撃のことです</p>
+<p>詳細な説明は以下のサイトにお譲ります。</p>
+<ul>
+<li><a href="https://www.shadan-kun.com/blog/measure/2873/">https://www.shadan-kun.com/blog/measure/2873/</a></li>
+</ul>
+<p>私は入力欄に<code>; cat /etc/natas_webpass/natas10</code>と入力しました。</p>
+<p>こうすると<code>grep -i; cat /etc/natas_webpass/natas10 dictionary.txt</code>というコマンドに置き換わります。<code>grep -i</code>で命令が終わり次の<code>cat /etc/natas_webpass/natas9</code>が実行されます。</p>
+<p><figure style="flex-grow: 193; flex-basis: 464px">
+		<a href="/post/over-the-wire/natas/level7-9/level9/a.png" data-size="2560x1324"><img src="/post/over-the-wire/natas/level7-9/level9/a.png"
+				srcset="/post/over-the-wire/natas/level7-9/level9/a_hucccc12c0ca2cbcf0151f759c49e17995_956521_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level7-9/level9/a_hucccc12c0ca2cbcf0151f759c49e17995_956521_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1324"
+				loading="lazy"
+				alt="入力後">
+		</a>
+		
+		<figcaption>入力後</figcaption>
+		
+	</figure></p>
+<h2 id="おわりに">おわりに</h2>
+<p>大学時代に講義で聞いたものがよぎります。机上で聞くのと実際に手を動かしてみるのでは理解が全然違います！大学時代にこのサイトに出会っていれば少しは点数も上がった・・・はず。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level4-6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level4〜6</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level2-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level2〜3</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level0-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level0〜1</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level33-34/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level33〜34</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level31-32/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level31〜32</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
