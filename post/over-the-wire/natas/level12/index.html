@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Level 12  Username: natas12
+URL: http://natas12.natas.labs.overthewire.org
+  Question 
+Answer jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY Answerまでにやったこと View sourcecode押すと
+&amp;lt;? function genRandomString() { $length = 10; $characters = &amp;#34;0123456789abcdefghijklmnopqrstuvwxyz&amp;#34;; $string = &amp;#34;&amp;#34;; for ($p = 0; $p &amp;lt; $length; $p&#43;&#43;) { $string .= $characters[mt_rand(0, strlen($characters)-1)]; } return $string; } function makeRandomPath($dir, $ext) { do { $path = $dir.&amp;#34;/&amp;#34;.genRandomString().&amp;#34;.&amp;#34;.$ext; } while(file_exists($path)); return $path; } function makeRandomPathFromFilename($dir, $fn) { $ext = pathinfo($fn, PATHINFO_EXTENSION); return makeRandomPath($dir, $ext); } if(array_key_exists(&amp;#34;filename&amp;#34;, $_POST)) { $target_path = makeRandomPathFromFilename(&amp;#34;upload&amp;#34;, $_POST[&amp;#34;filename&amp;#34;]); if(filesize($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;]) &amp;gt; 1000) { echo &amp;#34;File is too big&amp;#34;; } else { if(move_uploaded_file($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;], $target_path)) { echo &amp;#34;The file &amp;lt;a href=\&amp;#34;$target_path\&amp;#34;&amp;gt;$target_path&amp;lt;/a&amp;gt; has been uploaded&amp;#34;; } else{ echo &amp;#34;There was an error uploading the file, please try again!'><title>【OverTheWire奮闘記】Natas: Level12</title>
+
+<link rel='canonical' href='https://tadakun8.github.io/post/over-the-wire/natas/level12/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='【OverTheWire奮闘記】Natas: Level12'>
+<meta property='og:description' content='Level 12  Username: natas12
+URL: http://natas12.natas.labs.overthewire.org
+  Question 
+Answer jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY Answerまでにやったこと View sourcecode押すと
+&amp;lt;? function genRandomString() { $length = 10; $characters = &amp;#34;0123456789abcdefghijklmnopqrstuvwxyz&amp;#34;; $string = &amp;#34;&amp;#34;; for ($p = 0; $p &amp;lt; $length; $p&#43;&#43;) { $string .= $characters[mt_rand(0, strlen($characters)-1)]; } return $string; } function makeRandomPath($dir, $ext) { do { $path = $dir.&amp;#34;/&amp;#34;.genRandomString().&amp;#34;.&amp;#34;.$ext; } while(file_exists($path)); return $path; } function makeRandomPathFromFilename($dir, $fn) { $ext = pathinfo($fn, PATHINFO_EXTENSION); return makeRandomPath($dir, $ext); } if(array_key_exists(&amp;#34;filename&amp;#34;, $_POST)) { $target_path = makeRandomPathFromFilename(&amp;#34;upload&amp;#34;, $_POST[&amp;#34;filename&amp;#34;]); if(filesize($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;]) &amp;gt; 1000) { echo &amp;#34;File is too big&amp;#34;; } else { if(move_uploaded_file($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;], $target_path)) { echo &amp;#34;The file &amp;lt;a href=\&amp;#34;$target_path\&amp;#34;&amp;gt;$target_path&amp;lt;/a&amp;gt; has been uploaded&amp;#34;; } else{ echo &amp;#34;There was an error uploading the file, please try again!'>
+<meta property='og:url' content='https://tadakun8.github.io/post/over-the-wire/natas/level12/'>
+<meta property='og:site_name' content='ただくんぶろぐ'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2021-07-07T19:23:02&#43;09:00'/><meta property='article:modified_time' content='2021-07-07T19:23:02&#43;09:00'/>
+<meta name="twitter:title" content="【OverTheWire奮闘記】Natas: Level12">
+<meta name="twitter:description" content="Level 12  Username: natas12
+URL: http://natas12.natas.labs.overthewire.org
+  Question 
+Answer jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY Answerまでにやったこと View sourcecode押すと
+&amp;lt;? function genRandomString() { $length = 10; $characters = &amp;#34;0123456789abcdefghijklmnopqrstuvwxyz&amp;#34;; $string = &amp;#34;&amp;#34;; for ($p = 0; $p &amp;lt; $length; $p&#43;&#43;) { $string .= $characters[mt_rand(0, strlen($characters)-1)]; } return $string; } function makeRandomPath($dir, $ext) { do { $path = $dir.&amp;#34;/&amp;#34;.genRandomString().&amp;#34;.&amp;#34;.$ext; } while(file_exists($path)); return $path; } function makeRandomPathFromFilename($dir, $fn) { $ext = pathinfo($fn, PATHINFO_EXTENSION); return makeRandomPath($dir, $ext); } if(array_key_exists(&amp;#34;filename&amp;#34;, $_POST)) { $target_path = makeRandomPathFromFilename(&amp;#34;upload&amp;#34;, $_POST[&amp;#34;filename&amp;#34;]); if(filesize($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;]) &amp;gt; 1000) { echo &amp;#34;File is too big&amp;#34;; } else { if(move_uploaded_file($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;], $target_path)) { echo &amp;#34;The file &amp;lt;a href=\&amp;#34;$target_path\&amp;#34;&amp;gt;$target_path&amp;lt;/a&amp;gt; has been uploaded&amp;#34;; } else{ echo &amp;#34;There was an error uploading the file, please try again!">
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.body.dataset.scheme = 'dark';
+        } else {
+            document.body.dataset.scheme = 'light';
+        }
+    })();
+</script><div class="container main-container flex on-phone--column extended article-page with-toolbar">
+            <aside class="sidebar left-sidebar sticky">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header class="site-info">
+        
+            <figure class="site-avatar">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huda2458f72ce188392d75c5d51cd8e24e_373_300x0_resize_box_2.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+        
+        <h1 class="site-name"><a href="https://tadakun8.github.io">ただくんぶろぐ</a></h1>
+        <h2 class="site-description">技術ブログはじめました</h2>
+    </header>
+
+    <ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/archives/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/search/'>
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+
+        
+            <li id="dark-mode-toggle">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                <span>Dark Mode</span>
+            </li>
+        
+    </ol>
+</aside>
+
+            <main class="main full-width">
+    <div id="article-toolbar">
+        <a href="https://tadakun8.github.io" class="back-home">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+            <span>Back</span>
+        </a>
+    </div>
+
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/overthewire/" >
+                OverTheWire
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/post/over-the-wire/natas/level12/">【OverTheWire奮闘記】Natas: Level12</a>
+    </h2>
+
+    <footer class="article-time">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <time class="article-time--published">2021-07-07</time>
+    </footer></div>
+</header>
+
+    <section class="article-content">
+    <h2 id="level-12">Level 12</h2>
+<blockquote>
+<p>Username: natas12<br>
+URL: <a href="http://natas12.natas.labs.overthewire.org">http://natas12.natas.labs.overthewire.org</a></p>
+</blockquote>
+<p><figure style="flex-grow: 193; flex-basis: 463px">
+		<a href="/post/over-the-wire/natas/level12/level12/q.png" data-size="2560x1326"><img src="/post/over-the-wire/natas/level12/level12/q.png"
+				srcset="/post/over-the-wire/natas/level12/level12/q_hu5434f2e47d4571cf1ffb33ee52aa4d33_567555_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level12/level12/q_hu5434f2e47d4571cf1ffb33ee52aa4d33_567555_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1326"
+				loading="lazy"
+				alt="Question">
+		</a>
+		
+		<figcaption>Question</figcaption>
+		
+	</figure></p>
+<h3 id="answer">Answer</h3>
+<pre><code>jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY
+</code></pre><h3 id="answerまでにやったこと">Answerまでにやったこと</h3>
+<p><code>View sourcecode</code>押すと</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span> 
+
+<span class="k">function</span> <span class="nf">genRandomString</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$length</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="nv">$characters</span> <span class="o">=</span> <span class="s2">&#34;0123456789abcdefghijklmnopqrstuvwxyz&#34;</span><span class="p">;</span>
+    <span class="nv">$string</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>    
+
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$p</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$p</span> <span class="o">&lt;</span> <span class="nv">$length</span><span class="p">;</span> <span class="nv">$p</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$string</span> <span class="o">.=</span> <span class="nv">$characters</span><span class="p">[</span><span class="nx">mt_rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$characters</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$string</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">makeRandomPath</span><span class="p">(</span><span class="nv">$dir</span><span class="p">,</span> <span class="nv">$ext</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">do</span> <span class="p">{</span>
+    <span class="nv">$path</span> <span class="o">=</span> <span class="nv">$dir</span><span class="o">.</span><span class="s2">&#34;/&#34;</span><span class="o">.</span><span class="nx">genRandomString</span><span class="p">()</span><span class="o">.</span><span class="s2">&#34;.&#34;</span><span class="o">.</span><span class="nv">$ext</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">while</span><span class="p">(</span><span class="nx">file_exists</span><span class="p">(</span><span class="nv">$path</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nv">$path</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">makeRandomPathFromFilename</span><span class="p">(</span><span class="nv">$dir</span><span class="p">,</span> <span class="nv">$fn</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$ext</span> <span class="o">=</span> <span class="nx">pathinfo</span><span class="p">(</span><span class="nv">$fn</span><span class="p">,</span> <span class="nx">PATHINFO_EXTENSION</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">makeRandomPath</span><span class="p">(</span><span class="nv">$dir</span><span class="p">,</span> <span class="nv">$ext</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span><span class="p">(</span><span class="nx">array_key_exists</span><span class="p">(</span><span class="s2">&#34;filename&#34;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$target_path</span> <span class="o">=</span> <span class="nx">makeRandomPathFromFilename</span><span class="p">(</span><span class="s2">&#34;upload&#34;</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s2">&#34;filename&#34;</span><span class="p">]);</span>
+
+
+        <span class="k">if</span><span class="p">(</span><span class="nx">filesize</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;uploadedfile&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&#34;File is too big&#34;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;uploadedfile&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">],</span> <span class="nv">$target_path</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&#34;The file &lt;a href=</span><span class="se">\&#34;</span><span class="si">$target_path\</span><span class="s2">&#34;</span><span class="o">&gt;</span><span class="nv">$target_path</span><span class="o">&lt;/</span><span class="nx">a</span><span class="o">&gt;</span> <span class="nx">has</span> <span class="nx">been</span> <span class="nx">uploaded</span><span class="s2">&#34;;
+</span><span class="s2">        } else{
+</span><span class="s2">            echo &#34;</span><span class="nx">There</span> <span class="nx">was</span> <span class="nx">an</span> <span class="nx">error</span> <span class="nx">uploading</span> <span class="nx">the</span> <span class="nx">file</span><span class="p">,</span> <span class="nx">please</span> <span class="k">try</span> <span class="nx">again</span><span class="o">!</span><span class="s2">&#34;;
+</span><span class="s2">        }
+</span><span class="s2">    }
+</span><span class="s2">} else {
+</span><span class="s2">?&gt;
+</span><span class="s2">
+</span><span class="s2">&lt;form enctype=&#34;</span><span class="nx">multipart</span><span class="o">/</span><span class="nx">form</span><span class="o">-</span><span class="nx">data</span><span class="s2">&#34; action=&#34;</span><span class="nx">index</span><span class="o">.</span><span class="nx">php</span><span class="s2">&#34; method=&#34;</span><span class="nx">POST</span><span class="s2">&#34;&gt;
+</span><span class="s2">&lt;input type=&#34;</span><span class="nx">hidden</span><span class="s2">&#34; name=&#34;</span><span class="nx">MAX_FILE_SIZE</span><span class="s2">&#34; value=&#34;</span><span class="mi">1000</span><span class="s2">&#34; /&gt;
+</span><span class="s2">&lt;input type=&#34;</span><span class="nx">hidden</span><span class="s2">&#34; name=&#34;</span><span class="nx">filename</span><span class="s2">&#34; value=&#34;</span><span class="o">&lt;?</span> <span class="k">print</span> <span class="nx">genRandomString</span><span class="p">();</span> <span class="cp">?&gt;</span><span class="err">.jpg&#34; /&gt;
+</span><span class="err">Choose a JPEG to upload (max 1KB):&lt;br/&gt;
+</span><span class="err">&lt;input name=&#34;uploadedfile&#34; type=&#34;file&#34; /&gt;&lt;br /&gt;
+</span><span class="err">&lt;input type=&#34;submit&#34; value=&#34;Upload File&#34; /&gt;
+</span><span class="err">&lt;/form&gt;
+</span><span class="err">&lt;? } ?&gt;
+</span></code></pre></div><h4 id="わからない関数について調査しました">わからない関数について調査しました</h4>
+<ul>
+<li><code>mt_rand(min, max)</code>
+<ul>
+<li>乱数を生成する</li>
+<li><a href="https://www.php.net/manual/ja/function.mt-rand.php">https://www.php.net/manual/ja/function.mt-rand.php</a></li>
+</ul>
+</li>
+<li><code>pathinfo(path, flag)</code>
+<ul>
+<li>パスに関する情報を返す関数。第二引数にどの情報を返すかを指定する</li>
+<li><a href="https://www.php.net/manual/ja/function.pathinfo.php">https://www.php.net/manual/ja/function.pathinfo.php</a>|</li>
+</ul>
+</li>
+<li><code>move_uploaded_file(from, to)</code>
+<ul>
+<li>アップロードされたファイルをを新しい場所に移動する</li>
+<li><a href="https://www.php.net/manual/ja/function.move-uploaded-file.php">https://www.php.net/manual/ja/function.move-uploaded-file.php</a></li>
+</ul>
+</li>
+<li><code>$_FILE</code>
+<ul>
+<li>POSTでアップロードされたファイル情報が格納された変数</li>
+<li><a href="https://wepicks.net/phpref-files/">https://wepicks.net/phpref-files/</a> (わかりやすい)</li>
+</ul>
+</li>
+</ul>
+<h4 id="整理してみる">整理してみる</h4>
+<p>ここでやるべきこととしては、<code>move_uploaded_file</code>関数の返り値を1にして、リンクを表示することです。</p>
+<p>コードを見る限り画像をアップロードするだけでリンクが出そうですが、<code>There was an error uploading the file, please try again!</code>と表示されてしまいます。</p>
+<p>なぜ<code>move_uploaded_file関数</code>の返り値が0になるのかがわかりません</p>
+<p>返り値が0になるということは、<code>move_uploaded_file($_FILES['uploadedfile']['tmp_name'], $target_path)</code>が失敗する、つまり一時ディレクトリにあるファイルがtarget_pathに移動できていないことを意味します。</p>
+<h4 id="失敗する原因も整理してみる">失敗する原因も整理してみる</h4>
+<p><code>$_FILES['uploadedfile']['tmp_name']</code>はファイルの一時保存場所(/tmp/finenameという形式)。このfinenemeは自動で作成されます。</p>
+<p><code>$target_path</code>も同様でこちらも自動で生成されます。</p>
+<p>両者とも自動で作成されるのでこちらからいじることはできなそう。</p>
+<p>あと気になる点は</p>
+<div class="highlight"><pre class="chroma"><code class="language-php:getPassword.php" data-lang="php:getPassword.php"><span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&#34;hidden&#34;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&#34;filename&#34;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&#34;&lt;? print genRandomString(); ?&gt;.jpg&#34;</span> <span class="o">/&gt;</span>
+</code></pre></div><p>ここがなぜ必要なのかどうかがわからず。</p>
+<p>ここで生成される名前のjpgファイルを用意し、アップロードしてもダメでした。</p>
+<p>手詰まりになったので回答を見ます・・・</p>
+<h4 id="回答">回答</h4>
+<p>次のサイトを参考にしました。</p>
+<ul>
+<li><a href="https://www.abatchy.com/2016/11/natas-level-12">https://www.abatchy.com/2016/11/natas-level-12</a></li>
+<li><a href="https://n0j.github.io/2015/09/19/otw-natas-12.html">https://n0j.github.io/2015/09/19/otw-natas-12.html</a></li>
+<li><a href="https://www.mattandreko.com/2012/11/11/overthewire-natas-level-12/">https://www.mattandreko.com/2012/11/11/overthewire-natas-level-12/</a></li>
+</ul>
+<p>回答の流れを見るとそもそもファイルをあげたらリンクが出てきているのが正しい挙動のようです。</p>
+<p>リンクが出てこなかった原因ですが、<code>filesize関数</code>について間違っていました。この関数はファイルのサイズをバイトで返す関数です。ここでは1KBの制限があります。画面にも<code>Choose a JPEG to upload (max 1KB):</code>と書いていますね。1KB以下の画像をuploadしたら無事リンクが現れました。</p>
+<p>・・・時間を浪費したぁぁぁあああ！！！</p>
+<p>また、次の部分</p>
+<pre><code>$target_path = makeRandomPathFromFilename(&quot;upload&quot;, $_POST[&quot;filename&quot;]);
+</code></pre><p>アップロードされたファイル名からランダムなファイル名が作られると思ってましたが、よくよく見てみると<code>$_POST[&quot;filename&quot;]</code>になってます。つまり気になっていた<code>&lt;input type=&quot;hidden&quot; name=&quot;filename&quot; value=&quot;&lt;? print genRandomString(); ?&gt;.jpg&quot; /&gt;</code>の名前からとっていました。</p>
+<p>気づかなかった・・・</p>
+<p>ということで回答に戻りますが、まず結論を言うと以下のphpファイルを作成し、そのファイルを選択します</p>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="nx">file_get_contents</span><span class="p">(</span><span class="s1">&#39;/etc/natas_webpass/natas13&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$file</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><p>続いてディベロッパーツールでname=&ldquo;filname&quot;のvalueの拡張子を<code>php</code>に変更します</p>
+<p><figure style="flex-grow: 192; flex-basis: 462px">
+		<a href="/post/over-the-wire/natas/level12/level12/a1.png" data-size="2560x1328"><img src="/post/over-the-wire/natas/level12/level12/a1.png"
+				srcset="/post/over-the-wire/natas/level12/level12/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_547100_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level12/level12/a1_hu7367db0f61ed87a7f047571e6f1aa9f1_547100_1024x0_resize_box_2.png 1024w"
+				width="2560"
+				height="1328"
+				loading="lazy"
+				alt="ディベロッパーツールでの変更">
+		</a>
+		
+		<figcaption>ディベロッパーツールでの変更</figcaption>
+		
+	</figure></p>
+<p>そうするとリンクが現れ、そのリンクをクリックするとパスワードが表示されました。</p>
+<p><figure style="flex-grow: 609; flex-basis: 1463px">
+		<a href="/post/over-the-wire/natas/level12/level12/a2.png" data-size="756x124"><img src="/post/over-the-wire/natas/level12/level12/a2.png"
+				srcset="/post/over-the-wire/natas/level12/level12/a2_hu6d036206b7807e633879f3bddeda3e56_42386_480x0_resize_box_2.png 480w, /post/over-the-wire/natas/level12/level12/a2_hu6d036206b7807e633879f3bddeda3e56_42386_1024x0_resize_box_2.png 1024w"
+				width="756"
+				height="124"
+				loading="lazy"
+				alt="パスワード">
+		</a>
+		
+		<figcaption>パスワード</figcaption>
+		
+	</figure></p>
+<p>ここから僕の理解のための解説ですが、普通に画像を上げたのでは画像ファイルのリンクが表示されるだけです。それだけではパスワードは取得できません。</p>
+<p>ではリンク先の画像ファイルをもしphpファイルに変えることができればどうでしょう？リンク先でphpファイルが実行されることになります。つまりphpのコードから<code>/etc/natas_webpass/natas13</code>にアクセスできるということです。</p>
+<p>なので実行したいphpファイルをアップロードしました。拡張子を変えたのは<code>makeRandomPathFromFilename</code>関数で<code>filename</code>の拡張子で<code>target_path</code>が定義されるからです。ここを変えないとphpファイルとして保存されません。</p>
+<h2 id="おわりに">おわりに</h2>
+<p><strong>問題文を読みましょう</strong>という初歩的なことを書きたくはなかったのですが、今回の教訓です。つまらないところで時間を食ってしまいました。</p>
+<p>また今回の問題ではアップロードするファイルの拡張子をしっかりとバリデーションするということも一つ教訓です。今回のように実行可能の形式のファイルがアップロードされてしまうとき、それが参照されると意図せずコマンドが実行されてしまうので気をつけましょうという話です。</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level10-11/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level10〜11</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level7-9/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level7〜9</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level4-6/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level4〜6</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level2-3/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level2〜3</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="">
+    <a href="/post/over-the-wire/natas/level0-1/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">【OverTheWire奮闘記】Natas: Level0〜1</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 ただくんぶろぐ
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="2.3.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

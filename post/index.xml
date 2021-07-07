@@ -6,7 +6,20 @@
     <description>Recent content in Posts on ただくんぶろぐ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Tue, 06 Jul 2021 20:44:23 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 07 Jul 2021 19:23:02 +0900</lastBuildDate><atom:link href="https://tadakun8.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【OverTheWire奮闘記】Natas: Level12</title>
+      <link>https://tadakun8.github.io/post/over-the-wire/natas/level12/</link>
+      <pubDate>Wed, 07 Jul 2021 19:23:02 +0900</pubDate>
+      
+      <guid>https://tadakun8.github.io/post/over-the-wire/natas/level12/</guid>
+      <description>Level 12  Username: natas12
+URL: http://natas12.natas.labs.overthewire.org
+  Question 
+Answer jmLTY0qiPZBbaKc9341cqPQZBJv7MQbY Answerまでにやったこと View sourcecode押すと
+&amp;lt;? function genRandomString() { $length = 10; $characters = &amp;#34;0123456789abcdefghijklmnopqrstuvwxyz&amp;#34;; $string = &amp;#34;&amp;#34;; for ($p = 0; $p &amp;lt; $length; $p++) { $string .= $characters[mt_rand(0, strlen($characters)-1)]; } return $string; } function makeRandomPath($dir, $ext) { do { $path = $dir.&amp;#34;/&amp;#34;.genRandomString().&amp;#34;.&amp;#34;.$ext; } while(file_exists($path)); return $path; } function makeRandomPathFromFilename($dir, $fn) { $ext = pathinfo($fn, PATHINFO_EXTENSION); return makeRandomPath($dir, $ext); } if(array_key_exists(&amp;#34;filename&amp;#34;, $_POST)) { $target_path = makeRandomPathFromFilename(&amp;#34;upload&amp;#34;, $_POST[&amp;#34;filename&amp;#34;]); if(filesize($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;]) &amp;gt; 1000) { echo &amp;#34;File is too big&amp;#34;; } else { if(move_uploaded_file($_FILES[&amp;#39;uploadedfile&amp;#39;][&amp;#39;tmp_name&amp;#39;], $target_path)) { echo &amp;#34;The file &amp;lt;a href=\&amp;#34;$target_path\&amp;#34;&amp;gt;$target_path&amp;lt;/a&amp;gt; has been uploaded&amp;#34;; } else{ echo &amp;#34;There was an error uploading the file, please try again!</description>
+    </item>
+    
     <item>
       <title>【OverTheWire奮闘記】Natas: Level10〜11</title>
       <link>https://tadakun8.github.io/post/over-the-wire/natas/level10-11/</link>
